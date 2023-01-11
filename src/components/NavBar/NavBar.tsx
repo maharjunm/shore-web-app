@@ -8,7 +8,7 @@ const NavBar = () => {
                 <div className="container">
                     <div className="header">
                         <h4>
-                            SHORE BRIDIE <span>logo</span>
+                            SHORE BIRDIE <span>logo</span>
                         </h4>
                     </div>
                     <div>
