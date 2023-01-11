@@ -1,3 +1,8 @@
+:root {
+  --blue:#0064a9;
+  --yellow: #ffb12a;
+	--lightblack:#78745c;
+}
 .navbar {
 	background: white;
 	box-shadow: 0px 0px 5px 5px #888;
@@ -11,7 +16,14 @@
 	font-family: inherit;
 	font-weight: 500;
 	margin-right: 120px;
+	display: flex;
+
+
 }
+.companyLogo{
+	margin-left: 10px;
+}
+
 ul {
 	display: flex;
 	align-items: stretch;
@@ -29,4 +41,13 @@ li {
 	color:blue;
 	border-bottom: 2px solid blue;
 	margin-bottom: 2px;
+}
+.color-blue{
+	color:var(--blue);
+}
+.color-yellow{
+	color:var(--yellow);
+}
+.color-lightblack{
+	color:var(--lightblack);
 }

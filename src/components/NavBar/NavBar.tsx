@@ -7,10 +7,16 @@ const NavBar = () => {
             <nav className="navbar">
                 <div className="container">
                     <div className="header">
-                        <h4>
-                            SHORE BIRDIE <span>logo</span>
-                        </h4>
+                    <h4>
+                        <span className="color-blue">Shore</span>
+                        <span className="color-yellow">Birdie</span>
+                         <span className="color-lightblack">.com</span>
+                    </h4>
+
+                        <span className="companyLogo"> <img  src="largelogo.png" width="100px" /></span>
+
                     </div>
+
                     <div>
                       <ul>
                           <li ><NavLink exact to="/" >Home</NavLink></li>
