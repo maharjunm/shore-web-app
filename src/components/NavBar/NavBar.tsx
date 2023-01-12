@@ -10,7 +10,6 @@ const NavBar = () => {
                     <h4>
                         <span className="color-blue">Shore</span>
                         <span className="color-yellow">Birdie</span>
-                         <span className="color-lightblack">.com</span>
                     </h4>
 
                         <span className="companyLogo"> <img  src="largelogo.png" width="100px" /></span>
@@ -19,7 +18,7 @@ const NavBar = () => {
 
                     <div>
                       <ul>
-                          <li ><NavLink exact to="/" >Home</NavLink></li>
+                          <li ><NavLink exact to="/" >Home<i className="fa-solid fa-house"></i></NavLink></li>
                           <li > <NavLink to="/jobs">Jobs</NavLink></li>
                           <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
                           <li > <NavLink to="/aboutus">About Us</NavLink></li>

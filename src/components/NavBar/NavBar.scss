@@ -5,14 +5,14 @@
 }
 .navbar {
 	background: white;
-	box-shadow: 0px 0px 5px 5px #888;
+	box-shadow: 0px 0px 2px 2px #aaa;
 }
 .container {
 	display: flex;
 }
 .header {
 	font-size: 20px;
-	margin: 5px;
+	margin:auto;
 	font-family: inherit;
 	font-weight: 500;
 	margin-right: 120px;
@@ -38,8 +38,8 @@ li {
 	cursor: pointer;
 }
 .active {
-	color:blue;
-	border-bottom: 2px solid blue;
+	color:var(--blue);
+  font-weight:600;
 	margin-bottom: 2px;
 }
 .color-blue{
@@ -47,7 +47,4 @@ li {
 }
 .color-yellow{
 	color:var(--yellow);
-}
-.color-lightblack{
-	color:var(--lightblack);
 }
