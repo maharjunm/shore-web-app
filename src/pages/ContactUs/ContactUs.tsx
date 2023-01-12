@@ -2,13 +2,6 @@ import React,{useState} from 'react';
 
 import { ErrorBoundary } from '../../components';
 import './ContactUs.scss';
-interface Details{
-  mail :String,
-  name:String,
-  companyName:String,
-  query:String,
-
-}
 const ContactUs = ( ) => {
     const [formStatus,setFormStatus]= useState("Submit");
     const [formDetails,setDetails]= useState();
