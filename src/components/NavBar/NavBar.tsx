@@ -6,11 +6,12 @@ const NavBar = () => {
         <nav className="navbar">
           <div className="container">
             <div className="header">
+            <span className="companyLogo"> <img  src="logo1.png" width="60px" /></span>
               <h4>
                 <span className="color-blue">Shore</span>
                 <span className="color-yellow">Birdie</span>
               </h4>
-                <span className="companyLogo"> <img  src="logo1.png" width="60px" /></span>
+
             </div>
           <div>
             <ul>
