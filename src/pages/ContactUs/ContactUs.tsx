@@ -9,7 +9,7 @@ interface Details{
   query:String,
 
 }
-const ContactUs = () => {
+const ContactUs = ( ) => {
     const [formStatus,setFormStatus]= useState("Submit");
     const [formDetails,setDetails]= useState();
     const onSubmit=(e:any)=>{
