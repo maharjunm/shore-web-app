@@ -10,7 +10,7 @@ const NavBar = () => {
                 <span className="color-blue">Shore</span>
                 <span className="color-yellow">Birdie</span>
               </h4>
-                <span className="companyLogo"> <img  src="largelogo.png" width="100px" /></span>
+                <span className="companyLogo"> <img  src="logo1.png" width="60px" /></span>
             </div>
           <div>
             <ul>
