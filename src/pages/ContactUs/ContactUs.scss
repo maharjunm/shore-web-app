@@ -1,0 +1,69 @@
+:root {
+  --blue:#0064a9;
+  --yellow: #ffb12a;
+	--lightblack:#78745c;
+}
+.contactContainer{
+  text-align: center;
+  box-sizing: border-box;
+  padding:10px;
+}
+.contactContainer h1{
+  font-size:20px;
+  padding:10px;
+}
+.infobox{
+  padding:10px;
+  color:#888;
+  width:max-content;
+  margin:auto;
+}
+.contentBox{
+  background-color:#667a79;
+  max-width: 400px;
+  margin: auto;
+  border-radius: 5px;
+}
+.contentBox form {
+  text-align: center;
+  margin: 5px;
+
+}
+.contentBox form input{
+  min-width:350px ;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  margin:10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.contentBox form {
+  padding: 10px;
+}
+.Submit{
+  color:white;
+  font-size: 20px;
+  background-color: var(--blue);
+  width: 150px;
+  padding: 8px;
+  border-radius: 10px;
+  margin-top:10px;
+}
+.Submit:hover{
+  background-color:blue;
+}
+.submitting{
+  color:#999;
+  font-size: 20px;
+  background-color: var(--blue);
+  width: 150px;
+  padding: 8px;
+  border-radius: 10px;
+  margin-top:10px;
+}
+.contentBox .writeup{
+  padding: 20px;
+  color:white;
+
+}
