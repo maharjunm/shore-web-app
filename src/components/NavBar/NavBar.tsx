@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import './NavBar.scss';
+import {logo} from './../../public/logo1.png';
 import { Link, NavLink } from 'react-router-dom';
 const NavBar = () => {
     return (
         <nav className="navbar">
           <div className="container">
             <div className="header">
-            <span className="companyLogo"> <img  src="logo1.png" width="60px" /></span>
+            <span className="companyLogo"> <img  src={logo} width="60px" /></span>
               <h4>
                 <span className="color-blue">Shore</span>
                 <span className="color-yellow">Birdie</span>
