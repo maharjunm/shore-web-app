@@ -16,14 +16,17 @@
 	font-weight: 500;
 	margin-right: 120px;
 	display: flex;
+  flex-direction: row;
 }
 .companyLogo{
 	margin-right: 10px;
 }
+
 ul {
 	display: flex;
 	align-items: stretch;
 }
+
 li {
 	margin: 7px;
 	width: 150px;
@@ -43,4 +46,93 @@ li {
 }
 .color-yellow{
 	color:var(--yellow);
+}
+.mobview{
+  margin: auto;
+  width: 100%;
+  justify-content: center;
+}
+.mobview .container{
+  display: flex;
+  flex-direction: column;
+}
+.mobview .container .header{
+  font-size: 20px;
+	font-family: inherit;
+	font-weight: 500;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: space-between;
+}
+.flex{
+  display: flex;
+  margin: 5px;
+
+}
+
+.menubar{
+  margin:5px;
+  position: absolute;
+  right: 10px;
+  display:flex;
+  flex-direction: column;
+}
+.menubar span{
+  height:4px;
+  width:25px;
+  margin:2px;
+  border-radius: 10px;
+  background-color: #333;
+}
+
+
+.invisible{
+  position: absolute;
+  top: -300px;
+  right: 0;
+  left: 0;
+  display: flex;
+  transition: 0.5s;
+}
+
+.options{
+  width: 95%;
+  justify-content: center;
+  border-top: 1px solid #0064a9;
+  border: 1px solid var(--blue);
+  margin: auto;
+  background-color: #fff;
+
+}
+.visible{
+  position: absolute;
+  top: 50px;
+  right: 0;
+  left: 0;
+  align-items: center;
+  display: flex;
+  transition: 1s;
+}
+
+.options ul {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 1050px) {
+  .navbar .main{
+    display: none;
+  }
+  .navbar .mobview{
+    display: flex;
+  }
+}
+@media only screen and (min-width: 1050px) {
+  .navbar .main{
+    display: flex;
+  }
+  .navbar .mobview{
+    display: none;
+  }
 }

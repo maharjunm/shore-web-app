@@ -12,7 +12,6 @@ import AppContextProvider from './contexts/AppContextProvider';
 import {BrowserRouter} from "react-router-dom";
 import { HomePage } from './pages';
 
-
 (async () => {
     const preloadedState = getPreloadedState();
 
@@ -23,10 +22,8 @@ import { HomePage } from './pages';
             <ReduxProvider store={configureAppStore(preloadedState)}>
                 <AppContextProvider>
                 <ErrorBoundary>
-
-                    <HomePage />
-              
-                    </ErrorBoundary>
+                  <HomePage />
+                </ErrorBoundary>
                 </AppContextProvider>
             </ReduxProvider>
       </React.StrictMode>
