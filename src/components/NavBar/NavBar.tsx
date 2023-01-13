@@ -17,7 +17,7 @@ const NavBar = () => {
           <div className="main">
             <div className="container">
               <div className="header">
-              <span className="companyLogo"> <img  src="./logo1.png" width="60px" /></span>
+              <span className="companyLogo"> <img  src={Logo} width="60px" /></span>
                 <h4>
                   <span className="color-blue">Shore</span>
                   <span className="color-yellow">Birdie</span>
@@ -38,7 +38,7 @@ const NavBar = () => {
           <div className="container">
             <div className="header">
               <span className="flex">
-                <img  src="./../../../public/logo1.png" width="60px" />
+                <img  src={Logo} width="60px" />
                 <h4 className="margin">
                     <span className="color-blue">Shore</span>
                     <span className="color-yellow">Birdie</span>
