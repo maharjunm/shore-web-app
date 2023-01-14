@@ -41,7 +41,7 @@ const NavBar = () => {
           <div className="container">
             <div className="header">
               <span className="flex">
-                <img  src="./../images/logo.png" width="60px" />
+                <img  src={Logo} width="60px" />
                 <h4 className="margin">
                     <span className="color-blue">Shore</span>
                     <span className="color-yellow">Birdie</span>
