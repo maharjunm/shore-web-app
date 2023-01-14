@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './NavBar.scss';
-import  Logo from  "./logo1.png";
+import Logo from "./../images/logo.png";
 import { Link, NavLink } from 'react-router-dom';
 const NavBar = () => {
     const [mobview,setMobview]= useState("invisible");
@@ -19,13 +19,16 @@ const NavBar = () => {
               <div className="header">
               <span className="companyLogo"> <img  src={Logo} width="60px" /></span>
                 <h4>
-                  <span className="color-blue">Shore</span>
-                  <span className="color-yellow">Birdie</span>
+                <NavLink exact to="/">
+                <span className="color-blue">Shore</span>
+                <span className="color-yellow">Birdie</span>
+                </NavLink>
+
                 </h4>
               </div>
             <div>
               <ul>
-                <li ><NavLink exact to="/" >Home<i className="fa-solid fa-house"></i></NavLink></li>
+                <li ><NavLink exact to="/" >Home</NavLink></li>
                 <li > <NavLink to="/jobs">Jobs</NavLink></li>
                 <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
                 <li > <NavLink to="/aboutus">About Us</NavLink></li>
@@ -38,7 +41,7 @@ const NavBar = () => {
           <div className="container">
             <div className="header">
               <span className="flex">
-                <img  src={Logo} width="60px" />
+                <img  src="./../images/logo.png" width="60px" />
                 <h4 className="margin">
                     <span className="color-blue">Shore</span>
                     <span className="color-yellow">Birdie</span>
