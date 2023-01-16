@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import './NavBar.scss';
 import Logo from "./../images/logo.png";
 import { Link, NavLink } from 'react-router-dom';
-
-
+import Flex from './../Flex/Flex';
 const NavBar = () => {
     const [mobview,setMobview]= useState("invisible");
     const onClick=()=>{
@@ -18,7 +17,7 @@ const NavBar = () => {
           <div className="main">
             <div className="container">
               <div className="header">
-
+                <Flex>
                   <img className="img" src={Logo} />
                   <h4>
                     <NavLink exact to="/">
@@ -26,7 +25,7 @@ const NavBar = () => {
                       <span className="color-yellow">Birdie</span>
                     </NavLink>
                   </h4>
-
+                </Flex>
               </div>
             <div>
               <ul>
