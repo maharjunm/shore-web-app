@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './NavBar.scss';
 import Logo from "./../images/logo.png";
-import { Link, NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import Flex from './../Flex/Flex';
 const NavBar = () => {
     const [mobview,setMobview]= useState("invisible");

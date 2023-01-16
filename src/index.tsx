@@ -4,12 +4,8 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider as ReduxProvider } from 'react-redux';
 import { ErrorBoundary } from './components';
-
 import configureAppStore, { getPreloadedState } from './store/configureStore';
-
 import AppContextProvider from './contexts/AppContextProvider';
-
-import {BrowserRouter} from "react-router-dom";
 import { HomePage } from './pages';
 
 (async () => {
