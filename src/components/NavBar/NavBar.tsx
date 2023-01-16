@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import './NavBar.scss';
 import Logo from "./../images/logo.png";
 import { Link, NavLink } from 'react-router-dom';
+
+
 const NavBar = () => {
     const [mobview,setMobview]= useState("invisible");
-    const [desktopview,setDesktopView]= useState("desktop");
     const onClick=()=>{
       if(mobview==="visible"){
         setMobview("invisible");
@@ -17,22 +18,23 @@ const NavBar = () => {
           <div className="main">
             <div className="container">
               <div className="header">
-              <span className="companyLogo"> <img  src={Logo} width="60px" /></span>
-                <h4>
-                <NavLink exact to="/">
-                <span className="color-blue">Shore</span>
-                <span className="color-yellow">Birdie</span>
-                </NavLink>
 
-                </h4>
+                  <img className="img" src={Logo} />
+                  <h4>
+                    <NavLink exact to="/">
+                      <span className="color-blue">Shore</span>
+                      <span className="color-yellow">Birdie</span>
+                    </NavLink>
+                  </h4>
+
               </div>
             <div>
               <ul>
                 <li ><NavLink exact to="/" >Home</NavLink></li>
-                <li > <NavLink to="/jobs">Jobs</NavLink></li>
+                <li ><NavLink to="/jobs">Jobs</NavLink></li>
                 <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
-                <li > <NavLink to="/aboutus">About Us</NavLink></li>
-                <li > <NavLink to="/contactus">Contact Us</NavLink></li>
+                <li ><NavLink to="/aboutus">About Us</NavLink></li>
+                <li ><NavLink to="/contactus">Contact Us</NavLink></li>
               </ul>
             </div>
           </div>
@@ -40,13 +42,11 @@ const NavBar = () => {
         <div className="mobview">
           <div className="container">
             <div className="header">
-              <span className="flex">
-                <img  src={Logo} width="60px" />
-                <h4 className="margin">
-                    <span className="color-blue">Shore</span>
-                    <span className="color-yellow">Birdie</span>
-                </h4>
-              </span>
+              <img className="img" src={Logo} />
+              <h4 className="margin">
+                  <span className="color-blue">Shore</span>
+                  <span className="color-yellow">Birdie</span>
+              </h4>
               <button className="menubar" onClick={onClick}>
                 <span ></span>
                 <span ></span>

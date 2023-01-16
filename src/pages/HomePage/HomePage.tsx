@@ -2,12 +2,11 @@ import React,{useState} from 'react';
 import { ErrorBoundary,NavBar } from '../../components';
 import {HashRouter as Router,Switch,Route,Link} from "react-router-dom";
 import {Home,Jobs,PostJobs,AboutUs,ContactUs} from '../../pages';
-import './Hompage.scss';
 
 const HomePage = () => {
     return (
       <Router>
-        <div className="pages">
+        <div>
           <ErrorBoundary>
               <NavBar/>
               <Switch>
