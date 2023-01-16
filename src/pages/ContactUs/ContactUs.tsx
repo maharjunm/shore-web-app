@@ -1,5 +1,4 @@
 import React,{useState} from 'react';
-
 import { ErrorBoundary } from '../../components';
 import './ContactUs.scss';
 const ContactUs = ( ) => {
@@ -12,7 +11,6 @@ const ContactUs = ( ) => {
     return (
       <ErrorBoundary>
         <div className="contactContainer">
-          <h1>Contact Us</h1>
           <div className="infobox">
             US ,Canada & South America 9:00 AM - 5:30 PM ,EST Phone :202-312-6375 E-mail:service@shorebirdie.org<br/>
             International 9:00 AM - 5:30 PM GMT Phone :+44(0) 1223 326 528 E-mail:service@shorebirdie.org

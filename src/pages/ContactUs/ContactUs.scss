@@ -14,7 +14,6 @@
 .infobox{
   padding:10px;
   color:#888;
-  width:max-content;
   margin:auto;
 }
 .contentBox{
@@ -25,20 +24,18 @@
 }
 .contentBox form {
   text-align: center;
-  margin: 5px;
-
+  justify-content: center;
+  margin:auto;
+  padding: 5px;
 }
 .contentBox form input{
-  min-width:350px ;
+  width:90%;
   text-decoration: none;
   border: none;
   outline: none;
   margin:10px;
   padding: 5px;
   border-radius: 5px;
-}
-.contentBox form {
-  padding: 10px;
 }
 .Submit{
   color:white;
@@ -64,5 +61,20 @@
 .contentBox .writeup{
   padding: 20px;
   color:white;
-
+}
+@media only screen and (max-width: 1050px) {
+  .infobox{
+    font-size: 12px;
+  }
+  .writeup{
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 1050px) {
+  .infobox{
+    font-size: 18px;
+  }
+  .writeup{
+    font-size: 18px;
+  }
 }
