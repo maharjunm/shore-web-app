@@ -3,38 +3,38 @@
   --yellow:#ffb12a;
 }
 .navbar {
-	background: white;
-	box-shadow: 0px 0px 2px 2px #aaa;
+  background: white;
+  box-shadow: 0px 0px 2px 2px #aaa;
 }
 .container {
-	display: flex;
+  display: flex;
 }
 .header {
-	font-size: 20px;
-	margin:auto;
-	font-family: inherit;
-	font-weight: 500;
-	margin-right: 120px;
-	display: flex;
+  font-size: 20px;
+  margin:auto;
+  font-family: inherit;
+  font-weight: 500;
+  margin-right: 120px;
+  display: flex;
   flex-direction: row;
 }
 ul {
-	display: flex;
-	align-items: stretch;
+  display: flex;
+  align-items: stretch;
 }
 li {
-	margin: 7px;
-	width: 150px;
-	font-size: 1.2rem;
-	color: black;
-	align-items: stretch;
-	text-align: center;
-	cursor: pointer;
+  margin: 7px;
+  width: 150px;
+  font-size: 1.2rem;
+  color: black;
+  align-items: stretch;
+  text-align: center;
+  cursor: pointer;
 }
 .active {
-	color:var(--blue);
+  color:var(--blue);
   font-weight:600;
-	margin-bottom: 2px;
+  margin-bottom: 2px;
 }
 .color-blue{
 	color:var(--blue);
@@ -53,8 +53,8 @@ li {
 }
 .mobview .container .header{
   font-size: 20px;
-	font-family: inherit;
-	font-weight: 500;
+  font-family: inherit;
+  font-weight: 500;
   display: flex;
   margin: auto;
   align-items: center;
