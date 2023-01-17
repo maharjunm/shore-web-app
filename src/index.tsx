@@ -14,14 +14,14 @@ import { HomePage } from './pages';
     const root = createRoot(document.getElementById('root'));
 
     root.render(
-      <React.StrictMode>
+        <React.StrictMode>
             <ReduxProvider store={configureAppStore(preloadedState)}>
                 <AppContextProvider>
-                <ErrorBoundary>
-                  <HomePage />
-                </ErrorBoundary>
+                    <ErrorBoundary>
+                        <HomePage />
+                    </ErrorBoundary>
                 </AppContextProvider>
             </ReduxProvider>
-      </React.StrictMode>
+        </React.StrictMode>
     );
 })();

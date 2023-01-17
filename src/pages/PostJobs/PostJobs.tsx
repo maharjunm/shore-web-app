@@ -3,9 +3,9 @@ import { ErrorBoundary } from '../../components';
 
 const PostJobs = () => {
     return (
-      <ErrorBoundary>
-      <h1>Post jobs</h1>
-      </ErrorBoundary>
+        <ErrorBoundary>
+            <h1>Post jobs</h1>
+        </ErrorBoundary>
     );
 };
 
