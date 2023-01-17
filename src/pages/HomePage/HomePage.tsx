@@ -10,25 +10,12 @@ const HomePage = () => {
                 <ErrorBoundary>
                     <NavBar />
                     <Switch>
-                        <Route exact path="/">
-                            <Home />
-                        </Route>
-                        <Route path="/home">
-                            <Home />
-                        </Route>
-                        <Route path="/jobs">
-                            {' '}
-                            <Jobs />{' '}
-                        </Route>
-                        <Route path="/postjobs">
-                            <PostJobs />
-                        </Route>
-                        <Route path="/aboutus">
-                            <AboutUs />
-                        </Route>
-                        <Route path="/contactus">
-                            <ContactUs />
-                        </Route>
+                        <Route exact path="/"><Home /></Route>
+                        <Route path="/home"><Home /></Route>
+                        <Route path="/jobs"><Jobs /></Route>
+                        <Route path="/postjobs"><PostJobs /></Route>
+                        <Route path="/aboutus"><AboutUs /></Route>
+                        <Route path="/contactus"><ContactUs /></Route>
                     </Switch>
                 </ErrorBoundary>
             </div>
