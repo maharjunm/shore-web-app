@@ -1,5 +1,5 @@
 import React from 'react';
-import './searchBar.scss';
+import './SearchBar.scss';
 interface Props {
     data: {
         id: number;

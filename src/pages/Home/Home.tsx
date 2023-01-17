@@ -1,6 +1,5 @@
 import React from 'react';
-import { ErrorBoundary } from '../../components';
-import { Searchbar, Location } from '../../components/index';
+import { ErrorBoundary,Searchbar, Location } from '../../components';
 import data from '../../components/SearchBar/data';
 
 const Home = () => {
