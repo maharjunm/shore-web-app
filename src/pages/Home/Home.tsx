@@ -1,12 +1,14 @@
 import React from 'react';
 import { ErrorBoundary } from '../../components';
+import { Searchbar, Location } from '../../components/index';
+import data from '../../components/SearchBar/data';
 
-
-const Home =() => {
+const Home = () => {
     return (
-      <ErrorBoundary>
-      <h1>Home</h1>
-      </ErrorBoundary>
+        <ErrorBoundary>
+            <Searchbar data={data} />
+            <Location />
+        </ErrorBoundary>
     );
 };
 
