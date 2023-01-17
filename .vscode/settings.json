@@ -1,0 +1,7 @@
+{
+  "editor.tabSize": 2,
+  "workbench.colorTheme": "Solarized Dark",
+  "workbench.iconTheme": "vs-seti",
+  "workbench.preferredDarkColorTheme": "Default Dark+",
+  "typescript.inlayHints.enumMemberValues.enabled": true
+}

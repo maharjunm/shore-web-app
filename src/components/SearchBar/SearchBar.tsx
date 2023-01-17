@@ -1,7 +1,5 @@
 import React from 'react';
 import './searchBar.scss';
-
-//import data from './dummyData';
 interface Props {
     data: {
         id: number;
@@ -33,39 +31,21 @@ const Searchbar: React.FC<Props> = ({ data }) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <input
-                    id="search"
-                    type="text"
-                    placeholder="search for job"
-                    onChange={handleChange}
-                    value={searchData}
-                    className="searchInput"
-                />
-            </form>
-            {searchData.length > 0 && isOpen && (
-                <div className="searchResult">
-                    {searchData.length > 0 &&
-                        isOpen &&
-                        data
-                            .filter((item) =>
-                                item.name
-                                    .toLowerCase()
-                                    .includes(searchData.toLowerCase())
-                            )
-                            .map((item) => (
-                                <div key={item.id}>
-                                    <option
-                                        onClick={handleClick}
-                                        value={item.name}
-                                        id="options"
-                                    >
-                                        {item.name}
-                                    </option>
-                                </div>
-                            ))}
-                </div>
-            )}
+        <form onSubmit={handleSubmit}>
+        <input id="search" type="text" placeholder="search for job" onChange={handleChange} value={searchData}  className="searchInput"/>
+        </form>
+        {searchData.length > 0 && isOpen && (
+            <div className="searchResult">
+                {searchData.length > 0 && isOpen && data.filter((item) => item.name.toLowerCase().includes(searchData.toLowerCase()))
+                .map((item) => (
+                    <div key={item.id}>
+                        <option onClick={handleClick} value={item.name} id="options" >
+                            {item.name}
+                        </option>
+                    </div>
+                ))}
+            </div>
+        )}
         </>
     );
 };
