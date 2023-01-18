@@ -25,16 +25,16 @@ const ContactUs = () => {
                 to your query within 24 hours.
               </div>
               <div>
-                  <form onSubmit={onSubmit} action="#">
-                    <input type="email" name="email" placeholder="Email" />
-                    <input type="text" name="name" placeholder="Full Name" />
-                    <input type="text" name="companyname" placeholder="Company Name" />
-                    <input  type="text" name="query" placeholder="Query" />
-                    <br />
-                    <button type="submit" className={formStatus}>
-                      {formStatus}
-                    </button>
-                  </form>
+                <form onSubmit={onSubmit} action="#">
+                  <input type="email" name="email" placeholder="Email" />
+                  <input type="text" name="name" placeholder="Full Name" />
+                  <input type="text" name="companyname" placeholder="Company Name" />
+                  <input  type="text" name="query" placeholder="Query" />
+                  <br />
+                  <button type="submit" className={formStatus}>
+                    {formStatus}
+                  </button>
+                </form>
               </div>
             </div>
           </div>
