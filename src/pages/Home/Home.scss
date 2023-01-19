@@ -1,0 +1,16 @@
+.content{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.top{
+  padding: 10px;
+  text-align: center;
+}
+.down{
+  width:80%;
+  margin: auto;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
