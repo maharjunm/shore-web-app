@@ -1,0 +1,132 @@
+:root{
+  --blackHeadColor:#3d3b3b;
+  --lightBlack:rgb(163, 154, 154);
+  --blue:#0064a9;
+  --yellow:#ffb12a;
+}
+.alignLeft{
+  text-align: left;
+}
+.b{
+  font-weight: bold;
+}
+.jobdetails{
+  margin:auto;
+  text-align: center;
+  justify-content: center;
+  padding: 10px;
+  color:var(--blackHeadColor);
+}
+.sticky{
+  max-width: 500px;
+  margin:auto;
+  padding:10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: none;
+  border: 1px solid var(--lightBlack);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 3px 0 #888;
+}
+.jobTitle,.headDetails{
+  padding: 10px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  margin:5px;
+}
+.jobTitle,.headDetails .title{
+  color: var(--blackHeadColor);
+}
+.jobTitle h1{
+  font-size:18px;
+  font-weight: bold;
+  color: var(--blackHeadColor);
+}
+.jobTitle a{
+  color:blue;
+}
+.jobTitle .companyLocation,.jobTitle p{
+  color:var(--lightBlack);
+  font-size: 15px;
+}
+.jobButton{
+  text-align: center;
+  margin:3px;
+}
+.jobButton .btnApply{
+  width:150px;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 18px;
+  color:white;
+  font-weight: 500;
+  background-color: var(--blue);
+}
+.jobButton .btnApply:hover{
+  background-color: blue;
+}
+.scrollableContent{
+  max-width: 500px;
+  margin:auto;
+  padding:10px;
+  border: 1px solid var(--lightBlack);
+  border-top:none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.salaryDescription ,.jobType{
+  font-size: 13px;
+  color: var(--blackHeadColor);
+  display: flex;
+  padding:5px;
+  flex-direction: column;
+}
+.fullDetails{
+  text-align: left;
+}
+.fullDetails h1{
+  margin:5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--blackHeadColor);
+}
+.Box{
+  border-top:2px solid var(--lightBlack);
+}
+.Box ul{
+  width:100%;
+  list-style-type: disc;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding :0 20px 0 40px;
+  margin-bottom: 10px;
+}
+.Box ul li{
+  font-weight: 400;
+  font-size: 14px;
+  width:90%;
+  color: var(--blackHeadColor);
+  text-align: left;
+  margin:0;
+}
+.innerbox ul li{
+  color:#6e6b6a;
+}
+.report{
+  padding: 10px;
+}
+.report .btn{
+  background-color: #ccc;
+  padding:8px 15px 8px 15px;
+  border-radius: 5px;
+  color:black;
+  font-weight: 500;
+}

@@ -1,0 +1,100 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './JobDetails.scss';
+interface JobDetails {
+  jobTitle:string;
+}
+const JobDetails: React.FC<JobDetails> = (props) => {
+  return (
+    <div className="jobdetails">
+      <div className="sticky">
+        <div className="jobTitle">
+          <h1 className="title"> {props.jobTitle} </h1>
+          <Link to='/' >Company Name</Link>
+          <span className='companyLocation'>Company Location  </span>
+          <span>&#x20B9;3,00,000 - &#x20B9;5,00,000 a year</span>
+          <span>Account Specifications </span>
+          <p>paragraph about the job </p>
+        </div>
+        <div className="jobButton">
+          <button  className='btnApply'>Apply now </button>
+        </div>
+      </div>
+      <div className="scrollableContent">
+        <div className="headDetails">
+          <b className='title'>Job Details</b>
+          <div className="salaryDescription">
+            <b>Salary</b>
+            <span>&#x20B9;3,00,000 - &#x20B9;5,00,000 a year</span>
+          </div>
+          <div className="jobType">
+            <b>Job Type</b>
+            <span>Regular/Parmanent</span>
+          </div>
+          <div className="jobType">
+            <b>Location</b>
+            <span>Hyderabad</span>
+          </div>
+        </div>
+        <div className="Box alignLeft">
+          <b className="jobTitle">
+            <h1>Qualifications</h1>
+          </b>
+          <ul>
+            <li>React in a team production environment: 2 years (Required)</li>
+            <li>Node.js in a team production environment: 2 years (Required)</li>
+            <li>Bachelor's (Preferred)</li>
+          </ul>
+        </div>
+        <div className="Box alignLeft">
+          <b className="jobTitle">
+            <h1>Full Job Description</h1>
+          </b>
+          <div className="innerbox">
+            <h1 className="jobTitle b">Roles & Responsibilities</h1>
+            <ul className="colorlightblack">
+              <li>Developing and maintaining all server-side network components.</li>
+              <li>Developing and maintaining all client-side UI components and interfaces.</li>
+              <li>Designing customer-facing UI and back-end services for various business processes</li>
+              <li>Developing high-performance applications by writing testable, reusable, and efficient code.</li>
+              <li>Implementing effective security protocols, data protection measures, and storage solutions.</li>
+              <li>Running diagnostic tests, repairing defects, and providing technical support.</li>
+              <li>Recommending and implementing improvements to processes and technologies.</li>
+              <li>Keeping informed of advancements in the fields of Node.js and React.js development.Keeping informed of advancements in the fields of Node.js and React.js development.</li>
+              <li>Designing DB tables and Querying Databases to validate application behaviour and perform unit tests</li>
+            </ul>
+          </div>
+          <div className="innerbox">
+            <h1 className="jobTitle b">Mandatory Skills</h1>
+            <ul>
+              <li>At least three years' experience as a full-stack (React/Node.js/MySQL) developer.</li>
+              <li>Extensive knowledge of JavaScript, web stacks, libraries, and frameworks.</li>
+              <li>Knowledge of front-end technologies such as HTML5 and CSS3.</li>
+            </ul>
+          </div>
+          <div className="innerbox">
+            <h1 className="jobTitle b">Experience</h1>
+            <ul>
+              <li>React in a team production environment: 2 years</li>
+              <li>Node.js in a team production environment: 2 years (Required)</li>
+            </ul>
+          </div>
+        </div>
+        <div className="Box alignLeft">
+          <b className="jobTitle">
+            <h1>Hiring Insights</h1>
+          </b>
+          <ul>
+            <li>Hiring x candidates for this role</li>
+            <li>Urgently hiring</li>
+          </ul>
+        </div>
+        <div className="Box alignLeft report">
+          <button className="btn">Report this job</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default JobDetails;
