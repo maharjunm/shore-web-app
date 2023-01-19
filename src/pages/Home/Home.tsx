@@ -4,14 +4,15 @@ import JobFeed from './JobFeed';
 import JobDetails from './JobDetails';
 import './Home.scss';
 const Home = () => {
-
+    console.log(window.scroll);
     let jobs= [
       new JobDetailsType("Software Developer-Fresher","INFOSYS","Hyderabad, Telangana","15,000 a month","Fresher +1"),
       new JobDetailsType("Frontend Developer-Fresher","THOUGHTWORKS","Pune, Mumbai","20,000 a month","Fresher +2"),
       new JobDetailsType("Backend Developer-Fresher","DELOITTE","Delhi","50,000 a month","Fresher +3"),
   ]
-    const [currentJob:JobDetailsType,setCurrentJob]= useState(jobs[0].role);
+    const [currentJob,setCurrentJob]= useState(jobs[0]);
     const jobClick=(job:JobDetailsType)=>{
+      setCurrentJob(job);
     }
     return (
         <ErrorBoundary>
@@ -22,13 +23,13 @@ const Home = () => {
             <div className="down">
               <div className="left">
                 {
-                  jobs.map((element:JobDetailsType,index:number)=>(
+                  jobs.map((element:JobDetailsType)=>(
                     <JobFeed jobd={element} jobClick={jobClick}/>
                   ))
                 }
               </div>
               <div className="right">
-                <JobDetails jobTitle={currentJob} />
+                <JobDetails jobd={currentJob} />
               </div>
             </div>
           </div>

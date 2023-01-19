@@ -20,7 +20,7 @@
 .sticky{
   max-width: 500px;
   margin:auto;
-  padding:10px;
+  padding :0 10px 0 10px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom: none;
@@ -53,7 +53,7 @@
 }
 .jobButton{
   text-align: center;
-  margin:3px;
+  margin:10px;
 }
 .jobButton .btnApply{
   width:150px;

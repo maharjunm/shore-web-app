@@ -3,14 +3,17 @@ import './JobFeed.scss';
 import {JobDetailsType} from './../../components';
 interface Props {
     jobd:JobDetailsType;
-    jobClick:(currentJob:string)=>void;
+    jobClick:(currentJob:JobDetailsType)=>void;
 }
 const JobFeed = (det: Props) => {
     let p=det.jobd;
+    const setJob=()=>{
+      det.jobClick(p);
+    }
     return (
         <div className="jobFeed">
             <div className="title">
-                <h4 onClick={()=> det.jobClick(p.role)}>{p.role}</h4>
+                <h4 onClick={setJob}>{p.role}</h4>
                 <span className="company"> {p.companyName}</span>
                 <span className="company"> {p.place}</span>
             </div>

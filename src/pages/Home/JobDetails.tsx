@@ -1,19 +1,21 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import './JobDetails.scss';
-interface JobDetails {
-  jobTitle:string;
+import {JobDetailsType} from './../../components';
+interface Props {
+    jobd:JobDetailsType;
 }
-const JobDetails: React.FC<JobDetails> = (props) => {
+const JobDetails= (det:Props) => {
+  let p=det.jobd;
   return (
     <div className="jobdetails">
       <div className="sticky">
         <div className="jobTitle">
-          <h1 className="title"> {props.jobTitle} </h1>
-          <Link to='/' >Company Name</Link>
-          <span className='companyLocation'>Company Location  </span>
-          <span>&#x20B9;3,00,000 - &#x20B9;5,00,000 a year</span>
-          <span>Account Specifications </span>
+          <h1 className="title"> {p.role} </h1>
+          <Link to='/' >{p.companyName}</Link>
+          <span className='companyLocation'>{p.place}</span>
+          <span>{p.salary}</span>
+          <span>{p.experience}</span>
           <p>paragraph about the job </p>
         </div>
         <div className="jobButton">

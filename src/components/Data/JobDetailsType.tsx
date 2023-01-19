@@ -11,5 +11,12 @@ class JobDetailsType{
     this.salary=salary;
     this.experience=experience;
   }
+  setJob(jb:JobDetailsType){
+    this.role=jb.role;
+    this.companyName=jb.companyName;
+    this.place=jb.place;
+    this.salary=jb.salary;
+    this.experience=jb.experience;
+  }
 }
 export default JobDetailsType;

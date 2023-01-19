@@ -1,11 +1,15 @@
 :root{
     --black:rgb(20, 20, 20);
+    --blackHeadColor:#3d3b3b;
+    --lightBlack:rgb(163, 154, 154);
+    --blue:#0064a9;
+    --yellow:#ffb12a;
 }
 .jobFeed{
     margin: 10px;
     text-align: center;
     padding:10px;
-    border:2px solid var(--black);
+    border: 1px solid var(--lightBlack);
     border-radius: 5px;;
     max-width: 500px;
     cursor: pointer;
