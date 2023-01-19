@@ -1,3 +1,10 @@
+:root{
+    --black:rgb(20, 20, 20);
+    --blackHeadColor:#3d3b3b;
+    --lightBlack:rgb(163, 154, 154);
+    --blue:#0064a9;
+    --yellow:#ffb12a;
+}
 .content{
   display: flex;
   flex-direction: column;
@@ -6,6 +13,7 @@
 .top{
   padding: 10px;
   text-align: center;
+  border-bottom: var(--lightBlack);
 }
 .down{
   width:80%;

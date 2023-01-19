@@ -14,7 +14,7 @@ const JobDetails= (det:Props) => {
           <h1 className="title"> {p.role} </h1>
           <Link to='/' >{p.companyName}</Link>
           <span className='companyLocation'>{p.place}</span>
-          <span>{p.salary}</span>
+          <span>&#8377;{p.salary}</span>
           <span>{p.experience}</span>
           <p>paragraph about the job </p>
         </div>
@@ -35,7 +35,7 @@ const JobDetails= (det:Props) => {
           </div>
           <div className="jobType">
             <b>Location</b>
-            <span>Hyderabad</span>
+            <span>{p.place}</span>
           </div>
         </div>
         <div className="Box alignLeft">
@@ -77,6 +77,7 @@ const JobDetails= (det:Props) => {
           <div className="innerbox">
             <h1 className="jobTitle b">Experience</h1>
             <ul>
+              <li>{p.experience}</li>
               <li>React in a team production environment: 2 years</li>
               <li>Node.js in a team production environment: 2 years (Required)</li>
             </ul>

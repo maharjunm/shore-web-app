@@ -1,9 +1,3 @@
-:root{
-  --blackHeadColor:#3d3b3b;
-  --lightBlack:rgb(163, 154, 154);
-  --blue:#0064a9;
-  --yellow:#ffb12a;
-}
 .alignLeft{
   text-align: left;
 }
@@ -45,7 +39,7 @@
   color: var(--blackHeadColor);
 }
 .jobTitle a{
-  color:blue;
+  color:var(--blue);
 }
 .jobTitle .companyLocation,.jobTitle p{
   color:var(--lightBlack);

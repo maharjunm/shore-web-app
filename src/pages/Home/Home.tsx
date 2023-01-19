@@ -8,8 +8,8 @@ const Home = () => {
       new JobDetailsType("Software Developer-Fresher","INFOSYS","Hyderabad, Telangana","15,000 a month","Fresher +1"),
       new JobDetailsType("Frontend Developer-Fresher","THOUGHTWORKS","Pune, Mumbai","20,000 a month","Fresher +2"),
       new JobDetailsType("Backend Developer-Fresher","DELOITTE","Delhi","50,000 a month","Fresher +3"),
-  ]
-    const [currentJob,setCurrentJob]= useState(jobs[0]);
+    ]
+    const [currentJob,setCurrentJob]= useState(null);
     const jobClick=(job:JobDetailsType)=>{
       setCurrentJob(job);
     }
@@ -28,7 +28,7 @@ const Home = () => {
                 }
               </div>
               <div className="right">
-                <JobDetails jobd={currentJob} />
+                {currentJob && <JobDetails jobd={currentJob} />}
               </div>
             </div>
           </div>
