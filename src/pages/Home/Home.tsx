@@ -1,5 +1,5 @@
 import React ,{useState} from 'react';
-import { ErrorBoundary ,JobDetailsType ,Flex} from '../../components';
+import { ErrorBoundary ,JobDetailsType } from '../../components';
 import JobFeed from './JobFeed';
 import JobDetails from './JobDetails';
 import './Home.scss';
