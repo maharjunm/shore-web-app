@@ -4,7 +4,6 @@ import JobFeed from './JobFeed';
 import JobDetails from './JobDetails';
 import './Home.scss';
 const Home = () => {
-    console.log(window.scroll);
     let jobs= [
       new JobDetailsType("Software Developer-Fresher","INFOSYS","Hyderabad, Telangana","15,000 a month","Fresher +1"),
       new JobDetailsType("Frontend Developer-Fresher","THOUGHTWORKS","Pune, Mumbai","20,000 a month","Fresher +2"),
