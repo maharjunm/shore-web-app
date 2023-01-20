@@ -17,7 +17,7 @@ const JobDetails= (det:Props) => {
             <span className='companyLocation'>{p.place}</span>
             <span>&#8377;{p.salary}</span>
             <span>{p.experience}</span>
-            <p>paragraph about the job </p>
+            <p>Responded to 51-74% of applications in the past 30 days, typically within 9 days. </p>
           </div>
           <div className="jobButton">
             <button  className='btnApply'>Apply now </button>

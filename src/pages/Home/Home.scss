@@ -22,3 +22,36 @@
   display: flex;
   justify-content: space-around;
 }
+.left,{
+  margin: auto;
+}
+.show{
+  display: block  ;
+}
+.hide{
+  display: none;
+}
+@media only screen and (max-width: 1050px) {
+  .right{
+    display: none;
+  }
+  .down{
+    width: 100%;
+  }
+  .scrollableContent{
+    
+  }
+}
+@media only screen and (min-width: 1050px) {
+  .right{
+    display: block;
+  }
+  .down{
+    width: 80%;
+  }
+  .scrollableContent{
+    max-height: 500px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+}

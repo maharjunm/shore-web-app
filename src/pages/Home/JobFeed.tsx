@@ -12,16 +12,16 @@ const JobFeed = (det: Props) => {
     }
     return (
       <ErrorBoundary>
-        <div className="jobFeed">
+        <div className="jobFeed" onClick={setJob} >
           <div className="title">
-            <h4 onClick={setJob}>{p.role}</h4>
+            <h4 >{p.role}</h4>
             <span className="company"> {p.companyName}</span>
             <span className="company"> {p.place}</span>
           </div>
           <div className="shift">
             <span> &#8377; {p.salary}</span>
             <span>{p.experience}</span>
-            <span> shift</span>
+            <span> Regular</span>
           </div>
           <div className="downshift">
             <span>Easily apply</span>

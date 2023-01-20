@@ -13,6 +13,7 @@
 }
 .sticky{
   max-width: 500px;
+  min-width: 300px;
   margin:auto;
   padding :0 10px 0 10px;
   border-top-left-radius: 10px;
@@ -43,7 +44,7 @@
 }
 .jobTitle .companyLocation,.jobTitle p{
   color:var(--lightBlack);
-  font-size: 15px;
+  font-size: 12 px;
 }
 .jobButton{
   text-align: center;
@@ -63,6 +64,7 @@
 }
 .scrollableContent{
   max-width: 500px;
+  min-width: 300px;
   margin:auto;
   padding:10px;
   border: 1px solid var(--lightBlack);
@@ -71,9 +73,6 @@
   border-bottom-right-radius: 5px;
   display: flex;
   flex-direction: column;
-  max-height: 500px;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
 }
 .salaryDescription ,.jobType{
   font-size: 13px;
