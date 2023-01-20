@@ -1,0 +1,54 @@
+:root{
+    --black:rgb(20, 20, 20);
+    --blackHeadColor:#3d3b3b;
+    --lightBlack:rgb(163, 154, 154);
+    --blue:#0064a9;
+    --yellow:#ffb12a;
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.top{
+  padding: 10px;
+  text-align: center;
+  border-bottom: var(--lightBlack);
+}
+.down{
+  width:80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+}
+.left{
+  margin: auto;
+}
+.show{
+  display: ;
+}
+.hide{
+  display: none;
+}
+@media only screen and (max-width: 1050px) {
+  .right{
+    display: none;
+  }
+  .down{
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 1050px) {
+  .right{
+      display: block;
+  }
+  .down{
+    width: 80%;
+  }
+  .scrollableContent{
+    max-height: 500px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+
+}
