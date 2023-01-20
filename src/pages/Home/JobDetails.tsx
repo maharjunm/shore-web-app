@@ -4,15 +4,24 @@ import './JobDetails.scss';
 import {JobDetailsType,ErrorBoundary} from './../../components';
 interface Props {
     jobd:JobDetailsType;
+    jobClick:(currentJob:JobDetailsType,currentView:string)=>void;
 }
 const JobDetails= (det:Props) => {
   let p=det.jobd;
+  const clicked=()=>{
+    det.jobClick(null,"hide");
+  }
   return (
     <ErrorBoundary>
       <div className="jobdetails">
         <div className="sticky">
           <div className="jobTitle">
-            <h1 className="title"> {p.role} </h1>
+            <div className="title">
+              <div>{p.role}</div>
+              <div className="side" onClick={clicked}>
+                <Link to='/home'>x</Link>
+              </div>
+            </div>
             <Link to='/' >{p.companyName}</Link>
             <span className='companyLocation'>{p.place}</span>
             <span>&#8377;{p.salary}</span>
@@ -20,7 +29,7 @@ const JobDetails= (det:Props) => {
             <p>Responded to 51-74% of applications in the past 30 days, typically within 9 days. </p>
           </div>
           <div className="jobButton">
-            <button  className='btnApply'>Apply now </button>
+            
           </div>
         </div>
         <div className="scrollableContent">

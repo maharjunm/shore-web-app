@@ -11,8 +11,8 @@ const Home = () => {
     ]
     const [currentJob,setCurrentJob]= useState(null);
     const [view,setView]= useState("hide");
-    const jobClick=(job:JobDetailsType)=>{
-      setView("show");
+    const jobClick=(job:JobDetailsType,currentView:string)=>{
+      setView(currentView);
       setCurrentJob(job);
     }
     return (
@@ -30,7 +30,7 @@ const Home = () => {
                 }
               </div>
               <div className={view}>
-                {currentJob && <JobDetails jobd={currentJob} />}
+                {currentJob && <JobDetails jobd={currentJob} jobClick={jobClick} />}
               </div>
             </div>
           </div>

@@ -18,15 +18,14 @@
 .down{
   width:80%;
   margin: auto;
-  padding: 10px;
   display: flex;
   justify-content: space-around;
 }
-.left,{
+.left{
   margin: auto;
 }
 .show{
-  display: block  ;
+  display: ;
 }
 .hide{
   display: none;
@@ -38,13 +37,10 @@
   .down{
     width: 100%;
   }
-  .scrollableContent{
-    
-  }
 }
 @media only screen and (min-width: 1050px) {
   .right{
-    display: block;
+      display: block;
   }
   .down{
     width: 80%;
@@ -54,4 +50,5 @@
     overflow-y: scroll;
     scroll-behavior: smooth;
   }
+
 }

@@ -22,7 +22,6 @@
   border: 1px solid var(--lightBlack);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 3px 0 #888;
 }
 .jobTitle,.headDetails{
   padding: 10px;
@@ -34,10 +33,25 @@
 .jobTitle,.headDetails .title{
   color: var(--blackHeadColor);
 }
-.jobTitle h1{
+.jobTitle .title{
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   font-size:18px;
   font-weight: bold;
   color: var(--blackHeadColor);
+}
+.jobTitle .title .side{
+  font-size: 25px;
+  font-weight: 100;
+  line-height: 10px;
+  padding: 5px;
+  color: #000;
+  border-radius: 2px;
+}
+.jobTitle .title .side a{
+  color:var(--black);
 }
 .jobTitle a{
   color:var(--blue);

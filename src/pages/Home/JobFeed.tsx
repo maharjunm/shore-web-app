@@ -3,12 +3,12 @@ import './JobFeed.scss';
 import {JobDetailsType,ErrorBoundary} from './../../components';
 interface Props {
     jobd:JobDetailsType;
-    jobClick:(currentJob:JobDetailsType)=>void;
+    jobClick:(currentJob:JobDetailsType,currentView:string)=>void;
 }
 const JobFeed = (det: Props) => {
     let p=det.jobd;
     const setJob=()=>{
-      det.jobClick(p);
+      det.jobClick(p,"show");
     }
     return (
       <ErrorBoundary>
