@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import './JobDetails.scss';
-import {JobDetailsType,ErrorBoundary} from './../../components';
+import {JobDetailsType,ErrorBoundary} from '../../components';
 interface Props {
     jobd:JobDetailsType;
     jobClick:(currentJob:JobDetailsType,currentView:string)=>void;

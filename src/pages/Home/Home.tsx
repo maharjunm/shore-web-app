@@ -17,7 +17,7 @@ const Home = () => {
     }
     return (
         <ErrorBoundary>
-          <div className="content">
+          <div className="contentbox">
             <div className="top">
               <h1>seachbar and location bar goes here</h1>
             </div>
