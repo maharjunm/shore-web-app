@@ -1,11 +1,12 @@
 import React from 'react';
 import { ErrorBoundary } from '../../components';
+import ProductSelectionPage from '../ProductSelectionPage/ProductSelectionPage';
 
 const PostJobs = () => {
     return (
-      <ErrorBoundary>
-      <h1>Post jobs</h1>
-      </ErrorBoundary>
+        <ErrorBoundary>
+            <ProductSelectionPage />
+        </ErrorBoundary>
     );
 };
 
