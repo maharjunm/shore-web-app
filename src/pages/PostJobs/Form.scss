@@ -1,0 +1,102 @@
+:root{
+    --black:rgb(20, 20, 20);
+    --blackHeadColor:#3d3b3b;
+    --lightBlack:rgb(163, 154, 154);
+    --blue:#0064a9;
+    --yellow:#ffb12a;
+}
+.form{
+  padding: 10px;
+}
+.superSection{
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  border:1px solid var(--lightBlack);
+}
+.sections{
+  padding: 10px;
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: space-around ;
+  border-bottom:1px solid var(--lightBlack);
+}
+.side{
+  text-align: center;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 10px;
+  margin: auto;
+}
+.headTitle{
+  font-weight: bold;
+  font-size: 16px;
+  margin:4px;
+  color:var(--blackHeadColor);
+}
+.side .row{
+  padding: 5px 10px 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.side .row label{
+  text-align: center;
+}
+.side .row input,.input{
+  font-size: 15px;
+  outline: none;
+  padding: 5px;
+}
+.input{
+  background-color: white;
+}
+.orgLogo::before {
+  content: '                       ';
+}
+.downside .btn{
+  width:150px;
+  background-color: var(--blue);
+  color:white;
+  margin:10px;
+  padding:5px;
+  border-radius: 3px;
+  font-size: 18px;
+  font-weight:600;
+}
+
+@media only screen and (max-width: 1050px) {
+  .superSections{
+    width:100%;
+  }
+  .sections{
+    padding: 5px;
+  }
+  .side{
+    margin:15px;
+    padding: 5px;
+    border-right: none;
+    max-width: 300px;
+  }
+  .input,.side .row input{
+    width:160px;
+  }
+  .side .row{
+    width: 280px;
+  }
+  .side .row input,.side .row label,.input{
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 1050px) {
+  .superSection{
+    width: 70%;
+  }
+  .side{
+    width: 400px;
+  }
+  .side .row label{
+    font-size: 15px;
+  }
+}
