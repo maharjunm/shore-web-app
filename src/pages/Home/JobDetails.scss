@@ -4,6 +4,9 @@
 .b{
   font-weight: bold;
 }
+.bordertop{
+  border-top: 2px solid var(--lightBlack);
+}
 .jobdetails{
   margin:auto;
   text-align: center;
@@ -32,12 +35,10 @@
 }
 .flexside{
   display: flex;
-
 }
 .flexside .boxside{
   padding: 10px;
   align-items: left;
-  text-align: left;
 }
 .jobTitle,.headDetails .title{
   color: var(--blackHeadColor);

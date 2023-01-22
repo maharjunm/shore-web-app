@@ -4,15 +4,54 @@ import  {JobDet}  from '../../components/DataModels/JobDet';
 import './Form.scss';
 import JobDetails from '../Home/JobDetails';
 const Form = () => {
-    const [preview,setPreview] = useState(false);
+    const [preview,setPreview] = useState("form show");
+    const [currentJobView,setCurrenetJobView]=useState(null);
+    const showPreview = (jobView:JobDet) =>{
+      setCurrenetJobView(jobView);
+    }
+    const disablePreview = () =>{
+      setCurrenetJobView(null);
+      setPreview("form show");
+    }
     const previewBtnHandler = (e:any) =>{
-      let form=e.target.form;
       e.preventDefault();
-      setPreview(true);
+      let form=e.target.form;
+      let jobView={
+        job:{
+          title:form.title.value,
+          qualification:form.qual.value,
+          experience:form.exp.value,
+        },
+        company:{
+          name:form.orgName.value,
+          type:form.orgType.value,
+          logo:form.orgLogo.value,
+        },
+        location:{
+          city:form.city.value,
+          state:form.state.value,
+          country:form.country.value,
+          region:form.region.value,
+        },
+        dates:{
+          postingDate:new Date("12-10-2022"),
+          expiryDate:new Date("12-10-2022"),
+          closingDate:new Date("12-10-2022"),
+          removingJobDate:new Date("12-10-2022"),
+        },
+        salary:{
+          sal:form.salary.value,
+          hours:form.hours.value,
+          type:form.jobType.value,
+        }
+      }
+      setPreview("form hide");
+      showPreview(jobView);
     }
     return (
       <ErrorBoundary>
-        <form className={!preview?"form showform":"from hideform"}  id='form'>
+        {currentJobView && <JobDetails jobd={currentJobView} jobClick={null} disablePreview={disablePreview} from="postajob" />}
+        <form className={preview}  id='form'>
           <div className="superSection">
             <div className="sections">
               <div className="upside">
@@ -94,8 +133,8 @@ const Form = () => {
                   <input className="input" type="date" name="eDate" id="eDate" />
                 </div>
                 <div className="row">
-                  <label htmlFor="AppClosingDate">Closing Job</label>
-                  <input className="input" type="date" name="AppClosingDate" id="AppClosingDate" />
+                  <label htmlFor="appClosingDate">Closing Job</label>
+                  <input className="input" type="date" name="appClosingDate" id="appClosingDate" />
                 </div>
                 <div className="row">
                   <label htmlFor="remJobDate">Removing Job</label>
@@ -115,8 +154,8 @@ const Form = () => {
                   <input type="text" name="hours" id="hours" />
                 </div>
                 <div className="row">
-                  <label htmlFor="type">Job Type</label>
-                  <select className="input" name="type" id="type">
+                  <label htmlFor="jobType">Job Type</label>
+                  <select className="input" name="jobType" id="jobType">
                     <option value="">select</option>
                     <option value="regular">Regular</option>
                     <option value="permanent">Parmanent</option>

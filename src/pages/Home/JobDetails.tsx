@@ -7,11 +7,19 @@ import  JobsData  from './JobsData';
 interface Props {
     jobd:JobDet;
     jobClick:(currentJob:JobDet,currentView:string)=>void;
+    disablePreview:()=>void;
+    from:string;
 }
 const JobDetails= (det:Props) => {
   let p=det.jobd;
   const clicked=()=>{
-    det.jobClick(null,"hide");
+    if(det.from==="home"){
+      det.jobClick(null,"hide");
+    }
+    if(det.from==="postajob"){
+      det.disablePreview();
+    }
+
   }
   console.log(p.dates.postingDate);
   return (
@@ -55,16 +63,30 @@ const JobDetails= (det:Props) => {
               </div>
             </div>
           </div>
-          <div className="Box alignLeft">
-            <b className="jobTitle">
-              <h1>Important Dates</h1>
-            </b>
-            <ul className="ul">
-              <li><span>Posting Job on</span> <b>{p.dates.postingDate.toLocaleDateString()} </b></li>
-              <li><span>Job Expires on </span><b>{p.dates.expiryDate.toLocaleDateString()} </b></li>
-              <li><span>Closing Job on </span><b>{p.dates.closingDate.toLocaleDateString()} </b></li>
-              <li><span>Removing Job on </span><b>{p.dates.removingJobDate.toLocaleDateString()} </b></li>
-            </ul>
+          <div className="headDetails bordertop">
+            <b className='title'>Important Dates</b>
+            <div className="flexside">
+              <div className="boxside">
+                <div className="salaryDescription">
+                  <b>Posting Job on</b>
+                  <span>{p.dates.postingDate.toLocaleDateString()}</span>
+                </div>
+                <div className="jobType">
+                  <b>Job Expires on </b>
+                  <span>{p.dates.expiryDate.toLocaleDateString()}</span>
+                </div>
+              </div>
+              <div className="boxside">
+                <div className="jobType">
+                  <b>Closing Job on</b>
+                  <span>{p.dates.closingDate.toLocaleDateString()}</span>
+                </div>
+                <div className="jobType">
+                  <b>Removing Job on</b>
+                  <span>{p.dates.removingJobDate.toLocaleDateString()}</span>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="Box alignLeft">
             <b className="jobTitle">

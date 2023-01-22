@@ -28,7 +28,7 @@ const Home = () => {
                 }
               </div>
               <div className={view}>
-                {currentJob && <JobDetails jobd={currentJob} jobClick={jobClick}  />}
+                {currentJob && <JobDetails jobd={currentJob} jobClick={jobClick} disablePreview={null} from="home"  />}
               </div>
             </div>
           </div>
