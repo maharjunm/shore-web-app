@@ -1,58 +1,81 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import './JobDetails.scss';
+import  {JobDet}  from '../../components/DataModels/JobDet';
 import {JobDetailsType,ErrorBoundary} from '../../components';
+import  JobsData  from './JobsData';
 interface Props {
-    jobd:JobDetailsType;
-    jobClick:(currentJob:JobDetailsType,currentView:string)=>void;
+    jobd:JobDet;
+    jobClick:(currentJob:JobDet,currentView:string)=>void;
 }
 const JobDetails= (det:Props) => {
   let p=det.jobd;
   const clicked=()=>{
     det.jobClick(null,"hide");
   }
+  console.log(p.dates.postingDate);
   return (
     <ErrorBoundary>
       <div className="jobdetails">
         <div className="sticky">
           <div className="jobTitle">
             <div className="title">
-              <div>{p.role}</div>
+              <div>{p.job.title}</div>
               <div className="wrong" onClick={clicked}>
-                <Link to='/home'>x</Link>
+                x
               </div>
             </div>
-            <Link to='/' >{p.companyName}</Link>
-            <span className='companyLocation'>{p.place}</span>
-            <span>&#8377;{p.salary}</span>
-            <span>{p.experience}</span>
-            <p>Responded to 51-74% of applications in the past 30 days, typically within 9 days. </p>
+            <Link to='/' >{p.company.name}</Link>
+            <span className='companyLocation'>{p.location.city},{p.location.state}-{p.location.country}</span>
+            <span>&#8377;{p.salary.sal} - {p.salary.type}</span>
+            <span>{p.job.experience}</span>
           </div>
         </div>
         <div className="scrollableContent">
           <div className="headDetails">
             <b className='title'>Job Details</b>
-            <div className="salaryDescription">
-              <b>Salary</b>
-              <span>&#x20B9;3,00,000 - &#x20B9;5,00,000 a year</span>
+            <div className="flexside">
+              <div className="boxside">
+                <div className="salaryDescription">
+                  <b>Salary</b>
+                  <span>&#x20B9;{p.salary.sal}-{p.salary.type}</span>
+                </div>
+                <div className="jobType">
+                  <b>Job Type</b>
+                  <span>{p.company.type}</span>
+                </div>
+              </div>
+              <div className="boxside">
+                <div className="jobType">
+                  <b>Duration</b>
+                  <span>{p.salary.hours}hrs/Day</span>
+                </div>
+                <div className="jobType">
+                  <b>Location</b>
+                  <span>{p.location.city},{p.location.state},{p.location.country}-{p.location.region}</span>
+                </div>
+              </div>
             </div>
-            <div className="jobType">
-              <b>Job Type</b>
-              <span>Regular/Parmanent</span>
-            </div>
-            <div className="jobType">
-              <b>Location</b>
-              <span>{p.place}</span>
-            </div>
+          </div>
+          <div className="Box alignLeft">
+            <b className="jobTitle">
+              <h1>Important Dates</h1>
+            </b>
+            <ul className="ul">
+              <li><span>Posting Job on</span> <b>{p.dates.postingDate.toLocaleDateString()} </b></li>
+              <li><span>Job Expires on </span><b>{p.dates.expiryDate.toLocaleDateString()} </b></li>
+              <li><span>Closing Job on </span><b>{p.dates.closingDate.toLocaleDateString()} </b></li>
+              <li><span>Removing Job on </span><b>{p.dates.removingJobDate.toLocaleDateString()} </b></li>
+            </ul>
           </div>
           <div className="Box alignLeft">
             <b className="jobTitle">
               <h1>Qualifications</h1>
             </b>
             <ul>
-              <li>React in a team production environment: 2 years (Required)</li>
+              <li>{p.job.qualification}(Preferred)</li>
+              <li>{p.job.experience}</li>
               <li>Node.js in a team production environment: 2 years (Required)</li>
-              <li>Bachelor's (Preferred)</li>
             </ul>
           </div>
           <div className="Box alignLeft">
@@ -84,7 +107,7 @@ const JobDetails= (det:Props) => {
             <div className="innerbox">
               <h1 className="jobTitle b">Experience</h1>
               <ul>
-                <li>{p.experience}</li>
+                <li>{p.job.experience}</li>
                 <li>React in a team production environment: 2 years</li>
                 <li>Node.js in a team production environment: 2 years (Required)</li>
               </ul>

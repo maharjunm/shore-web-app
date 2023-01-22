@@ -1,10 +1,17 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { ErrorBoundary } from '../../components';
+import  {JobDet}  from '../../components/DataModels/JobDet';
 import './Form.scss';
+import JobDetails from '../Home/JobDetails';
 const Form = () => {
+    const [preview,setPreview] = useState(false);
+    const previewBtnHandler = (e:any) =>{
+      e.preventDefault();
+      setPreview(true);
+    }
     return (
       <ErrorBoundary>
-        <form className="form" action='/#/home'>
+        <form className={!preview?"form showform":"from hideform"}  id='form'>
           <div className="superSection">
             <div className="sections">
               <div className="upside">
@@ -135,12 +142,13 @@ const Form = () => {
             </div>
             <div className="sections">
               <div className="downside">
-                <button className="btn" >Preview</button>
-                <button className="btn" >Submit</button>
+                <button type="submit" onClick={previewBtnHandler} className="btn" >Preview</button>
+                <button type="submit" className="btn" >Submit</button>
               </div>
             </div>
           </div>
         </form>
+        <div className=""></div>
       </ErrorBoundary>
     );
 };

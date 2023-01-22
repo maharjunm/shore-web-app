@@ -1,9 +1,10 @@
 import React from 'react';
 import './JobFeed.scss';
 import {JobDetailsType,ErrorBoundary} from './../../components';
+import  {JobDet}  from '../../components/DataModels/JobDet';
 interface Props {
-    jobd:JobDetailsType;
-    jobClick:(currentJob:JobDetailsType,currentView:string)=>void;
+    jobd:JobDet;
+    jobClick:(currentJob:JobDet,currentView:string)=>void;
 }
 const JobFeed = (det: Props) => {
     let p=det.jobd;
@@ -14,14 +15,14 @@ const JobFeed = (det: Props) => {
       <ErrorBoundary>
         <div className="jobFeed" onClick={setJob} >
           <div className="title">
-            <h4 >{p.role}</h4>
-            <span className="company"> {p.companyName}</span>
-            <span className="company"> {p.place}</span>
+            <h4 >{p.job.title}</h4>
+            <span className="company"> {p.company.name}</span>
+            <span className="company"> {p.location.city},{p.location.state}</span>
           </div>
           <div className="shift">
-            <span> &#8377; {p.salary}</span>
-            <span>{p.experience}</span>
-            <span> Regular</span>
+            <span> &#8377; {p.salary.sal}-{p.salary.type}</span>
+            <span>{p.job.experience}</span>
+            <span> {p.company.type}</span>
           </div>
           <div className="downshift">
             <span>Easily apply</span>
@@ -35,7 +36,7 @@ const JobFeed = (det: Props) => {
             <p>
               Hiring ongoing: From{' '}
               <b>
-                {p.role} in {p.place}
+                {p.job.title} in {p.location.city},{p.location.state}
               </b>
             </p>
           </div>

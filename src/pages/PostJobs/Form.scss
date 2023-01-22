@@ -17,17 +17,13 @@
 .sections{
   padding: 10px;
   display: flex;
-  margin: auto;
-  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
   justify-content: space-around ;
-  border-bottom:1px solid var(--lightBlack);
 }
 .side{
   text-align: center;
-  background-color: #eee;
-  border-radius: 5px;
   padding: 10px;
-  margin: auto;
 }
 .headTitle{
   font-weight: bold;
@@ -50,8 +46,8 @@
   padding: 5px;
 }
 .input,.side .row input{
-  width:160px;
-  background-color: white;
+  width:360px;
+  background-color:#eee;
   text-align: center;
 }
 .orgLogo{
@@ -74,18 +70,21 @@
   display: flex;
   justify-content: space-between;
 }
-@media only screen and (max-width: 1050px) {
-  .superSections{
-    width:100%;
-  }
+.showform{
+  display: ;
+}
+.hideform{
+  display: hidden;
+}
+@media only screen and (max-width: 750px) {
+
   .sections{
     padding: 5px;
   }
   .side{
-    margin:15px;
     padding: 5px;
     border-right: none;
-    max-width: 300px;
+    max-width: 500px;
   }
   .input,.side .row input{
     width:160px;
@@ -103,12 +102,12 @@
     font-size: 15px;
   }
 }
-@media only screen and (min-width: 1050px) {
+@media only screen and (min-width: 750px) {
   .superSection{
-    width: 70%;
+    max-width:70%;
   }
   .side{
-    width: 400px;
+    width: 600px;
   }
   .side .row label{
     font-size: 15px;
