@@ -6,6 +6,7 @@ import JobDetails from '../Home/JobDetails';
 const Form = () => {
     const [preview,setPreview] = useState(false);
     const previewBtnHandler = (e:any) =>{
+      let form=e.target.form;
       e.preventDefault();
       setPreview(true);
     }

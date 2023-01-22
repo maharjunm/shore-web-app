@@ -1,6 +1,6 @@
 import React from 'react';
 import './JobFeed.scss';
-import {JobDetailsType,ErrorBoundary} from './../../components';
+import {ErrorBoundary} from '../../components';
 import  {JobDet}  from '../../components/DataModels/JobDet';
 interface Props {
     jobd:JobDet;

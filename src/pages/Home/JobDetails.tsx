@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import './JobDetails.scss';
 import  {JobDet}  from '../../components/DataModels/JobDet';
-import {JobDetailsType,ErrorBoundary} from '../../components';
+import {ErrorBoundary} from '../../components';
 import  JobsData  from './JobsData';
 interface Props {
     jobd:JobDet;
@@ -21,9 +21,7 @@ const JobDetails= (det:Props) => {
           <div className="jobTitle">
             <div className="title">
               <div>{p.job.title}</div>
-              <div className="wrong" onClick={clicked}>
-                x
-              </div>
+              <div className="wrong" onClick={clicked}>x</div>
             </div>
             <Link to='/' >{p.company.name}</Link>
             <span className='companyLocation'>{p.location.city},{p.location.state}-{p.location.country}</span>

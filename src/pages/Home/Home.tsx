@@ -1,5 +1,5 @@
 import React ,{useState} from 'react';
-import { ErrorBoundary ,JobDetailsType } from '../../components';
+import { ErrorBoundary  } from '../../components';
 import  {JobDet}  from '../../components/DataModels/JobDet';
 import JobsData from './JobsData';
 import JobFeed from './JobFeed';
