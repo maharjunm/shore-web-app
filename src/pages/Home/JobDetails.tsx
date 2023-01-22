@@ -18,7 +18,7 @@ const JobDetails= (det:Props) => {
           <div className="jobTitle">
             <div className="title">
               <div>{p.role}</div>
-              <div className="side" onClick={clicked}>
+              <div className="wrong" onClick={clicked}>
                 <Link to='/home'>x</Link>
               </div>
             </div>

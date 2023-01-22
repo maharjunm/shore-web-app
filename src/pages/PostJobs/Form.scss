@@ -49,11 +49,13 @@
   outline: none;
   padding: 5px;
 }
-.input{
+.input,.side .row input{
+  width:160px;
   background-color: white;
+  text-align: center;
 }
-.orgLogo::before {
-  content: '                       ';
+.orgLogo{
+  background-color: red;
 }
 .downside .btn{
   width:150px;
@@ -65,7 +67,13 @@
   font-size: 18px;
   font-weight:600;
 }
-
+.font-small{
+  padding: 5px 10px 5px 10px;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
 @media only screen and (max-width: 1050px) {
   .superSections{
     width:100%;
@@ -87,6 +95,12 @@
   }
   .side .row input,.side .row label,.input{
     font-size: 12px;
+  }
+  .downside .btn{
+    width:100px;
+    margin:8px;
+    padding:3px;
+    font-size: 15px;
   }
 }
 @media only screen and (min-width: 1050px) {

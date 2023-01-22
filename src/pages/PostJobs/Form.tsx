@@ -39,7 +39,7 @@ const Form = () => {
                 </div>
                 <div className="row">
                   <label htmlFor="orgLogo"> Logo</label>
-                  <input type="file" className="orgLogo" name="orgLogo" id="orgLogo" />
+                  <input type="file" className="input" name="orgLogo" id="orgLogo" />
                 </div>
               </div>
             </div>
@@ -116,11 +116,11 @@ const Form = () => {
                 </div>
               </div>
               <div className="side">
-                <div className="headTitle">How to Submit</div>
-                <div className="row">
+                <div className="headTitle">How to Submit Apply via</div>
+                <div className="font-small">
                   <label htmlFor="mail">By Email</label>
                   <input type="checkbox" name="sub" id="mail" />
-                  <label htmlFor="emp">Apply Via Employer’s website</label>
+                  <label htmlFor="emp">Employer’s ID</label>
                   <input type="checkbox" name="sub" id="emp" />
                 </div>
                 <div className="row">
