@@ -6,6 +6,22 @@ import JobDetails from '../Home/JobDetails';
 const Form = () => {
     const [preview,setPreview] = useState("form show");
     const [currentJobView,setCurrenetJobView]=useState(null);
+    const [qualification,setQualification] = useState(Array());
+    const remove=()=>{
+      window.alert("removed");
+    }
+    const addQualification = ()=>{
+      let wrong=document.createElement('div');
+      wrong.appendChild(document.createTextNode('x'));
+      let val= document.getElementById('qu') as HTMLInputElement | null;
+      var li = document.createElement('li');
+      li.setAttribute("id",val.value);
+      li.setAttribute('onclick','remove()');
+      var ul= document.getElementById('list');
+      li.appendChild(document.createTextNode(val.value));
+      li.appendChild(wrong);
+      ul.appendChild(li);
+    }
     const showPreview = (jobView:JobDet) =>{
       setCurrenetJobView(jobView);
     }
@@ -51,7 +67,7 @@ const Form = () => {
     return (
       <ErrorBoundary>
         {currentJobView && <JobDetails jobd={currentJobView} jobClick={null} disablePreview={disablePreview} from="postajob" />}
-        <form className={ preview }  id='form'>
+        <form className={preview} >
           <div className="superSection">
             <div className="sections">
               <div className="upside">
@@ -64,7 +80,7 @@ const Form = () => {
                 <div className="row">
                   <label htmlFor="title">Job Title</label>
                   <input type="text" name="title" id="title" />
-                </div>
+                 </div>
                 <div className="row">
                   <label htmlFor="qual">Qualification</label>
                   <input type="text" name="qual" id="qual" />
@@ -181,14 +197,53 @@ const Form = () => {
               </div>
             </div>
             <div className="sections">
-              <div className="downside">
-                <button type="submit" onClick={previewBtnHandler} className="btn" >Preview</button>
-                <button type="submit" className="btn" >Submit</button>
+              <div className="side">
+                <div className="headTitle">Extra Qualifications</div>
+                <ul id="list">
+                </ul>
+                <div className="row">
+                  <input type="text" name="extraq"  id="qu" placeholder="example@gmail.com" />
+                  <button type="button"  onClick={addQualification} className="addBtn" >Add+</button>
+                </div>
+              </div>
+              <div className="side">
+                <div className="headTitle">Roles and Responsibilities</div>
+                <ul>
+                </ul>
+                <div className="row">
+                  <input type="text" name="extraq"  id="qu" placeholder="example@gmail.com" />
+                  <button type="button"  onClick={addQualification} className="addBtn" >Add+</button>
+                </div>
+              </div>
+            </div>
+            <div className="sections">
+              <div className="side">
+                <div className="headTitle">Mandatory Skills</div>
+                <ul id="list">
+                </ul>
+                <div className="row">
+                  <input type="text" name="extraq"  id="qu" placeholder="example@gmail.com" />
+                  <button type="button"  onClick={addQualification} className="addBtn" >Add+</button>
+                </div>
+              </div>
+              <div className="side">
+                <div className="headTitle">Experience and Highlights</div>
+                <ul>
+                </ul>
+                <div className="row">
+                  <input type="text" name="extraq"  id="qu" placeholder="example@gmail.com" />
+                  <button type="button"  onClick={addQualification} className="addBtn" >Add+</button>
+                </div>
               </div>
             </div>
           </div>
+          <div className="sections">
+            <div className="downside">
+              <button type="submit" onClick={previewBtnHandler} className="btnstyle" >Preview</button>
+              <button type="submit" className="btnstyle" >Submit</button>
+            </div>
+          </div>
         </form>
-        <div className=""></div>
       </ErrorBoundary>
     );
 };

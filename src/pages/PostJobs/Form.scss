@@ -53,7 +53,7 @@
 .orgLogo{
   background-color: red;
 }
-.downside .btn{
+.btnstyle{
   width:150px;
   background-color: var(--blue);
   color:white;
@@ -62,6 +62,14 @@
   border-radius: 3px;
   font-size: 18px;
   font-weight:600;
+}
+.addBtn{
+  background-color:#eee;
+  color:var(--blackHeadColor);
+  margin:8px;
+  padding:0 10px 0 10px;
+  font-size: 18px;
+  border-radius: 5px;
 }
 .font-small{
   padding: 5px 10px 5px 10px;
@@ -75,6 +83,20 @@
 }
 .hideform{
   display: hidden;
+}
+.side ul{
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  align-items: center;
+}
+.side ul li{
+  margin:2px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  padding: 2px;
+  width:300px;
 }
 @media only screen and (max-width: 750px) {
 
@@ -95,11 +117,23 @@
   .side .row input,.side .row label,.input{
     font-size: 12px;
   }
-  .downside .btn{
+  .btnstyle{
     width:100px;
     margin:8px;
     padding:3px;
     font-size: 15px;
+  }
+  .addBtn{
+    width:60px;
+    background-color: #aeaeae;
+    color:black;
+    margin:5px;
+    padding:2px;
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  .side ul li{
+    width:200px;
   }
 }
 @media only screen and (min-width: 750px) {
