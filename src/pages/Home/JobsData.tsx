@@ -27,7 +27,7 @@ const JobsData:JobDet[]=[
       sal:15000,
       hours:8,
       type:"monthly",
-    }
+    },
   },
   {
     job:{
@@ -56,7 +56,7 @@ const JobsData:JobDet[]=[
       sal:1200000,
       hours:8,
       type:"yearly",
-    }
+    },
   },
   {
     job:{
@@ -85,7 +85,7 @@ const JobsData:JobDet[]=[
       sal:50000,
       hours:8,
       type:"monthly",
-    }
+    },
   },
 ];
 export default JobsData;
