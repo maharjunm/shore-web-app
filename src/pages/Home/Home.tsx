@@ -21,11 +21,9 @@ const Home = () => {
             </div>
             <div className="down">
               <div className={view==="hide"?"show":window.screen.width>900?"show":"hide"}>
-                {
-                  jobs.map((element:JobDet)=>(
-                    <JobFeed jobd={element} jobClick={jobClick} />
-                  ))
-                }
+                { jobs.map((element:JobDet)=>(
+                  <JobFeed jobd={element} jobClick={jobClick} />
+                )) }
               </div>
               <div className={view}>
                 {currentJob && <JobDetails jobd={currentJob} jobClick={jobClick} disablePreview={null} from="home"  />}

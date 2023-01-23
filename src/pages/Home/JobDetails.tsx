@@ -19,9 +19,7 @@ const JobDetails= (det:Props) => {
     if(det.from==="postajob"){
       det.disablePreview();
     }
-
   }
-  console.log(p.dates.postingDate);
   return (
     <ErrorBoundary>
       <div className="jobdetails">

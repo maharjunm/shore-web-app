@@ -15,12 +15,12 @@ type Dates={
   closingDate:Date;
   removingJobDate:Date;
 }
-export type Salary={
+type Salary={
   sal:number;
   hours:number;
   type:string;
 }
-export  type Job={
+type Job={
   title:  string;
   qualification:string;
   experience:String;

@@ -3,16 +3,7 @@ import { ErrorBoundary } from '../../components';
 import  {JobDet}  from '../../components/DataModels/JobDet';
 import './Form.scss';
 import JobDetails from '../Home/JobDetails';
-interface Props{
-  val:string;
-  func:any;
-}
-const Li=(props:Props)=>{
-  return (
-    <li id={props.val}>{props.val}<span onClick={()=>props.func(props.val)}></span></li>
-  )
 
-};
 const Form = () => {
     const [preview,setPreview] = useState("form show");
     const [currentJobView,setCurrenetJobView]=useState(null);
@@ -69,10 +60,10 @@ const Form = () => {
           region:form.region.value,
         },
         dates:{
-          postingDate:new Date( form.pDate.value),
-          expiryDate:new Date( form.eDate.value),
-          closingDate:new Date( form.appClosingDate.value),
-          removingJobDate:new Date( form.remJobDate.value),
+          postingDate:new Date(form.pDate.value),
+          expiryDate:new Date(form.eDate.value),
+          closingDate:new Date(form.appClosingDate.value),
+          removingJobDate:new Date(form.remJobDate.value),
         },
         salary:{
           sal:form.salary.value,
@@ -181,7 +172,6 @@ const Form = () => {
               <div className="side">
                 <div className="headTitle">Extra Qualifications</div>
                 <ul id="ql">
-
                 </ul>
                 <div className="row">
                   <input type="text" name="extraq" id="qlinput" placeholder="example@gmail.com" />
