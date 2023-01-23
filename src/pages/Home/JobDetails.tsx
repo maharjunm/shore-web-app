@@ -114,14 +114,6 @@ const JobDetails= (det:Props) => {
               </ul>
             </div>
             <div className="innerbox">
-              <h1 className="jobTitle b">Mandatory Skills</h1>
-              <ul>
-                <li>At least three years' experience as a full-stack (React/Node.js/MySQL) developer.</li>
-                <li>Extensive knowledge of JavaScript, web stacks, libraries, and frameworks.</li>
-                <li>Knowledge of front-end technologies such as HTML5 and CSS3.</li>
-              </ul>
-            </div>
-            <div className="innerbox">
               <h1 className="jobTitle b">Experience</h1>
               <ul>
                 <li>{p.job.experience}</li>
