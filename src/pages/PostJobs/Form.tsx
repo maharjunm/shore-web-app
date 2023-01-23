@@ -7,29 +7,36 @@ import JobDetails from '../Home/JobDetails';
 const Form = () => {
     const [preview,setPreview] = useState("form show");
     const [currentJobView,setCurrenetJobView]=useState(null);
-    const [qualification,setQualification] = useState([
-      {id:'Btech',qual:"BTech"},
-    ]);
-    const removeLi = (id:string)=>{
-      let ele=document.getElementById(id);
-      console.log("ele",ele);
-      // ele.parentNode.remove(ele);
+    const [qualifications,setQualifications] = useState([]);
+    const [qualification,setQualification] = useState("");
+    const [duties,setDuties]= useState([]);
+    const [duty,setDuty]=useState("");
+    const updateQualification = (e:any)=>{
+      setQualification(e.target.value);
     }
-    const addQualification = (id:string)=>{
-      let wrong=document.createElement('span');
-      wrong.appendChild(document.createTextNode('x'));
-      let val= document.getElementById(id+"input") as HTMLInputElement | null;
-      var li = document.createElement('li');
-      li.setAttribute("id",val.value);
-      li.setAttribute('onclick','remove()');
-      console.log(id);
-      var ul= document.getElementById(id);
-      li.appendChild(document.createTextNode(val.value));
-      li.appendChild(wrong);
-      ul.appendChild(li);
-
+    const removeQualification = (id:string)=>{
+      const newQualifications=qualifications.filter((qualification)=>qualification.id!=id);
+      setQualifications(newQualifications);
+    }
+    const addQualification = ()=>{
+      setQualifications([
+        ...qualifications,{id:qualification,value:qualification}
+      ])
+      setQualification("");
     };
-
+    const updateDuty = (e:any)=>{
+      setDuty(e.target.value);
+    }
+    const removeDuty = (id:string)=>{
+      const newDuties=duties.filter((duty)=>duty.id!=id);
+      setDuties(newDuties);
+    }
+    const addDuty = ()=>{
+      setDuties([
+        ...duties,{id:duty,value:duty}
+      ])
+      setDuty("");
+    };
     const showPreview = (jobView:JobDet) =>{
       setCurrenetJobView(jobView);
     }
@@ -39,8 +46,7 @@ const Form = () => {
     }
     const previewBtnHandler = (e:any) =>{
       e.preventDefault();
-        let form=e.target.form;
-      console.log(form.pDate.value);
+      let form=e.target.form;
 
       let jobView={
         job:{
@@ -70,6 +76,8 @@ const Form = () => {
           hours:form.hours.value,
           type:form.jobType.value,
         },
+        qualifications:qualifications.map((qualification)=>{return qualification.value}),
+        duties:duties.map((duty)=>{return duty.value}),
       }
       setPreview("form hide");
       showPreview(jobView);
@@ -170,41 +178,35 @@ const Form = () => {
             </div>
             <div className="sections">
               <div className="side">
-                <div className="headTitle">Extra Qualifications</div>
-                <ul id="ql">
+                <div className="headTitle">Extra Qualifications and Skills</div>
+                <ul>
+                  {
+                    qualifications.map((qualification)=>(
+                      <li key={qualification.id}>{qualification.value}
+                        <span  onClick={()=>removeQualification(qualification.id)}>x</span>
+                      </li>
+                  ))
+                }
                 </ul>
                 <div className="row">
-                  <input type="text" name="extraq" id="qlinput" placeholder="example@gmail.com" />
-                  <button type="button"  onClick={()=>addQualification("ql")} className="addBtn" >Add+</button>
+                  <input type="text" name="extraq" onChange={updateQualification} id="qlinput" placeholder="EX:BTech CSE" />
+                  <button type="button"  onClick={addQualification} className="addBtn" >Add+</button>
                 </div>
               </div>
               <div className="side">
-                <div className="headTitle">Roles and Responsibilities</div>
-                <ul id="rr">
+                <div className="headTitle">Job Dudies</div>
+                <ul>
+                {
+                  duties.map((duty)=>(
+                    <li key={duty.id}>{duty.value}
+                      <span onClick={()=>removeDuty(duty.id)}>x</span>
+                    </li>
+                  ))
+                }
                 </ul>
                 <div className="row">
-                  <input type="text" name="extraq"  id="rrinput" placeholder="example@gmail.com" />
-                  <button type="button"  onClick={()=>addQualification("rr")} className="addBtn" >Add+</button>
-                </div>
-              </div>
-            </div>
-            <div className="sections">
-              <div className="side">
-                <div className="headTitle">Mandatory Skills</div>
-                <ul id="ms">
-                </ul>
-                <div className="row">
-                  <input type="text" name="extraq"  id="msinput" placeholder="example@gmail.com" />
-                  <button type="button"  onClick={()=>addQualification("ms")} className="addBtn" >Add+</button>
-                </div>
-              </div>
-              <div className="side">
-                <div className="headTitle">Experience and Highlights</div>
-                <ul  id="eh">
-                </ul>
-                <div className="row">
-                  <input type="text" name="extraq"  id="ehinput" placeholder="example@gmail.com" />
-                  <button type="button"  onClick={()=>addQualification("eh")} className="addBtn" >Add+</button>
+                  <input type="text" name="extraq"  onChange={updateDuty} id="rrinput" placeholder="EX:FrontEnd Developer" />
+                  <button type="button"  onClick={addDuty} className="addBtn" >Add+</button>
                 </div>
               </div>
             </div>

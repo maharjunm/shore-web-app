@@ -28,6 +28,17 @@ const JobsData:JobDet[]=[
       hours:8,
       type:"monthly",
     },
+    qualifications:[
+      "Bachelor of Technology ",
+      "Aws Cloud Computing service",
+      "Git and Github",
+    ],
+    duties:[
+      "Developing and maintaining all server-side network components.",
+      "Developing and maintaining all client-side UI components and interfaces.",
+      "Designing customer-facing UI and back-end services for various business processes",
+      "Developing high-performance applications by writing testable, reusable, and efficient code.",
+    ],
   },
   {
     job:{
@@ -57,6 +68,15 @@ const JobsData:JobDet[]=[
       hours:8,
       type:"yearly",
     },
+    qualifications:[
+      "Computer Science Graduate",
+      "Well familiar with Node.js ",
+    ],
+    duties:[
+      "Implementing effective security protocols, data protection measures, and storage solutions.",
+      "Running diagnostic tests, repairing defects, and providing technical support.",
+      "Recommending and implementing improvements to processes and technologies.",
+    ],
   },
   {
     job:{
@@ -86,6 +106,15 @@ const JobsData:JobDet[]=[
       hours:8,
       type:"monthly",
     },
+    qualifications:[
+      "Any Degree",
+      "Information Technology Expert",
+      "React native of new version",
+    ],
+    duties:[
+      "Keeping informed of advancements in the fields of Node.js and React.js development.Keeping informed of advancements in the fields of Node.js and React.js development.",
+      "Designing DB tables and Querying Databases to validate application behaviour and perform unit tests",
+    ]
   },
 ];
 export default JobsData;

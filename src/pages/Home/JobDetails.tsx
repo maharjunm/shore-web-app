@@ -91,9 +91,12 @@ const JobDetails= (det:Props) => {
               <h1>Qualifications</h1>
             </b>
             <ul>
-              <li>{p.job.qualification}(Preferred)</li>
-              <li>{p.job.experience}</li>
-              <li>Node.js in a team production environment: 2 years (Required)</li>
+              <li>{p.job.qualification}(Mandatory)</li>
+              {
+                p.qualifications.map((qualification)=>(
+                  <li>{qualification}</li>
+                ))
+              }
             </ul>
           </div>
           <div className="Box alignLeft">
@@ -101,17 +104,13 @@ const JobDetails= (det:Props) => {
               <h1>Full Job Description</h1>
             </b>
             <div className="innerbox">
-              <h1 className="jobTitle b">Roles & Responsibilities</h1>
+              <h1 className="jobTitle b">Job Duties</h1>
               <ul className="colorlightblack">
-                <li>Developing and maintaining all server-side network components.</li>
-                <li>Developing and maintaining all client-side UI components and interfaces.</li>
-                <li>Designing customer-facing UI and back-end services for various business processes</li>
-                <li>Developing high-performance applications by writing testable, reusable, and efficient code.</li>
-                <li>Implementing effective security protocols, data protection measures, and storage solutions.</li>
-                <li>Running diagnostic tests, repairing defects, and providing technical support.</li>
-                <li>Recommending and implementing improvements to processes and technologies.</li>
-                <li>Keeping informed of advancements in the fields of Node.js and React.js development.Keeping informed of advancements in the fields of Node.js and React.js development.</li>
-                <li>Designing DB tables and Querying Databases to validate application behaviour and perform unit tests</li>
+                {
+                  p.duties.map((duty)=>(
+                    <li>{duty}</li>
+                  ))
+                }
               </ul>
             </div>
             <div className="innerbox">
@@ -126,8 +125,6 @@ const JobDetails= (det:Props) => {
               <h1 className="jobTitle b">Experience</h1>
               <ul>
                 <li>{p.job.experience}</li>
-                <li>React in a team production environment: 2 years</li>
-                <li>Node.js in a team production environment: 2 years (Required)</li>
               </ul>
             </div>
           </div>

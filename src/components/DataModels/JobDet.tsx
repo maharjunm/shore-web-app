@@ -30,5 +30,7 @@ export type JobDet={
   company:Company;
   location:Location;
   dates:Dates;
-  salary:Salary;
+  salary:Salary,
+  qualifications:string[];
+  duties:string[];
 }
