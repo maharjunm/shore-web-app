@@ -69,10 +69,10 @@ const Form = () => {
           region:form.region.value,
         },
         dates:{
-          postingDate:new Date(form.pDate.value),
-          expiryDate:new Date(form.eDate.value),
-          closingDate:new Date(form.appClosingDate.value),
-          removingJobDate:new Date(form.remJobDate.value),
+          postingDate:new Date( form.pDate.value),
+          expiryDate:new Date( form.eDate.value),
+          closingDate:new Date( form.appClosingDate.value),
+          removingJobDate:new Date( form.remJobDate.value),
         },
         salary:{
           sal:form.salary.value,
