@@ -4,6 +4,9 @@
 .b{
   font-weight: bold;
 }
+.bordertop{
+  border-top: 2px solid var(--lightBlack);
+}
 .jobdetails{
   margin:auto;
   text-align: center;
@@ -12,7 +15,7 @@
   color:var(--blackHeadColor);
 }
 .sticky{
-  max-width: 500px;
+  max-width: 750px;
   min-width: 300px;
   margin:auto;
   padding :0 10px 0 10px;
@@ -30,6 +33,13 @@
   flex-direction: column;
   margin:5px;
 }
+.flexside{
+  display: flex;
+}
+.flexside .boxside{
+  padding: 10px;
+  align-items: left;
+}
 .jobTitle,.headDetails .title{
   color: var(--blackHeadColor);
 }
@@ -42,15 +52,16 @@
   font-weight: bold;
   color: var(--blackHeadColor);
 }
-.jobTitle .title .side{
+.jobTitle .title .wrong{
   font-size: 25px;
   font-weight: 100;
   line-height: 10px;
   padding: 5px;
   color: #000;
+  cursor: pointer;
   border-radius: 2px;
 }
-.jobTitle .title .side a{
+.jobTitle .title .wrong a{
   color:var(--black);
 }
 .jobTitle a{
@@ -77,7 +88,7 @@
   background-color: blue;
 }
 .scrollableContent{
-  max-width: 500px;
+  max-width: 750px;
   min-width: 300px;
   margin:auto;
   padding:10px;
@@ -121,8 +132,17 @@
   font-size: 14px;
   width:90%;
   color: var(--blackHeadColor);
-  text-align: left;
-  margin:0;
+  text-align:left;
+  margin:auto;
+}
+.Box .ul li{
+  list-style-type: disc;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+.Box .ul li span,.Box .ul li b{
+  padding: 5px;
 }
 .innerbox ul li{
   color:#6e6b6a;
