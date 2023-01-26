@@ -6,7 +6,7 @@ import BillingPage from './BillingPage';
 const PostJobs = () => {
     return (
         <ErrorBoundary>
-            <BillingPage billingType="premium" />
+                 <BillingPage billingType="premium" />
         </ErrorBoundary>
     );
 };
