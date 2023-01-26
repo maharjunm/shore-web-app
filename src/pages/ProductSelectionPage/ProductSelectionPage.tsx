@@ -45,7 +45,6 @@ const ProductSelectionPage = () => {
               <Link to={'/postajob'}>Select</Link>
             </div>
           </div>
-
           <div className="col">
             <div className="heading">Platinum</div>
             <h3 className="price">
