@@ -1,7 +1,7 @@
-//ProductSelectionPage
 import React from 'react';
 import './ProductSelectionPage.scss';
 import { ErrorBoundary } from '../../components';
+import {Link} from 'react-router-dom';
 
 const ProductSelectionPage = () => {
   const Regular = 'regular';
@@ -42,7 +42,7 @@ const ProductSelectionPage = () => {
             </p>
 
             <div className="btn">
-              <a href={Regular}>Select</a>
+              <Link to={'/postajob'}>Select</Link>
             </div>
           </div>
 
@@ -76,7 +76,7 @@ const ProductSelectionPage = () => {
             </p>
 
             <div className="btn">
-              <a href={Platinum}>Select</a>
+              <Link to={'/postajob'}>Select</Link>
             </div>
           </div>
 
@@ -110,7 +110,7 @@ const ProductSelectionPage = () => {
             </p>
 
             <div className="btn">
-              <a href={Diamond}>Select</a>
+              <Link to={'/postajob'}>Select</Link>
             </div>
           </div>
         </div>
