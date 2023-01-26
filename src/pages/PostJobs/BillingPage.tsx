@@ -16,7 +16,7 @@ const BillingPage = (props:Props)=>{
               <div className="row">
                 <label htmlFor="fname">Full Name</label>
                 <input type="text" name="fname" required id="fname" />
-               </div>
+              </div>
               <div className="row">
                 <label htmlFor="pos">Position</label>
                 <input type="text" name="pos" required id="pos" />
@@ -73,7 +73,7 @@ const BillingPage = (props:Props)=>{
               <div className="row">
                 <label htmlFor="fname">Full Name</label>
                 <input type="text" name="fname" required id="fname" />
-               </div>
+              </div>
               <div className="row">
                 <label htmlFor="pos">Position</label>
                 <input type="text" name="pos" required id="pos" />
@@ -130,6 +130,6 @@ const BillingPage = (props:Props)=>{
       </div>
     </ErrorBoundary>
   );
-}
+};
 
 export default BillingPage;
