@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run lint-fix 
-echo 'Fixed all syntactical errors Please commit again and push it to git'
+npm run lint-fix ||(
+  echo 'Fixed all syntactical errors Please commit again and push it to git'
+  false;
+)
