@@ -30,7 +30,7 @@ const BillingPage = ()=>{
   return(
     <ErrorBoundary>
       <form className="billingForm" >
-        *<div className="superSection">
+        <div className="superSection">
           <div className="sections">
             <div className="side">
               <div className="headTitle">Billing Details</div>
