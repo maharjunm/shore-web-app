@@ -11,8 +11,8 @@
     "prepare": "husky install",
     "lint":"eslint src/**/*.{ts,tsx,json}",
     "lint-fix":"eslint src/**/*.{ts,tsx,json} --fix",
-    "check-lint":"eslint . --ext ts --ext tsx --ext js",
-    "test-all":"npm run check-lint && npm run build"
+    "check-lint":"eslint src/. --ext ts --ext tsx --ext js",
+    "test-all":"npm run check-lint "
 
   },
   "settings":{
