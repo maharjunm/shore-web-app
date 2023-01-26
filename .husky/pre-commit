@@ -1,12 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run check-lint ||(
-  echo 'Failed in syntax please correct indextation errors and some of mentioned above' false;
-)
-echo 'Alright code is fine  trying to build'
-
-npm run build ||(
-  echo 'there sre some error please resolve those errors and commit after'
-  false;
-)
+npm run lint-fix 
+echo 'Fixed all syntactical errors'

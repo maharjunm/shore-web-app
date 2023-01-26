@@ -5,6 +5,7 @@ import  {JobDet}  from '../../components/DataModels/JobDet';
 import {ErrorBoundary} from '../../components';
 import  JobsData  from './JobsData';
 interface Props {
+    key:string,
     jobd:JobDet;
     jobClick:(currentJob:JobDet,currentView:string)=>void;
     disablePreview:()=>void;

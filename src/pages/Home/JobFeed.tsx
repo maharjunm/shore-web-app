@@ -3,6 +3,7 @@ import './JobFeed.scss';
 import {ErrorBoundary} from '../../components';
 import  {JobDet}  from '../../components/DataModels/JobDet';
 interface Props {
+    key:string;
     jobd:JobDet;
     jobClick:(currentJob:JobDet,currentView:string)=>void;
 }

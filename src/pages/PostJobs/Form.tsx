@@ -84,7 +84,7 @@ const Form = () => {
   };
   return (
     <ErrorBoundary>
-      {currentJobView && <JobDetails jobd={currentJobView} jobClick={null} disablePreview={disablePreview} from="postajob" />}
+      {currentJobView && <JobDetails key={currentJobView.job.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} from="postajob" />}
       <form className={preview} >
         <div className="superSection">
           <div className="sections">
