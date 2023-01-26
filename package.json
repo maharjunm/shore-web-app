@@ -10,7 +10,10 @@
     "build": "webpack --mode production",
     "prepare": "husky install",
     "lint":"eslint src/**/*.{ts,tsx,json}",
-    "lint-fix":"eslint src/**/*.{ts,tsx,json} --fix"
+    "lint-fix":"eslint src/**/*.{ts,tsx,json} --fix",
+    "check-lint":"eslint . --ext ts --ext tsx --ext js",
+    "test-all":"npm run check-lint && npm run build"
+
   },
   "settings":{
     "react":  {
