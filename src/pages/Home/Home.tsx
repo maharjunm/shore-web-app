@@ -22,7 +22,7 @@ const Home = () => {
         <div className="down">
           <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
             { jobs.map((element:JobDet)=>(
-              <JobFeed jobd={element} jobClick={jobClick} />
+              <JobFeed  jobd={element} jobClick={jobClick} />
             )) }
           </div>
           <div className={view}>

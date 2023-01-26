@@ -94,7 +94,7 @@ const JobDetails= (det:Props) => {
               <li>{p.job.qualification}(Mandatory)</li>
               {
                 p.qualifications.map((qualification)=>(
-                  <li>{qualification}</li>
+                  <li key={qualification}>{qualification}</li>
                 ))
               }
             </ul>
@@ -108,7 +108,7 @@ const JobDetails= (det:Props) => {
               <ul className="colorlightblack">
                 {
                   p.duties.map((duty)=>(
-                    <li>{duty}</li>
+                    <li key={duty}>{duty}</li>
                   ))
                 }
               </ul>
