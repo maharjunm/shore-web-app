@@ -5,6 +5,7 @@ import  {JobDet}  from '../../components/DataModels/JobDet';
 import {ErrorBoundary} from '../../components';
 import  JobsData  from './JobsData';
 interface Props {
+    key:string,
     jobd:JobDet;
     jobClick:(currentJob:JobDet,currentView:string)=>void;
     disablePreview:()=>void;
@@ -13,13 +14,13 @@ interface Props {
 const JobDetails= (det:Props) => {
   let p=det.jobd;
   const clicked=()=>{
-    if(det.from==="home"){
-      det.jobClick(null,"hide");
+    if(det.from==='home'){
+      det.jobClick(null,'hide');
     }
-    if(det.from==="postajob"){
+    if(det.from==='postajob'){
       det.disablePreview();
     }
-  }
+  };
   return (
     <ErrorBoundary>
       <div className="jobdetails">
@@ -94,7 +95,7 @@ const JobDetails= (det:Props) => {
               <li>{p.job.qualification}(Mandatory)</li>
               {
                 p.qualifications.map((qualification)=>(
-                  <li>{qualification}</li>
+                  <li key={qualification}>{qualification}</li>
                 ))
               }
             </ul>
@@ -108,7 +109,7 @@ const JobDetails= (det:Props) => {
               <ul className="colorlightblack">
                 {
                   p.duties.map((duty)=>(
-                    <li>{duty}</li>
+                    <li key={duty}>{duty}</li>
                   ))
                 }
               </ul>

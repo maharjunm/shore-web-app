@@ -2,11 +2,11 @@ import React from 'react';
 import { ErrorBoundary } from '../../components';
 
 const AboutUs = () => {
-    return (
-      <ErrorBoundary>
+  return (
+    <ErrorBoundary>
       <h1>about us</h1>
-      </ErrorBoundary>
-    );
+    </ErrorBoundary>
+  );
 };
 
 export default AboutUs;

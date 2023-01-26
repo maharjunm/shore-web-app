@@ -1,7 +1,7 @@
 import {
-    configureStore,
-    getDefaultMiddleware,
-    DeepPartial,
+  configureStore,
+  getDefaultMiddleware,
+  DeepPartial,
 } from '@reduxjs/toolkit';
 
 import rootReducer from './rootReducer';
@@ -13,13 +13,13 @@ export type RootState = ReturnType<typeof rootReducer>;
 export type PartialRootState = DeepPartial<RootState>;
 
 const configureAppStore = (preloadedState: PartialRootState = {}) => {
-    const store = configureStore({
-        reducer: rootReducer,
-        middleware: [...getDefaultMiddleware<RootState>()],
-        preloadedState,
-    });
+  const store = configureStore({
+    reducer: rootReducer,
+    middleware: [...getDefaultMiddleware<RootState>()],
+    preloadedState,
+  });
 
-    return store;
+  return store;
 };
 
 export type StoreDispatch = ReturnType<typeof configureAppStore>['dispatch'];
