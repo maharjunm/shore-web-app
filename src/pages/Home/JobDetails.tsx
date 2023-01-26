@@ -13,13 +13,13 @@ interface Props {
 const JobDetails= (det:Props) => {
   let p=det.jobd;
   const clicked=()=>{
-    if(det.from==="home"){
-      det.jobClick(null,"hide");
+    if(det.from==='home'){
+      det.jobClick(null,'hide');
     }
-    if(det.from==="postajob"){
+    if(det.from==='postajob'){
       det.disablePreview();
     }
-  }
+  };
   return (
     <ErrorBoundary>
       <div className="jobdetails">

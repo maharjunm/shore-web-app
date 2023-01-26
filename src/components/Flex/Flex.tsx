@@ -5,6 +5,6 @@ const Flex=(props:any)=>{
     <div className="flex">
       {props.children}
     </div>
-  )
-}
+  );
+};
 export default Flex;
