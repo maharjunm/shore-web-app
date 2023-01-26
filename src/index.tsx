@@ -18,7 +18,7 @@ import { HomePage } from './pages';
       <ReduxProvider store={configureAppStore(preloadedState)}>
         <AppContextProvider>
           <ErrorBoundary>
-              <HomePage />
+            <HomePage />
           </ErrorBoundary>
         </AppContextProvider>
       </ReduxProvider>

@@ -29,7 +29,7 @@ const Home = () => {
             {currentJob && <JobDetails key={currentJob.job.title} jobd={currentJob} jobClick={jobClick} disablePreview={null} from="home"  />}
           </div>
         </div>
-          </div>
+      </div>
     </ErrorBoundary>
   );
 };

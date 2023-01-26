@@ -3,6 +3,7 @@
 
 npm run check-lint ||(
   echo 'Failed to commit there are syntactical error please resolve it and commit again or try fixing by `npm run lint-fix`'
+  false;
 )
 
 echo 'Wow your code is perfect in syntax and indentation you can push to your branch now'
