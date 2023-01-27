@@ -7,7 +7,7 @@ npm run check-lint ||(
                       ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ ERROR ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
   Failed to commit there are syntactical error please resolve it and commit again
 
-                        💡Try  `npm run lint-fix` to fix those errors 
+                      💡Try  `npm run lint-fix` to fix those errors
   '
   false;
 )

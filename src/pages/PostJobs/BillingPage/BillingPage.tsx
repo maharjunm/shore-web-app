@@ -17,15 +17,15 @@ interface Det{
 const BillingPage = ()=>{
   const [checkBox,setCheckBox]= useState(false);
   const [details,setDetails]= useState({
-    fname:'huhu',
-    position:'vhj',
-    orgName:'gyuikjh',
-    street:'fyuik',
-    state:'gtyui',
-    country:'ertyu',
-    pscode:7655,
+    fname:'',
+    position:'',
+    orgName:'',
+    street:'',
+    state:'',
+    country:'',
+    pscode:null,
     email:'Example@gmail.com',
-    pno:770209158,
+    pno:null,
   });
   const checkBoxHandler =()=>{
     if(checkBox){
