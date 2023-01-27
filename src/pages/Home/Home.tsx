@@ -23,12 +23,12 @@ const Home = () => {
         <div className="top">
           <div className='inputForm'>
             <div className="searchBar">
-            <Searchbar data={data} />
+              <Searchbar data={data} />
             </div>
             <div className='locationBar'>
-            <Location />
+              <Location />
             </div>
-            </div>
+          </div>
         </div>
         <div className="down">
           <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
