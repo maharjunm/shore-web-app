@@ -3,7 +3,17 @@ import { ErrorBoundary } from '../../../components';
 import {Redirect} from 'react-router-dom';
 import './BillingPage.scss';
 import SubPage from './SubPage';
-
+interface Det{
+  fname:string,
+  position:string,
+  orgName:string,
+  street:string,
+  state:string,
+  country:string,
+  pscode:number,
+  email:string,
+  pno:number,
+}
 const BillingPage = ()=>{
   const [checkBox,setCheckBox]= useState(false);
   const [details,setDetails]= useState({
@@ -27,6 +37,11 @@ const BillingPage = ()=>{
   const formHandler=(e:any)=>{
     return <Redirect  to="/form/" />;
   };
+  const updateForm=(name:string,val:string)=>{
+    let prev=details;
+    details[name]=val;
+    setDetails(prev);
+  };
   return(
     <ErrorBoundary>
       <form className="billingForm" >
@@ -35,7 +50,7 @@ const BillingPage = ()=>{
             <div className="side">
               <div className="headTitle">Billing Details</div>
             </div>
-            <SubPage props={details} check={false}/>
+            <SubPage props={details} check={false} funcHandler={updateForm} />
           </div>
           <div className="sections">
             <div className="side">
@@ -45,7 +60,7 @@ const BillingPage = ()=>{
                 <input type="checkbox" checked={checkBox} onChange={checkBoxHandler} name="sub" id="mail" />
               </div>
             </div>
-            <SubPage props={details} check={checkBox}/>
+            <SubPage props={details} check={checkBox} funcHandler={null}/>
           </div>
         </div>
         <div className="sections">
