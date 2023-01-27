@@ -12,19 +12,6 @@ import { HomePage } from './pages';
 
   const root = createRoot(document.getElementById('root'));
 
-<<<<<<< HEAD
-    root.render(
-        <React.StrictMode>
-            <ReduxProvider store={configureAppStore(preloadedState)}>
-                <AppContextProvider>
-                    <ErrorBoundary>
-                        <HomePage />
-                    </ErrorBoundary>
-                </AppContextProvider>
-            </ReduxProvider>
-        </React.StrictMode>
-    );
-=======
   root.render(
     <React.StrictMode>
       <ReduxProvider store={configureAppStore(preloadedState)}>
@@ -36,5 +23,4 @@ import { HomePage } from './pages';
       </ReduxProvider>
     </React.StrictMode>
   );
->>>>>>> develop
 })();
