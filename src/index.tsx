@@ -8,10 +8,11 @@ import AppContextProvider from './contexts/AppContextProvider';
 import { HomePage } from './pages';
 
 (async () => {
-    const preloadedState = getPreloadedState();
+  const preloadedState = getPreloadedState();
 
-    const root = createRoot(document.getElementById('root'));
+  const root = createRoot(document.getElementById('root'));
 
+<<<<<<< HEAD
     root.render(
         <React.StrictMode>
             <ReduxProvider store={configureAppStore(preloadedState)}>
@@ -23,4 +24,17 @@ import { HomePage } from './pages';
             </ReduxProvider>
         </React.StrictMode>
     );
+=======
+  root.render(
+    <React.StrictMode>
+      <ReduxProvider store={configureAppStore(preloadedState)}>
+        <AppContextProvider>
+          <ErrorBoundary>
+            <HomePage />
+          </ErrorBoundary>
+        </AppContextProvider>
+      </ReduxProvider>
+    </React.StrictMode>
+  );
+>>>>>>> develop
 })();

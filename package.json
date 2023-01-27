@@ -8,7 +8,17 @@
     "start": "webpack serve --mode development --open",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint":"eslint src/**/*.{ts,tsx,json}",
+    "lint-fix":"eslint src/**/*.{ts,tsx,json} --fix",
+    "check-lint":"eslint src/. --ext ts --ext tsx --ext js",
+    "test-all":"npm run check-lint "
+
+  },
+  "settings":{
+    "react":  {
+      "version":"detect"
+    }
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,json}": [
@@ -43,8 +53,8 @@
     "@types/react-redux": "^7.1.16",
     "@types/react-responsive": "^8.0.2",
     "@types/react-router-dom": "^5.3.3",
-    "@typescript-eslint/eslint-plugin": "^5.33.1",
-    "@typescript-eslint/parser": "^5.33.1",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
     "@vue/preload-webpack-plugin": "^2.0.0",
     "autoprefixer": "^10.2.6",
     "babel-loader": "^8.2.2",
@@ -54,7 +64,7 @@
     "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react": "^7.32.1",
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^6.3.3",
     "html-loader": "^2.1.2",

@@ -1,0 +1,68 @@
+.jobFeed{
+    margin: 10px;
+    text-align: center;
+    padding:20px;
+    border: 1px solid var(--lightBlack);
+    border-radius: 5px;;
+    max-width: 500px;
+    min-width: 300px;
+    cursor: pointer;
+}
+.title{
+    padding: 5px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+.title h4{
+    font-size: 18px;
+    font-weight: bold;
+    color:var(--black);
+}
+.title .company{
+    font-size: 15px;
+}
+.shift{
+    padding: 5px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+.shift span{
+    background-color: rgb(216, 216, 218);
+    padding:5px;
+    border-radius: 3px;
+    line-height: 12px;
+    font-size: 14px;
+    color:rgb(61, 60, 60);
+    font-weight: 500;
+}
+.downshift{
+    text-align: left;
+    display: flex;
+    justify-content: space-around;
+}
+.points{
+    margin:auto;
+    width:100%;
+}
+.jobFeed ul{
+    margin:8px;
+    list-style-type:circle;
+    display: flex;
+    flex-direction: column;
+}
+.jobFeed ul li{
+    font-size: 14px;
+    color:rgb(129, 129, 129);
+    width:100%;
+    text-align: left;
+}
+.foot{
+    font-size: 13px;
+    color:rgb(46, 45, 45);
+    text-align: left;
+}
+.foot b{
+    color:rgb(46, 45, 45);
+}

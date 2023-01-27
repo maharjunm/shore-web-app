@@ -4,3 +4,5 @@ export { default as AboutUs } from './AboutUs/AboutUs';
 export { default as ContactUs } from './ContactUs/ContactUs';
 export { default as Jobs } from './Jobs/Jobs';
 export { default as PostJobs } from './PostJobs/PostJobs';
+export { default as ProductSelectionPage } from './ProductSelectionPage/ProductSelectionPage';
+export { default as BillingPage } from './PostJobs/BillingPage/BillingPage';
