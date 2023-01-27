@@ -29,8 +29,8 @@ const SubPage=(det:Props)=>{
           <input type="text" name="fname" readOnly={det.check} onChange={update} placeholder={det.check?det.props.fname:''}  required id="fname" />
         </div>
         <div className="row">
-          <label htmlFor="pos">Position</label>
-          <input type="text" name="pos" readOnly={det.check} onChange={update} placeholder={det.check?det.props.position:''} required id="pos" />
+          <label htmlFor="position">Position</label>
+          <input type="text" name="position" readOnly={det.check} onChange={update} placeholder={det.check?det.props.position:''} required id="position" />
         </div>
         <div className="row">
           <label htmlFor="orgName">Organization Name</label>
