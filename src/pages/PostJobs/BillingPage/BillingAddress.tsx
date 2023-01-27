@@ -16,7 +16,7 @@ interface Props{
   check:boolean,
   funcHandler:(name:string,val:string)=>void,
 }
-const SubPage=(det:Props)=>{
+const BillingAddress=(det:Props)=>{
 
   const update=(e:any)=>{
     det.funcHandler(e.target.name,e.target.value);
@@ -42,27 +42,15 @@ const SubPage=(det:Props)=>{
         </div>
         <div className="row">
           <label htmlFor="state">State</label>
-          <select className="input"  required name="state" id="state">
-            <option value="">select</option>
-            <option value="india">Telangana</option>
-            <option value="us">Kerela</option>
-            <option value="canada">TamilNadu</option>
-            <option value="england">Maharastra</option>
-          </select>
+          <input type="text" name="state"  readOnly={det.check} onChange={update} placeholder={det.check?det.props.state:''} required id="state" />
         </div>
         <div className="row">
           <label htmlFor="country">Country</label>
-          <select className="input" required name="country" id="country">
-            <option value="">select</option>
-            <option value="india">India</option>
-            <option value="us">US</option>
-            <option value="canada">Canada</option>
-            <option value="england">England</option>
-          </select>
+          <input type="text" name="country"  readOnly={det.check} onChange={update} placeholder={det.check?det.props.country:''} required id="country" />
         </div>
         <div className="row">
           <label htmlFor="pscode">Postal Code</label>
-          <input type="number" name="pscode" readOnly={det.check} onChange={update} placeholder={det.check?det.props.pscode.toString():''} required id="pscode" />
+          <input type="number" name="pscode" readOnly={det.check} onChange={update} placeholder={det.check && det.props.pscode?det.props.pscode.toString():''} required id="pscode" />
         </div>
         <div className="row">
           <label htmlFor="email">Email</label>
@@ -70,10 +58,10 @@ const SubPage=(det:Props)=>{
         </div>
         <div className="row">
           <label htmlFor="pno">Phone Number</label>
-          <input type="number" name="pno" readOnly={det.check} onChange={update} placeholder={det.check?det.props.pno.toString():''} required id="pno" />
+          <input type="number" name="pno" readOnly={det.check} onChange={update} placeholder={det.check && det.props.pno?det.props.pno.toString():''} required id="pno" />
         </div>
       </div>
     </ErrorBoundary>
   );
 };
-export default SubPage;
+export default BillingAddress;

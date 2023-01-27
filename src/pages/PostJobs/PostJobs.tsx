@@ -7,7 +7,6 @@ const PostJobs = () => {
   return (
     <ErrorBoundary>
       <BillingPage />
-      <Form />
     </ErrorBoundary>
   );
 };

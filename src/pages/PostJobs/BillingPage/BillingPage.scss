@@ -15,7 +15,7 @@
   border:1px solid var(--lightBlack);
 }
 .sections{
-  padding: 10px;
+  padding:5px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -28,11 +28,12 @@
 .headTitle{
   font-weight: bold;
   font-size: 16px;
-  margin:10px;
+  margin:5px;
   color:var(--blackHeadColor);
 }
 .side .row{
   padding:1px;
+  margin:5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -47,7 +48,8 @@
 }
 .input,.side .row input{
   width:300px;
-  background-color:#eee;
+  border:1px solid var(--blackHeadColor);
+  border-radius: 5px;
   text-align: center;
 }
 .btnstyle{
@@ -63,9 +65,14 @@
 .font-checkox{
   padding: 5px 10px 5px 10px;
   font-size: 14px;
-  text-align: center;
-  display: block;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
   font-weight: 500;
+}
+.marginzero{
+  margin:0;
+  padding: 0;
 }
 @media only screen and (max-width: 750px) {
   .sections{

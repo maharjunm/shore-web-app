@@ -1,8 +1,7 @@
 import React,{useState} from 'react';
 import { ErrorBoundary } from '../../../components';
-import {Redirect} from 'react-router-dom';
 import './BillingPage.scss';
-import SubPage from './SubPage';
+import BillingAddress from './BillingAddress';
 interface Det{
   fname:string,
   position:string,
@@ -35,7 +34,7 @@ const BillingPage = ()=>{
     setCheckBox(true);
   };
   const formHandler=(e:any)=>{
-    return <Redirect  to="/form/" />;
+    e.preventDefault();
   };
   const updateForm=(name:string,val:string)=>{
     let prev=details;
@@ -47,20 +46,20 @@ const BillingPage = ()=>{
       <form className="billingForm" >
         <div className="superSection">
           <div className="sections">
-            <div className="side">
+            <div className="side marginzero">
               <div className="headTitle">Billing Details</div>
             </div>
-            <SubPage props={details} check={false} funcHandler={updateForm} />
+            <BillingAddress props={details} check={false} funcHandler={updateForm} />
           </div>
           <div className="sections">
-            <div className="side">
+            <div className="side marginzero">
               <div className="headTitle">Ordered By:</div>
               <div className="font-checkox">
                 <label htmlFor="mail">Same as Above Mentioned Details    </label>
                 <input type="checkbox" checked={checkBox} onChange={checkBoxHandler} name="sub" id="mail" />
               </div>
             </div>
-            <SubPage props={details} check={checkBox} funcHandler={null}/>
+            <BillingAddress props={details} check={checkBox} funcHandler={null}/>
           </div>
         </div>
         <div className="sections">
