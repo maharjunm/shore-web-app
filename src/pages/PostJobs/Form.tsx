@@ -3,6 +3,7 @@ import { ErrorBoundary } from '../../components';
 import  {JobDet}  from '../../components/DataModels/JobDet';
 import './Form.scss';
 import JobDetails from '../Home/JobDetails';
+import Payment from '../../components/Payment/Payment';
 
 const Form = () => {
   const [preview,setPreview] = useState('form show');
