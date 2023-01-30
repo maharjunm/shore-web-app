@@ -24,9 +24,7 @@
 .left{
   margin: auto;
 }
-.show{
-  display: ;
-}
+
 .hide{
   display: none;
 }
@@ -49,5 +47,27 @@
     max-height: 500px;
     overflow-y: scroll;
     scroll-behavior: smooth;
+  }
+}
+.inputForm {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+
+.searchBar {
+  flex-basis: 48%;
+  padding: 2px;
+}
+
+.locationBar {
+  flex-basis: 48%;
+  padding: 2px;
+
+}
+
+@media(max-width:600px) {
+  .inputForm {
+    flex-direction: column;
   }
 }
