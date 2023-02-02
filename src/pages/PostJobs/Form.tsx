@@ -3,7 +3,7 @@ import { ErrorBoundary } from '../../components';
 import  {JobDet}  from '../../components/DataModels/JobDet';
 import './Form.scss';
 import JobDetails from '../Home/JobDetails';
-
+import validate from './validate';
 const Form = () => {
   const [preview,setPreview] = useState('form show');
   const [currentJobView,setCurrenetJobView]=useState(null);
@@ -11,6 +11,7 @@ const Form = () => {
   const [qualification,setQualification] = useState('');
   const [duties,setDuties]= useState([]);
   const [duty,setDuty]=useState('');
+  const [errorMessage,setErrorMessage]= useState(null);
   const updateQualification = (e:any)=>{
     setQualification(e.target.value);
   };
@@ -79,9 +80,17 @@ const Form = () => {
       qualifications:qualifications.map((qualification)=>{return qualification.value;}),
       duties:duties.map((duty)=>{return duty.value;}),
     };
-    setPreview('form hide');
-    showPreview(jobView);
+
+    if(validate(jobView)){
+      console.log('okay');
+      setPreview('form hide');
+      showPreview(jobView);
+    }else{
+      setErrorMessage('Please fill the form ...');
+    }
+
   };
+
   return (
     <ErrorBoundary>
       {currentJobView && <JobDetails key={currentJobView.job.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} from="postajob" />}
@@ -250,6 +259,9 @@ const Form = () => {
           </div>
         </div>
         <div className="sections">
+          <div className="downside">
+            <p className="errorMessage">{errorMessage}</p>
+          </div>
           <div className="downside">
             <button type="submit" onClick={previewBtnHandler} className="btnstyle" >Preview</button>
             <button type="submit" className="btnstyle" >Submit</button>
