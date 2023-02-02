@@ -20,6 +20,9 @@ const Form = () => {
     setQualifications(newQualifications);
   };
   const addQualification = ()=>{
+    if(qualification.trim()===''){
+      return;
+    }
     setQualifications([
       ...qualifications,{id:qualification,value:qualification}
     ]);
@@ -33,6 +36,9 @@ const Form = () => {
     setDuties(newDuties);
   };
   const addDuty = ()=>{
+    if(duty.trim()===''){
+      return;
+    }
     setDuties([
       ...duties,{id:duty,value:duty}
     ]);
