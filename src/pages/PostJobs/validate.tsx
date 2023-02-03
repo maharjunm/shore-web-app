@@ -1,39 +1,85 @@
 import  {JobDet}  from '../../components/DataModels/JobDet';
+interface IForm{
+  qualifications:{id:string,value:string}[];
+  duties:{id:string,value:string}[];
+  title:string
+  qualification:string;
+  experience:string;
+  companyName:string;
+  companyType:string;
+  companyLogo:File;
+  city:string;
+  state:string;
+  country:string;
+  region:string;
+  postingDate:Date;
+  expiryDate:Date;
+  appClosingDate:Date;
+  removingJobDate:Date;
+  salary:number;
+  hours:number;
+  jobType:string;
+}
+
 function isDateEmpty(date: Date): boolean {
   return !date || isNaN(date.valueOf());
 }
-const Validate=(jobView:JobDet)=>{
-  const {title,qualification,experience}= jobView.job;
-  const {name,type,logo}= jobView.company;
-  const {city,state,country,region}= jobView.location;
-  const {postingDate,expiryDate,closingDate,removingJobDate}= jobView.dates;
-  const salary=jobView.salary;
-  const qualifications =jobView.qualifications;
-  const duties= jobView.duties;
 
+const validate=(form:IForm)=>{
+  let jobView:JobDet;
+  if(   !form.title            ||
+        !form.qualification    ||
+        !form.experience       ||
+        !form.companyName      ||
+        !form.companyType      ||
+        !form.companyLogo      ||
+        !form.city             ||
+        !form.state            ||
+        !form.country          ||
+        !form.region           ||
+        !form.postingDate      ||
+        !form.expiryDate       ||
+        !form.appClosingDate   ||
+        !form.removingJobDate  ||
+        !form.salary           ||
+        !form.hours            ||
+        !form.jobType
+  ){
+    return null;
+  }
 
-  if(title.trim()==='' || qualification.trim()==='' || experience.trim()===''){
-    return false;
-  }
-  if(name.trim()==='' || type.trim()==='' || !logo){
-    return false;
-  }
-  if(city.trim()==='' || state.trim()==='' || country.trim()==='' || region.trim()===''){
-    return false;
-  }
-  if( isDateEmpty(postingDate) || isDateEmpty(expiryDate) || isDateEmpty(closingDate) || isDateEmpty(removingJobDate)){
-    return false;
-  }
-  if(!salary.sal || !salary.hours || salary.type.trim()===''){
-    return false;
-  }
-  if(qualifications.length===0){
-    return false;
-  }
-  if(duties.length===0){
-    return false;
-  }
-  return true;
+  jobView={
+    job:{
+      title:form.title,
+      qualification:form.qualification,
+      experience:form.experience,
+    },
+    company:{
+      name:form.companyName,
+      type:form.companyType,
+      logo:form.companyLogo,
+    },
+    location:{
+      city:form.city,
+      state:form.state,
+      country:form.country,
+      region:form.region,
+    },
+    dates:{
+      postingDate:new Date(form.postingDate),
+      expiryDate:new Date(form.expiryDate),
+      closingDate:new Date(form.appClosingDate),
+      removingJobDate:new Date(form.removingJobDate),
+    },
+    salary:{
+      sal:form.salary,
+      hours:form.hours,
+      type:form.jobType,
+    },
+    qualifications:form.qualifications.map((qualification)=>{return qualification.value;}),
+    duties:form.duties.map((duty)=>{return duty.value;}),
+  };
+  return jobView;
 
 };
-export default Validate;
+export default validate;

@@ -4,97 +4,149 @@ import  {JobDet}  from '../../components/DataModels/JobDet';
 import './Form.scss';
 import JobDetails from '../Home/JobDetails';
 import validate from './validate';
+interface IForm{
+  qualifications:{id:string,value:string}[];
+  duties:{id:string,value:string}[];
+  title:string
+  qualification:string;
+  experience:string;
+  companyName:string;
+  companyType:string;
+  companyLogo:File;
+  city:string;
+  state:string;
+  country:string;
+  region:string;
+  postingDate:Date;
+  expiryDate:Date;
+  appClosingDate:Date;
+  removingJobDate:Date;
+  salary:number;
+  hours:number;
+  jobType:string;
+}
+const defaultForm:IForm = {
+  qualifications:[],
+  duties:[],
+  title:'',
+  qualification:'',
+  experience:'',
+  companyName:'',
+  companyType:'',
+  companyLogo:null,
+  city:'',
+  state:'',
+  country:'',
+  region:'',
+  postingDate:null,
+  expiryDate:null,
+  appClosingDate:null,
+  removingJobDate:null,
+  salary:null,
+  hours:null,
+  jobType:'',
+};
+const defaultErroMessages = { name: false };
+
 const Form = () => {
-  const [preview,setPreview] = useState('form show');
-  const [currentJobView,setCurrenetJobView]=useState(null);
-  const [qualifications,setQualifications] = useState([]);
-  const [qualification,setQualification] = useState('');
-  const [duties,setDuties]= useState([]);
-  const [duty,setDuty]=useState('');
-  const [errorMessage,setErrorMessage]= useState(null);
-  const updateQualification = (e:any)=>{
+
+  const [preview, setPreview] = useState('form show');
+  const [currentJobView, setCurrenetJobView]=useState(null);
+  const [form,setForm] = useState(defaultForm);
+  const [qualification, setQualification] = useState('');
+  const [qualifications, setQualifications] = useState([]);
+  const [duties, setDuties]= useState([]);
+  const [duty, setDuty]=useState('');
+  const [errorMessage, setErrorMessage]= useState(null);
+  const [errorMessages, setErrorMessages]= useState(defaultErroMessages);
+  const inputErrorMessage='*Required';
+
+  const updateForm = (field: string,value: any)=>{
+    setForm((updatedForm) =>{
+      return {
+        ...updatedForm,
+        [field]: value
+      };
+    });
+    if(!(Array.isArray(value))){
+      console.log(value);
+      onBlur(field,value);
+    }
+    console.log(form);
+  };
+
+  const onBlur = (field: string, value: any)=>{
+    const status=!value.trim()?true:false;
+    setErrorMessages((updatedErrorMessages)=>{
+      return {
+        ...updatedErrorMessages,
+        [field]: status
+      };
+    });
+  };
+  const updateQualification = (e: any)=>{
     setQualification(e.target.value);
   };
-  const removeQualification = (id:string)=>{
+
+  const removeQualification = (id: string)=>{
     const newQualifications=qualifications.filter((qualification)=>qualification.id!=id);
     setQualifications(newQualifications);
+    updateForm('qualifications',newQualifications);
   };
+
   const addQualification = ()=>{
-    if(qualification.trim()===''){
+    if(!qualification.trim()){
       return;
     }
     setQualifications([
       ...qualifications,{id:qualification,value:qualification}
     ]);
+    updateForm('qualifications',qualifications);
     setQualification('');
   };
+
   const updateDuty = (e:any)=>{
     setDuty(e.target.value);
   };
+
   const removeDuty = (id:string)=>{
     const newDuties=duties.filter((duty)=>duty.id!=id);
     setDuties(newDuties);
+    updateForm('duties',newDuties);
   };
+
   const addDuty = ()=>{
-    if(duty.trim()===''){
+    if(!duty.trim()){
       return;
     }
     setDuties([
       ...duties,{id:duty,value:duty}
     ]);
+    updateForm('duties',duties);
     setDuty('');
   };
+
   const showPreview = (jobView:JobDet) =>{
     setCurrenetJobView(jobView);
   };
+
   const disablePreview = () =>{
     setCurrenetJobView(null);
     setPreview('form show');
   };
+
   const previewBtnHandler = (e:any) =>{
     e.preventDefault();
-    let form=e.target.form;
-
-    let jobView={
-      job:{
-        title:form.title.value,
-        qualification:form.qual.value,
-        experience:form.exp.value,
-      },
-      company:{
-        name:form.orgName.value,
-        type:form.orgType.value,
-        logo:form.orgLogo.value,
-      },
-      location:{
-        city:form.city.value,
-        state:form.state.value,
-        country:form.country.value,
-        region:form.region.value,
-      },
-      dates:{
-        postingDate:new Date(form.pDate.value),
-        expiryDate:new Date(form.eDate.value),
-        closingDate:new Date(form.appClosingDate.value),
-        removingJobDate:new Date(form.remJobDate.value),
-      },
-      salary:{
-        sal:form.salary.value,
-        hours:form.hours.value,
-        type:form.jobType.value,
-      },
-      qualifications:qualifications.map((qualification)=>{return qualification.value;}),
-      duties:duties.map((duty)=>{return duty.value;}),
-    };
-
-    if(validate(jobView)){
-      console.log('okay');
+    let jobView;
+    if((jobView=validate(form))){
       setPreview('form hide');
       showPreview(jobView);
     }else{
       setErrorMessage('Please fill the form ...');
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 2000);
     }
-
   };
 
   return (
@@ -104,7 +156,7 @@ const Form = () => {
         <div className="superSection">
           <div className="sections">
             <div className="upside">
-              <div className="headTitle">Post A Job</div>
+              <div className="headTitle">Post A Job </div>
             </div>
           </div>
           <div className="sections">
@@ -112,30 +164,92 @@ const Form = () => {
               <div className="headTitle">Job Details</div>
               <div className="row">
                 <label htmlFor="title">Job Title</label>
-                <input type="text" name="title" required id="title" />
+                <div className="flexdown">
+                  <input
+                    type="text"
+                    name="title"
+                    onChange={(e)=>updateForm('title',e.target.value)}
+                    onBlur={(e)=>onBlur('title',e.target.value)}
+                    required
+                    id="title"
+                  />
+                </div>
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['title'] && inputErrorMessage }</span>
               </div>
               <div className="row">
-                <label htmlFor="qual">Qualification</label>
-                <input type="text" name="qual" required id="qual" />
+                <label htmlFor="qualification">Qualification</label>
+                <input
+                  type="text"
+                  name="qualification"
+                  onChange={(e)=>updateForm('qualification',e.target.value)}
+                  onBlur={(e)=>onBlur('qualification',e.target.value)}
+                  required
+                  id="qualification"
+                />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['qualification'] && inputErrorMessage}</span>
               </div>
               <div className="row">
-                <label htmlFor="exp">Experience</label>
-                <input type="text" name="exp" required id="exp" />
+                <label htmlFor="experience">Experience</label>
+                <input
+                  type="text"
+                  name="experience"
+                  onChange={(e)=>updateForm('experience',e.target.value)}
+                  onBlur={(e)=>onBlur('experience',e.target.value)}
+                  required
+                  id="experience"
+                />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['experience'] && inputErrorMessage}</span>
               </div>
             </div>
             <div className="side">
               <div className="headTitle">Company Details</div>
               <div className="row">
-                <label htmlFor="orgName">Company Name</label>
-                <input type="text" name="orgName" required id="orgName" />
+                <label htmlFor="companyName">Company Name</label>
+                <input
+                  type="text"
+                  name="companyName"
+                  onChange={(e)=>updateForm('companyName',e.target.value)}
+                  onBlur={(e)=>onBlur('companyName',e.target.value)}
+                  required
+                  id="companyName"
+                />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['companyName'] && inputErrorMessage}</span>
               </div>
               <div className="row">
-                <label htmlFor="orgType">Organization Type</label>
-                <input type="text" name="orgType" required id="orgType" />
+                <label htmlFor="companyType">Organization Type</label>
+                <input
+                  type="text"
+                  name="companyType"
+                  onChange={(e)=>updateForm('companyType',e.target.value)}
+                  onBlur={(e)=>onBlur('companyType',e.target.value)}
+                  required
+                  id="companyType"
+                />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['companyType'] && inputErrorMessage}</span>
               </div>
               <div className="row">
-                <label htmlFor="orgLogo"> Logo</label>
-                <input type="file" className="input" required name="orgLogo" id="orgLogo" />
+                <label htmlFor="companyLogo"> Logo</label>
+                <input
+                  type="file"
+                  className="input"
+                  name="compnayLogo"
+                  onChange={(e)=>updateForm('companyLogo',e.target.files)}
+                  onBlur={(e)=>onBlur('companyLogo',e.target.files)}
+                  required
+                  id="compnayLogo" />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['companyLogo'] && inputErrorMessage}</span>
               </div>
             </div>
           </div>
@@ -144,50 +258,125 @@ const Form = () => {
               <div className="headTitle">Location Details</div>
               <div className="row">
                 <label htmlFor="city">City</label>
-                <input type="text" name="city" required id="city" />
+                <input
+                  type="text"
+                  name="city"
+                  onChange={(e)=>updateForm('city',e.target.value)}
+                  onBlur={(e)=>onBlur('city',e.target.value)}
+                  required
+                  id="city"
+                />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['city'] && inputErrorMessage}</span>
               </div>
               <div className="row">
                 <label htmlFor="state">State</label>
-                <select className="input" required name="state" id="state">
-                  <option value="">select</option>
-                  <option value="india">Telangana</option>
-                  <option value="us">Kerela</option>
-                  <option value="canada">TamilNadu</option>
-                  <option value="england">Maharastra</option>
-                </select>
+                <input
+                  type="text"
+                  name="state"
+                  onChange={(e)=>updateForm('state',e.target.value)}
+                  onBlur={(e)=>onBlur('state',e.target.value)}
+                  required
+                  id="state"
+                />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['state'] && inputErrorMessage}</span>
               </div>
               <div className="row">
                 <label htmlFor="country">Country</label>
-                <select className="input" required name="country" id="country">
-                  <option value="">select</option>
-                  <option value="india">India</option>
-                  <option value="us">US</option>
-                  <option value="canada">Canada</option>
-                  <option value="england">England</option>
-                </select>
+                <input
+                  type="text"
+                  name="country"
+                  onChange={(e)=>updateForm('country',e.target.value)}
+                  onBlur={(e)=>onBlur('country',e.target.value)}
+                  required
+                  id="country"
+                />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['country'] && inputErrorMessage}</span>
               </div>
               <div className="row">
                 <label htmlFor="region">Region</label>
-                <input type="text" name="region" required id="region" />
+                <input
+                  type="text"
+                  name="region"
+                  onChange={(e)=>updateForm('region',e.target.value)}
+                  onBlur={(e)=>onBlur('region',e.target.value)}
+                  required
+                  id="region"
+                />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['region'] && inputErrorMessage}</span>
               </div>
             </div>
             <div className="side">
               <div className="headTitle">Dates</div>
               <div className="row">
-                <label htmlFor="pDate">Posting Date</label>
-                <input className="input" min={new Date().toISOString().split('T')[0]} type="date" required name="pDate" id="pDate" />
+                <label htmlFor="postingDate">Posting Date</label>
+                <input
+                  className="input"
+                  min={new Date().toISOString().split('T')[0]}
+                  type="date" required
+                  name="postingDate"
+                  onChange={(e)=>updateForm('postingDate',e.target.value)}
+                  onBlur={(e)=>onBlur('postingDate',e.target.value)}
+                  id="postingDate"
+                />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['postingDate'] && inputErrorMessage}</span>
               </div>
               <div className="row">
-                <label htmlFor="eDate">Expiry Date</label>
-                <input className="input" min={new Date().toISOString().split('T')[0]} type="date" required name="eDate" id="eDate" />
+                <label htmlFor="expiryDate">Expiry Date</label>
+                <input
+                  className="input"
+                  min={new Date().toISOString().split('T')[0]}
+                  type="date"
+                  required
+                  name="expiryDate"
+                  onChange={(e)=>updateForm('expiryDate',e.target.value)}
+                  onBlur={(e)=>onBlur('expiryDate',e.target.value)}
+                  id="expiryDate"
+                />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['expiryDate'] && inputErrorMessage}</span>
               </div>
               <div className="row">
                 <label htmlFor="appClosingDate">Closing Job</label>
-                <input className="input" min={new Date().toISOString().split('T')[0]} type="date" required name="appClosingDate" id="appClosingDate" />
+                <input
+                  className="input"
+                  min={new Date().toISOString().split('T')[0]}
+                  type="date"
+                  required
+                  name="appClosingDate"
+                  onChange={(e)=>updateForm('appClosingDate',e.target.value)}
+                  onBlur={(e)=>onBlur('appClosingDate',e.target.value)}
+                  id="appClosingDate"
+                />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['appClosingDate'] && inputErrorMessage}</span>
               </div>
               <div className="row">
-                <label htmlFor="remJobDate">Removing Job</label>
-                <input className="input" min={new Date().toISOString().split('T')[0]} type="date" required name="remJobDate" id="remJobDate" />
+                <label htmlFor="removingJobDate">Removing Job</label>
+                <input
+                  className="input"
+                  min={new Date().toISOString().split('T')[0]}
+                  type="date"
+                  required
+                  name="removingJobDate"
+                  onChange={(e)=>updateForm('removingJobDate',e.target.value)}
+                  onBlur={(e)=>onBlur('removingJobDate',e.target.value)}
+                  id="removingJobDate"
+                />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['removingJobDate'] && inputErrorMessage}</span>
               </div>
             </div>
           </div>
@@ -204,7 +393,7 @@ const Form = () => {
                 }
               </ul>
               <div className="row">
-                <input type="text" name="extraq" onChange={updateQualification} id="qlinput" placeholder="EX:BTech CSE" />
+                <input type="text" name="extraqualification"  onChange={updateQualification} id="qlinput" placeholder="EX:BTech CSE" />
                 <button type="button"  onClick={addQualification} className="addBtn" >Add+</button>
               </div>
             </div>
@@ -220,7 +409,7 @@ const Form = () => {
                 }
               </ul>
               <div className="row">
-                <input type="text" name="extraq"  onChange={updateDuty} id="rrinput" placeholder="EX:FrontEnd Developer" />
+                <input type="text" name="extraDuty"  onChange={updateDuty} id="rrinput" placeholder="EX:FrontEnd Developer" />
                 <button type="button"  onClick={addDuty} className="addBtn" >Add+</button>
               </div>
             </div>
@@ -230,19 +419,49 @@ const Form = () => {
               <div className="headTitle">Salary Details</div>
               <div className="row">
                 <label htmlFor="salary">Salary</label>
-                <input type="text" name="salary" required id="salary" />
+                <input
+                  type="number"
+                  name="salary"
+                  onChange={(e)=>updateForm('salary',e.target.value)}
+                  onBlur={(e)=>onBlur('salary',e.target.value)}
+                  required
+                  id="salary"
+                />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['salary'] && inputErrorMessage}</span>
               </div>
               <div className="row">
                 <label htmlFor="hours">Job Hours</label>
-                <input type="text" name="hours" required id="hours" />
+                <input
+                  type="number"
+                  name="hours"
+                  onChange={(e)=>updateForm('hours',e.target.value)}
+                  onBlur={(e)=>onBlur('hours',e.target.value)}
+                  required
+                  id="hours"
+                />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['hours'] && inputErrorMessage}</span>
               </div>
               <div className="row">
                 <label htmlFor="jobType">Job Type</label>
-                <select className="input" required name="jobType" id="jobType">
+                <select
+                  className="input"
+                  required
+                  name="jobType"
+                  id="jobType"
+                  onChange={(e)=>updateForm('jobType',e.target.value)}
+                  onBlur={(e)=>onBlur('jobType',e.target.value)}
+                >
                   <option value="">select</option>
                   <option value="regular">Regular</option>
                   <option value="permanent">Parmanent</option>
                 </select>
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['jobType'] && inputErrorMessage}</span>
               </div>
             </div>
             <div className="side">
@@ -255,11 +474,30 @@ const Form = () => {
               </div>
               <div className="row">
                 <label htmlFor="sub">Email ID</label>
-                <input type="mail" name="sub"  id="sub" placeholder="example@gmail.com" />
+                <input
+                  type="mail"
+                  name="submisionEmail"
+                  onChange={(e)=>updateForm('submisionEmail',e.target.value)}
+                  onBlur={(e)=>onBlur('submisionEmail',e.target.value)}
+                  id="sub"
+                  placeholder="example@gmail.com"
+                />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['submisionEmail'] && inputErrorMessage}</span>
               </div>
               <div className="row">
                 <label htmlFor="sub">Employer ID</label>
-                <input type="mail" name="sub"  id="sub" placeholder="example@gmail.com" />
+                <input
+                  type="mail"
+                  name="employersEmail"
+                  onChange={(e)=>updateForm('employersEmail',e.target.value)}
+                  onBlur={(e)=>onBlur('employersEmail',e.target.value)}
+                  id="sub"
+                  placeholder="example@gmail.com" />
+              </div>
+              <div className="ErrorBox">
+                <span className="inputErrorMesg">{errorMessages['employersEmail'] && inputErrorMessage}</span>
               </div>
             </div>
           </div>
