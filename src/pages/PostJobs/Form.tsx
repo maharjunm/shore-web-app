@@ -72,7 +72,6 @@ const Form = () => {
       console.log(value);
       onBlur(field,value);
     }
-    console.log(form);
   };
 
   const onBlur = (field: string, value: any)=>{
