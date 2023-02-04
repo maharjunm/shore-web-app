@@ -161,19 +161,19 @@ const Form = () => {
               <div className="headTitle">Dates</div>
               <div className="row">
                 <label htmlFor="pDate">Posting Date</label>
-                <input className="input" type="date" required name="pDate" id="pDate" />
+                <input className="input" min={new Date().toISOString().split('T')[0]} type="date" required name="pDate" id="pDate" />
               </div>
               <div className="row">
                 <label htmlFor="eDate">Expiry Date</label>
-                <input className="input" type="date" required name="eDate" id="eDate" />
+                <input className="input" min={new Date().toISOString().split('T')[0]} type="date" required name="eDate" id="eDate" />
               </div>
               <div className="row">
                 <label htmlFor="appClosingDate">Closing Job</label>
-                <input className="input" type="date" required name="appClosingDate" id="appClosingDate" />
+                <input className="input" min={new Date().toISOString().split('T')[0]} type="date" required name="appClosingDate" id="appClosingDate" />
               </div>
               <div className="row">
                 <label htmlFor="remJobDate">Removing Job</label>
-                <input className="input" type="date" required name="remJobDate" id="remJobDate" />
+                <input className="input" min={new Date().toISOString().split('T')[0]} type="date" required name="remJobDate" id="remJobDate" />
               </div>
             </div>
           </div>

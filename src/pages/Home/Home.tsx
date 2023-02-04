@@ -1,10 +1,14 @@
+
 import React ,{useState} from 'react';
-import { ErrorBoundary  } from '../../components';
 import  {JobDet}  from '../../components/DataModels/JobDet';
 import JobsData from './JobsData';
 import JobFeed from './JobFeed';
 import JobDetails from './JobDetails';
 import './Home.scss';
+import { ErrorBoundary,Searchbar, Location } from '../../components';
+import data from '../../components/SearchBar/data';
+
+
 const Home = () => {
   const [currentJob,setCurrentJob]= useState(null);
   const [view,setView]= useState('hide');
@@ -17,7 +21,14 @@ const Home = () => {
     <ErrorBoundary>
       <div className="contentbox">
         <div className="top">
-          <h1>seachbar and location bar goes here</h1>
+          <div className='inputForm'>
+            <div className="searchBar">
+              <Searchbar data={data} />
+            </div>
+            <div className='locationBar'>
+              <Location />
+            </div>
+          </div>
         </div>
         <div className="down">
           <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
