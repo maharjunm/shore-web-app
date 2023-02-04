@@ -52,13 +52,15 @@
   font-weight: bold;
   color: var(--blackHeadColor);
 }
-.jobTitle .title .wrong{
+.wrong{
+  float:right;
   font-size: 25px;
   font-weight: 100;
   line-height: 10px;
   padding: 5px;
   color: #000;
   cursor: pointer;
+  margin-left: 10px;
   border-radius: 2px;
 }
 .jobTitle .title .wrong a{
@@ -156,4 +158,24 @@
   border-radius: 5px;
   color:black;
   font-weight: 500;
+}
+.mainHead{
+  display: flex;
+  justify-content: space-between;
+}
+.sideContent{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.logoBox{
+  padding: 10px;
+  margin:10px;
+  display: flex;
+  justify-content: space-between;
+}
+.companyLogoImage{
+  max-width: 150px;
+  max-height: 150px;
+  border-radius:20px;
 }

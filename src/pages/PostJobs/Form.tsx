@@ -1,31 +1,11 @@
 import React,{useState} from 'react';
 import { ErrorBoundary } from '../../components';
-import  {JobDet}  from '../../components/DataModels/JobDet';
+import  FormData  from '../../components/DataModels/FormData';
 import './Form.scss';
 import JobDetails from '../Home/JobDetails';
 import validate from './validate';
-interface IForm{
-  qualifications:{id:string,value:string}[];
-  duties:{id:string,value:string}[];
-  title:string
-  qualification:string;
-  experience:string;
-  companyName:string;
-  companyType:string;
-  companyLogo:File;
-  city:string;
-  state:string;
-  country:string;
-  region:string;
-  postingDate:Date;
-  expiryDate:Date;
-  appClosingDate:Date;
-  removingJobDate:Date;
-  salary:number;
-  hours:number;
-  jobType:string;
-}
-const defaultForm:IForm = {
+
+const defaultForm:FormData = {
   qualifications:[],
   duties:[],
   title:'',
@@ -49,7 +29,6 @@ const defaultForm:IForm = {
 const defaultErroMessages = { name: false };
 
 const Form = () => {
-
   const [preview, setPreview] = useState('form show');
   const [currentJobView, setCurrenetJobView]=useState(null);
   const [form,setForm] = useState(defaultForm);
@@ -62,7 +41,7 @@ const Form = () => {
   const inputErrorMessage='*Required';
 
   const updateForm = (field: string,value: any)=>{
-    setForm((updatedForm) =>{
+    setForm((updatedForm:FormData) =>{
       return {
         ...updatedForm,
         [field]: value
@@ -125,7 +104,7 @@ const Form = () => {
     setDuty('');
   };
 
-  const showPreview = (jobView:JobDet) =>{
+  const showPreview = (jobView:FormData) =>{
     setCurrenetJobView(jobView);
   };
 
@@ -150,7 +129,7 @@ const Form = () => {
 
   return (
     <ErrorBoundary>
-      {currentJobView && <JobDetails key={currentJobView.job.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} from="postajob" />}
+      {currentJobView && <JobDetails key={currentJobView.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} from="postajob" />}
       <form className={preview} >
         <div className="superSection">
           <div className="sections">
@@ -319,6 +298,7 @@ const Form = () => {
                 <input
                   className="input"
                   min={new Date().toISOString().split('T')[0]}
+                  max={new Date('9999-12-30').toISOString().split('T')[0]}
                   type="date" required
                   name="postingDate"
                   onChange={(e)=>updateForm('postingDate',e.target.value)}
@@ -334,6 +314,7 @@ const Form = () => {
                 <input
                   className="input"
                   min={new Date().toISOString().split('T')[0]}
+                  max={new Date('9999-12-30').toISOString().split('T')[0]}
                   type="date"
                   required
                   name="expiryDate"
@@ -350,6 +331,7 @@ const Form = () => {
                 <input
                   className="input"
                   min={new Date().toISOString().split('T')[0]}
+                  max={new Date('9999-12-30').toISOString().split('T')[0]}
                   type="date"
                   required
                   name="appClosingDate"
@@ -366,6 +348,7 @@ const Form = () => {
                 <input
                   className="input"
                   min={new Date().toISOString().split('T')[0]}
+                  max={new Date('9999-12-30').toISOString().split('T')[0]}
                   type="date"
                   required
                   name="removingJobDate"
