@@ -1,9 +1,5 @@
 import  FormData  from '../../components/DataModels/FormData';
 
-function isDateEmpty(date: Date): boolean {
-  return !date || isNaN(date.valueOf());
-}
-
 const validate=(form:FormData)=>{
   if(   !form.title            ||
         !form.qualification    ||
