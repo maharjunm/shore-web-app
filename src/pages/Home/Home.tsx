@@ -1,18 +1,17 @@
-
 import React ,{useState} from 'react';
-import  {JobDet}  from '../../components/DataModels/JobDet';
 import JobsData from './JobsData';
 import JobFeed from './JobFeed';
 import JobDetails from './JobDetails';
 import './Home.scss';
 import { ErrorBoundary,Searchbar, Location } from '../../components';
+import  FormData  from '../../components/DataModels/FormData';
 import data from '../../components/SearchBar/data';
 
 
 const Home = () => {
   const [currentJob,setCurrentJob]= useState(null);
   const [view,setView]= useState('hide');
-  const jobClick=(job:JobDet,currentView:string)=>{
+  const jobClick=(job:FormData,currentView:string)=>{
     setView(currentView);
     setCurrentJob(job);
   };
@@ -32,12 +31,12 @@ const Home = () => {
         </div>
         <div className="down">
           <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
-            { jobs.map((element:JobDet)=>(
-              <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />
+            { jobs.map((element:FormData)=>(
+              <JobFeed key={element.title} jobd={element} jobClick={jobClick} />
             )) }
           </div>
           <div className={view}>
-            {currentJob && <JobDetails key={currentJob.job.title} jobd={currentJob} jobClick={jobClick} disablePreview={null} from="home"  />}
+            {currentJob && <JobDetails key={currentJob.title} jobd={currentJob} jobClick={jobClick} disablePreview={null} from="home"  />}
           </div>
         </div>
       </div>
