@@ -172,10 +172,12 @@
   padding: 10px;
   margin:10px;
   display: flex;
+  max-width: 140px;
+  max-height: 140px;
   justify-content: space-between;
 }
 .companyLogoImage{
-  max-width: 150px;
-  max-height: 150px;
+  background-position: center;
+  shape-image-threshold: @extend ;
   border-radius:20px;
 }
