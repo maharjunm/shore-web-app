@@ -27,6 +27,12 @@ const JobDetails= (det:Props) => {
         <div className="sticky">
           <div className="mainHead">
             <div className="sideContent">
+              <div className="logoBox">
+                <img
+                  className="companyLogoImage"
+                  src={det.from==='home'?p.companyLogo.toString():URL.createObjectURL(p.companyLogo[0])}
+                />
+              </div>
               <div className="jobTitle">
                 <div className="title">
                   <div>{p.title}</div>
@@ -35,9 +41,6 @@ const JobDetails= (det:Props) => {
                 <span className='companyLocation'>{p.city},{p.state}-{p.country}</span>
                 <span>&#8377;{p.salary} - {p.jobType}</span>
                 <span>{p.experience}</span>
-              </div>
-              <div className="logoBox">
-                <img className="companyLogoImage" src={det.from==='home'?p.companyLogo.toString():URL.createObjectURL(p.companyLogo[0])}/>
               </div>
             </div>
             <div className="wrong" onClick={clicked}>x</div>
