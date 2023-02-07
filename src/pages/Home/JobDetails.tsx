@@ -9,16 +9,16 @@ interface Props {
     jobd:FormData | null;
     jobClick:(currentJob:FormData,currentView:string)=>void;
     disablePreview:()=>void;
-    from:string;
+    isHome:boolean;
 }
-const JobDetails= (det:Props) => {
-  let p=det.jobd;
+const JobDetails= (details:Props) => {
+  let p=details.jobd;
+  const imagePath = details.isHome ? p.companyLogo.toString() : URL.createObjectURL(p.companyLogo);
   const clicked=()=>{
-    if(det.from==='home'){
-      det.jobClick(null,'hide');
-    }
-    if(det.from==='postajob'){
-      det.disablePreview();
+    if(details.isHome){
+      details.jobClick(null,'hide');
+    }else{
+      details.disablePreview();
     }
   };
   return (
@@ -28,10 +28,7 @@ const JobDetails= (det:Props) => {
           <div className="mainHead">
             <div className="sideContent">
               <div className="logoBox">
-                <img
-                  className="companyLogoImage"
-                  src={det.from==='home'?p?.companyLogo.toString():URL?.createObjectURL(p.companyLogo[0])}
-                />
+                <img className="companyLogoImage" src={imagePath} />
               </div>
               <div className="jobTitle">
                 <div className="title">

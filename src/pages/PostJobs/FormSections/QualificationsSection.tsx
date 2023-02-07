@@ -12,7 +12,7 @@ const QualificationsSection =  (props: Props) => {
   const [qualifications, setQualifications] = useState([]);
   const [emptyInpurError, setEmptyInputError] = useState(false);
   const inputErrorMessage = '*Required';
-  const {updateForm} = props;
+  const { updateForm } = props;
 
   const updateQualification = (e: any)=>{
     setQualification(e.target.value);
@@ -25,7 +25,6 @@ const QualificationsSection =  (props: Props) => {
   };
 
   const addQualification = ()=>{
-    console.log(qualification);
     if(!qualification.trim()){
       setEmptyInputError(true);
       setTimeout(() => {

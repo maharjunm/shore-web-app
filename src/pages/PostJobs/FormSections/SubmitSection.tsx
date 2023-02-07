@@ -4,14 +4,11 @@ import  FormData  from '../../../components/DataModels/FormData';
 
 interface Props{
   updateForm: (field: string, value: any) => void;
-  onBlur: (field: string, value: any) => void;
-  errorMessages: any;
 }
 
 const SubmitSection =  (props: Props) => {
 
-  const inputErrorMessage = '*Required';
-  const {updateForm,onBlur, errorMessages} = props;
+  const { updateForm } = props;
 
   return(
     <ErrorBoundary>
@@ -29,13 +26,9 @@ const SubmitSection =  (props: Props) => {
             type="mail"
             name="submisionEmail"
             onChange={(e)=>updateForm('submisionEmail',e.target.value)}
-            onBlur={(e)=>onBlur('submisionEmail',e.target.value)}
             id="sub"
             placeholder="example@gmail.com"
           />
-        </div>
-        <div className="ErrorBox">
-          <span className="inputErrorMesg">{errorMessages['submisionEmail'] && inputErrorMessage}</span>
         </div>
         <div className="row">
           <label htmlFor="sub">Employer ID</label>
@@ -43,12 +36,8 @@ const SubmitSection =  (props: Props) => {
             type="mail"
             name="employersEmail"
             onChange={(e)=>updateForm('employersEmail',e.target.value)}
-            onBlur={(e)=>onBlur('employersEmail',e.target.value)}
             id="sub"
             placeholder="example@gmail.com" />
-        </div>
-        <div className="ErrorBox">
-          <span className="inputErrorMesg">{errorMessages['employersEmail'] && inputErrorMessage}</span>
         </div>
       </div>
     </ErrorBoundary>
