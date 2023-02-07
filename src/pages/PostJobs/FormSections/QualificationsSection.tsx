@@ -21,11 +21,11 @@ const QualificationsSection =  (props: Props) => {
   const removeQualification = (id: string)=>{
     const newQualifications=qualifications.filter((qualification)=>qualification.id!=id);
     setQualifications(newQualifications);
-    console.log(qualifications.length);
     updateForm('qualifications',newQualifications);
   };
 
   const addQualification = ()=>{
+    console.log(qualification);
     if(!qualification.trim()){
       setEmptyInputError(true);
       setTimeout(() => {
@@ -62,6 +62,7 @@ const QualificationsSection =  (props: Props) => {
             type="text"
             name="extraqualification"
             onChange={updateQualification}
+            onBlur={updateQualification}
             id="qlinput"
             placeholder="EX:BTech CSE"
           />

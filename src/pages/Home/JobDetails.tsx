@@ -6,7 +6,7 @@ import  FormData  from '../../components/DataModels/FormData';
 import  JobsData  from './JobsData';
 interface Props {
     key:string,
-    jobd:FormData;
+    jobd:FormData | null;
     jobClick:(currentJob:FormData,currentView:string)=>void;
     disablePreview:()=>void;
     from:string;

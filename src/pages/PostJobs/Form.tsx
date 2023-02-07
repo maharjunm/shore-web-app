@@ -15,8 +15,8 @@ import{
   SubmitSection } from './FormSections/';
 
 const defaultForm:FormData = {
-  qualifications:[],
-  duties:[],
+  qualifications:null,
+  duties:null,  
   title:'',
   qualification:'',
   experience:'',
@@ -58,7 +58,7 @@ const Form = () => {
   };
 
   const onBlur = (field: string, value: any)=>{
-    const status=!value.trim()?true:false;
+    const status = (typeof(value)==='string' && !value.trim())?true:false;
     setErrorMessages((updatedErrorMessages)=>{
       return {
         ...updatedErrorMessages,
