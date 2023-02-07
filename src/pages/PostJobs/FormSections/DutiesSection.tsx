@@ -19,9 +19,15 @@ const DutiesSection =  (props: Props) => {
   };
 
   const removeDuty = (id:string)=>{
-    const newDuties=duties.filter((duty)=>duty.id!=id);
-    setDuties(newDuties);
-    updateForm('duties',newDuties);
+    setDuties((updatedDuties)=>{
+      const newDuties=duties.filter((duty)=>duty.id!=id);
+      if(newDuties.length===0){
+        updateForm('duties',null);
+        return newDuties;
+      }
+      updateForm('duties',newDuties);
+      return newDuties;
+    });
   };
 
   const addDuty = ()=>{

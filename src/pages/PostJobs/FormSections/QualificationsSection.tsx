@@ -19,9 +19,16 @@ const QualificationsSection =  (props: Props) => {
   };
 
   const removeQualification = (id: string)=>{
-    const newQualifications=qualifications.filter((qualification)=>qualification.id!=id);
-    setQualifications(newQualifications);
-    updateForm('qualifications',newQualifications);
+    setQualifications((updatedQulifications)=>{
+      const newQualifications=qualifications.filter((qualification)=>qualification.id!=id);
+      if(newQualifications.length===0){
+        updateForm('qualifications',null);
+        return newQualifications;
+      }
+      updateForm('qualifications',newQualifications);
+      return newQualifications;
+    });
+
   };
 
   const addQualification = ()=>{

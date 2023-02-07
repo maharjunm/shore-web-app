@@ -54,8 +54,9 @@ const SalarySection =  (props: Props) => {
           >
             <option value="">select</option>
             <option value="Contract">Contract</option>
-            <option value="Regular">Regular</option>
-            <option value="Permanent">Parmanent</option>
+            <option value="Regular">Full-Time</option>
+            <option value="Permanent">Part-Time</option>
+            <option value="Permanent">Internship</option>
           </select>
         </div>
       </div>
