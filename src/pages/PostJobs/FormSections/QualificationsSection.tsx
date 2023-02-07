@@ -52,7 +52,7 @@ const QualificationsSection =  (props: Props) => {
           {
             qualifications.map((qualification)=>(
               <li key={qualification.id}>{qualification.value}
-                <span  onClick={()=>removeQualification(qualification.id)}>x</span>
+                <span  onClick={()=>removeQualification(qualification.id)} className="mandatoryField" >x</span>
               </li>
             ))
           }

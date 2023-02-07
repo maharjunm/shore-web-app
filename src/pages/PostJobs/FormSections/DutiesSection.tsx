@@ -50,7 +50,7 @@ const DutiesSection =  (props: Props) => {
           {
             duties.map((duty)=>(
               <li key={duty.id}>{duty.value}
-                <span onClick={()=>removeDuty(duty.id)}>x</span>
+                <span onClick={()=>removeDuty(duty.id)} className="mandatoryField" >x</span>
               </li>
             ))
           }
