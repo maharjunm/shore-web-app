@@ -30,7 +30,7 @@ const JobDetails= (det:Props) => {
               <div className="logoBox">
                 <img
                   className="companyLogoImage"
-                  src={det.from==='home'?p.companyLogo.toString():URL.createObjectURL(p.companyLogo[0])}
+                  src={det.from==='home'?p?.companyLogo.toString():URL?.createObjectURL(p.companyLogo[0])}
                 />
               </div>
               <div className="jobTitle">

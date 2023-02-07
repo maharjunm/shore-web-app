@@ -33,11 +33,13 @@ const QualificationsSection =  (props: Props) => {
       }, 2000);
       return;
     }
-    setQualifications([
-      ...qualifications,{id:qualification,value:qualification}
-    ]);
-    console.log(qualifications);
-    updateForm('qualifications',qualifications);
+    setQualifications((updatedQulifications)=>{
+      const tempQualifications=[
+        ...qualifications,{id:qualification,value:qualification}
+      ];
+      updateForm('qualifications',tempQualifications);
+      return tempQualifications;
+    });
     setQualification('');
   };
 

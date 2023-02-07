@@ -16,7 +16,7 @@ import{
 
 const defaultForm:FormData = {
   qualifications:null,
-  duties:null,  
+  duties:null,
   title:'',
   qualification:'',
   experience:'',
@@ -46,6 +46,7 @@ const Form = () => {
   const [errorMessages, setErrorMessages]= useState(defaultErroMessages);
 
   const updateForm = (field: string,value: any)=>{
+    console.log(field,value);
     setForm((updatedForm:FormData) =>{
       return {
         ...updatedForm,
@@ -56,7 +57,6 @@ const Form = () => {
       onBlur(field,value);
     }
   };
-
   const onBlur = (field: string, value: any)=>{
     const status = (typeof(value)==='string' && !value.trim())?true:false;
     setErrorMessages((updatedErrorMessages)=>{
