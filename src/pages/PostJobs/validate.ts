@@ -6,7 +6,9 @@ const validate=(form:FormData)=>{
     'region', 'postingDate', 'expiryDate', 'appClosingDate', 'removingJobDate', 'salary', 'hours', 'jobType'
   ];
   const isValid = mandatoryFields.reduce((acc,field) => { return  acc && !form[field]; },true);
-
+  if(form.qualifications.length===0){
+    return null;
+  }
   return isValid ? null: form;
 
 };

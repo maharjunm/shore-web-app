@@ -18,7 +18,10 @@ const CompanyLocationSection =  (props: Props) => {
       <div className="side">
         <div className="headTitle">Company Location Details</div>
         <div className="row">
-          <label htmlFor="city">City</label>
+          <label htmlFor="city">
+            City
+            <span className="mandatoryField">*</span>
+          </label>
           <input
             type="text"
             name="city"
@@ -32,7 +35,10 @@ const CompanyLocationSection =  (props: Props) => {
           <span className="inputErrorMesg">{errorMessages['city'] && inputErrorMessage}</span>
         </div>
         <div className="row">
-          <label htmlFor="state">State</label>
+          <label htmlFor="state">
+            State
+            <span className="mandatoryField">*</span>
+          </label>
           <input
             type="text"
             name="state"
@@ -46,7 +52,10 @@ const CompanyLocationSection =  (props: Props) => {
           <span className="inputErrorMesg">{errorMessages['state'] && inputErrorMessage}</span>
         </div>
         <div className="row">
-          <label htmlFor="country">Country</label>
+          <label htmlFor="country">
+            Country
+            <span className="mandatoryField">*</span>
+          </label>
           <input
             type="text"
             name="country"
@@ -60,7 +69,10 @@ const CompanyLocationSection =  (props: Props) => {
           <span className="inputErrorMesg">{errorMessages['country'] && inputErrorMessage}</span>
         </div>
         <div className="row">
-          <label htmlFor="region">Region</label>
+          <label htmlFor="region">
+            Region
+            <span className="mandatoryField">*</span>
+          </label>
           <input
             type="text"
             name="region"

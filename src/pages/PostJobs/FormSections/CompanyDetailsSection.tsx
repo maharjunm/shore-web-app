@@ -18,7 +18,10 @@ const CompanyDetailsSection =  (props: Props) => {
       <div className="side">
         <div className="headTitle">Company Details</div>
         <div className="row">
-          <label htmlFor="companyName">Company Name</label>
+          <label htmlFor="companyName">
+            Company Name
+            <span className="mandatoryField">*</span>
+          </label>
           <input
             type="text"
             name="companyName"
@@ -32,7 +35,10 @@ const CompanyDetailsSection =  (props: Props) => {
           <span className="inputErrorMesg">{errorMessages['companyName'] && inputErrorMessage}</span>
         </div>
         <div className="row">
-          <label htmlFor="companyType">Organization Type</label>
+          <label htmlFor="companyType">
+            Organization Type
+            <span className="mandatoryField">*</span>
+          </label>
           <input
             type="text"
             name="companyType"
@@ -46,15 +52,22 @@ const CompanyDetailsSection =  (props: Props) => {
           <span className="inputErrorMesg">{errorMessages['companyType'] && inputErrorMessage}</span>
         </div>
         <div className="row">
-          <label htmlFor="companyLogo"> Logo</label>
+          <label htmlFor="companyLogo">
+            Logo
+            <span className="mandatoryField">*</span>
+          </label>
           <input
             type="file"
+            accept=".jpg,.png,.jpeg,"
             className="input"
             name="compnayLogo"
             onChange={(e)=>updateForm('companyLogo',e.target.files)}
             onBlur={(e)=>onBlur('companyLogo',e.target.files)}
             required
             id="compnayLogo" />
+        </div>
+        <div className="messageBox">
+          <span className="logotype"><i>(only  jpg, png, jpeg)</i></span>
         </div>
         <div className="ErrorBox">
           <span className="inputErrorMesg">{errorMessages['companyLogo'] && inputErrorMessage}</span>

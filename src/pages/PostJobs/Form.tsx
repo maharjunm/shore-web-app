@@ -53,7 +53,6 @@ const Form = () => {
       };
     });
     if(!(Array.isArray(value))){
-      console.log(value);
       onBlur(field,value);
     }
   };
@@ -91,10 +90,14 @@ const Form = () => {
     }
   };
 
+  const onSubmit = (e:any) =>{
+    e.preventDefault();
+  };
+
   return (
     <ErrorBoundary>
       {currentJobView && <JobDetails key={currentJobView.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} from="postajob" />}
-      <form className={preview} >
+      <form className={preview} onSubmit={onSubmit} >
         <div className="superSection">
           <div className="sections">
             <div className="upside">
@@ -123,7 +126,7 @@ const Form = () => {
             <p className="errorMessage">{errorMessage}</p>
           </div>
           <div className="downside">
-            <button type="submit" onClick={previewBtnHandler} className="btnstyle" >Preview</button>
+            <button type="button" onClick={previewBtnHandler} className="btnstyle" >Preview</button>
             <button type="submit" className="btnstyle" >Submit</button>
           </div>
         </div>

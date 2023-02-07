@@ -17,7 +17,10 @@ const JobTitleSection = (props:Props) => {
       <div className="side">
         <div className="headTitle">Job Details</div>
         <div className="row">
-          <label htmlFor="title">Job Title</label>
+          <label htmlFor="title">
+            Job Title
+            <span className="mandatoryField">*</span>
+          </label>
           <div className="flexdown">
             <input
               type="text"
@@ -33,7 +36,10 @@ const JobTitleSection = (props:Props) => {
           <span className="inputErrorMesg">{errorMessages['title'] && inputErrorMessage }</span>
         </div>
         <div className="row">
-          <label htmlFor="qualification">Qualification</label>
+          <label htmlFor="qualification">
+            Qualification
+            <span className="mandatoryField">*</span>
+          </label>
           <input
             type="text"
             name="qualification"
@@ -47,7 +53,10 @@ const JobTitleSection = (props:Props) => {
           <span className="inputErrorMesg">{errorMessages['qualification'] && inputErrorMessage}</span>
         </div>
         <div className="row">
-          <label htmlFor="experience">Experience</label>
+          <label htmlFor="experience">
+            Experience
+            <span className="mandatoryField">*</span>
+          </label>
           <input
             type="text"
             name="experience"

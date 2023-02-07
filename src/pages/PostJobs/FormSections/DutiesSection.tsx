@@ -10,6 +10,7 @@ const DutiesSection =  (props: Props) => {
 
   const [duties, setDuties]= useState([]);
   const [duty, setDuty]=useState('');
+  const [emptyInpurError, setEmptyInputError] = useState(false);
   const inputErrorMessage = '*Required';
   const {updateForm} = props;
 
@@ -25,6 +26,10 @@ const DutiesSection =  (props: Props) => {
 
   const addDuty = ()=>{
     if(!duty.trim()){
+      setEmptyInputError(true);
+      setTimeout(() => {
+        setEmptyInputError(false);
+      }, 2000);
       return;
     }
     setDuties([
@@ -37,7 +42,10 @@ const DutiesSection =  (props: Props) => {
   return(
     <ErrorBoundary>
       <div className="side">
-        <div className="headTitle">Job Dudies</div>
+        <div className="headTitle">
+          Job Duties
+          <span className="mandatoryField">*</span>
+        </div>
         <ul>
           {
             duties.map((duty)=>(
@@ -50,6 +58,9 @@ const DutiesSection =  (props: Props) => {
         <div className="row">
           <input type="text" name="extraDuty"  onChange={updateDuty} id="rrinput" placeholder="EX:FrontEnd Developer" />
           <button type="button"  onClick={addDuty} className="addBtn" >Add+</button>
+        </div>
+        <div className="ErrorBox">
+          <span className="inputErrorMesg">{emptyInpurError && inputErrorMessage }</span>
         </div>
       </div>
     </ErrorBoundary>

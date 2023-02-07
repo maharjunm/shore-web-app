@@ -18,7 +18,10 @@ const SalarySection =  (props: Props) => {
       <div className="side">
         <div className="headTitle">Salary Details</div>
         <div className="row">
-          <label htmlFor="salary">Salary</label>
+          <label htmlFor="salary">
+            Salary
+            <span className="mandatoryField">*</span>
+          </label>
           <input
             type="number"
             name="salary"
@@ -32,7 +35,10 @@ const SalarySection =  (props: Props) => {
           <span className="inputErrorMesg">{errorMessages['salary'] && inputErrorMessage}</span>
         </div>
         <div className="row">
-          <label htmlFor="hours">Job Hours</label>
+          <label htmlFor="hours">
+            Job Hours
+            <span className="mandatoryField">*</span>
+          </label>
           <input
             type="number"
             name="hours"
@@ -46,7 +52,10 @@ const SalarySection =  (props: Props) => {
           <span className="inputErrorMesg">{errorMessages['hours'] && inputErrorMessage}</span>
         </div>
         <div className="row">
-          <label htmlFor="jobType">Job Type</label>
+          <label htmlFor="jobType">
+            Job Type
+            <span className="mandatoryField">*</span>
+          </label>
           <select
             className="input"
             required
@@ -56,8 +65,9 @@ const SalarySection =  (props: Props) => {
             onBlur={(e)=>onBlur('jobType',e.target.value)}
           >
             <option value="">select</option>
-            <option value="regular">Regular</option>
-            <option value="permanent">Parmanent</option>
+            <option value="Contract">Contract</option>
+            <option value="Regular">Regular</option>
+            <option value="Permanent">Parmanent</option>
           </select>
         </div>
         <div className="ErrorBox">

@@ -10,6 +10,7 @@ const QualificationsSection =  (props: Props) => {
 
   const [qualification, setQualification] = useState('');
   const [qualifications, setQualifications] = useState([]);
+  const [emptyInpurError, setEmptyInputError] = useState(false);
   const inputErrorMessage = '*Required';
   const {updateForm} = props;
 
@@ -20,16 +21,22 @@ const QualificationsSection =  (props: Props) => {
   const removeQualification = (id: string)=>{
     const newQualifications=qualifications.filter((qualification)=>qualification.id!=id);
     setQualifications(newQualifications);
+    console.log(qualifications.length);
     updateForm('qualifications',newQualifications);
   };
 
   const addQualification = ()=>{
     if(!qualification.trim()){
+      setEmptyInputError(true);
+      setTimeout(() => {
+        setEmptyInputError(false);
+      }, 2000);
       return;
     }
     setQualifications([
       ...qualifications,{id:qualification,value:qualification}
     ]);
+    console.log(qualifications);
     updateForm('qualifications',qualifications);
     setQualification('');
   };
@@ -37,7 +44,10 @@ const QualificationsSection =  (props: Props) => {
   return(
     <ErrorBoundary>
       <div className="side">
-        <div className="headTitle">Extra Qualifications and Skills</div>
+        <div className="headTitle">
+          Extra Qualifications and Skills
+          <span className="mandatoryField">*</span>
+        </div>
         <ul>
           {
             qualifications.map((qualification)=>(
@@ -48,8 +58,17 @@ const QualificationsSection =  (props: Props) => {
           }
         </ul>
         <div className="row">
-          <input type="text" name="extraqualification"  onChange={updateQualification} id="qlinput" placeholder="EX:BTech CSE" />
+          <input
+            type="text"
+            name="extraqualification"
+            onChange={updateQualification}
+            id="qlinput"
+            placeholder="EX:BTech CSE"
+          />
           <button type="button"  onClick={addQualification} className="addBtn" >Add+</button>
+        </div>
+        <div className="ErrorBox">
+          <span className="inputErrorMesg">{emptyInpurError && inputErrorMessage }</span>
         </div>
       </div>
     </ErrorBoundary>

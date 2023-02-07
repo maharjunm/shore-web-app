@@ -18,7 +18,10 @@ const JobDates =  (props: Props) => {
       <div className="side">
         <div className="headTitle">Dates</div>
         <div className="row">
-          <label htmlFor="postingDate">Posting Date</label>
+          <label htmlFor="postingDate">
+            Posting Date
+            <span className="mandatoryField">*</span>
+          </label>
           <input
             className="input"
             min={new Date().toISOString().split('T')[0]}
@@ -34,7 +37,10 @@ const JobDates =  (props: Props) => {
           <span className="inputErrorMesg">{errorMessages['postingDate'] && inputErrorMessage}</span>
         </div>
         <div className="row">
-          <label htmlFor="expiryDate">Expiry Date</label>
+          <label htmlFor="expiryDate">
+            Expiry Date
+            <span className="mandatoryField">*</span>
+          </label>
           <input
             className="input"
             min={new Date().toISOString().split('T')[0]}
@@ -51,7 +57,10 @@ const JobDates =  (props: Props) => {
           <span className="inputErrorMesg">{errorMessages['expiryDate'] && inputErrorMessage}</span>
         </div>
         <div className="row">
-          <label htmlFor="appClosingDate">Closing Job</label>
+          <label htmlFor="appClosingDate">
+            Closing Job
+            <span className="mandatoryField">*</span>
+          </label>
           <input
             className="input"
             min={new Date().toISOString().split('T')[0]}
@@ -68,7 +77,10 @@ const JobDates =  (props: Props) => {
           <span className="inputErrorMesg">{errorMessages['appClosingDate'] && inputErrorMessage}</span>
         </div>
         <div className="row">
-          <label htmlFor="removingJobDate">Removing Job</label>
+          <label htmlFor="removingJobDate">
+            Removing Job
+            <span className="mandatoryField">*</span>
+          </label>
           <input
             className="input"
             min={new Date().toISOString().split('T')[0]}
