@@ -10,6 +10,7 @@ const DutiesSection =  (props: Props) => {
 
   const [duties, setDuties]= useState([]);
   const [duty, setDuty]=useState('');
+  const [emptyInpurError, setEmptyInputError] = useState(false);
   const inputErrorMessage = '*Required';
   const {updateForm} = props;
 
@@ -18,31 +19,47 @@ const DutiesSection =  (props: Props) => {
   };
 
   const removeDuty = (id:string)=>{
-    const newDuties=duties.filter((duty)=>duty.id!=id);
-    setDuties(newDuties);
-    updateForm('duties',newDuties);
+    setDuties((updatedDuties)=>{
+      const newDuties=duties.filter((duty)=>duty.id!=id);
+      if(newDuties.length===0){
+        updateForm('duties',null);
+        return newDuties;
+      }
+      updateForm('duties',newDuties);
+      return newDuties;
+    });
   };
 
   const addDuty = ()=>{
     if(!duty.trim()){
+      setEmptyInputError(true);
+      setTimeout(() => {
+        setEmptyInputError(false);
+      }, 2000);
       return;
     }
-    setDuties([
-      ...duties,{id:duty,value:duty}
-    ]);
-    updateForm('duties',duties);
+    setDuties((updateDuties)=>{
+      const tempDuties=[
+        ...duties,{id:duty,value:duty}
+      ];
+      updateForm('duties',tempDuties);
+      return tempDuties;
+    });
     setDuty('');
   };
 
   return(
     <ErrorBoundary>
       <div className="side">
-        <div className="headTitle">Job Dudies</div>
+        <div className="headTitle">
+          Job Duties
+          <span className="mandatoryField">*</span>
+        </div>
         <ul>
           {
             duties.map((duty)=>(
               <li key={duty.id}>{duty.value}
-                <span onClick={()=>removeDuty(duty.id)}>x</span>
+                <span onClick={()=>removeDuty(duty.id)} className="mandatoryField" >x</span>
               </li>
             ))
           }
@@ -50,6 +67,9 @@ const DutiesSection =  (props: Props) => {
         <div className="row">
           <input type="text" name="extraDuty"  onChange={updateDuty} id="rrinput" placeholder="EX:FrontEnd Developer" />
           <button type="button"  onClick={addDuty} className="addBtn" >Add+</button>
+        </div>
+        <div className="ErrorBox">
+          <span className="inputErrorMesg">{emptyInpurError && inputErrorMessage }</span>
         </div>
       </div>
     </ErrorBoundary>

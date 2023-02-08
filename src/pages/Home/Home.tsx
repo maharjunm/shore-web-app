@@ -36,7 +36,7 @@ const Home = () => {
             )) }
           </div>
           <div className={view}>
-            {currentJob && <JobDetails key={currentJob.title} jobd={currentJob} jobClick={jobClick} disablePreview={null} from="home"  />}
+            {currentJob && <JobDetails key={currentJob.title} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true} />}
           </div>
         </div>
       </div>

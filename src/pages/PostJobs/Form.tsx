@@ -15,8 +15,8 @@ import{
   SubmitSection } from './FormSections/';
 
 const defaultForm:FormData = {
-  qualifications:[],
-  duties:[],
+  qualifications:null,
+  duties:null,
   title:'',
   qualification:'',
   experience:'',
@@ -35,7 +35,6 @@ const defaultForm:FormData = {
   hours:null,
   jobType:'',
 };
-const defaultErroMessages = { name: false };
 
 const Form = () => {
 
@@ -43,27 +42,12 @@ const Form = () => {
   const [currentJobView, setCurrenetJobView]=useState(null);
   const [form,setForm] = useState(defaultForm);
   const [errorMessage, setErrorMessage]= useState(null);
-  const [errorMessages, setErrorMessages]= useState(defaultErroMessages);
 
   const updateForm = (field: string,value: any)=>{
     setForm((updatedForm:FormData) =>{
       return {
         ...updatedForm,
         [field]: value
-      };
-    });
-    if(!(Array.isArray(value))){
-      console.log(value);
-      onBlur(field,value);
-    }
-  };
-
-  const onBlur = (field: string, value: any)=>{
-    const status=!value.trim()?true:false;
-    setErrorMessages((updatedErrorMessages)=>{
-      return {
-        ...updatedErrorMessages,
-        [field]: status
       };
     });
   };
@@ -91,10 +75,14 @@ const Form = () => {
     }
   };
 
+  const onSubmit = (e:any) =>{
+    e.preventDefault();
+  };
+
   return (
     <ErrorBoundary>
-      {currentJobView && <JobDetails key={currentJobView.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} from="postajob" />}
-      <form className={preview} >
+      {currentJobView && <JobDetails key={currentJobView.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} isHome={false} />}
+      <form className={preview} onSubmit={onSubmit} >
         <div className="superSection">
           <div className="sections">
             <div className="upside">
@@ -102,20 +90,20 @@ const Form = () => {
             </div>
           </div>
           <div className="sections">
-            <JobTitleSection updateForm={updateForm} onBlur={onBlur} errorMessages={errorMessages} />
-            <CompanyDetailsSection updateForm={updateForm} onBlur={onBlur} errorMessages={errorMessages} />
+            <JobTitleSection updateForm={updateForm}  />
+            <CompanyDetailsSection updateForm={updateForm} />
           </div>
           <div className="sections">
-            <CompanyLocationSection updateForm={updateForm} onBlur={onBlur} errorMessages={errorMessages} />
-            <JobDates updateForm={updateForm} onBlur={onBlur} errorMessages={errorMessages} />
+            <CompanyLocationSection updateForm={updateForm} />
+            <JobDates updateForm={updateForm}  />
           </div>
           <div className="sections">
             <QualificationsSection updateForm={updateForm} />
             <DutiesSection updateForm={updateForm} />
           </div>
           <div className="sections">
-            <SalarySection updateForm={updateForm} onBlur={onBlur} errorMessages={errorMessages} />
-            <SubmitSection updateForm={updateForm} onBlur={onBlur} errorMessages={errorMessages} />
+            <SalarySection updateForm={updateForm}  />
+            <SubmitSection updateForm={updateForm}  />
           </div>
         </div>
         <div className="sections">
@@ -123,7 +111,7 @@ const Form = () => {
             <p className="errorMessage">{errorMessage}</p>
           </div>
           <div className="downside">
-            <button type="submit" onClick={previewBtnHandler} className="btnstyle" >Preview</button>
+            <button type="button" onClick={previewBtnHandler} className="btnstyle" >Preview</button>
             <button type="submit" className="btnstyle" >Submit</button>
           </div>
         </div>
