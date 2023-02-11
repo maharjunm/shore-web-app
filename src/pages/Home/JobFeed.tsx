@@ -1,11 +1,11 @@
 import React from 'react';
 import './JobFeed.scss';
-import {ErrorBoundary} from '../../components';
-import  {JobDet}  from '../../components/DataModels/JobDet';
+import { ErrorBoundary } from '../../components';
+import  FormData  from '../../components/DataModels/FormData';
 interface Props {
     key:string;
-    jobd:JobDet;
-    jobClick:(currentJob:JobDet,currentView:string)=>void;
+    jobd:FormData;
+    jobClick:(currentJob:FormData,currentView:string)=>void;
 }
 const JobFeed = (det: Props) => {
   let p=det.jobd;
@@ -16,14 +16,14 @@ const JobFeed = (det: Props) => {
     <ErrorBoundary>
       <div className="jobFeed" onClick={setJob} >
         <div className="title">
-          <h4 >{p.job.title}</h4>
-          <span className="company"> {p.company.name}</span>
-          <span className="company"> {p.location.city},{p.location.state}</span>
+          <h4 >{p.title}</h4>
+          <span className="company"> {p.companyName}</span>
+          <span className="company"> {p.city},{p.state}</span>
         </div>
         <div className="shift">
-          <span> &#8377; {p.salary.sal}-{p.salary.type}</span>
-          <span>{p.job.experience}</span>
-          <span> {p.company.type}</span>
+          <span> &#8377; {p.salary}-{p.jobType}</span>
+          <span>{p.experience}</span>
+          <span> {p.companyType}</span>
         </div>
         <div className="downshift">
           <span>Easily apply</span>
@@ -37,7 +37,7 @@ const JobFeed = (det: Props) => {
           <p>
               Hiring ongoing: From{' '}
             <b>
-              {p.job.title} in {p.location.city},{p.location.state}
+              {p.title} in {p.city},{p.state}
             </b>
           </p>
         </div>

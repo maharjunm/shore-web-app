@@ -1,39 +1,46 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import './JobDetails.scss';
-import  {JobDet}  from '../../components/DataModels/JobDet';
-import {ErrorBoundary} from '../../components';
+import { ErrorBoundary } from '../../components';
+import  FormData  from '../../components/DataModels/FormData';
 import  JobsData  from './JobsData';
 interface Props {
     key:string,
-    jobd:JobDet;
-    jobClick:(currentJob:JobDet,currentView:string)=>void;
+    jobd:FormData | null;
+    jobClick:(currentJob:FormData,currentView:string)=>void;
     disablePreview:()=>void;
-    from:string;
+    isHome:boolean;
 }
-const JobDetails= (det:Props) => {
-  let p=det.jobd;
+const JobDetails= (details:Props) => {
+  let p=details.jobd;
+  const imagePath = details.isHome ? p.companyLogo.toString() : URL.createObjectURL(p.companyLogo);
   const clicked=()=>{
-    if(det.from==='home'){
-      det.jobClick(null,'hide');
-    }
-    if(det.from==='postajob'){
-      det.disablePreview();
+    if(details.isHome){
+      details.jobClick(null,'hide');
+    }else{
+      details.disablePreview();
     }
   };
   return (
     <ErrorBoundary>
       <div className="jobdetails">
         <div className="sticky">
-          <div className="jobTitle">
-            <div className="title">
-              <div>{p.job.title}</div>
-              <div className="wrong" onClick={clicked}>x</div>
+          <div className="mainHead">
+            <div className="sideContent">
+              <div className="logoBox">
+                <img className="companyLogoImage" src={imagePath} />
+              </div>
+              <div className="jobTitle">
+                <div className="title">
+                  <div>{p.title}</div>
+                </div>
+                <Link to='/' >{p.companyName}</Link>
+                <span className='companyLocation'>{p.city},{p.state}-{p.country}</span>
+                <span>&#8377;{p.salary} - {p.jobType}</span>
+                <span>{p.experience}</span>
+              </div>
             </div>
-            <Link to='/' >{p.company.name}</Link>
-            <span className='companyLocation'>{p.location.city},{p.location.state}-{p.location.country}</span>
-            <span>&#8377;{p.salary.sal} - {p.salary.type}</span>
-            <span>{p.job.experience}</span>
+            <div className="wrong" onClick={clicked}>x</div>
           </div>
         </div>
         <div className="scrollableContent">
@@ -43,21 +50,21 @@ const JobDetails= (det:Props) => {
               <div className="boxside">
                 <div className="salaryDescription">
                   <b>Salary</b>
-                  <span>&#x20B9;{p.salary.sal}-{p.salary.type}</span>
+                  <span>&#x20B9;{p.salary}-{p.jobType}</span>
                 </div>
                 <div className="jobType">
                   <b>Job Type</b>
-                  <span>{p.company.type}</span>
+                  <span>{p.companyType}</span>
                 </div>
               </div>
               <div className="boxside">
                 <div className="jobType">
                   <b>Duration</b>
-                  <span>{p.salary.hours}hrs/Day</span>
+                  <span>{p.hours}hrs/Day</span>
                 </div>
                 <div className="jobType">
                   <b>Location</b>
-                  <span>{p.location.city},{p.location.state},{p.location.country}-{p.location.region}</span>
+                  <span>{p.city},{p.state},{p.country}-{p.region}</span>
                 </div>
               </div>
             </div>
@@ -68,21 +75,21 @@ const JobDetails= (det:Props) => {
               <div className="boxside">
                 <div className="salaryDescription">
                   <b>Posting Job on</b>
-                  <span>{p.dates.postingDate.toLocaleDateString()}</span>
+                  <span>{p.postingDate.toString()}</span>
                 </div>
                 <div className="jobType">
                   <b>Job Expires on </b>
-                  <span>{p.dates.expiryDate.toLocaleDateString()}</span>
+                  <span>{p.expiryDate.toString()}</span>
                 </div>
               </div>
               <div className="boxside">
                 <div className="jobType">
                   <b>Closing Job on</b>
-                  <span>{p.dates.closingDate.toLocaleDateString()}</span>
+                  <span>{p.appClosingDate.toString()}</span>
                 </div>
                 <div className="jobType">
                   <b>Removing Job on</b>
-                  <span>{p.dates.removingJobDate.toLocaleDateString()}</span>
+                  <span>{p.removingJobDate.toString()}</span>
                 </div>
               </div>
             </div>
@@ -92,10 +99,10 @@ const JobDetails= (det:Props) => {
               <h1>Qualifications</h1>
             </b>
             <ul>
-              <li>{p.job.qualification}(Mandatory)</li>
+              <li>{p.qualification}(Mandatory)</li>
               {
-                p.qualifications.map((qualification)=>(
-                  <li key={qualification}>{qualification}</li>
+                p.qualifications.map((qualification:{id:string,value:string})=>(
+                  <li key={qualification.id}>{qualification.value}</li>
                 ))
               }
             </ul>
@@ -108,8 +115,8 @@ const JobDetails= (det:Props) => {
               <h1 className="jobTitle b">Job Duties</h1>
               <ul className="colorlightblack">
                 {
-                  p.duties.map((duty)=>(
-                    <li key={duty}>{duty}</li>
+                  p.duties.map((duty:{id:string,value:string})=>(
+                    <li key={duty.id}>{duty.value}</li>
                   ))
                 }
               </ul>
@@ -117,7 +124,7 @@ const JobDetails= (det:Props) => {
             <div className="innerbox">
               <h1 className="jobTitle b">Experience</h1>
               <ul>
-                <li>{p.job.experience}</li>
+                <li>{p.experience}</li>
               </ul>
             </div>
           </div>
