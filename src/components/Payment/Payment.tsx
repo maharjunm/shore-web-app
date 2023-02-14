@@ -13,7 +13,7 @@ const Payment = ()=>{
     description: 'This is a Sample'
   });
   async function handleToken(token:any){
-    const response = await axios.post('http://localhost:3000/v1/users/checkout',{token,product});
+    const response = await axios.post('http://localhost:3000/v1/checkout',{token,product});
     console.log(response.status);
     if(response.status===200){
       console.log('Success, Payment is complete',{type:'success'});
