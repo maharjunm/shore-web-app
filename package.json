@@ -9,15 +9,14 @@
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "prepare": "husky install",
-    "lint":"eslint src/**/*.{ts,tsx,json}",
-    "lint-fix":"eslint src/**/*.{ts,tsx,json} --fix",
-    "check-lint":"eslint src/. --ext ts --ext tsx --ext js",
-    "test-all":"npm run check-lint "
-
+    "lint": "eslint src/**/*.{ts,tsx,json}",
+    "lint-fix": "eslint src/**/*.{ts,tsx,json} --fix",
+    "check-lint": "eslint src/. --ext ts --ext tsx --ext js",
+    "test-all": "npm run check-lint "
   },
-  "settings":{
-    "react":  {
-      "version":"detect"
+  "settings": {
+    "react": {
+      "version": "detect"
     }
   },
   "lint-staged": {
@@ -92,7 +91,7 @@
     "@types/arcgis-js-api": "^4.23.1",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
-    "axios": "^0.21.2",
+    "axios": "^0.21.4",
     "classnames": "^2.2.6",
     "esri-loader": "^3.5.0",
     "font-awesome": "^4.7.0",

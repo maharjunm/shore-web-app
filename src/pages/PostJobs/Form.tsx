@@ -53,10 +53,16 @@ const Form = () => {
         title:form.title.value,
         qualification:form.qual.value,
         experience:form.exp.value,
+        discipline:form.dis.value,
+        type:form.type.value,
+        category:form.cat.value,
+        qualifications:qualifications.map((qualification)=>{return qualification.value;}),
+        duties:duties.map((duty)=>{return duty.value;}),
+        description:form.disc.value,
       },
       company:{
         name:form.orgName.value,
-        type:form.orgType.value,
+        companyType:form.orgType.value,
         logo:form.orgLogo.value,
       },
       location:{
@@ -74,10 +80,9 @@ const Form = () => {
       salary:{
         sal:form.salary.value,
         hours:form.hours.value,
-        type:form.jobType.value,
+        salaryType:form.jobType.value,
       },
-      qualifications:qualifications.map((qualification)=>{return qualification.value;}),
-      duties:duties.map((duty)=>{return duty.value;}),
+      
     };
     setPreview('form hide');
     showPreview(jobView);

@@ -1,13 +1,12 @@
 
 import React ,{useState} from 'react';
 import  {JobDet}  from '../../components/DataModels/JobDet';
-import JobsData from './JobsData';
 import JobFeed from './JobFeed';
 import JobDetails from './JobDetails';
 import './Home.scss';
 import { ErrorBoundary,Searchbar, Location } from '../../components';
 import data from '../../components/SearchBar/data';
-
+import axios from 'axios';
 
 const Home = () => {
   const [currentJob,setCurrentJob]= useState(null);
@@ -16,7 +15,18 @@ const Home = () => {
     setView(currentView);
     setCurrentJob(job);
   };
-  const jobs=JobsData;
+  const [job,setJobs]=React.useState([]);
+  React.useEffect(()=>{
+    const fetchData=async()=>{
+      await axios.get('http://localhost:3000/v1/job')
+      .then(res =>{
+        setJobs(res.data);
+      });
+    };
+    fetchData();
+  },[]);
+
+  const jobs=job;
   return (
     <ErrorBoundary>
       <div className="contentbox">

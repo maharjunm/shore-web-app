@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './JobDetails.scss';
 import  {JobDet}  from '../../components/DataModels/JobDet';
 import {ErrorBoundary} from '../../components';
-import  JobsData  from './JobsData';
+
 interface Props {
     key:string,
     jobd:JobDet;
@@ -21,6 +21,7 @@ const JobDetails= (det:Props) => {
       det.disablePreview();
     }
   };
+  
   return (
     <ErrorBoundary>
       <div className="jobdetails">
@@ -31,8 +32,8 @@ const JobDetails= (det:Props) => {
               <div className="wrong" onClick={clicked}>x</div>
             </div>
             <Link to='/' >{p.company.name}</Link>
-            <span className='companyLocation'>{p.location.city},{p.location.state}-{p.location.country}</span>
-            <span>&#8377;{p.salary.sal} - {p.salary.type}</span>
+            <span className='companyLocation'>{p.location.city},{p.location.region}-{p.location.country}</span>
+            <span>&#8377;{p.salary.sal} - {p.salary.salaryType}</span>
             <span>{p.job.experience}</span>
           </div>
         </div>
@@ -43,11 +44,11 @@ const JobDetails= (det:Props) => {
               <div className="boxside">
                 <div className="salaryDescription">
                   <b>Salary</b>
-                  <span>&#x20B9;{p.salary.sal}-{p.salary.type}</span>
+                  <span>&#x20B9;{p.salary.sal}-{p.salary.salaryType}</span>
                 </div>
                 <div className="jobType">
                   <b>Job Type</b>
-                  <span>{p.company.type}</span>
+                  <span>{p.company.companyType}</span>
                 </div>
               </div>
               <div className="boxside">
@@ -57,7 +58,7 @@ const JobDetails= (det:Props) => {
                 </div>
                 <div className="jobType">
                   <b>Location</b>
-                  <span>{p.location.city},{p.location.state},{p.location.country}-{p.location.region}</span>
+                  <span>{p.location.city},{p.location.region},{p.location.country}-{p.location.region}</span>
                 </div>
               </div>
             </div>
@@ -68,21 +69,21 @@ const JobDetails= (det:Props) => {
               <div className="boxside">
                 <div className="salaryDescription">
                   <b>Posting Job on</b>
-                  <span>{p.dates.postingDate.toLocaleDateString()}</span>
+                  <span>{p.dates.postingDate.toString()}</span>
                 </div>
                 <div className="jobType">
                   <b>Job Expires on </b>
-                  <span>{p.dates.expiryDate.toLocaleDateString()}</span>
+                  <span>{p.dates.expiryDate.toString()}</span>
                 </div>
               </div>
               <div className="boxside">
                 <div className="jobType">
                   <b>Closing Job on</b>
-                  <span>{p.dates.closingDate.toLocaleDateString()}</span>
+                  <span>{p.dates.closingDate.toString()}</span>
                 </div>
                 <div className="jobType">
                   <b>Removing Job on</b>
-                  <span>{p.dates.removingJobDate.toLocaleDateString()}</span>
+                  <span>{p.dates.removingJobDate.toString()}</span>
                 </div>
               </div>
             </div>
@@ -92,10 +93,10 @@ const JobDetails= (det:Props) => {
               <h1>Qualifications</h1>
             </b>
             <ul>
-              <li>{p.job.qualification}(Mandatory)</li>
+              <li>{p.job.qualifications}(Mandatory)</li>
               {
-                p.qualifications.map((qualification)=>(
-                  <li key={qualification}>{qualification}</li>
+                p.job.qualifications.map((qualification,index)=>(
+                  <li key={index}>{qualification}</li>
                 ))
               }
             </ul>
@@ -108,8 +109,8 @@ const JobDetails= (det:Props) => {
               <h1 className="jobTitle b">Job Duties</h1>
               <ul className="colorlightblack">
                 {
-                  p.duties.map((duty)=>(
-                    <li key={duty}>{duty}</li>
+                  p.job.duties.map((duty,index)=>(
+                    <li key={index}>{duty}</li>
                   ))
                 }
               </ul>
@@ -120,15 +121,6 @@ const JobDetails= (det:Props) => {
                 <li>{p.job.experience}</li>
               </ul>
             </div>
-          </div>
-          <div className="Box alignLeft">
-            <b className="jobTitle">
-              <h1>Hiring Insights</h1>
-            </b>
-            <ul>
-              <li>Hiring x candidates for this role</li>
-              <li>Urgently hiring</li>
-            </ul>
           </div>
           <div className="Box alignLeft report">
             <button className="btn">Report this job</button>
