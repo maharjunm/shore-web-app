@@ -1,7 +1,7 @@
 import React from 'react';
 import './JobFeed.scss';
 import { ErrorBoundary } from '../../components';
-import  FormData  from '../../components/DataModels/FormData';
+import  FormData  from 'components/DataModels/FormData';
 interface Props {
     key:string;
     jobd:FormData;

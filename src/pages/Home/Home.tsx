@@ -4,7 +4,7 @@ import JobFeed from './JobFeed';
 import JobDetails from './JobDetails';
 import './Home.scss';
 import { ErrorBoundary,Searchbar, Location } from '../../components';
-import  FormData  from '../../components/DataModels/FormData';
+import  FormData  from 'components/DataModels/FormData';
 import data from '../../components/SearchBar/data';
 
 

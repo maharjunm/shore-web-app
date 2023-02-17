@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import { ErrorBoundary } from '../../components';
-import  FormData  from '../../components/DataModels/FormData';
+import  FormData  from 'components/DataModels/FormData';
 import './Form.scss';
 import JobDetails from '../Home/JobDetails';
 import validate from './validate';

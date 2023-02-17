@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import './JobDetails.scss';
 import { ErrorBoundary } from '../../components';
-import  FormData  from '../../components/DataModels/FormData';
+import  FormData  from 'components/DataModels/FormData';
 import  JobsData  from './JobsData';
 interface Props {
     key:string,

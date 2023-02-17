@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "baseUrl":"src",
         "allowSyntheticDefaultImports": true,
         "allowJs": false,
         "jsx": "react",
@@ -12,17 +13,17 @@
         "resolveJsonModule": true,
         "esModuleInterop": true ,
         "suppressImplicitAnyIndexErrors": true,
-        "typeRoots": [  
-            "./src/types", 
+        "typeRoots": [
+            "./src/types",
             "./node_modules/@types"
         ],
         "lib": [ "es2015", "dom" ],
     },
     "exclude": [
-        "**/node_modules", 
+        "**/node_modules",
         "**/.*/"
     ],
     "include": [
-        "./src/**/**/*"
+        "./src/**/**/*",
     ]
 }

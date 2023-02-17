@@ -1,4 +1,4 @@
-import  FormData  from '../../components/DataModels/FormData';
+import  FormData  from 'components/DataModels/FormData';
 
 const validate=(form:FormData)=>{
   const mandatoryFields = [
