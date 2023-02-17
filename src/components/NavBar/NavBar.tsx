@@ -30,7 +30,6 @@ const NavBar = () => {
           <div>
             <ul>
               <li ><NavLink exact to="/" >Home</NavLink></li>
-              <li ><NavLink to="/jobs">Jobs</NavLink></li>
               <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
               <li ><NavLink to="/contactus">Contact Us</NavLink></li>
             </ul>
@@ -54,7 +53,6 @@ const NavBar = () => {
           <div className={'options '+mobview}>
             <ul onClick={()=> setMobview('invisible')}>
               <li ><NavLink exact to="/" >Home<i className="fa-solid fa-house"></i></NavLink></li>
-              <li > <NavLink to="/jobs">Jobs</NavLink></li>
               <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
               <li > <NavLink to="/contactus">Contact Us</NavLink></li>
             </ul>
