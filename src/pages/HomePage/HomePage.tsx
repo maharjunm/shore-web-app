@@ -1,7 +1,8 @@
 import React,{useState} from 'react';
 import { ErrorBoundary,NavBar } from '../../components';
 import {HashRouter as Router,Switch,Route,Link} from 'react-router-dom';
-import {Home,TestPayment,PostJobs,ContactUs,ProductSelectionPage,BillingPage} from '../../pages';
+import {Home,PostJobs,ContactUs,ProductSelectionPage,BillingPage} from '../../pages';
+
 const HomePage = () => {
   return (
     <Router>
