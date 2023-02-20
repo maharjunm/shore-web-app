@@ -11,6 +11,7 @@ const NavBar = () => {
       return(
         <ul>
           <li ><NavLink exact to="/" >Home</NavLink></li>
+          <li ><NavLink to="/payment">Payment</NavLink></li>
           <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
           <li ><NavLink to="/contactus">Contact Us</NavLink></li>
           <li ><NavLink to="/logout">Logout</NavLink></li>
@@ -21,6 +22,7 @@ const NavBar = () => {
       return(
         <ul>
           <li ><NavLink exact to="/" >Home</NavLink></li>
+          <li ><NavLink to="/payment">Payment</NavLink></li>
           <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
           <li ><NavLink to="/contactus">Contact Us</NavLink></li>
           <li ><NavLink to="/signup">Signup/Login</NavLink></li>
