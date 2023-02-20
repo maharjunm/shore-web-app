@@ -1,5 +1,5 @@
 import React ,{useState} from 'react';
-import JobsData from './JobsData';
+import axios from 'axios';
 import JobFeed from './JobFeed';
 import JobDetails from './JobDetails';
 import './Home.scss';
@@ -11,11 +11,23 @@ import data from '../../components/SearchBar/data';
 const Home = () => {
   const [currentJob,setCurrentJob]= useState(null);
   const [view,setView]= useState('hide');
+  const [jobs,setJobs]=React.useState([]);
+  React.useEffect(()=>{
+    const fetchData=async()=>{
+      await axios.get('http://localhost:3000/v1/job')
+      .then(res =>{
+        setJobs(res.data);
+      });
+    };
+    fetchData();
+    
+  },[]);
+  const job=jobs;
+  
   const jobClick=(job:FormData,currentView:string)=>{
     setView(currentView);
     setCurrentJob(job);
   };
-  const jobs=JobsData;
   return (
     <ErrorBoundary>
       <div className="contentbox">
@@ -32,7 +44,7 @@ const Home = () => {
         <div className="down">
           <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
             { jobs.map((element:FormData)=>(
-              <JobFeed key={element.title} jobd={element} jobClick={jobClick} />
+              <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />
             )) }
           </div>
           <div className={view}>

@@ -22,7 +22,7 @@ const SalarySection =  (props: Props) => {
           <input
             type="number"
             name="salary"
-            onChange={(e)=>updateForm('salary',e.target.value)}
+            onChange={(e)=>updateForm('salary.sal',e.target.value)}
             required
             id="salary"
           />
@@ -35,28 +35,28 @@ const SalarySection =  (props: Props) => {
           <input
             type="number"
             name="hours"
-            onChange={(e)=>updateForm('hours',e.target.value)}
+            onChange={(e)=>updateForm('salary.hours',e.target.value)}
             required
             id="hours"
           />
         </div>
         <div className="row">
-          <label htmlFor="jobType">
-            Job Type
+          <label htmlFor="salaryType">
+            Salary type
             <span className="mandatoryField">*</span>
           </label>
           <select
             className="input"
             required
-            name="jobType"
+            name="salaryType"
             id="jobType"
-            onChange={(e)=>updateForm('jobType',e.target.value)}
+            onChange={(e)=>updateForm('salary.companyType',e.target.value)}
           >
             <option value="">select</option>
-            <option value="Contract">Contract</option>
-            <option value="Regular">Full-Time</option>
-            <option value="Permanent">Part-Time</option>
-            <option value="Permanent">Internship</option>
+            <option value="Annual">Annual</option>
+            <option value="Regular">Regular</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Quarterly">Quarterly</option>
           </select>
         </div>
       </div>

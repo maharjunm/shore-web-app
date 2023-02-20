@@ -4,6 +4,8 @@ import  FormData  from '../../components/DataModels/FormData';
 import './Form.scss';
 import JobDetails from '../Home/JobDetails';
 import validate from './validate';
+import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
+import s3Config from '../../../public/s3Config';
 import{
   JobTitleSection,
   CompanyDetailsSection,
@@ -13,27 +15,44 @@ import{
   DutiesSection,
   SalarySection,
   SubmitSection } from './FormSections/';
+import axios from 'axios';
 
 const defaultForm:FormData = {
-  qualifications:null,
-  duties:null,
-  title:'',
-  qualification:'',
-  experience:'',
-  companyName:'',
-  companyType:'',
-  companyLogo:null,
-  city:'',
-  state:'',
-  country:'',
-  region:'',
-  postingDate:null,
-  expiryDate:null,
-  appClosingDate:null,
-  removingJobDate:null,
-  salary:null,
-  hours:null,
-  jobType:'',
+  job: {
+    title: '',
+    experience: '',
+    discipline: '',
+    type: 'Full-time',
+    qualification:'',
+  },
+  company: {
+    name: '',
+    companyType: '',
+    logo: '',
+  },
+  location: {
+    city: '',
+    country: '',
+    region: '',
+    state:'',
+  },
+  dates: {
+    postingDate: null,
+    expiryDate: null,
+    closingDate: null,
+    removingDate: null,
+  },
+  salary: {
+    sal: null,
+    hours: null,
+    companyType: 'Annual',
+  },
+  qualifications:[],
+  duties:[],
+  contact:{
+    email:'',
+    employeeEmail:'',
+  }
 };
 
 const Form = () => {
@@ -42,15 +61,43 @@ const Form = () => {
   const [currentJobView, setCurrenetJobView]=useState(null);
   const [form,setForm] = useState(defaultForm);
   const [errorMessage, setErrorMessage]= useState(null);
+  const [file,setFile] = useState<File>();
 
-  const updateForm = (field: string,value: any)=>{
-    setForm((updatedForm:FormData) =>{
+  const handleLogo=async(file: File)=>{
+    setFile(file);
+    const s3=new ReactS3Client(s3Config);
+    console.log(file);
+    try{
+      let res=await s3.uploadFile(file);
+      updateForm("company.logo",res.location);
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
+  const updateForm = (field: string, value: any) => {
+  if(field === "Logo"){
+      handleLogo(value);
+      return;
+  }
+  setForm((prevForm) => {
+    const [section, subfield] = field.split('.');
+    if (section === 'qualifications' || section === "duties") {
       return {
-        ...updatedForm,
-        [field]: value
+        ...prevForm,
+        [section]: value,
       };
-    });
-  };
+    }
+    return {
+      ...prevForm,
+      [section]: {
+        ...prevForm[section],
+        [subfield]: value,
+      },
+    };
+  });
+}
+
 
   const showPreview = (jobView:FormData) =>{
     setCurrenetJobView(jobView);
@@ -74,14 +121,14 @@ const Form = () => {
       }, 2000);
     }
   };
-
-  const onSubmit = (e:any) =>{
-    e.preventDefault();
-  };
+  const onSubmit=async()=>{
+    const res=await axios.post('http://localhost:3000/v1/job',form).then(res=>console.log(res)).catch(e=>console.log(e));
+  }
+  
 
   return (
     <ErrorBoundary>
-      {currentJobView && <JobDetails key={currentJobView.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} isHome={false} />}
+      {currentJobView && <JobDetails key={currentJobView.job.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} isHome={false} />}
       <form className={preview} onSubmit={onSubmit} >
         <div className="superSection">
           <div className="sections">
@@ -91,7 +138,7 @@ const Form = () => {
           </div>
           <div className="sections">
             <JobTitleSection updateForm={updateForm}  />
-            <CompanyDetailsSection updateForm={updateForm} />
+            <CompanyDetailsSection updateForm={updateForm}  />
           </div>
           <div className="sections">
             <CompanyLocationSection updateForm={updateForm} />

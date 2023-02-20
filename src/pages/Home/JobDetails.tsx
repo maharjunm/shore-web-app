@@ -13,7 +13,7 @@ interface Props {
 }
 const JobDetails= (details:Props) => {
   let p=details.jobd;
-  const imagePath = details.isHome ? p.companyLogo.toString() : URL.createObjectURL(p.companyLogo);
+ const imagePath = p.company.logo;
   const clicked=()=>{
     if(details.isHome){
       details.jobClick(null,'hide');
@@ -32,12 +32,12 @@ const JobDetails= (details:Props) => {
               </div>
               <div className="jobTitle">
                 <div className="title">
-                  <div>{p.title}</div>
+                  <div>{p.job.title}</div>
                 </div>
-                <Link to='/' >{p.companyName}</Link>
-                <span className='companyLocation'>{p.city},{p.state}-{p.country}</span>
-                <span>&#8377;{p.salary} - {p.jobType}</span>
-                <span>{p.experience}</span>
+                <Link to='/' >{p.company.name}</Link>
+                <span className='companyLocation'>{p.location.city},{p.location.state}-{p.location.country}</span>
+                <span>&#8377;{p.salary.sal} - {p.salary.companyType}</span>
+                <span>{p.job.experience}</span>
               </div>
             </div>
             <div className="wrong" onClick={clicked}>x</div>
@@ -50,21 +50,21 @@ const JobDetails= (details:Props) => {
               <div className="boxside">
                 <div className="salaryDescription">
                   <b>Salary</b>
-                  <span>&#x20B9;{p.salary}-{p.jobType}</span>
+                  <span>&#x20B9;{p.salary.sal}-{p.salary.companyType}</span>
                 </div>
                 <div className="jobType">
                   <b>Job Type</b>
-                  <span>{p.companyType}</span>
+                  <span>{p.company.companyType}</span>
                 </div>
               </div>
               <div className="boxside">
                 <div className="jobType">
                   <b>Duration</b>
-                  <span>{p.hours}hrs/Day</span>
+                  <span>{p.salary.hours}hrs/Day</span>
                 </div>
                 <div className="jobType">
                   <b>Location</b>
-                  <span>{p.city},{p.state},{p.country}-{p.region}</span>
+                  <span>{p.location.city},{p.location.state},{p.location.country}-{p.location.region}</span>
                 </div>
               </div>
             </div>
@@ -75,21 +75,21 @@ const JobDetails= (details:Props) => {
               <div className="boxside">
                 <div className="salaryDescription">
                   <b>Posting Job on</b>
-                  <span>{p.postingDate.toString()}</span>
+                  <span>{p.dates.postingDate.toString()}</span>
                 </div>
                 <div className="jobType">
                   <b>Job Expires on </b>
-                  <span>{p.expiryDate.toString()}</span>
+                  <span>{p.dates.expiryDate.toString()}</span>
                 </div>
               </div>
               <div className="boxside">
                 <div className="jobType">
                   <b>Closing Job on</b>
-                  <span>{p.appClosingDate.toString()}</span>
+                  <span>{p.dates.closingDate.toString()}</span>
                 </div>
                 <div className="jobType">
                   <b>Removing Job on</b>
-                  <span>{p.removingJobDate.toString()}</span>
+                  <span>{p.dates.removingDate.toString()}</span>
                 </div>
               </div>
             </div>
@@ -99,9 +99,9 @@ const JobDetails= (details:Props) => {
               <h1>Qualifications</h1>
             </b>
             <ul>
-              <li>{p.qualification}(Mandatory)</li>
+              
               {
-                p.qualifications.map((qualification:{id:string,value:string})=>(
+                p.qualifications.map((qualification:{value:string,id:string})=>(
                   <li key={qualification.id}>{qualification.value}</li>
                 ))
               }
@@ -115,7 +115,7 @@ const JobDetails= (details:Props) => {
               <h1 className="jobTitle b">Job Duties</h1>
               <ul className="colorlightblack">
                 {
-                  p.duties.map((duty:{id:string,value:string})=>(
+                  p.duties.map((duty:{value:string ,id:string})=>(
                     <li key={duty.id}>{duty.value}</li>
                   ))
                 }
@@ -124,18 +124,9 @@ const JobDetails= (details:Props) => {
             <div className="innerbox">
               <h1 className="jobTitle b">Experience</h1>
               <ul>
-                <li>{p.experience}</li>
+                <li>{p.job.experience}</li>
               </ul>
             </div>
-          </div>
-          <div className="Box alignLeft">
-            <b className="jobTitle">
-              <h1>Hiring Insights</h1>
-            </b>
-            <ul>
-              <li>Hiring x candidates for this role</li>
-              <li>Urgently hiring</li>
-            </ul>
           </div>
           <div className="Box alignLeft report">
             <button className="btn">Report this job</button>

@@ -9,15 +9,14 @@
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "prepare": "husky install",
-    "lint":"eslint src/**/*.{ts,tsx,json}",
-    "lint-fix":"eslint src/**/*.{ts,tsx,json} --fix",
-    "check-lint":"eslint src/. --ext ts --ext tsx --ext js",
-    "test-all":"npm run check-lint "
-
+    "lint": "eslint src/**/*.{ts,tsx,json}",
+    "lint-fix": "eslint src/**/*.{ts,tsx,json} --fix",
+    "check-lint": "eslint src/. --ext ts --ext tsx --ext js",
+    "test-all": "npm run check-lint "
   },
-  "settings":{
-    "react":  {
-      "version":"detect"
+  "settings": {
+    "react": {
+      "version": "detect"
     }
   },
   "lint-staged": {
@@ -97,6 +96,7 @@
     "esri-loader": "^3.5.0",
     "font-awesome": "^4.7.0",
     "helper-toolkit-ts": "^1.1.13",
+    "karma-dev-react-aws-s3-typescript": "^1.1.1",
     "node-sass": "^8.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
