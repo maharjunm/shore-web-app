@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import './Payment.scss';
-// import {ToastContainer,toast} from 'react-toastify'
-// import "react-toastify/dist/ReactToastify.css";
 const Payment = ()=>{
-  //product object name,price
-  // toast.configure()
   const [product]  = useState({
     name: 'Sample Book',
     price: 200,
