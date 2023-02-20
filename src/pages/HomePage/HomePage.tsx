@@ -1,9 +1,10 @@
 import React,{useState, createContext , useReducer} from 'react';
 import { ErrorBoundary,NavBar } from '../../components';
 import {HashRouter as Router,Switch,Route,Link} from 'react-router-dom';
-import {Home,PostJobs,ContactUs,ProductSelectionPage,BillingPage,Login,Logout,Signup} from '../../pages';
+import {Home,TestPayment,PostJobs,ContactUs,ProductSelectionPage,BillingPage,Login,Logout,Signup} from '../../pages';
 import { initialState, reducer } from '../../Reducer/userReducer';
 export const UserContext = createContext(null);
+
 const HomePage = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
