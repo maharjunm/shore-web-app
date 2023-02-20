@@ -1,9 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState ,useContext } from 'react';
 import './NavBar.scss';
 import Logo from './../images/logo.png';
 import {NavLink} from 'react-router-dom';
 import Flex from './../Flex/Flex';
+import { UserContext } from '../../pages/HomePage/HomePage';
+
 const NavBar = () => {
+  const { state, dispatch } = useContext(UserContext);
+
+  const RenderMenu = () =>{
+    if(state){
+      return(
+        <ul>
+          <li ><NavLink exact to="/" >Home</NavLink></li>
+          <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
+          <li ><NavLink to="/contactus">Contact Us</NavLink></li>
+          <li ><NavLink to="/logout">Logout</NavLink></li>
+        </ul>
+      )
+    }
+    else{
+      return(
+        <ul>
+        <li ><NavLink exact to="/" >Home</NavLink></li>
+        <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
+        <li ><NavLink to="/contactus">Contact Us</NavLink></li>
+        <li ><NavLink to="/signup">Signup/Login</NavLink></li>
+      </ul>
+      )
+    }
+  }
+
   const [mobview,setMobview]= useState('invisible');
   const onClick=()=>{
     if(mobview==='visible'){
@@ -28,11 +55,7 @@ const NavBar = () => {
             </Flex>
           </div>
           <div>
-            <ul>
-              <li ><NavLink exact to="/" >Home</NavLink></li>
-              <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
-              <li ><NavLink to="/contactus">Contact Us</NavLink></li>
-            </ul>
+            <RenderMenu />
           </div>
         </div>
       </div>
@@ -52,9 +75,7 @@ const NavBar = () => {
           </div>
           <div className={'options '+mobview}>
             <ul onClick={()=> setMobview('invisible')}>
-              <li ><NavLink exact to="/" >Home<i className="fa-solid fa-house"></i></NavLink></li>
-              <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
-              <li > <NavLink to="/contactus">Contact Us</NavLink></li>
+              <RenderMenu />
             </ul>
           </div >
         </div>
