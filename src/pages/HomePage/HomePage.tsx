@@ -11,7 +11,7 @@ const HomePage = () => {
           <Switch>
             <Route exact path='/' ><Home/></Route>
             <Route  path='/home' ><Home/></Route>
-            <Route  path='/jobs'> <Jobs /> </Route>
+            <Route  path='/payment'> <Jobs /> </Route>
             <Route  path='/postjobs'><ProductSelectionPage /></Route>
             <Route  path='/contactus'><ContactUs/></Route>
             <Route path='/postajob' ><PostJobs /></Route>
