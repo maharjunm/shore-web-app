@@ -4,7 +4,6 @@ import { ErrorBoundary } from '../../components';
 import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark , faCheck } from '@fortawesome/free-solid-svg-icons';
-
 const ProductSelectionPage = () => {
   const Regular = 'regular';
   const Platinum = 'platinum';
