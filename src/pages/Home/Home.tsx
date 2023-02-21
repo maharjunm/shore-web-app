@@ -12,6 +12,8 @@ const Home = () => {
   const [currentJob,setCurrentJob]= useState(null);
   const [view,setView]= useState('hide');
   const [jobs,setJobs]=React.useState([]);
+  const [selectedJob,setSelectedJob]=React.useState('');
+  const [job,setJob] =React.useState([]);
   React.useEffect(()=>{
     const fetchData=async()=>{
       await axios.get('http://localhost:3000/v1/job')
@@ -22,7 +24,16 @@ const Home = () => {
     fetchData();
     
   },[]);
-  const job=jobs;
+  React.useEffect(()=>{
+    let filteredJobs=jobs;
+    if(selectedJob){
+      filteredJobs=jobs.filter(item => item.job.title.toLowerCase().includes(selectedJob.toLowerCase()));
+    }
+    setJob(filteredJobs);
+  },[selectedJob,jobs]);
+  const handleJobSelect=(jobName:string)=>{
+    setSelectedJob(jobName);
+  }
   
   const jobClick=(job:FormData,currentView:string)=>{
     setView(currentView);
@@ -34,7 +45,7 @@ const Home = () => {
         <div className="top">
           <div className='inputForm'>
             <div className="searchBar">
-              <Searchbar data={data} />
+              <Searchbar data={data} onJobSelect={handleJobSelect}/>
             </div>
             <div className='locationBar'>
               <Location />
@@ -43,7 +54,7 @@ const Home = () => {
         </div>
         <div className="down">
           <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
-            { jobs.map((element:FormData)=>(
+            { job.map((element:FormData)=>(
               <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />
             )) }
           </div>

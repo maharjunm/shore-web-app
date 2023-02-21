@@ -9,8 +9,6 @@ interface Props {
 }
 const JobFeed = (det: Props) => {
   let p=det.jobd;
-  console.log("test");
-  console.log(p);
   const setJob=()=>{
     det.jobClick(p,'show');
   };
