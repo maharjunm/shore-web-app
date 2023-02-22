@@ -13,23 +13,27 @@ function Signup() {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
 
-    const res = await fetch('/signup', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: username,
-        email: email,
-        password: password,
-      }),
-    });
-    const data = await res.json();
-    if (data.status === 400 || !data) setError('user already exsist');
-    else if (data.status === 500) setError('something went wrong');
-    else {
-      window.alert('success');
-      History.push('/login');
+    try{
+      const res = await fetch('http://localhost:3000/v1/user/signup', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username,
+          email: email,
+          password: password,
+        }),
+      });
+      if(res.status === 201){
+        window.alert('successful SignUp');
+        History.push('/login');
+      }
+      else if(res.status === 400) setError('user already exisit');
+      else setError('Something went wrong');
+    }
+    catch(error){
+      setError(error);
     }
   };
 

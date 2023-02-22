@@ -10,25 +10,14 @@ const NavBar = () => {
     if(state){
       return(
         <ul>
-          <li ><NavLink exact to="/" >Home</NavLink></li>
-          <li ><NavLink to="/payment">Payment</NavLink></li>
-          <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
-          <li ><NavLink to="/contactus">Contact Us</NavLink></li>
-          <li > <NavLink to="/payment">Payment</NavLink></li>
+          <li ><NavLink to="/profile">Profile</NavLink></li>
           <li ><NavLink to="/logout">Logout</NavLink></li>
         </ul>
       );
     }
     else{
       return(
-        <ul>
-          <li ><NavLink exact to="/" >Home</NavLink></li>
-          <li ><NavLink to="/payment">Payment</NavLink></li>
-          <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
-          <li ><NavLink to="/contactus">Contact Us</NavLink></li>
-          <li > <NavLink to="/payment">Payment</NavLink></li>
-          <li ><NavLink to="/signup">Signup/Login</NavLink></li>
-        </ul>
+        <li ><NavLink to="/signup">Signup/Login</NavLink></li>
       );
     }
   };
@@ -57,7 +46,13 @@ const NavBar = () => {
             </Flex>
           </div>
           <div>
-            <RenderMenu />
+            <ul>
+              <li ><NavLink exact to="/" >Home</NavLink></li>
+              <li ><NavLink to="/payment">Payment</NavLink></li>
+              <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
+              <li ><NavLink to="/contactus">Contact Us</NavLink></li>
+              <RenderMenu />
+            </ul>
           </div>
         </div>
       </div>
@@ -77,7 +72,13 @@ const NavBar = () => {
           </div>
           <div className={'options '+mobview}>
             <ul onClick={()=> setMobview('invisible')}>
-              <RenderMenu />
+              <ul>
+                <li ><NavLink exact to="/" >Home</NavLink></li>
+                <li ><NavLink to="/payment">Payment</NavLink></li>
+                <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
+                <li ><NavLink to="/contactus">Contact Us</NavLink></li>
+                <RenderMenu />
+              </ul>
             </ul>
           </div >
         </div>

@@ -7,7 +7,7 @@ const Logout = () => {
   const { state, dispatch } = useContext(UserContext);
 
   useEffect(() => {
-    fetch('/logout', {
+    fetch('http://localhost:3000/v1/user/logout', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -27,6 +27,6 @@ const Logout = () => {
         console.log(err);
       });
   });
-  return <h1>Myprofile</h1>;
+  return <h1>Logging Out .....</h1>;
 };
 export default Logout;

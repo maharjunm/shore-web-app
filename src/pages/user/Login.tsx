@@ -15,24 +15,29 @@ function Login() {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
 
-    const res = await fetch('/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    });
-    const data = await res.json();
-    if (data.status === 404 || !data) setError('user not found');
-    else if (data.status === 400) setError('Given Password is wrong');
-    else {
-      dispatch({ type: 'USER', payload: true });
-      window.alert('successfull');
-      History.push('/');
+    try{
+      const res = await fetch('http://localhost:3000/v1/user/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+      if(res.status === 404) setError('user not found');
+      else if(res.status === 400) setError('given password is wrong');
+      else if(res.status === 500) setError('something went wrong');
+      else{
+        dispatch({ type: 'USER', payload: true });
+        window.alert('successfull');
+        History.push('/');
+      }
+    }catch(error){
+      setError(error);
     }
+    
   };
 
   return (

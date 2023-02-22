@@ -1,3 +1,5 @@
+import userProfile from './user/userProfile';
+
 export { default as HomePage } from './HomePage/HomePage';
 export { default as Home } from './Home/Home';
 export { default as ContactUs } from './ContactUs/ContactUs';
@@ -8,3 +10,4 @@ export { default as BillingPage } from './PostJobs/BillingPage/BillingPage';
 export { default as Signup } from './user/Signup';
 export { default as Login } from './user/Login';
 export { default as Logout } from './user/Logout';
+export { default as Profile } from './user/userProfile';
