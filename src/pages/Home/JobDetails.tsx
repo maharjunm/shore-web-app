@@ -36,8 +36,16 @@ const JobDetails= (details:Props) => {
                 </div>
                 <Link to='/' >{p.companyName}</Link>
                 <span className='companyLocation'>{p.city},{p.state}-{p.country}</span>
-                <span>&#8377;{p.salary} - {p.jobType}</span>
-                <span>{p.experience}</span>
+                <div className="boxside">
+                  <div className="jobType">
+                    <b>Job Closing Date </b>
+                    <span>{p.appClosingDate.toString()}</span>
+                  </div>
+                  <div className="salaryDescription">
+                    <b>Posting Job on</b>
+                    <span>{p.postingDate.toString()}</span>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="wrong" onClick={clicked}>x</div>
@@ -72,25 +80,13 @@ const JobDetails= (details:Props) => {
           <div className="headDetails bordertop">
             <b className='title'>Important Dates</b>
             <div className="flexside">
-              <div className="boxside">
-                <div className="salaryDescription">
-                  <b>Posting Job on</b>
-                  <span>{p.postingDate.toString()}</span>
-                </div>
-                <div className="jobType">
-                  <b>Job Expires on </b>
-                  <span>{p.expiryDate.toString()}</span>
-                </div>
+              <div className="salaryDescription">
+                <b>Posting Job on</b>
+                <span>{p.postingDate.toString()}</span>
               </div>
-              <div className="boxside">
-                <div className="jobType">
-                  <b>Closing Job on</b>
-                  <span>{p.appClosingDate.toString()}</span>
-                </div>
-                <div className="jobType">
-                  <b>Removing Job on</b>
-                  <span>{p.removingJobDate.toString()}</span>
-                </div>
+              <div className="jobType">
+                <b>Job Expires on </b>
+                <span>{p.expiryDate.toString()}</span>
               </div>
             </div>
           </div>
@@ -112,7 +108,7 @@ const JobDetails= (details:Props) => {
               <h1>Full Job Description</h1>
             </b>
             <div className="innerbox">
-              <h1 className="jobTitle b">Job Duties</h1>
+
               <ul className="colorlightblack">
                 {
                   p.duties.map((duty:{id:string,value:string})=>(
@@ -127,18 +123,6 @@ const JobDetails= (details:Props) => {
                 <li>{p.experience}</li>
               </ul>
             </div>
-          </div>
-          <div className="Box alignLeft">
-            <b className="jobTitle">
-              <h1>Hiring Insights</h1>
-            </b>
-            <ul>
-              <li>Hiring x candidates for this role</li>
-              <li>Urgently hiring</li>
-            </ul>
-          </div>
-          <div className="Box alignLeft report">
-            <button className="btn">Report this job</button>
           </div>
         </div>
       </div>

@@ -40,6 +40,17 @@
 .side .row label{
   text-align: center;
 }
+.row textarea{
+  font-size: 15px;
+  outline: none;
+  background-color:#eee;
+  padding: 5px;
+  border:1px solid var(--blackHeadColor);
+}
+.flexrow{
+  display: flex;
+  flex-direction: column;
+}
 .side .row input,.input{
   font-size: 15px;
   outline: none;
@@ -64,12 +75,15 @@
   font-weight:600;
 }
 .addBtn{
-  background-color:#eee;
-  color:var(--blackHeadColor);
-  margin:8px;
-  padding:0 10px 0 10px;
-  font-size: 18px;
-  border-radius: 5px;
+  width:60px;
+  background-color: var(--lightBlack);
+  color:black;
+  margin:5px;
+  padding:2px;
+  color: black;
+  font-weight: 500;
+  border-radius: 3px;
+  font-size: 14px;
 }
 .font-small{
   padding: 5px 10px 5px 10px;
