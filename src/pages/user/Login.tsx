@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './auth.scss';
 import { UserContext } from '../HomePage/HomePage';
+import { REACT_BACKEND_URL } from '../../config';
 
 function Login() {
   const { state, dispatch } = useContext(UserContext);
@@ -16,7 +17,7 @@ function Login() {
     event.preventDefault();
 
     try{
-      const res = await fetch('http://localhost:3000/v1/user/login', {
+      const res = await fetch(`${REACT_BACKEND_URL}/v1/user/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
