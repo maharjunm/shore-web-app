@@ -1,6 +1,6 @@
 import React from 'react';
 import { ErrorBoundary } from '../../../components';
-import {Link, useHistory } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark , faCheck } from '@fortawesome/free-solid-svg-icons';
 interface Props{
@@ -12,8 +12,6 @@ interface Props{
   }
 }
 const Product = (props:Props) => {
-
-  let navigate = useHistory();
 
   const {product} = props;
 
