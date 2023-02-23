@@ -5,7 +5,10 @@ import './Form.scss';
 import JobDetails from '../Home/JobDetails';
 import validate from './validate';
 import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
-import s3Config from '../../../public/s3Config';
+import dotenv from 'dotenv';
+import { awsConfig } from '../../config';
+
+
 import{
   JobTitleSection,
   CompanyDetailsSection,
@@ -16,6 +19,7 @@ import{
   SalarySection,
   SubmitSection } from './FormSections/';
 import axios from 'axios';
+
 
 const defaultForm:FormData = {
   job: {
@@ -56,6 +60,15 @@ const defaultForm:FormData = {
 };
 
 const Form = () => {
+  
+  const s3Config = {
+    bucketName:awsConfig.bucketName, 
+    dirName: awsConfig.dirName,   
+    region: awsConfig.region,
+    accessKeyId: awsConfig.accessKeyId,
+    secretAccessKey: awsConfig.secretAccessKey,  
+  }
+
 
   const [preview, setPreview] = useState('form show');
   const [currentJobView, setCurrenetJobView]=useState(null);
