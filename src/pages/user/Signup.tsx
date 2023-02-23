@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './auth.scss';
+import { REACT_BACKEND_URL } from '../../config';
 
 function Signup() {
   const [username, setName] = useState('');
@@ -14,7 +15,7 @@ function Signup() {
     event.preventDefault();
 
     try{
-      const res = await fetch('http://localhost:3000/v1/user/signup', {
+      const res = await fetch(`${REACT_BACKEND_URL}/v1/user/signup`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
