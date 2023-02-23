@@ -1,70 +1,60 @@
 import React from 'react';
 import './ProductSelectionPage.scss';
 import { ErrorBoundary } from '../../components';
-import {Link} from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark , faCheck } from '@fortawesome/free-solid-svg-icons';
+import Product from './Product/Product';
+
+const products=[
+  {
+    type: 'Regular',
+    amount: 0,
+    hostingTime: 30,
+    offers: [
+      { field: 'logo in search', value: true },
+      { field: 'logo in description', value: true },
+      { field: 'boosted display', value: false },
+      { field: 'highlight in search', value: false },
+      { field: 'job of the week', value: false },
+      { field: 'job of the month', value: false }
+    ]
+  },
+  {
+    type: 'Platinum',
+    amount: 100,
+    hostingTime: 30,
+    offers: [
+      { field: 'logo in search', value: true },
+      { field: 'logo in description', value: true },
+      { field: 'boosted display', value: true },
+      { field: 'highlight in search', value: true },
+      { field: 'job of the week', value: false },
+      { field: 'job of the month', value: false }
+    ]
+  },
+  {
+    type: 'Diamond',
+    amount: 200,
+    hostingTime: 60,
+    offers: [
+      { field: 'logo in search', value: true },
+      { field: 'logo in description', value: true },
+      { field: 'boosted display', value: true },
+      { field: 'highlight in search', value: true },
+      { field: 'job of the week', value: true },
+      { field: 'job of the month', value: true }
+    ]
+  },
+];
 const ProductSelectionPage = () => {
-  const Regular = 'regular';
-  const Platinum = 'platinum';
-  const Diamond = 'diamond';
 
   return (
     <ErrorBoundary>
       <div className="job_page">
         <div className="content">
-          <div className="col">
-            <div className="heading">Regular </div>
-            <h3 className="price">
-              {<small></small>}FREE{<small>/10 Days</small>}
-            </h3>
-            <p>Job Hosting time <span>10 Days</span></p>
-            <p>Logo in search<span className="yes"><FontAwesomeIcon icon={faCheck}></FontAwesomeIcon></span></p>
-            <p>Logo in Job Description<span className="yes"><FontAwesomeIcon icon={faCheck}></FontAwesomeIcon></span></p>
-            <p>Boosted display<span className="no"><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></span></p>
-            <p>Highlight display in Search<span className="no"><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></span></p>
-            <p>Job of The Week<span className="no"><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></span></p>
-            <p>Job of The Month<span className="no"><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></span></p>
-
-            <div className="btn">
-              <Link to={'/postajob'}>Select</Link>
-            </div>
-          </div>
-          <div className="col">
-            <div className="heading">Platinum</div>
-            <h3 className="price">
-              {<small>$</small>}100.00{<small>/30 Days</small>}
-            </h3>
-            <p>Job Hosting time <span>30 Days</span></p>
-            <p>Logo in search<span className="yes"><FontAwesomeIcon icon={faCheck}></FontAwesomeIcon></span></p>
-            <p>Logo in Job Description<span className="yes"><FontAwesomeIcon icon={faCheck}></FontAwesomeIcon></span></p>
-            <p>Boosted display<span className="yes"><FontAwesomeIcon icon={faCheck}></FontAwesomeIcon></span></p>
-            <p>Highlight display in Search<span className="yes"><FontAwesomeIcon icon={faCheck}></FontAwesomeIcon></span></p>
-            <p>Job of The Week<span className="no"><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></span></p>
-            <p>Job of The Month<span className="no"><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></span></p>
-
-            <div className="btn">
-              <Link to={'/postajob'}>Select</Link>
-            </div>
-          </div>
-
-          <div className="col">
-            <div className="heading">Diamond</div>
-            <h3 className="price">
-              {<small>$</small>}200.00{<small>/60 Days</small>}
-            </h3>
-            <p>Job Hosting time <span>60 Days</span></p>
-            <p>Logo in search<span className="yes"><FontAwesomeIcon icon={faCheck}></FontAwesomeIcon></span></p>
-            <p>Logo in Job Description<span className="yes"><FontAwesomeIcon icon={faCheck}></FontAwesomeIcon></span></p>
-            <p>Boosted display<span className="yes"><FontAwesomeIcon icon={faCheck}></FontAwesomeIcon></span></p>
-            <p>Highlight display in Search<span className="yes"><FontAwesomeIcon icon={faCheck}></FontAwesomeIcon></span></p>
-            <p>Job of The Week<span className="yes"><FontAwesomeIcon icon={faCheck}></FontAwesomeIcon></span></p>
-            <p>Job of The Month<span className="yes"><FontAwesomeIcon icon={faCheck}></FontAwesomeIcon></span></p>
-
-            <div className="btn">
-              <Link to={'/postajob'}>Select</Link>
-            </div>
-          </div>
+          {
+            products.map(( product ) => (
+              <Product key={product.type} product={ product } />
+            ))
+          }
         </div>
       </div>
     </ErrorBoundary>
