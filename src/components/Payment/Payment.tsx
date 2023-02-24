@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import { REACT_BACKEND_URL, REACT_STRIPE_PUBLIC_KEY } from '../../config';
 import axios from 'axios';
 import './Payment.scss';
 const Payment = ()=>{
@@ -9,14 +10,14 @@ const Payment = ()=>{
     description: 'This is a Sample'
   });
   async function handleToken(token:any){
-    const response = await axios.post('http://localhost:3000/v1/checkout',{token,product});
-    console.log(response.status);
+    const response = await axios.post(`${REACT_BACKEND_URL}/v1/checkout`,{token,product});
+    console.log(response);
     if(response.status===200){
       console.log('Success, Payment is complete',{type:'success'});
     }else{
       console.log('Failure, Payment is complete',{type:'error'});
     }
-    
+
   }
   return (
     <div className="paymentCss">
@@ -26,10 +27,10 @@ const Payment = ()=>{
         <h3>Product Price: {product.price}</h3>
         <h3>Product Description: {product.description}</h3>
       </div>
-        
+
       <div className='stripe'>
         <StripeCheckout
-          stripeKey = "pk_test_51MUr0rSCXoMBK86oohQxGrv7r21gkhp9DgomNGs6Lbgfhnhqxa8XnN4JwYHswFq5KvxjDUpgYLj5Belu5O7JWima00WiAAgjND"
+          stripeKey = {REACT_STRIPE_PUBLIC_KEY}
           token = {handleToken}
           amount = {product.price*100}
           name = {product.name}
@@ -37,7 +38,7 @@ const Payment = ()=>{
           shippingAddress
         />
       </div>
-      
+
     </div>
   );
 };

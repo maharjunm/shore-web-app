@@ -99,6 +99,8 @@
     "@types/react-dom": "^18.0.5",
     "axios": "^0.21.4",
     "classnames": "^2.2.6",
+    "dotenv": "^16.0.3",
+    "dotenv-webpack": "^8.0.1",
     "esri-loader": "^3.5.0",
     "font-awesome": "^4.7.0",
     "helper-toolkit-ts": "^1.1.13",
