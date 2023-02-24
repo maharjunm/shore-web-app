@@ -1,7 +1,6 @@
 import React from 'react';
 import './ProductSelectionPage.scss';
-import { ErrorBoundary } from '../../components';
-import Product from './Product/Product';
+import { ErrorBoundary, Product } from '../../components';
 
 const products=[
   {
@@ -52,7 +51,7 @@ const ProductSelectionPage = () => {
         <div className="content">
           {
             products.map(( product ) => (
-              <Product key={product.type} product={ product } />
+              <Product key={product.type} product={ product } isSelected={false} />
             ))
           }
         </div>

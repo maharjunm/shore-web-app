@@ -1,19 +1,17 @@
 import React from 'react';
-import { ErrorBoundary } from '../../../components';
+import { ErrorBoundary } from '../../components';
+import  ProductData  from '../DataModels/ProductData';
 import {Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark , faCheck } from '@fortawesome/free-solid-svg-icons';
+import './Product.scss';
 interface Props{
-  product:{
-    type:string,
-    amount:number,
-    hostingTime:number,
-    offers:{field:string,value:boolean}[]
-  }
+  product: ProductData,
+  isSelected: boolean,
 }
-const Product = (props:Props) => {
+const Product = ( props: Props ) => {
 
-  const {product} = props;
+  const { product, isSelected } = props;
 
   return (
     <ErrorBoundary>
@@ -40,14 +38,14 @@ const Product = (props:Props) => {
             </p>
           ))
         }
-        <div className="btn">
+        <div className={isSelected?'btn productSelected':'btn productNotSelected'}>
           <Link to={
             {
               pathname:'/postajob',
               state:product,
             }
           }
-          >Select</Link>
+          >{isSelected?'Selected':'select'}</Link>
         </div>
       </div>
     </ErrorBoundary>
