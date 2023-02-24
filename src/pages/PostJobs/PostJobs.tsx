@@ -18,7 +18,7 @@ const PostJobs = () => {
       <div className="job_page">
         <div className="content">
           <Product product={ product } isSelected={true} />
-          <Payment />
+          <Payment product={ product }/>
         </div>
       </div>
     </ErrorBoundary>
