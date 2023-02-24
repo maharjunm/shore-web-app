@@ -17,9 +17,9 @@ const Home = () => {
   React.useEffect(()=>{
     const fetchData=async()=>{
       await axios.get('http://localhost:3000/v1/job')
-      .then(res =>{
-        setJobs(res.data);
-      });
+        .then(res =>{
+          setJobs(res.data);
+        });
     };
     fetchData();
     
@@ -33,7 +33,7 @@ const Home = () => {
   },[selectedJob,jobs]);
   const handleJobSelect=(jobName:string)=>{
     setSelectedJob(jobName);
-  }
+  };
   
   const jobClick=(job:FormData,currentView:string)=>{
     setView(currentView);

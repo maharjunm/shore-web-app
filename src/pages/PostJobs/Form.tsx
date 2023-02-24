@@ -67,7 +67,7 @@ const Form = () => {
     region: REACT_REGION,
     accessKeyId: REACT_ACCESSKEY,
     secretAccessKey: REACT_SC,  
-  }
+  };
 
 
   const [preview, setPreview] = useState('form show');
@@ -82,34 +82,34 @@ const Form = () => {
     console.log(file);
     try{
       let res=await s3.uploadFile(file);
-      updateForm("company.logo",res.location);
+      updateForm('company.logo',res.location);
     }
     catch(e){
       console.log(e);
     }
-  }
+  };
   const updateForm = (field: string, value: any) => {
-  if(field === "Logo"){
+    if(field === 'Logo'){
       handleLogo(value);
       return;
-  }
-  setForm((prevForm) => {
-    const [section, subfield] = field.split('.');
-    if (section === 'qualifications' || section === "duties") {
+    }
+    setForm((prevForm) => {
+      const [section, subfield] = field.split('.');
+      if (section === 'qualifications' || section === 'duties') {
+        return {
+          ...prevForm,
+          [section]: value,
+        };
+      }
       return {
         ...prevForm,
-        [section]: value,
+        [section]: {
+          ...prevForm[section],
+          [subfield]: value,
+        },
       };
-    }
-    return {
-      ...prevForm,
-      [section]: {
-        ...prevForm[section],
-        [subfield]: value,
-      },
-    };
-  });
-}
+    });
+  };
 
 
   const showPreview = (jobView:FormData) =>{
@@ -136,7 +136,7 @@ const Form = () => {
   };
   const onSubmit=async()=>{
     const res=await axios.post('http://localhost:3000/v1/job',form).then(res=>console.log(res)).catch(e=>console.log(e));
-  }
+  };
   
 
   return (

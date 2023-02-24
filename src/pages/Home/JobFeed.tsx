@@ -25,7 +25,7 @@ const JobFeed = (det: Props) => {
           <span>{p.job.experience}</span>
           <span> {p.company.companyType}</span>
         </div>
-         <ul>
+        <ul>
           {p.qualifications.map((qualification:{value:string,id:string})=>
             <li key={qualification.id}>{qualification.value}</li>
           )}

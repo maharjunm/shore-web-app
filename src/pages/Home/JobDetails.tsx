@@ -13,7 +13,7 @@ interface Props {
 }
 const JobDetails= (details:Props) => {
   let p=details.jobd;
- const imagePath = p.company.logo;
+  const imagePath = p.company.logo;
   const clicked=()=>{
     if(details.isHome){
       details.jobClick(null,'hide');
