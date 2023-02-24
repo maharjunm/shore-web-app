@@ -15,7 +15,7 @@ const PostJobs = () => {
   console.log(location.state);
   return (
     <ErrorBoundary>
-      <p>hi</p>
+      <Form/>
     </ErrorBoundary>
   );
 };
