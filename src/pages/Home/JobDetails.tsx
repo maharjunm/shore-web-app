@@ -112,7 +112,7 @@ const JobDetails= (details:Props) => {
               <h1>Full Job Description</h1>
             </b>
             <div className="innerbox">
-              <h1 className="jobTitle b">Job Duties</h1>
+
               <ul className="colorlightblack">
                 {
                   p.duties.map((duty:{value:string ,id:string})=>(

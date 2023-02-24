@@ -1,9 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState ,useContext } from 'react';
 import './NavBar.scss';
 import Logo from './../images/logo.png';
 import {NavLink} from 'react-router-dom';
 import Flex from './../Flex/Flex';
+import { UserContext } from '../../pages/HomePage/HomePage';
 const NavBar = () => {
+  const { state, dispatch } = useContext(UserContext);
+  const RenderMenu = () =>{
+    if(state){
+      return(
+        <ul>
+          <li ><NavLink to="/profile">Profile</NavLink></li>
+          <li ><NavLink to="/logout">Logout</NavLink></li>
+        </ul>
+      );
+    }
+    else{
+      return(
+        <li ><NavLink to="/signup">Signup/Login</NavLink></li>
+      );
+    }
+  };
+
   const [mobview,setMobview]= useState('invisible');
   const onClick=()=>{
     if(mobview==='visible'){
@@ -33,6 +51,7 @@ const NavBar = () => {
               <li ><NavLink to="/payment">Payment</NavLink></li>
               <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
               <li ><NavLink to="/contactus">Contact Us</NavLink></li>
+              <RenderMenu />
             </ul>
           </div>
         </div>
@@ -53,10 +72,13 @@ const NavBar = () => {
           </div>
           <div className={'options '+mobview}>
             <ul onClick={()=> setMobview('invisible')}>
-              <li ><NavLink exact to="/" >Home<i className="fa-solid fa-house"></i></NavLink></li>
-              <li > <NavLink to="/payment">Payment</NavLink></li>
-              <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
-              <li > <NavLink to="/contactus">Contact Us</NavLink></li>
+              <ul>
+                <li ><NavLink exact to="/" >Home</NavLink></li>
+                <li ><NavLink to="/payment">Payment</NavLink></li>
+                <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
+                <li ><NavLink to="/contactus">Contact Us</NavLink></li>
+                <RenderMenu />
+              </ul>
             </ul>
           </div >
         </div>

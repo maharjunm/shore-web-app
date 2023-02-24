@@ -65,9 +65,14 @@ const DutiesSection =  (props: Props) => {
             ))
           }
         </ul>
-        <div className="row">
-          <input type="text" name="extraDuty"  onChange={updateDuty} id="rrinput" placeholder="EX:FrontEnd Developer" />
+        <div className="row flexrow">
+          <textarea rows={5} cols={60} name="extraDuty"  onChange={updateDuty} id="rrinput"
+            placeholder="About the position job duties the application package.How to apply" >
+          </textarea>
           <button type="button"  onClick={addDuty} className="addBtn" >Add+</button>
+        </div>
+        <div className="row">
+
         </div>
         <div className="ErrorBox">
           <span className="inputErrorMesg">{emptyInpurError && inputErrorMessage }</span>
