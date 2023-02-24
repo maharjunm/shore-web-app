@@ -6,6 +6,7 @@ import './Home.scss';
 import { ErrorBoundary,Searchbar, Location } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
 import data from '../../components/SearchBar/data';
+import { REACT_JOB_ROUTE } from '../../config';
 
 
 const Home = () => {
@@ -16,7 +17,7 @@ const Home = () => {
   const [job,setJob] =React.useState([]);
   React.useEffect(()=>{
     const fetchData=async()=>{
-      await axios.get('http://localhost:3000/v1/job')
+      await axios.get(REACT_JOB_ROUTE)
         .then(res =>{
           setJobs(res.data);
         });
