@@ -12,7 +12,7 @@ const Dotenv = require('dotenv-webpack');
 module.exports =  (env, options)=> {
 
     const devMode = options.mode === 'development' ? true : false;
-    
+
     process.env.NODE_ENV = options.mode;
 
     return {
@@ -26,12 +26,7 @@ module.exports =  (env, options)=> {
         },
         devtool: 'source-map',
         resolve: {
-            extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
-            fallback: {
-                "fs": false,
-                "path": require.resolve("path-browserify"),
-                "os": require.resolve("os-browserify/browser")
-            }
+            extensions: ['.js', '.jsx', '.json', '.ts', '.tsx']
         },
         module: {
             rules: [
