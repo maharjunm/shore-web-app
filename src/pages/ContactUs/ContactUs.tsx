@@ -24,9 +24,9 @@ const ContactUs = ( ) => {
       return{
         ...prevFormData,
         [e.target.name]:e.target.value
-      }
+      };
     });
-  }
+  };
   return (
     <ErrorBoundary>
       <div className="contactContainer">
