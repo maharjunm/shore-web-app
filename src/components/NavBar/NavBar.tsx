@@ -34,16 +34,16 @@ const NavBar = () => {
     <nav className="navbar">
       <div className="main">
         <div className="header">
-            <Flex>
-              <img className="img" src={Logo} />
-              <h4>
-                <NavLink exact to="/">
-                  <span className="color-blue">Shore</span>
-                  <span className="color-yellow">Birdie</span>
-                </NavLink>
-              </h4>
-            </Flex>
-          </div>
+          <Flex>
+            <img className="img" src={Logo} />
+            <h4>
+              <NavLink exact to="/">
+                <span className="color-blue">Shore</span>
+                <span className="color-yellow">Birdie</span>
+              </NavLink>
+            </h4>
+          </Flex>
+        </div>
         <div className="container">
           <div>
             <ul>
