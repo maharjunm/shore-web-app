@@ -6,7 +6,7 @@ import JobDetails from '../Home/JobDetails';
 import validate from './validate';
 import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
 import dotenv from 'dotenv';
-import { REACT_ACCESSKEY, REACT_BUCKETNAME, REACT_DIRNAME, REACT_JOB_ROUTE, REACT_REGION, REACT_SC } from '../../config';
+import { REACT_ACCESSKEY, REACT_BACKEND_URL, REACT_BUCKETNAME, REACT_DIRNAME, REACT_BACKEND_IP, REACT_REGION, REACT_SC } from '../../config';
 
 
 import{
@@ -135,7 +135,7 @@ const Form = () => {
     }
   };
   const onSubmit=async()=>{
-    const res=await axios.post(REACT_JOB_ROUTE,form).then(res=>console.log(res)).catch(e=>console.log(e));
+    const res=await axios.post(REACT_BACKEND_IP+'v1/job/',form).then(res=>console.log(res)).catch(e=>console.log(e));
   };
   
 
