@@ -33,8 +33,7 @@ const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="main">
-        <div className="container">
-          <div className="header">
+        <div className="header">
             <Flex>
               <img className="img" src={Logo} />
               <h4>
@@ -45,6 +44,7 @@ const NavBar = () => {
               </h4>
             </Flex>
           </div>
+        <div className="container">
           <div>
             <ul>
               <li ><NavLink exact to="/" >Home</NavLink></li>
