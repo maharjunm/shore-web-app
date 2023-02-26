@@ -117,12 +117,7 @@ const JobDetails= (details:Props) => {
                 }
               </ul>
             </div>
-            <div className="innerbox">
-              <h1 className="jobTitle b">Experience</h1>
-              <ul>
-                <li>{p.experience}</li>
-              </ul>
-            </div>
+          
           </div>
         </div>
       </div>

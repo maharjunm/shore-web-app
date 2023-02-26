@@ -58,13 +58,24 @@ const CompanyLocationSection =  (props: Props) => {
             Region
             <span className="mandatoryField">*</span>
           </label>
-          <input
-            type="text"
-            name="region"
-            onChange={(e)=>updateForm('region',e.target.value)}
+          <select
+            className="input"
             required
+            name="region"
             id="region"
-          />
+            onChange={(e)=>updateForm('region',e.target.value)}
+          >
+            <option value="">select</option>
+            <option value="North America">North America</option>
+            <option value="Europe">Europe</option>
+            <option value="Asia">Asia</option>
+            <option value="South America">South America</option>
+            <option value="Asia Pacific">Asia Pacific</option>
+            <option value="Australia">Australia</option>
+            <option value="Working from home">Working from home</option>
+            <option value="Middle East">Middle East</option>
+            <option value="Oceania">Oceania</option>
+          </select>
         </div>
       </div>
     </ErrorBoundary>

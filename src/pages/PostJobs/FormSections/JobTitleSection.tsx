@@ -15,18 +15,36 @@ const JobTitleSection = (props:Props) => {
         <div className="headTitle">Job Details</div>
         <div className="row">
           <label htmlFor="title">
-            Job Title
+          Job Title
             <span className="mandatoryField">*</span>
           </label>
-          <div className="flexdown">
-            <input
-              type="text"
-              name="title"
-              onChange={(e)=>updateForm('title',e.target.value)}
-              required
-              id="title"
-            />
-          </div>
+          <select
+            className="input"
+            required
+            name="title"
+            id="title"
+            onChange={(e)=>updateForm('title',e.target.value)}
+          >
+            <option value="">select</option>
+            <option value="Academic Dean/Dept. Head">Academic Dean/Dept. Head</option>
+            <option value="Faculty">Faculty</option>
+            <option value="Group Leader/Principal Invesigator">Group Leader/Principal Invesigator</option>
+            <option value="Lab Manager">Lab Manager</option>
+            <option value="Lecturer/Senior Lecturer">Lecturer/Senior Lecturer</option>
+            <option value="Manager">Manager</option>
+            <option value="Medical Doctor">Medical Doctor</option>
+            <option value="PhD Fellowship">PhD Fellowship</option>
+            <option value="PhD Studentship">PhD Studentship</option>
+            <option value="Postdoc Fellowship">Postdoc Fellowship</option>
+            <option value="President/CEO/Director/VP">President/CEO/Director/VP</option>
+            <option value="Project Manager">Project Manager</option>
+            <option value="Research Scientist">Research Scientist</option>
+            <option value="Senior Scientist">Senior Scientist</option>
+            <option value="Staff Scientist">Staff Scientist</option>
+            <option value="Student Fellowship">Student Fellowship</option>
+            <option value="Technician">Technician</option>
+          </select>
+        
         </div>
         <div className="row">
           <label htmlFor="qualification">
