@@ -1,12 +1,31 @@
 import React,{useState} from 'react';
 import { ErrorBoundary } from '../../components';
+import axios from 'axios';
 import './ContactUs.scss';
+import { REACT_BACKEND_IP } from '../../config';
 const ContactUs = ( ) => {
   const [formStatus,setFormStatus]= useState('Submit');
-  const [formDetails,setDetails]= useState();
-  const onSubmit=(e:any)=>{
+  const [formData,setFormData]= useState({email:'',companyName:'',name:'',query:''});
+  const onSubmit= async (e:any)=>{
     e.preventDefault();
     setFormStatus('submitting');
+    const response = await await axios.post(REACT_BACKEND_IP+'v1/contact',formData).then(response =>{
+      console.log(response);
+      setFormStatus('Submitted');
+    }).catch(e =>{
+      console.log(e);
+      setFormStatus('Error!');
+    });
+
+    console.log(formData);
+  };
+  const handleChange=(e:any)=>{
+    setFormData(prevFormData=>{
+      return{
+        ...prevFormData,
+        [e.target.name]:e.target.value
+      };
+    });
   };
   return (
     <ErrorBoundary>
@@ -21,10 +40,10 @@ const ContactUs = ( ) => {
           </div>
           <div>
             <form onSubmit={onSubmit} action='#' >
-              <input type="email" name="email"  placeholder="Email"/>
-              <input type="text" name="name" placeholder="Full Name"/>
-              <input type="text" name="companyname" placeholder="Company Name"/>
-              <input type="text" name="query" placeholder="Query"/><br/>
+              <input type="email" name="email"  value={formData.email} onChange={handleChange} placeholder="Email"/>
+              <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Full Name"/>
+              <input type="text" name="companyName" value={formData.companyName} onChange={handleChange}  placeholder="Company Name"/>
+              <input type="text" name="query" value={formData.query} onChange={handleChange} placeholder="Query"/><br/>
               <button type="submit" className={formStatus}> {formStatus}</button>
             </form>
           </div>
