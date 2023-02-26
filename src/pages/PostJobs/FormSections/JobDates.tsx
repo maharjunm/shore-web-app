@@ -25,7 +25,7 @@ const JobDates =  (props: Props) => {
             max={new Date('9999-12-30').toISOString().split('T')[0]}
             type="date" required
             name="postingDate"
-            onChange={(e)=>updateForm('postingDate',e.target.value)}
+            onChange={(e)=>updateForm('dates.postingDate',e.target.value)}
             id="postingDate"
           />
         </div>
@@ -41,7 +41,7 @@ const JobDates =  (props: Props) => {
             type="date"
             required
             name="expiryDate"
-            onChange={(e)=>updateForm('expiryDate',e.target.value)}
+            onChange={(e)=>updateForm('dates.expiryDate',e.target.value)}
             id="expiryDate"
           />
         </div>
@@ -57,7 +57,7 @@ const JobDates =  (props: Props) => {
             type="date"
             required
             name="appClosingDate"
-            onChange={(e)=>updateForm('appClosingDate',e.target.value)}
+            onChange={(e)=>updateForm('dates.closingDate',e.target.value)}
             id="appClosingDate"
           />
         </div>
@@ -73,7 +73,7 @@ const JobDates =  (props: Props) => {
             type="date"
             required
             name="removingJobDate"
-            onChange={(e)=>updateForm('removingJobDate',e.target.value)}
+            onChange={(e)=>updateForm('dates.removingDate',e.target.value)}
             id="removingJobDate"
           />
         </div>

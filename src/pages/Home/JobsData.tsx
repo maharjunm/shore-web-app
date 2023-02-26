@@ -3,90 +3,141 @@ import  companyLogo  from '../../components/images/defaultCompanyLogo.jpg';
 import  image1  from '../../components/images/images.jpg';
 const JobsData:FormData[]=[
   {
-    title:'Software Developer-Fresher',
-    qualification:'Btech',
-    experience:'Fresher +1',
-    companyName:'INFOSYS',
-    companyType:'Offline',
-    companyLogo:image1,
-    city:'Hyderabad',
-    state:'Telangana',
-    country:'India',
-    region:'Asia',
-    postingDate:new Date('02-21-2023'),
-    expiryDate:new Date('12-13-2024'),
-    appClosingDate:new Date('01-03-2023'),
-    removingJobDate:new Date('08-02-2023'),
-    salary:15000,
-    hours:8,
-    jobType:'Parmanent',
-    qualifications:[
-      {id:'1',value:'Bachelor of Technology '},
-      {id:'2',value:'Aws Cloud Computing service'},
-      {id:'3',value:'Git and Github'},
+    job: {
+      title: 'Software Engineer',
+      experience: '3+ years',
+      discipline: 'Computer Science',
+      type: 'Full-time',
+      qualification: 'Software Development',
+    },
+    company: {
+      name: 'ABC Tech',
+      companyType: 'Private',
+      logo: '',
+    },
+    location: {
+      city: 'New York',
+      country: 'USA',
+      state: 'New York',
+      region: 'North America',
+    },
+    dates: {
+      postingDate: new Date('2023-02-14'),
+      expiryDate: new Date('2023-03-14'),
+      closingDate: new Date('2023-03-15'),
+      removingDate: new Date('2023-03-30'),
+    },
+    salary: {
+      sal: 80000,
+      hours: 40,
+      companyType: 'Annual',
+    },
+    qualifications: [
+      { value: 'Strong programming skills in languages such as Java, Python, or C++', id: 'qual-1' },
+      { value: 'Experience with database systems such as MySQL or PostgreSQL', id: 'qual-2' },
+      { value: 'Familiarity with software development tools and methodologies such as Agile', id: 'qual-3' },
     ],
-    duties:[
-      {id:'1',value:'Developing and maintaining all server-side network components.'},
-      {id:'2',value:'Developing and maintaining all client-side UI components and interfaces.'},
-      {id:'3',value:'Designing customer-facing UI and back-end services for various business processes'},
-      {id:'4',value:'Developing high-performance applications by writing testable, reusable, and efficient code.'},
+    duties: [
+      { value: 'Design, develop, and maintain software applications', id: 'duty-1' },
+      { value: 'Write high-quality, maintainable code', id: 'duty-2' },
+      { value: 'Collaborate with cross-functional teams to identify and address software issues', id: 'duty-3' },
     ],
+    contact:{
+      email:'example@gmail.com',
+      employeeEmail:'emplouyee'
+    }
   },
   {
-    title:'Frontend Developer-Fresher',
-    qualification:'Btech',
-    experience:'Seniority +2',
-    companyName:'THOUGHTWORKS',
-    companyType:'Online',
-    companyLogo:companyLogo,
-    city:'Mumbai',
-    state:'Mharastra',
-    country:'India',
-    region:'Asia',
-    postingDate:new Date('02-02-2023'),
-    expiryDate:new Date('03-23-2024'),
-    appClosingDate:new Date('11-10-2023'),
-    removingJobDate:new Date('12-06-2023'),
-    salary:1200000,
-    hours:7,
-    jobType:'regular',
-    qualifications:[
-      {id:'1',value:'Computer Science Graduate'},
-      {id:'2',value:'Well familiar with Node.js '},
+    job: {
+      title: 'Marketing Manager',
+      experience: '3+ years of experience in marketing',
+      discipline: 'Marketing',
+      type: 'Full-time',
+      qualification: 'Marketing and Advertising'
+    },
+    company: {
+      name: 'XYZ Corporation',
+      companyType: 'Public',
+      logo:  '',
+    },
+    location: {
+      city: 'San Francisco',
+      country: 'USA',
+      state: 'California',
+      region: 'North America'
+    },
+    dates: {
+      postingDate: new Date('2023-02-14'),
+      expiryDate: new Date('2023-03-14'),
+      closingDate: new Date('2023-03-15'),
+      removingDate: new Date('2023-03-30')
+    },
+    salary: {
+      sal: 90000,
+      hours: 40,
+      companyType: 'Annual'
+    },
+    qualifications: [
+      { value: 'Bachelor\'s degree in Marketing or related field', id: '1' },
+      { value: 'Experience with digital marketing channels', id: '2' },
+      { value: 'Excellent communication and organizational skills', id: '3' }
     ],
-    duties:[
-      {id:'1',value:'Implementing effective security protocols, data protection measures, and storage solutions.'},
-      {id:'2',value:'Running diagnostic tests, repairing defects, and providing technical support.'},
-      {id:'3',value:'Recommending and implementing improvements to processes and technologies.'},
+    duties: [
+      { value: 'Develop and implement marketing strategies', id: '1' },
+      { value: 'Analyze market trends and competition', id: '2' },
+      { value: 'Collaborate with cross-functional teams', id: '3' }
     ],
+    contact:{
+      email:'example@gmail.com',
+      employeeEmail:'emplouyee'
+    }
   },
   {
-    title:'Backend Developer-Fresher',
-    qualification:'Btech',
-    experience:'Fresher +3',
-    companyName:'DELOITTE',
-    companyType:'Online',
-    companyLogo:companyLogo,
-    city:'Delhi',
-    state:'Delhi',
-    country:'India',
-    region:'Asia',
-    postingDate:new Date('02-02-2023'),
-    expiryDate:new Date('03-13-2024'),
-    appClosingDate:new Date('11-10-2023'),
-    removingJobDate:new Date('12-06-2023'),
-    salary:50000,
-    hours:8,
-    jobType:'Regular',
-    qualifications:[
-      {id:'1',value: 'Any Degree',},
-      {id:'2',value: 'Information Technology Expert'},
-      {id:'3',value: 'React native of new version'},
+    job: {
+      title: 'Graphic Designer',
+      experience: '2+ years of experience in graphic design',
+      discipline: 'Graphic Design',
+      type: 'Full-time',
+      qualification: 'Creative Design'
+    },
+    company: {
+      name: 'Design Co.',
+      companyType: 'Private',
+      logo: '',
+    },
+    location: {
+      city: 'London',
+      country: 'UK',
+      state: null,
+      region: 'Europe'
+    },
+    dates: {
+      postingDate: new Date('2023-02-14'),
+      expiryDate: new Date('2023-03-14'),
+      closingDate: new Date('2023-03-15'),
+      removingDate: new Date('2023-03-30')
+    },
+    salary: {
+      sal: 60000,
+      hours: 40,
+      companyType: 'Annual'
+    },
+    qualifications: [
+      { value: 'Bachelor\'s degree in Graphic Design or related field', id: '1' },
+      { value: 'Experience with design software such as Adobe Creative Suite', id: '2' },
+      { value: 'Strong portfolio of design work', id: '3' }
     ],
-    duties:[
-      {id:'1',value:'Keeping informed of advancements in the fields of Node.js and React.js development.Keeping informed of advancements in the fields of Node.js and React.js development.'},
-      {id:'2',value:'Designing DB tables and Querying Databases to validate application behaviour and perform unit tests'},
-    ]
-  },
+    duties: [
+      { value: 'Create visual designs for various mediums', id: '1' },
+      { value: 'Collaborate with teams to understand design requirements', id: '2' },
+      { value: 'Present designs to stakeholders and incorporate feedback', id: '3' }
+    ],
+    contact:{
+      email:'example@gmail.com',
+      employeeEmail:'emplouyee'
+    }
+  }
+
 ];
 export default JobsData;
+
