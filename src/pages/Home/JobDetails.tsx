@@ -99,7 +99,6 @@ const JobDetails= (details:Props) => {
               <h1>Qualifications</h1>
             </b>
             <ul>
-              
               {
                 p.qualifications.map((qualification:{value:string,id:string})=>(
                   <li key={qualification.id}>{qualification.value}</li>
@@ -112,7 +111,6 @@ const JobDetails= (details:Props) => {
               <h1>Full Job Description</h1>
             </b>
             <div className="innerbox">
-
               <ul className="colorlightblack">
                 {
                   p.duties.map((duty:{value:string ,id:string})=>(
@@ -121,15 +119,6 @@ const JobDetails= (details:Props) => {
                 }
               </ul>
             </div>
-            <div className="innerbox">
-              <h1 className="jobTitle b">Experience</h1>
-              <ul>
-                <li>{p.job.experience}</li>
-              </ul>
-            </div>
-          </div>
-          <div className="Box alignLeft report">
-            <button className="btn">Report this job</button>
           </div>
         </div>
       </div>

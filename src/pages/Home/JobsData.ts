@@ -32,6 +32,11 @@ const JobsData:FormData[]=[
       hours: 40,
       companyType: 'Annual',
     },
+    discipline: [
+      { value: 'Strong programming skills in languages such as Java, Python, or C++', id: 'qual-1' },
+      { value: 'Experience with database systems such as MySQL or PostgreSQL', id: 'qual-2' },
+      { value: 'Familiarity with software development tools and methodologies such as Agile', id: 'qual-3' },
+    ],
     qualifications: [
       { value: 'Strong programming skills in languages such as Java, Python, or C++', id: 'qual-1' },
       { value: 'Experience with database systems such as MySQL or PostgreSQL', id: 'qual-2' },
@@ -77,6 +82,11 @@ const JobsData:FormData[]=[
       hours: 40,
       companyType: 'Annual'
     },
+    discipline: [
+      { value: 'Strong programming skills in languages such as Java, Python, or C++', id: 'qual-1' },
+      { value: 'Experience with database systems such as MySQL or PostgreSQL', id: 'qual-2' },
+      { value: 'Familiarity with software development tools and methodologies such as Agile', id: 'qual-3' },
+    ],
     qualifications: [
       { value: 'Bachelor\'s degree in Marketing or related field', id: '1' },
       { value: 'Experience with digital marketing channels', id: '2' },
@@ -122,6 +132,11 @@ const JobsData:FormData[]=[
       hours: 40,
       companyType: 'Annual'
     },
+    discipline: [
+      { value: 'Strong programming skills in languages such as Java, Python, or C++', id: 'qual-1' },
+      { value: 'Experience with database systems such as MySQL or PostgreSQL', id: 'qual-2' },
+      { value: 'Familiarity with software development tools and methodologies such as Agile', id: 'qual-3' },
+    ],
     qualifications: [
       { value: 'Bachelor\'s degree in Graphic Design or related field', id: '1' },
       { value: 'Experience with design software such as Adobe Creative Suite', id: '2' },

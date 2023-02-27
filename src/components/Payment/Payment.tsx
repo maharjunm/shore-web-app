@@ -41,7 +41,6 @@ const Payment = (props:Props)=>{
           shippingAddress
         />
       </div>
-
     </div>
   );
 };

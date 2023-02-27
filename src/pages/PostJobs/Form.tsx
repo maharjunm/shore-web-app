@@ -52,6 +52,7 @@ const defaultForm:FormData = {
     companyType: 'Annual',
   },
   qualifications:[],
+  discipline:[],
   duties:[],
   contact:{
     email:'',
