@@ -30,7 +30,6 @@ const QualificationsSection =  (props: Props) => {
     });
 
   };
-
   const addQualification = ()=>{
     if(!qualification.trim()){
       setEmptyInputError(true);
@@ -41,12 +40,12 @@ const QualificationsSection =  (props: Props) => {
     }
     setQualifications((updatedQulifications)=>{
       const tempQualifications=[
-        ...qualifications,{id:qualification,value:qualification}
+        ...qualifications,{id:qualifications.length,value:qualification}
       ];
       updateForm('qualifications',tempQualifications);
       return tempQualifications;
-    });
-    setQualification('');
+    });setQualification('');
+    
   };
 
   return(
@@ -73,6 +72,7 @@ const QualificationsSection =  (props: Props) => {
             onBlur={updateQualification}
             id="qlinput"
             placeholder="EX:BTech CSE"
+            value={qualification}
           />
           <button type="button"  onClick={addQualification} className="addBtn" >Add+</button>
         </div>

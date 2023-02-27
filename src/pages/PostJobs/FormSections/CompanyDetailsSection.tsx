@@ -11,10 +11,10 @@ const CompanyDetailsSection =  (props: Props) => {
   const { updateForm } = props;
   const setLogo = (file: File) => {
     if(!file){
-      updateForm('companyLogo',null);
+      updateForm('Logo',null);
       return;
     }
-    updateForm('companyLogo',file);
+    updateForm('Logo',file);
   };
 
   return(
@@ -29,7 +29,7 @@ const CompanyDetailsSection =  (props: Props) => {
           <input
             type="text"
             name="companyName"
-            onChange={(e)=>updateForm('companyName',e.target.value)}
+            onChange={(e)=>updateForm('company.name',e.target.value)}
             required
             id="companyName"
           />
@@ -42,7 +42,7 @@ const CompanyDetailsSection =  (props: Props) => {
           <input
             type="text"
             name="companyType"
-            onChange={(e)=>updateForm('companyType',e.target.value)}
+            onChange={(e)=>updateForm('company.companyType',e.target.value)}
             required
             id="companyType"
           />
@@ -56,10 +56,10 @@ const CompanyDetailsSection =  (props: Props) => {
             type="file"
             accept=".jpg,.png,.jpeg,"
             className="input"
-            name="compnayLogo"
+            name="companyLogo"
             onChange={(e)=>setLogo(e.target.files[0])}
             required
-            id="compnayLogo" />
+            id="companyLogo" />
         </div>
         <div className="messageBox">
           <span className="logotype"><i>(only  jpg, png, jpeg)</i></span>

@@ -40,12 +40,13 @@ const DutiesSection =  (props: Props) => {
     }
     setDuties((updateDuties)=>{
       const tempDuties=[
-        ...duties,{id:duty,value:duty}
+        ...duties,{id:duties.length,value:duty}
       ];
       updateForm('duties',tempDuties);
       return tempDuties;
-    });
-    setDuty('');
+    });setDuty('');
+    
+    
   };
 
   return(
