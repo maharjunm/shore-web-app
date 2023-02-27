@@ -59,37 +59,6 @@ const SalarySection =  (props: Props) => {
             <option value="Permanent">Internship</option>
           </select>
         </div>
-        <div className="row">
-          <label htmlFor="jobType">
-            Discipline
-            <span className="mandatoryField">*</span>
-          </label>
-          <select
-            className="input"
-            required
-            name="jobType"
-            id="jobType"
-            onChange={(e)=>updateForm('jobType',e.target.value)}
-          >
-            <option value="">select</option>
-            <option value="Contract">Life Sciences</option>
-            <option value="Regular">Physics</option>
-            <option value="Permanent">Biomedicine</option>
-            <option value="Permanent">Health Sciences</option>
-            <option value="Contract">Engineerin</option>
-            <option value="Regular">Chemistry</option>
-            <option value="Permanent">Computer Science</option>
-            <option value="Permanent">Applied Sciences</option>
-            <option value="Contract">Nanotechnology</option>
-            <option value="Regular">Earth Sciences</option>
-            <option value="Permanent">Environmental</option>
-            <option value="Permanent">Sciences</option>
-            <option value="Contract">Veterinary</option>
-            <option value="Regular">Fisheries</option>
-            <option value="Permanent">Agriculture</option>
-            <option value="Permanent">Forestry</option>
-          </select>
-        </div>
       </div>
     </ErrorBoundary>
   );
