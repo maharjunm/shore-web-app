@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import  ProductData  from '../DataModels/ProductData';
+import { useHistory } from 'react-router-dom';
 import { REACT_BACKEND_URL, REACT_STRIPE_PUBLIC_KEY } from '../../config';
 import axios from 'axios';
 import './Payment.scss';
@@ -8,10 +9,13 @@ interface Props{
   product:ProductData,
 }
 const Payment = (props:Props)=>{
+
+  const history = useHistory();
   const { product } = props;
   async function handleToken(token:any){
     const response = await axios.post(`${REACT_BACKEND_URL}/v1/checkout`,{token,product});
     console.log(response);
+    history.push('/form');
     if(response.status===200){
       console.log('Success, Payment is complete',{type:'success'});
     }else{
