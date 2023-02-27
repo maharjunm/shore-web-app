@@ -93,7 +93,7 @@
   justify-content: space-between;
 }
 .showform{
-  display: ;
+  display: flex;
 }
 .hideform{
   display: hidden;
@@ -191,4 +191,8 @@
   .side .row label{
     font-size: 15px;
   }
+  .multi{
+    max-width: 310px;
+  }
+  
 }

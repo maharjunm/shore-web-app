@@ -7,6 +7,10 @@ interface FormData{
     id:string;
     value:string;
   }[];
+  discipline:{
+    id:string;
+    value:string;
+  }[];
   title:string;
   qualification:string;
   experience:string;

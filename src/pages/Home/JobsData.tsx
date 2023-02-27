@@ -25,6 +25,11 @@ const JobsData:FormData[]=[
       {id:'2',value:'Aws Cloud Computing service'},
       {id:'3',value:'Git and Github'},
     ],
+    discipline:[
+      {id:'1',value:'Physics'},
+      {id:'2',value:'Life Sciences'},
+      {id:'3',value:'Chemistry'},
+    ],
     duties:[
       {id:'1',value:'Developing and maintaining all server-side network components.'},
       {id:'2',value:'Developing and maintaining all client-side UI components and interfaces.'},
@@ -54,6 +59,11 @@ const JobsData:FormData[]=[
       {id:'1',value:'Computer Science Graduate'},
       {id:'2',value:'Well familiar with Node.js '},
     ],
+    discipline:[
+      {id:'1',value:'Physics'},
+      {id:'2',value:'Life Sciences'},
+      {id:'3',value:'Chemistry'},
+    ],
     duties:[
       {id:'1',value:'Implementing effective security protocols, data protection measures, and storage solutions.'},
       {id:'2',value:'Running diagnostic tests, repairing defects, and providing technical support.'},
@@ -82,6 +92,11 @@ const JobsData:FormData[]=[
       {id:'1',value: 'Any Degree',},
       {id:'2',value: 'Information Technology Expert'},
       {id:'3',value: 'React native of new version'},
+    ],
+    discipline:[
+      {id:'1',value:'Physics'},
+      {id:'2',value:'Life Sciences'},
+      {id:'3',value:'Chemistry'},
     ],
     duties:[
       {id:'1',value:'Keeping informed of advancements in the fields of Node.js and React.js development.Keeping informed of advancements in the fields of Node.js and React.js development.'},

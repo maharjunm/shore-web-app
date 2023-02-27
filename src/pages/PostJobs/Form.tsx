@@ -19,6 +19,7 @@ const defaultForm:FormData = {
   duties:null,
   title:'',
   qualification:'',
+  discipline:null,
   experience:'',
   companyName:'',
   companyType:'',
@@ -44,6 +45,7 @@ const Form = () => {
   const [errorMessage, setErrorMessage]= useState(null);
 
   const updateForm = (field: string,value: any)=>{
+    console.log(form);
     setForm((updatedForm:FormData) =>{
       return {
         ...updatedForm,
