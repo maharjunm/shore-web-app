@@ -2,14 +2,14 @@ import React,{useState} from 'react';
 import { ErrorBoundary } from '../../components';
 import axios from 'axios';
 import './ContactUs.scss';
-import { REACT_BACKEND_IP } from '../../config';
+import { REACT_BACKEND_URL } from '../../config';
 const ContactUs = ( ) => {
   const [formStatus,setFormStatus]= useState('Submit');
   const [formData,setFormData]= useState({email:'',companyName:'',name:'',query:''});
   const onSubmit= async (e:any)=>{
     e.preventDefault();
     setFormStatus('submitting');
-    const response = await await axios.post(REACT_BACKEND_IP+'v1/contact',formData).then(response =>{
+    const response = await await axios.post(REACT_BACKEND_URL+'v1/contact',formData).then(response =>{
       console.log(response);
       setFormStatus('Submitted');
     }).catch(e =>{
