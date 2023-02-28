@@ -16,28 +16,25 @@ const JobFeed = (det: Props) => {
     <ErrorBoundary>
       <div className="jobFeed" onClick={setJob} >
         <div className="title">
-          <h4 >{p.title}</h4>
-          <span className="company"> {p.companyName}</span>
-          <span className="company"> {p.city},{p.state}</span>
+          <h4 >{p.job.title}</h4>
+          <span className="company"> {p.company.name}</span>
+          <span className="company"> {p.location.city},{p.location.state}</span>
         </div>
         <div className="shift">
-          <span> &#8377; {p.salary}-{p.jobType}</span>
-          <span>{p.experience}</span>
-          <span> {p.companyType}</span>
-        </div>
-        <div className="downshift">
-          <span>Easily apply</span>
-          <span>Hiring multiple candidate</span>
+          <span>&#8377; {p.salary.sal}-{p.job.type}</span>
+          <span>{p.job.experience}</span>
+          <span> {p.company.companyType}</span>
         </div>
         <ul>
-          <li>Software design and development in a test-driven environment. </li>
-          <li>Knowledge of coding languages (e.g. PHP, Java, JavaScript). </li>
+          {p.qualifications.map((qualification:{value:string,id:string})=>
+            <li key={qualification.id}>{qualification.value}</li>
+          )}
         </ul>
         <div className="foot">
           <p>
               Hiring ongoing: From{' '}
             <b>
-              {p.title} in {p.city},{p.state}
+              {p.job.title} in {p.location.city},{p.location.state}
             </b>
           </p>
         </div>

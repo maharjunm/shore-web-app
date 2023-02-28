@@ -22,7 +22,7 @@ const CompanyLocationSection =  (props: Props) => {
           <input
             type="text"
             name="city"
-            onChange={(e)=>updateForm('city',e.target.value)}
+            onChange={(e)=>updateForm('location.city',e.target.value)}
             required
             id="city"
           />
@@ -35,7 +35,7 @@ const CompanyLocationSection =  (props: Props) => {
           <input
             type="text"
             name="state"
-            onChange={(e)=>updateForm('state',e.target.value)}
+            onChange={(e)=>updateForm('location.state',e.target.value)}
             required
             id="state"
           />
@@ -48,7 +48,7 @@ const CompanyLocationSection =  (props: Props) => {
           <input
             type="text"
             name="country"
-            onChange={(e)=>updateForm('country',e.target.value)}
+            onChange={(e)=>updateForm('location.country',e.target.value)}
             required
             id="country"
           />
@@ -63,7 +63,7 @@ const CompanyLocationSection =  (props: Props) => {
             required
             name="region"
             id="region"
-            onChange={(e)=>updateForm('region',e.target.value)}
+            onChange={(e)=>updateForm('location.region',e.target.value)}
           >
             <option value="">select</option>
             <option value="North America">North America</option>

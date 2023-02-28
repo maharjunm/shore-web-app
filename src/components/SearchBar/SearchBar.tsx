@@ -1,12 +1,14 @@
 import React from 'react';
 import './SearchBar.scss';
-interface Props {
-    data: {
-        id: number;
-        name: string;
-    }[];
+interface Job {
+    id: number;
+    name: string;
 }
-const Searchbar: React.FC<Props> = ({ data }) => {
+interface Props{
+  data: Job[];
+  onJobSelect :(jobName: String)=> void;
+}
+const Searchbar: React.FC<Props> = ({ data,onJobSelect }) => {
   const [searchData, setSearchData] = React.useState('');
   const [searchResult, setSearchResults] = React.useState([]);
   const [selectData, setSelectData] = React.useState('');
@@ -24,9 +26,9 @@ const Searchbar: React.FC<Props> = ({ data }) => {
     setSearchResults(filteredData);
   };
   const handleClick = (event: React.MouseEvent<HTMLOptionElement>) => {
-    console.log(event.currentTarget.value);
     setSearchData(event.currentTarget.value);
     setIsOpen(false);
+    onJobSelect(event.currentTarget.value);
   };
 
   return (

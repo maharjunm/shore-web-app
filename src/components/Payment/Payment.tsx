@@ -1,44 +1,46 @@
 import React, { useState } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import  ProductData  from '../DataModels/ProductData';
+import { useHistory } from 'react-router-dom';
 import { REACT_BACKEND_URL, REACT_STRIPE_PUBLIC_KEY } from '../../config';
 import axios from 'axios';
 import './Payment.scss';
-const Payment = ()=>{
-  const [product]  = useState({
-    name: 'Sample Book',
-    price: 200,
-    description: 'This is a Sample'
-  });
+interface Props{
+  product:ProductData,
+}
+const Payment = (props:Props)=>{
+
+  const history = useHistory();
+  const { product } = props;
   async function handleToken(token:any){
     const response = await axios.post(`${REACT_BACKEND_URL}/v1/checkout`,{token,product});
     console.log(response);
+    history.push('/form');
     if(response.status===200){
       console.log('Success, Payment is complete',{type:'success'});
     }else{
       console.log('Failure, Payment is complete',{type:'error'});
     }
-
   }
   return (
     <div className="paymentCss">
       <div className="flexContent">
         <h2>Product   Info</h2>
-        <h3>Product Name: {product.name}</h3>
-        <h3>Product Price: {product.price}</h3>
-        <h3>Product Description: {product.description}</h3>
+        <h3>Product Name: {product.type}</h3>
+        <h3>Product Price: {product.amount}</h3>
+        <h3>Product Hosting Time: {product.hostingTime}</h3>
       </div>
 
       <div className='stripe'>
         <StripeCheckout
           stripeKey = {REACT_STRIPE_PUBLIC_KEY}
           token = {handleToken}
-          amount = {product.price*100}
-          name = {product.name}
+          amount = {product.amount*100}
+          name = {product.type}
           billingAddress
           shippingAddress
         />
       </div>
-
     </div>
   );
 };

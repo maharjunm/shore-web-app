@@ -27,7 +27,7 @@ const JobTitleSection = (props:Props) => {
             required
             name="title"
             id="title"
-            onChange={(e)=>updateForm('title',e.target.value)}
+            onChange={(e)=>updateForm('job.title',e.target.value)}
           >
             <option value="">select</option>
             <option value="Academic Dean/Dept. Head">Academic Dean/Dept. Head</option>
@@ -48,9 +48,7 @@ const JobTitleSection = (props:Props) => {
             <option value="Student Fellowship">Student Fellowship</option>
             <option value="Technician">Technician</option>
           </select>
-        
         </div>
-        
         <div className="row">
           <label htmlFor="qualification">
             Qualification
@@ -59,7 +57,7 @@ const JobTitleSection = (props:Props) => {
           <input
             type="text"
             name="qualification"
-            onChange={(e)=>updateForm('qualification',e.target.value)}
+            onChange={(e)=>updateForm('job.qualification',e.target.value)}
             required
             id="qualification"
           />
@@ -72,7 +70,7 @@ const JobTitleSection = (props:Props) => {
           <input
             type="text"
             name="experience"
-            onChange={(e)=>updateForm('experience',e.target.value)}
+            onChange={(e)=>updateForm('job.experience',e.target.value)}
             required
             id="experience"
           />
@@ -87,6 +85,25 @@ const JobTitleSection = (props:Props) => {
             options={option}
             selectedValues={['Sciences']}
           />
+        </div>
+        <div className="row">
+          <label htmlFor="jobType">
+            Job Type
+            <span className="mandatoryField">*</span>
+          </label>
+          <select
+            className="input"
+            required
+            name="jobType"
+            id="jobType"
+            onChange={(e)=>updateForm('job.type',e.target.value)}
+          >
+            <option value="">select</option>
+            <option value="Contract">Contract</option>
+            <option value="Full-time">Full-Time</option>
+            <option value="Part-time">Part-Time</option>
+            <option value="Internship">Internship</option>
+          </select>
         </div>
       </div>
     </ErrorBoundary>
