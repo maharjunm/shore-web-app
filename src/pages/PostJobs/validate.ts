@@ -1,7 +1,6 @@
 import  FormData  from '../../components/DataModels/FormData';
 
 const validate=(form:FormData)=>{
-  return form;
   const mandatoryFields = [
     'title', 'qualification', 'experience', 'companyName', 'companyType', 'companyLogo', 'city', 'state', 'country',
     'region', 'postingDate', 'expiryDate', 'appClosingDate', 'removingJobDate', 'salary', 'hours', 'jobType',
