@@ -2,7 +2,6 @@ interface FormData{
     job: {
     title: string;
     experience: string;
-    discipline: string;
     type: 'Full-time' | 'Part-time' | 'Contract' | 'Internship';
     qualification: string;
   };

@@ -8,10 +8,12 @@ interface Props{
 const JobTitleSection = (props:Props) => {
   const { updateForm } = props;
   const [option, setOption] = useState(['Life Sciences', 'Physics', 'Biomedicine','Health Sciences','Engineering','Chemistry','Computer Science','Applied Science','Nanotechnology','Earth Sciences','Environmental','Sciences','Veterinary','Fisheries','Agriculture','Forestry']);
-  const updateDiscip=(field: string,value: any)=>{
-    if(value.length>0){
-      updateForm(field,value);
+  const updateDiscipline=(field: string,value: any)=>{
+    if(value.length==0){
+      updateForm(field,null);
+      return;
     }
+    updateForm(field,value);
   };
   return (
     <ErrorBoundary>
@@ -80,7 +82,9 @@ const JobTitleSection = (props:Props) => {
           Discipline
             <span className="mandatoryField">*</span>
           </label>
-          <Multiselect className='multi' onSelect={(e)=>updateDiscip('discipline',e)} 
+          <Multiselect className='multi' 
+            onSelect={(e)=>updateDiscipline('discipline',e)} 
+            onRemove={(e)=>updateDiscipline('discipline',e)}
             isObject={false}
             options={option}
             selectedValues={['Sciences']}
@@ -98,7 +102,7 @@ const JobTitleSection = (props:Props) => {
             id="jobType"
             onChange={(e)=>updateForm('job.type',e.target.value)}
           >
-            <option value="">select</option>
+            
             <option value="Contract">Contract</option>
             <option value="Full-time">Full-Time</option>
             <option value="Part-time">Part-Time</option>

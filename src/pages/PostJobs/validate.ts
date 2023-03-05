@@ -2,11 +2,17 @@ import  FormData  from '../../components/DataModels/FormData';
 
 const validate=(form:FormData)=>{
   const mandatoryFields = [
-    'title', 'qualification', 'experience', 'companyName', 'companyType', 'companyLogo', 'city', 'state', 'country',
-    'region', 'postingDate', 'expiryDate', 'appClosingDate', 'removingJobDate', 'salary', 'hours', 'jobType',
-    'qualifications', 'duties'
+    'job.title', 'job.qualification', 'job.experience', 'company.name', 'company.companyType', 'company.logo', 'location.city', 'location.state', 'location.country',
+    'location.region', 'dates.postingDate', 'dates.expiryDate', 'dates.closingDate', 'dates.removingDate', 'salary.sal', 'salary.hours', 'salary.companyType',
+    'contact.email','contact.employeeEmail','discipline','qualifications','duties'
   ];
-  const  isValid = mandatoryFields.reduce((acc,field) => { return  acc && !(!form[field]); },true);
+  const  isValid = mandatoryFields.reduce((acc,field) => { 
+    if (field === 'qualifications' || field === 'duties' || field === 'discipline') {
+      return acc && !(!form[field]);
+    }
+    const subFields = field.split('.');
+    return acc && !(!form[subFields[0]][subFields[1]]); 
+  },true);
   return isValid ? form: null;
 
 };

@@ -6,7 +6,6 @@ const JobsData:FormData[]=[
     job: {
       title: 'Software Engineer',
       experience: '3+ years',
-      discipline: 'Computer Science',
       type: 'Full-time',
       qualification: 'Software Development',
     },
@@ -56,7 +55,6 @@ const JobsData:FormData[]=[
     job: {
       title: 'Marketing Manager',
       experience: '3+ years of experience in marketing',
-      discipline: 'Marketing',
       type: 'Full-time',
       qualification: 'Marketing and Advertising'
     },
@@ -106,7 +104,6 @@ const JobsData:FormData[]=[
     job: {
       title: 'Graphic Designer',
       experience: '2+ years of experience in graphic design',
-      discipline: 'Graphic Design',
       type: 'Full-time',
       qualification: 'Creative Design'
     },
