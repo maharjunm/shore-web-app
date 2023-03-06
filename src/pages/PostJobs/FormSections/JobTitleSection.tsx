@@ -8,11 +8,14 @@ interface Props{
 const JobTitleSection = (props:Props) => {
   const { updateForm } = props;
   const [option, setOption] = useState(['Life Sciences', 'Physics', 'Biomedicine','Health Sciences','Engineering','Chemistry','Computer Science','Applied Science','Nanotechnology','Earth Sciences','Environmental','Sciences','Veterinary','Fisheries','Agriculture','Forestry']);
-  const updateDiscip=(field: string,value: any)=>{
-    if(value.length>0){
-      updateForm(field,value);
+  const updateDiscip = (value: any) => {
+    if (value.length > 0) {
+      updateForm('discipline', value);
     }
   };
+
+
+
   return (
     <ErrorBoundary>
       <div className="side">
@@ -80,7 +83,7 @@ const JobTitleSection = (props:Props) => {
           Discipline
             <span className="mandatoryField">*</span>
           </label>
-          <Multiselect className='multi' onSelect={(e)=>updateDiscip('discipline',e)} 
+          <Multiselect className='multi' onSelect={updateDiscip} 
             isObject={false}
             options={option}
             selectedValues={['Sciences']}

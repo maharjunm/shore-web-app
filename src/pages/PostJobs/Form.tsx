@@ -6,7 +6,7 @@ import JobDetails from '../Home/JobDetails';
 import validate from './validate';
 import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
 import dotenv from 'dotenv';
-import { REACT_ACCESSKEY, REACT_BACKEND_URL, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
+import { REACT_ACCESSKEY, REACT_BACKEND_ROUTE, REACT_BACKEND_URL, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
 
 
 import{
@@ -25,7 +25,6 @@ const defaultForm:FormData = {
   job: {
     title: '',
     experience: '',
-    discipline: '',
     type: 'Full-time',
     qualification:'',
   },
@@ -57,7 +56,8 @@ const defaultForm:FormData = {
   contact:{
     email:'',
     employeeEmail:'',
-  }
+  },
+  status:'Pending'
 };
 
 const Form = () => {
@@ -102,15 +102,24 @@ const Form = () => {
           [section]: value,
         };
       }
+      if (section === 'discipline') {
+        return {
+          ...prevForm,
+          [section]: value.map((discipline: string) => discipline.trim()),
+        };
+      }
       return {
         ...prevForm,
         [section]: {
           ...prevForm[section],
-          [subfield]: value,
+          [subfield]: value
         },
       };
     });
+    console.log(form);
   };
+
+
 
 
   const showPreview = (jobView:FormData) =>{
@@ -136,7 +145,7 @@ const Form = () => {
     }
   };
   const onSubmit=async()=>{
-    const res=await axios.post(REACT_BACKEND_URL+'v1/job/',form).then(res=>console.log(res)).catch(e=>console.log(e));
+    const res=await axios.post(REACT_BACKEND_ROUTE+'v1/job/',form).then(res=>console.log(res)).catch(e=>console.log(e));
   };
 
 

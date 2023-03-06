@@ -30,6 +30,12 @@ const JobFeed = (det: Props) => {
             <li key={qualification.id}>{qualification.value}</li>
           )}
         </ul>
+        <h2>Discipline:</h2>
+        <ul>
+          {p.discipline.map((discipline: string, index: number) => (
+            <li key={index}>{discipline}</li>
+          ))}
+        </ul>
         <div className="foot">
           <p>
               Hiring ongoing: From{' '}

@@ -2,7 +2,6 @@ interface FormData{
     job: {
     title: string;
     experience: string;
-    discipline: string;
     type: 'Full-time' | 'Part-time' | 'Contract' | 'Internship';
     qualification: string;
   };
@@ -34,10 +33,8 @@ interface FormData{
     email:string;
     employeeEmail:string;
   };
-  discipline:{
-    id:string;
-    value:string;
-  }[];
+  discipline:string[];
+  status : 'Approved' | 'Rejected' | 'Pending' ;
 
 }
 export default FormData;

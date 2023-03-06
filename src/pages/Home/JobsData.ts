@@ -6,7 +6,6 @@ const JobsData:FormData[]=[
     job: {
       title: 'Software Engineer',
       experience: '3+ years',
-      discipline: 'Computer Science',
       type: 'Full-time',
       qualification: 'Software Development',
     },
@@ -33,9 +32,9 @@ const JobsData:FormData[]=[
       companyType: 'Annual',
     },
     discipline: [
-      { value: 'Strong programming skills in languages such as Java, Python, or C++', id: 'qual-1' },
-      { value: 'Experience with database systems such as MySQL or PostgreSQL', id: 'qual-2' },
-      { value: 'Familiarity with software development tools and methodologies such as Agile', id: 'qual-3' },
+      'Strong programming skills in languages such as Java, Python, or C++', 
+      'Experience with database systems such as MySQL or PostgreSQL',
+      'Familiarity with software development tools and methodologies such as Agile'
     ],
     qualifications: [
       { value: 'Strong programming skills in languages such as Java, Python, or C++', id: 'qual-1' },
@@ -50,13 +49,14 @@ const JobsData:FormData[]=[
     contact:{
       email:'example@gmail.com',
       employeeEmail:'emplouyee'
-    }
+    },
+    status:'Pending'
   },
   {
     job: {
       title: 'Marketing Manager',
       experience: '3+ years of experience in marketing',
-      discipline: 'Marketing',
+
       type: 'Full-time',
       qualification: 'Marketing and Advertising'
     },
@@ -83,9 +83,9 @@ const JobsData:FormData[]=[
       companyType: 'Annual'
     },
     discipline: [
-      { value: 'Strong programming skills in languages such as Java, Python, or C++', id: 'qual-1' },
-      { value: 'Experience with database systems such as MySQL or PostgreSQL', id: 'qual-2' },
-      { value: 'Familiarity with software development tools and methodologies such as Agile', id: 'qual-3' },
+      'Strong programming skills in languages such as Java, Python, or C++', 
+      'Experience with database systems such as MySQL or PostgreSQL',
+      'Familiarity with software development tools and methodologies such as Agile'
     ],
     qualifications: [
       { value: 'Bachelor\'s degree in Marketing or related field', id: '1' },
@@ -100,13 +100,13 @@ const JobsData:FormData[]=[
     contact:{
       email:'example@gmail.com',
       employeeEmail:'emplouyee'
-    }
+    },
+    status:'Pending'
   },
   {
     job: {
       title: 'Graphic Designer',
       experience: '2+ years of experience in graphic design',
-      discipline: 'Graphic Design',
       type: 'Full-time',
       qualification: 'Creative Design'
     },
@@ -133,9 +133,9 @@ const JobsData:FormData[]=[
       companyType: 'Annual'
     },
     discipline: [
-      { value: 'Strong programming skills in languages such as Java, Python, or C++', id: 'qual-1' },
-      { value: 'Experience with database systems such as MySQL or PostgreSQL', id: 'qual-2' },
-      { value: 'Familiarity with software development tools and methodologies such as Agile', id: 'qual-3' },
+      'Strong programming skills in languages such as Java, Python, or C++', 
+      'Experience with database systems such as MySQL or PostgreSQL',
+      'Familiarity with software development tools and methodologies such as Agile'
     ],
     qualifications: [
       { value: 'Bachelor\'s degree in Graphic Design or related field', id: '1' },
@@ -150,7 +150,9 @@ const JobsData:FormData[]=[
     contact:{
       email:'example@gmail.com',
       employeeEmail:'emplouyee'
-    }
+    },
+    status:'Pending',
+    
   }
 
 ];

@@ -1,33 +1,24 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../HomePage/HomePage';
-import { REACT_BACKEND_URL } from '../../config';
+import './auth.scss';
 
-const Logout = () => {
-  const History = useHistory();
-  const { state, dispatch } = useContext(UserContext);
+function Logout() {
+  const { dispatch } = useContext(UserContext);
+  const history = useHistory();
 
-  useEffect(() => {
-    fetch(`${REACT_BACKEND_URL}/v1/user/logout`, {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-    })
-      .then((res) => {
-        dispatch({ type: 'USER', payload: false });
-        History.push('/', { replace: true });
-        if (res.status != 200) {
-          const error = new Error();
-          throw error;
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
-  return <h1>Logging Out .....</h1>;
-};
+  const handleLogout = () => {
+    dispatch({ type: 'USER', payload: false });
+    dispatch({ type: 'ADMIN', payload: false });
+    history.push('/login');
+  };
+
+  return (
+    <div className="logoutContainer">
+      <p>Are you sure you want to log out?</p>
+      <button onClick={handleLogout} className="logoutButton">Logout</button>
+    </div>
+  );
+}
+
 export default Logout;

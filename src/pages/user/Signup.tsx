@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './auth.scss';
-import { REACT_BACKEND_URL } from '../../config';
+import { REACT_BACKEND_ROUTE, REACT_BACKEND_URL } from '../../config';
 
 function Signup() {
   const [username, setName] = useState('');
@@ -12,10 +12,10 @@ function Signup() {
   const History = useHistory();
 
   const handleSubmit = async (event: any) => {
-    event.preventDefault();
+    event.preventDefault(event);
 
     try{
-      const res = await fetch(`${REACT_BACKEND_URL}/v1/user/signup`, {
+      const res = await fetch(`${REACT_BACKEND_ROUTE}v1/user/signup`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',

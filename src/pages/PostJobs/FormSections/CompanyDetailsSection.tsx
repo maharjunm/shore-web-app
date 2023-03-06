@@ -36,19 +36,6 @@ const CompanyDetailsSection =  (props: Props) => {
         </div>
         <div className="row">
           <label htmlFor="companyType">
-            Organization Type
-            <span className="mandatoryField">*</span>
-          </label>
-          <input
-            type="text"
-            name="companyType"
-            onChange={(e)=>updateForm('company.companyType',e.target.value)}
-            required
-            id="companyType"
-          />
-        </div>
-        <div className="row">
-          <label htmlFor="companyType">
           Organization Type
             <span className="mandatoryField">*</span>
           </label>
@@ -57,7 +44,7 @@ const CompanyDetailsSection =  (props: Props) => {
             required
             name="companyType"
             id="companyType"
-            onChange={(e)=>updateForm('companyType',e.target.value)}
+            onChange={(e)=>updateForm('company.companyType',e.target.value)}
           >
             <option value="">select</option>
             <option value="Academia">Academia</option>
