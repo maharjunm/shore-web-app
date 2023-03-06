@@ -5,7 +5,6 @@ import './Form.scss';
 import JobDetails from '../Home/JobDetails';
 import validate from './validate';
 import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
-import dotenv from 'dotenv';
 import { REACT_ACCESSKEY, REACT_BACKEND_URL, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
 
 
@@ -25,7 +24,6 @@ const defaultForm:FormData = {
   job: {
     title: '',
     experience: '',
-    discipline: '',
     type: 'Full-time',
     qualification:'',
   },
@@ -51,9 +49,9 @@ const defaultForm:FormData = {
     hours: null,
     companyType: 'Annual',
   },
-  qualifications:[],
-  discipline:[],
-  duties:[],
+  qualifications:null,
+  discipline:null,
+  duties:null,
   contact:{
     email:'',
     employeeEmail:'',
@@ -80,13 +78,13 @@ const Form = () => {
   const handleLogo=async(file: File)=>{
     setFile(file);
     const s3=new ReactS3Client(s3Config);
-    console.log(file);
     try{
       let res=await s3.uploadFile(file);
       updateForm('company.logo',res.location);
     }
     catch(e){
-      console.log(e);
+      console.log('error in uploading to s3 bucket',e);
+      updateForm('company.logo','xyz.jpg');
     }
   };
   const updateForm = (field: string, value: any) => {
@@ -96,7 +94,7 @@ const Form = () => {
     }
     setForm((prevForm) => {
       const [section, subfield] = field.split('.');
-      if (section === 'qualifications' || section === 'duties') {
+      if (section === 'qualifications' || section === 'duties' || section === 'discipline') {
         return {
           ...prevForm,
           [section]: value,

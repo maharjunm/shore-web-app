@@ -17,7 +17,7 @@ const Home = () => {
   const [job,setJob] =React.useState([]);
   React.useEffect(()=>{
     const fetchData=async()=>{
-      await axios.get(REACT_BACKEND_URL+'v1/job')
+      await axios.get(`${REACT_BACKEND_URL}/v1/job`)
         .then(res =>{
           setJobs(res.data);
         });
