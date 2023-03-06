@@ -56,7 +56,6 @@ const JobsData:FormData[]=[
     job: {
       title: 'Marketing Manager',
       experience: '3+ years of experience in marketing',
-
       type: 'Full-time',
       qualification: 'Marketing and Advertising'
     },

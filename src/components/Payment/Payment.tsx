@@ -14,13 +14,16 @@ const Payment = (props:Props)=>{
   const { product } = props;
   async function handleToken(token:any){
     const response = await axios.post(`${REACT_BACKEND_URL}/v1/checkout`,{token,product});
-    console.log(response);
-    history.push('/form');
-    if(response.status===200){
-      console.log('Success, Payment is complete',{type:'success'});
+    console.log(response.data);
+    window.alert(response.data.status);
+    if(response.data.status==='success'){
+      console.log('Success, Payment is complete');
+      history.push('/form');
     }else{
-      console.log('Failure, Payment is complete',{type:'error'});
+      window.alert(response.data.information.msg);
+      console.log('Failure, Payment is complete');
     }
+
   }
   return (
     <div className="paymentCss">
