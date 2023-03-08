@@ -11,7 +11,7 @@ const PostJobs = () => {
   const history =  useHistory();
   const product = location.state;
   if(!product){
-    history.push('/PostJobs');
+    history.push('/profile');
   }
   return (
     <ErrorBoundary>

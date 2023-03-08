@@ -6,7 +6,13 @@ import { REACT_BACKEND_URL } from '../../config';
 const Logout = () => {
   const History = useHistory();
   const { state, dispatch } = useContext(UserContext);
-
+  const logout = () =>{
+    dispatch({ type: 'USER', payload: false });
+    setTimeout(() => {
+      History.push('/home');
+    }, 2000);
+  };
+  logout();
   useEffect(() => {
     fetch(`${REACT_BACKEND_URL}/v1/user/logout`, {
       method: 'GET',

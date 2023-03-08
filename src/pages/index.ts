@@ -1,5 +1,3 @@
-import userProfile from './user/userProfile';
-
 export { default as HomePage } from './HomePage/HomePage';
 export { default as Home } from './Home/Home';
 export { default as ContactUs } from './ContactUs/ContactUs';

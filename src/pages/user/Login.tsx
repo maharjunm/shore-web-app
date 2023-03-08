@@ -6,15 +6,19 @@ import { REACT_BACKEND_URL } from '../../config';
 
 function Login() {
   const { state, dispatch } = useContext(UserContext);
-
+  const [ logging, setLogging ] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const History = useHistory();
+  const handleLogging = () => {
+    setLogging(true);
+  };
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
+    handleLogging();
 
     try{
       const res = await fetch(`${REACT_BACKEND_URL}/v1/user/login`, {
@@ -32,12 +36,12 @@ function Login() {
       else if(res.status === 500) setError('something went wrong');
       else{
         dispatch({ type: 'USER', payload: true });
-        window.alert('successfull');
-        History.push('/');
+        History.push('/profile');
       }
     }catch(error){
       setError(error);
     }
+
   };
 
   return (
@@ -63,7 +67,7 @@ function Login() {
 
         {error && <div className="error">{error}</div>}
         <div className="btn">
-          <button type="submit">Login</button>
+          <button type="submit" className={logging?'btnLogging':''}>{logging?'Logging in':'Login'}</button>
         </div>
 
         <p>Dont have an account?{' '}<Link to="/signup" className="Link">Sign up</Link></p>

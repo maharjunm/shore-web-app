@@ -9,15 +9,22 @@ const NavBar = () => {
   const RenderMenu = () =>{
     if(state){
       return(
-        <ul>
-          <li ><NavLink to="/profile">Profile</NavLink></li>
-          <li ><NavLink to="/logout">Logout</NavLink></li>
-        </ul>
+        <>
+          <li ><NavLink to="/postajob">Post a Job</NavLink></li>
+          <li ><NavLink to="/contactus">Contact Us</NavLink></li>
+          <ul>
+            <li ><NavLink to="/profile">Profile</NavLink></li>
+            <li ><NavLink to="/logout">Logout</NavLink></li>
+          </ul>
+        </>
       );
     }
     else{
       return(
-        <li ><NavLink to="/signup">Signup/Login</NavLink></li>
+        <>
+          <li ><NavLink to="/contactus">Contact Us</NavLink></li>
+          <li ><NavLink to="/signup">Signup/Login</NavLink></li>
+        </>
       );
     }
   };
@@ -48,9 +55,6 @@ const NavBar = () => {
           <div>
             <ul>
               <li ><NavLink exact to="/" >Home</NavLink></li>
-              <li ><NavLink to="/payment">Payment</NavLink></li>
-              <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
-              <li ><NavLink to="/contactus">Contact Us</NavLink></li>
               <RenderMenu />
             </ul>
           </div>
@@ -74,9 +78,6 @@ const NavBar = () => {
             <ul onClick={()=> setMobview('invisible')}>
               <ul>
                 <li ><NavLink exact to="/" >Home</NavLink></li>
-                <li ><NavLink to="/payment">Payment</NavLink></li>
-                <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
-                <li ><NavLink to="/contactus">Contact Us</NavLink></li>
                 <RenderMenu />
               </ul>
             </ul>

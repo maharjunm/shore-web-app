@@ -28,7 +28,7 @@ function Signup() {
       });
       if(res.status === 201){
         window.alert('successful SignUp');
-        History.push('/login');
+        History.push('/profile');
       }
       else if(res.status === 400) setError('user already exisit');
       else setError('Something went wrong');
