@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { REACT_BACKEND_ROUTE } from '../../config';
-import './Admin.css';
+import './Admin.scss';
 
 
 interface Job {
@@ -82,78 +82,118 @@ function Admin() {
   }, []);
   console.log(jobs);
   return (
-    <div className="jobs-container">
-      {jobs.length > 0 &&
-    jobs.map((job: Job) => (
-      <div className="job-card" key={job.job.title}>
-        
-        <div className='header'><h1 className="job-title">{job.job.title} </h1><img src={job.company.logo} className="logo"></img></div>
-        
-        
-        <div className="job-info">
-          <div className="job-info-item">
-            <span className="job-info-label">Experience:</span>
-            {job.job.experience}
-          </div>
-          <div className="job-info-item">
-            <span className="job-info-label">Type:</span>
-            {job.job.type}
-          </div>
-          <div className="job-info-item">
-            <span className="job-info-label">Qualification:</span>
-            {job.job.qualification}
-          </div>
-          <div className="job-info-item">
-            <span className="job-info-label">Company:</span>
-            {job.company.name}
-          </div>
-          <div className="job-info-item">
-            <span className="job-info-label">Location:</span>
-            {job.location.city}, {job.location.state}, {job.location.country}
-          </div>
-          <div className="job-info-item">
-            <span className="job-info-label">Posting date:</span>
-            {new Date(job.dates.postingDate).toLocaleDateString()}
-          </div>
-          <div className="job-info-item">
-            <span className="job-info-label">Expiry date:</span>
-            {new Date(job.dates.expiryDate).toLocaleDateString()}
-          </div>
-          <div className="job-info-item">
-            <span className="job-info-label">Closing date:</span>
-            {new Date(job.dates.closingDate).toLocaleDateString()}
-          </div>
-          <div className="job-info-item">
-            <span className="job-info-label">Salary:</span>
-            {job.salary.sal} {job.salary.companyType}
-          </div>
-          <div className="job-info-item">
-            <span className="job-info-label">Qualifications:</span>
-            {job.qualifications.map((q) => q.value).join(', ')}
-          </div>
-          <div className="job-info-item">
-            <span className="job-info-label">Duties:</span>
-            {job.duties.map((d) => d.value).join(', ')}
-          </div>
-          <div className="job-info-item">
-            <span className="job-info-label">Discipline:</span>
-            {job.discipline.join(', ')}
-          </div>
-        </div>
-        <div className="footer">
-          <h3 className="status">Status of Job:{job.status}</h3>
-          { (job.status === 'Pending') || (job.status==='Rejected') &&
+    <div>
+      {jobs.length>0 && jobs.map((p:Job)=>(
+        <div key="p.job._id">
+          <div className="jobdetails">
+            <div className="sticky">
+              <div className="mainHead">
+                <div className="sideContent">
+                  <div className="logoBox">
+                    <img className="companyLogoImage" src={p.company.logo} />
+                  </div>
+                  <div className="jobTitle">
+                    <div className="title">
+                      <div>{p.job.title}</div>
+                    </div>
+                    <h1>{p.company.name}</h1>
+                    <span className='companyLocation'>{p.location.city},{p.location.state}-{p.location.country}</span>
+                    <span>&#8377;{p.salary.sal} - {p.salary.companyType}</span>
+                    <span>{p.job.experience}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="headDetails">
+              <b className='title'>Job Details</b>
+              <div className="flexside">
+                <div className="boxside">
+                  <div className="salaryDescription">
+                    <b>Salary</b>
+                    <span>&#x20B9;{p.salary.sal}-{p.salary.companyType}</span>
+                  </div>
+                  <div className="jobType">
+                    <b>Job Type</b>
+                    <span>{p.company.companyType}</span>
+                  </div>
+                </div>
+                <div className="boxside">
+                  <div className="jobType">
+                    <b>Duration</b>
+                    <span>{p.salary.hours}hrs/Day</span>
+                  </div>
+                  <div className="jobType">
+                    <b>Location</b>
+                    <span>{p.location.city},{p.location.state},{p.location.country}-{p.location.region}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="headDetails bordertop">
+              <b className='title'>Important Dates</b>
+              <div className="flexside">
+                <div className="boxside">
+                  <div className="salaryDescription">
+                    <b>Posting Job on</b>
+                    <span>{p.dates.postingDate.toString()}</span>
+                  </div>
+                  <div className="jobType">
+                    <b>Job Expires on </b>
+                    <span>{p.dates.expiryDate.toString()}</span>
+                  </div>
+                </div>
+                <div className="boxside">
+                  <div className="jobType">
+                    <b>Closing Job on</b>
+                    <span>{p.dates.closingDate.toString()}</span>
+                  </div>
+                  <div className="jobType">
+                    <b>Removing Job on</b>
+                    <span>{p.dates.removingDate.toString()}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="Box alignLeft">
+              <b className="jobTitle">
+                <h1>Qualifications</h1>
+              </b>
+              <ul>
+                {
+                  p.qualifications.map((qualification:{value:string,id:string})=>(
+                    <li key={qualification.id}>{qualification.value}</li>
+                  ))
+                }
+              </ul>
+            </div>
+            <div className="Box alignLeft">
+              <b className="jobTitle">
+                <h1>Full Job Description</h1>
+              </b>
+              <div className="innerbox">
+                <ul className="colorlightblack">
+                  {
+                    p.duties.map((duty:{value:string ,id:string})=>(
+                      <li key={duty.id}>{duty.value}</li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </div>
+            <div className="footer">
+              <h3 className="status">Status of Job:{p.status}</h3>
+              { (p.status === 'Pending') || (p.status==='Rejected') &&
         <div className="btns">
        
-          <button className="accept-btn" onClick={()=>handleApprove(job)}>{approvedJobs.includes(job._id) ? 'Approved' : 'Approve'}</button>
-          <button className="reject-btn" onClick={()=>handleReject(job)}>Reject</button>
+          <button className="accept-btn" onClick={()=>handleApprove(p)}>{approvedJobs.includes(p._id) ? 'Approved' : 'Approve'}</button>
+          <button className="reject-btn" onClick={()=>handleReject(p)}>Reject</button>
         </div>
-          }
-          {job.status ==='Approved' && <div className='containerSpecial'><button className="buttonSpecial" onClick={()=>handleReject(job)}>{rejectedJobs.includes(job._id) ? 'Rejected' : 'Reject'}</button></div>}
+              }
+              {p.status ==='Approved' && <div className='containerSpecial'><button className="buttonSpecial" onClick={()=>handleReject(p)}>{rejectedJobs.includes(p._id) ? 'Rejected' : 'Reject'}</button></div>}
+            </div>
+          </div>
         </div>
-      </div>
-      
-    ))}
+      ))}
     </div>
 
   );

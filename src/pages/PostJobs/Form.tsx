@@ -95,7 +95,7 @@ const Form = () => {
     }
     setForm((prevForm) => {
       const [section, subfield] = field.split('.');
-      if (section === 'qualifications' || section === 'duties' || section === 'discipline') {
+      if (section === 'qualifications' || section === 'duties') {
         return {
           ...prevForm,
           [section]: value,
@@ -143,15 +143,27 @@ const Form = () => {
       }, 2000);
     }
   };
-  const onSubmit=async()=>{
-    const res=await axios.post(REACT_BACKEND_ROUTE+'v1/job/',form).then(res=>console.log(res)).catch(e=>console.log(e));
+  const onSubmit=async(event:any)=>{
+    event.preventDefault();
+    try {
+      const res = await fetch(`${REACT_BACKEND_ROUTE}v1/job`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
 
   return (
     <ErrorBoundary>
       {currentJobView && <JobDetails key={currentJobView.job.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} isHome={false} />}
-      <form className={preview} onSubmit={onSubmit} >
+      <form className={preview} onSubmit={onSubmit}>
         <div className="superSection">
           <div className="sections">
             <div className="upside">

@@ -1,3 +1,73 @@
+.status {
+  background-color: #ffb12a;
+  font-weight: 600;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5px;
+}
+
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5px;
+}
+
+.accept-btn {
+  width: 100px;
+  height: 30px;
+  border: none;
+  background-color: green;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.reject-btn {
+  width: 100px;
+  height: 30px;
+  border: none;
+  background-color: red;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.containerSpecial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonSpecial {
+  text-align: center;
+  width: 100px;
+  height: 30px;
+  border: none;
+  background-color: red;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 8px;
+}
+
+
 .alignLeft {
   text-align: left;
 }
@@ -14,8 +84,11 @@
   margin: auto;
   text-align: center;
   justify-content: center;
-  padding: 10px;
+  padding: 5px;
   color: var(--blackHeadColor);
+  border:1px solid var(--lightBlack);
+  border-radius: 10px;
+  width:50%;
 }
 
 .sticky {
@@ -107,19 +180,6 @@
 
 .jobButton .btnApply:hover {
   background-color: blue;
-}
-
-.scrollableContent {
-  max-width: 750px;
-  min-width: 300px;
-  margin: auto;
-  padding: 10px;
-  border: 1px solid var(--lightBlack);
-  border-top: none;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  display: flex;
-  flex-direction: column;
 }
 
 .salaryDescription,
@@ -216,4 +276,19 @@
 .companyLogoImage {
   background-position: center;
   border-radius: 20px;
+}
+.container-top{
+  padding:10px;
+  border: 2px solid black
+}
+@media only screen and (max-width: 768px) {
+  .jobdetails {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .jobdetails {
+    width: 90%;
+  }
 }

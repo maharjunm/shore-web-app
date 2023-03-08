@@ -17,8 +17,9 @@ const PostJobs = () => {
     <ErrorBoundary>
       <div className="job_page">
         <div className="content">
-          <Product product={ product } isSelected={true} />
-          <Payment product={ product }/>
+          {/*<Product product={ product } isSelected={true} />
+          <Payment product={ product }/>*/}
+          <Form/>
         </div>
       </div>
     </ErrorBoundary>
