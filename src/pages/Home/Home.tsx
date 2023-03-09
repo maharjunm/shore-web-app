@@ -7,7 +7,7 @@ import { ErrorBoundary,Searchbar, Location } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
 import data from '../../components/SearchBar/data';
 import { REACT_BACKEND_ROUTE } from '../../config';
-import  Admin  from '../AdminPage/Admin'
+import  Admin  from '../AdminPage/Admin';
 
 
 const Home = () => {

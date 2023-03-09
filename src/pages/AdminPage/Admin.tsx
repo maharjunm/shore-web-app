@@ -84,10 +84,10 @@ function Admin() {
   return (
     <div>
       {jobs.map((element)=>(
-        <div className="onejob">
-        <JobDetails key={element._id} jobd={element} jobClick={null} disablePreview={null} isHome={false} />
-        <h3 className="status">Status of Job:{element.status}</h3>
-        <div className="footer">
+        <div key={element._id} className="onejob">
+          <JobDetails key={element._id} jobd={element} jobClick={null} disablePreview={null} isHome={false} />
+          <h3 className="status">Status of Job:{element.status}</h3>
+          <div className="footer">
             { ((element.status === 'Pending') || (element.status==='Rejected')) &&
         <div className="btns">
           <button className="accept-btn" onClick={()=>handleApprove(element)}>{approvedJobs.includes(element._id) ? 'Approved' : 'Approve'}</button>
@@ -95,7 +95,7 @@ function Admin() {
         </div>
             }
             {element.status ==='Approved' && <div className='containerSpecial'><button className="buttonSpecial" onClick={()=>handleReject(element)}>{rejectedJobs.includes(element._id) ? 'Rejected' : 'Reject'}</button></div>}
-            </div>
+          </div>
         </div>
       ))}
     </div>
