@@ -146,13 +146,7 @@ const Form = () => {
   const onSubmit=async(event:any)=>{
     event.preventDefault();
     try {
-      const res = await fetch(`${REACT_BACKEND_ROUTE}v1/job`, {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify(form),
-      });
+      const res = await axios.post(`${REACT_BACKEND_ROUTE}v1/job`,form);
       console.log(res);
     } catch (error) {
       console.error(error);
