@@ -41,7 +41,7 @@ const Product = ( props: Props ) => {
         <div className={isSelected?'btn productSelected':'btn productNotSelected'}>
           <Link to={
             {
-              pathname:'/postajob',
+              pathname:'/postjobs',
               state:product,
             }
           }

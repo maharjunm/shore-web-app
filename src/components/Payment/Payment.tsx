@@ -18,7 +18,7 @@ const Payment = (props:Props)=>{
     window.alert(response.data.status);
     if(response.data.status==='success'){
       console.log('Success, Payment is complete');
-      history.push('/form');
+      history.push('/postajob');
     }else{
       window.alert(response.data.information.msg);
       console.log('Failure, Payment is complete');

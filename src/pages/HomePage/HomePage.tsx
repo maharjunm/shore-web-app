@@ -15,10 +15,9 @@ const HomePage = () => {
             <Switch>
               <Route exact path='/' ><Home/></Route>
               <Route  path='/home' ><Home/></Route>
-              <Route  path='/postjobs'><ProductSelectionPage /></Route>
+              <Route  path='/postjobs'><PostJobs /></Route>
               <Route  path='/contactus'><ContactUs/></Route>
-              <Route path='/postajob' ><PostJobs /></Route>
-              <Route path='/form' ><Form /></Route>
+              <Route path='/postajob' ><Form /></Route>
               <Route path='/login' ><Login /></Route>
               <Route path='/signup' ><Signup /></Route>
               <Route path='/logout' ><Logout /></Route>
