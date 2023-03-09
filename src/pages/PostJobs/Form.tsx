@@ -21,6 +21,7 @@ import axios from 'axios';
 
 
 const defaultForm:FormData = {
+  _id:null,
   job: {
     title: '',
     experience: '',
