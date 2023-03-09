@@ -32,9 +32,9 @@ const JobsData:FormData[]=[
       companyType: 'Annual',
     },
     discipline: [
-      { value: 'Strong programming skills in languages such as Java, Python, or C++', id: 'qual-1' },
-      { value: 'Experience with database systems such as MySQL or PostgreSQL', id: 'qual-2' },
-      { value: 'Familiarity with software development tools and methodologies such as Agile', id: 'qual-3' },
+      'Life Sciences',
+      'Physics',
+      'Biomedicine',
     ],
     qualifications: [
       { value: 'Strong programming skills in languages such as Java, Python, or C++', id: 'qual-1' },
@@ -81,9 +81,11 @@ const JobsData:FormData[]=[
       companyType: 'Annual'
     },
     discipline: [
-      { value: 'Strong programming skills in languages such as Java, Python, or C++', id: 'qual-1' },
-      { value: 'Experience with database systems such as MySQL or PostgreSQL', id: 'qual-2' },
-      { value: 'Familiarity with software development tools and methodologies such as Agile', id: 'qual-3' },
+      'Health Sciences',
+      'Engineering','Chemistry',
+      'Computer Science',
+      'Applied Science',
+      'Nanotechnology'
     ],
     qualifications: [
       { value: 'Bachelor\'s degree in Marketing or related field', id: '1' },
@@ -129,10 +131,14 @@ const JobsData:FormData[]=[
       hours: 40,
       companyType: 'Annual'
     },
-    discipline: [
-      { value: 'Strong programming skills in languages such as Java, Python, or C++', id: 'qual-1' },
-      { value: 'Experience with database systems such as MySQL or PostgreSQL', id: 'qual-2' },
-      { value: 'Familiarity with software development tools and methodologies such as Agile', id: 'qual-3' },
+    discipline:[
+      'Earth Sciences',
+      'Environmental',
+      'Sciences',
+      'Veterinary',
+      'Fisheries',
+      'Agriculture',
+      'Forestry'
     ],
     qualifications: [
       { value: 'Bachelor\'s degree in Graphic Design or related field', id: '1' },
@@ -152,4 +158,3 @@ const JobsData:FormData[]=[
 
 ];
 export default JobsData;
-

@@ -33,10 +33,7 @@ interface FormData{
     email:string;
     employeeEmail:string;
   };
-  discipline:{
-    id:string;
-    value:string;
-  }[];
+  discipline:string[];
 
 }
 export default FormData;

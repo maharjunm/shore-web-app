@@ -1,4 +1,5 @@
-import React,{useState} from 'react';
+import React,{useState, useContext} from 'react';
+import { useHistory } from 'react-router-dom';
 import { ErrorBoundary } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
 import './Form.scss';
@@ -6,7 +7,7 @@ import JobDetails from '../Home/JobDetails';
 import validate from './validate';
 import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
 import { REACT_ACCESSKEY, REACT_BACKEND_URL, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
-
+import { UserContext } from '../../pages/HomePage/HomePage';
 
 import{
   JobTitleSection,
@@ -59,6 +60,9 @@ const defaultForm:FormData = {
 };
 
 const Form = () => {
+
+  const { state, dispatch } = useContext(UserContext);
+  const history = useHistory();
 
   const s3Config = {
     bucketName:REACT_BUCKETNAME,
@@ -134,14 +138,20 @@ const Form = () => {
     }
   };
   const onSubmit=async()=>{
-    const res=await axios.post(REACT_BACKEND_URL+'v1/job/',form).then(res=>console.log(res)).catch(e=>console.log(e));
+    event.preventDefault();
+    const res=await axios.post(`${REACT_BACKEND_URL}/v1/job`,form);
+    console.log('result',res);
   };
 
 
+  if(!state){
+    history.push('/login');
+    return ;
+  }
   return (
     <ErrorBoundary>
       {currentJobView && <JobDetails key={currentJobView.job.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} isHome={false} />}
-      <form className={preview} onSubmit={onSubmit} >
+      <form className={preview} onSubmit={onSubmit}  method="POST">
         <div className="superSection">
           <div className="sections">
             <div className="upside">

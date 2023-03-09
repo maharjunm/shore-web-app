@@ -8,11 +8,17 @@ function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [ logging, setLogging ] = useState(false);
 
   const History = useHistory();
 
+  const handleLogging = () =>{
+    setLogging(true);
+  };
+
   const handleSubmit = async (event: any) => {
     event.preventDefault();
+    handleLogging();
 
     try{
       const res = await fetch(`${REACT_BACKEND_URL}/v1/user/signup`, {
@@ -28,7 +34,7 @@ function Signup() {
       });
       if(res.status === 201){
         window.alert('successful SignUp');
-        History.push('/login');
+        History.push('/profile');
       }
       else if(res.status === 400) setError('user already exisit');
       else setError('Something went wrong');
@@ -66,7 +72,7 @@ function Signup() {
         />
         {error && <div className="error">{error}</div>}
         <div className="btn">
-          <button type="submit">Signup</button>
+          <button type="submit" className={logging?'btnLogging':''}>{logging?'Signing in':'Signup'}</button>
         </div>
 
         <p>already have an account?{' '}<Link to="/login" className="Link">Login</Link></p>
