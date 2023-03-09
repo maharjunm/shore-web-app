@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { ErrorBoundary } from '../../../components';
 import  FormData  from '../../../components/DataModels/FormData';
-import {Multiselect} from 'multiselect-react-dropdown';
+import { Multiselect } from 'multiselect-react-dropdown';
 interface Props{
   updateForm:(field:string,value:any)=>void;
 }
@@ -82,8 +82,8 @@ const JobTitleSection = (props:Props) => {
           Discipline
             <span className="mandatoryField">*</span>
           </label>
-          <Multiselect className='multi' 
-            onSelect={(e)=>updateDiscipline('discipline',e)} 
+          <Multiselect className='multi'
+            onSelect={(e)=>updateDiscipline('discipline',e)}
             onRemove={(e)=>updateDiscipline('discipline',e)}
             isObject={false}
             options={option}
@@ -102,7 +102,7 @@ const JobTitleSection = (props:Props) => {
             id="jobType"
             onChange={(e)=>updateForm('job.type',e.target.value)}
           >
-            
+
             <option value="Contract">Contract</option>
             <option value="Full-time">Full-Time</option>
             <option value="Part-time">Part-Time</option>
