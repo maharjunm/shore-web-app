@@ -1,4 +1,5 @@
 interface FormData{
+  _id:string;
     job: {
     title: string;
     experience: string;
@@ -34,6 +35,7 @@ interface FormData{
     employeeEmail:string;
   };
   discipline:string[];
+  status : 'Approved' | 'Rejected' | 'Pending' ;
 
 }
 export default FormData;

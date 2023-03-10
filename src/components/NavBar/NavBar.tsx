@@ -7,7 +7,7 @@ import { UserContext } from '../../pages/HomePage/HomePage';
 const NavBar = () => {
   const { state, dispatch } = useContext(UserContext);
   const RenderMenu = () =>{
-    if(state){
+    if(state.user){
       return(
         <>
           <li ><NavLink to="/postajob">Post a Job</NavLink></li>
@@ -17,6 +17,14 @@ const NavBar = () => {
             <li ><NavLink to="/logout">Logout</NavLink></li>
           </ul>
         </>
+      );
+    }
+    if(state.isAdmin){
+      return(
+        <ul>
+          <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+          <li><NavLink to="/logout">Logout</NavLink></li>
+        </ul>
       );
     }
     else{

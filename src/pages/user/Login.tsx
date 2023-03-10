@@ -2,7 +2,8 @@ import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './auth.scss';
 import { UserContext } from '../HomePage/HomePage';
-import { REACT_BACKEND_URL } from '../../config';
+import { REACT_BACKEND_ROUTE } from '../../config';
+import axios from 'axios';
 
 function Login() {
   const { state, dispatch } = useContext(UserContext);
@@ -21,22 +22,26 @@ function Login() {
     handleLogging();
 
     try{
-      const res = await fetch(`${REACT_BACKEND_URL}/v1/user/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      });
+      const body={
+        email:email,
+        password:password
+      };
+      const res = await axios.post(`${REACT_BACKEND_ROUTE}v1/user/login`,body);
+
+      console.log(res.data);
       if(res.status === 404) setError('user not found');
       else if(res.status === 400) setError('given password is wrong');
       else if(res.status === 500) setError('something went wrong');
       else{
-        dispatch({ type: 'USER', payload: true });
-        History.push('/profile');
+        if(res.data.username=== 'ADMIN'){
+          dispatch({ type: 'ADMIN', payload: res.data.username === 'ADMIN'});
+        }
+        else{
+          dispatch({ type: 'USER', payload: true});
+       
+        }
+        window.alert('successfull');
+        History.push('/');
       }
     }catch(error){
       setError(error);

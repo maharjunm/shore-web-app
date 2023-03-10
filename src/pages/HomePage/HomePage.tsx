@@ -1,7 +1,7 @@
 import React,{useState, createContext , useReducer} from 'react';
 import { ErrorBoundary,NavBar } from '../../components';
 import {HashRouter as Router,Switch,Route,Link} from 'react-router-dom';
-import {Home,PostJobs,Form,ContactUs,ProductSelectionPage,BillingPage,Login,Logout,Signup,Profile} from '../../pages';
+import {Home,PostJobs,Form,ContactUs,ProductSelectionPage,BillingPage,Login,Logout,Signup,Profile,Admin} from '../../pages';
 import { initialState, reducer } from '../../Reducer/userReducer';
 export const UserContext = createContext(null);
 const HomePage = () => {
@@ -22,6 +22,7 @@ const HomePage = () => {
               <Route path='/signup' ><Signup /></Route>
               <Route path='/logout' ><Logout /></Route>
               <Route path='/profile' ><Profile/></Route>
+              <Route path='/dashboard'><Admin /></Route> 
             </Switch>
           </ErrorBoundary>
         </UserContext.Provider>

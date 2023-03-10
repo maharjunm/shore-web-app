@@ -6,7 +6,7 @@ import './Form.scss';
 import JobDetails from '../Home/JobDetails';
 import validate from './validate';
 import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
-import { REACT_ACCESSKEY, REACT_BACKEND_URL, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
+import { REACT_ACCESSKEY, REACT_BACKEND_ROUTE, REACT_BACKEND_URL, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
 import { UserContext } from '../../pages/HomePage/HomePage';
 
 import{
@@ -22,6 +22,7 @@ import axios from 'axios';
 
 
 const defaultForm:FormData = {
+  _id:null,
   job: {
     title: '',
     experience: '',
@@ -56,7 +57,8 @@ const defaultForm:FormData = {
   contact:{
     email:'',
     employeeEmail:'',
-  }
+  },
+  status:'Pending'
 };
 
 const Form = () => {
@@ -98,21 +100,30 @@ const Form = () => {
     }
     setForm((prevForm) => {
       const [section, subfield] = field.split('.');
-      if (section === 'qualifications' || section === 'duties' || section === 'discipline') {
+      if (section === 'qualifications' || section === 'duties') {
         return {
           ...prevForm,
           [section]: value,
+        };
+      }
+      if (section === 'discipline') {
+        return {
+          ...prevForm,
+          [section]: value.map((discipline: string) => discipline.trim()),
         };
       }
       return {
         ...prevForm,
         [section]: {
           ...prevForm[section],
-          [subfield]: value,
+          [subfield]: value
         },
       };
     });
+    console.log(form);
   };
+
+
 
 
   const showPreview = (jobView:FormData) =>{
@@ -137,10 +148,14 @@ const Form = () => {
       }, 2000);
     }
   };
-  const onSubmit=async()=>{
+  const onSubmit=async(event:any)=>{
     event.preventDefault();
-    const res=await axios.post(`${REACT_BACKEND_URL}/v1/job`,form);
-    console.log('result',res);
+    try {
+      const res = await axios.post(`${REACT_BACKEND_ROUTE}v1/job`,form);
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
 
@@ -151,7 +166,7 @@ const Form = () => {
   return (
     <ErrorBoundary>
       {currentJobView && <JobDetails key={currentJobView.job.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} isHome={false} />}
-      <form className={preview} onSubmit={onSubmit}  method="POST">
+      <form className={preview} onSubmit={onSubmit}>
         <div className="superSection">
           <div className="sections">
             <div className="upside">

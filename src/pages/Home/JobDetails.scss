@@ -1,24 +1,28 @@
-.alignLeft{
+.alignLeft {
   text-align: left;
 }
-.b{
+
+.b {
   font-weight: bold;
 }
-.bordertop{
+
+.bordertop {
   border-top: 2px solid var(--lightBlack);
 }
-.jobdetails{
-  margin:auto;
+
+.jobdetails {
+  margin: auto;
   text-align: center;
   justify-content: center;
   padding: 10px;
-  color:var(--blackHeadColor);
+  color: var(--blackHeadColor);
 }
-.sticky{
+
+.sticky {
   max-width: 750px;
   min-width: 300px;
-  margin:auto;
-  padding :0 10px 0 10px;
+  margin: auto;
+  padding: 0 10px 0 10px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom: none;
@@ -26,34 +30,42 @@
   display: flex;
   flex-direction: column;
 }
-.jobTitle,.headDetails{
+
+.jobTitle,
+.headDetails {
   padding: 10px;
   text-align: left;
   display: flex;
   flex-direction: column;
-  margin:5px;
+  margin: 5px;
 }
-.flexside{
+
+.flexside {
   display: flex;
 }
-.flexside .boxside{
+
+.flexside .boxside {
   padding: 10px;
   align-items: left;
 }
-.jobTitle,.headDetails .title{
+
+.jobTitle,
+.headDetails .title {
   color: var(--blackHeadColor);
 }
-.jobTitle .title{
+
+.jobTitle .title {
   padding: 2px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size:18px;
+  font-size: 18px;
   font-weight: bold;
   color: var(--blackHeadColor);
 }
-.wrong{
-  float:right;
+
+.wrong {
+  float: right;
   font-size: 25px;
   font-weight: 100;
   line-height: 10px;
@@ -63,121 +75,145 @@
   margin-left: 10px;
   border-radius: 2px;
 }
-.jobTitle .title .wrong a{
-  color:var(--black);
+
+.jobTitle .title .wrong a {
+  color: var(--black);
 }
-.jobTitle a{
-  color:var(--blue);
+
+.jobTitle a {
+  color: var(--blue);
 }
-.jobTitle .companyLocation,.jobTitle p{
-  color:var(--lightBlack);
+
+.jobTitle .companyLocation,
+.jobTitle p {
+  color: var(--lightBlack);
   font-size: 12 px;
 }
-.jobButton{
+
+.jobButton {
   text-align: center;
-  margin:10px;
+  margin: 10px;
 }
-.jobButton .btnApply{
-  width:150px;
+
+.jobButton .btnApply {
+  width: 150px;
   padding: 5px;
   border-radius: 5px;
   font-size: 18px;
-  color:white;
+  color: white;
   font-weight: 500;
   background-color: var(--blue);
 }
-.jobButton .btnApply:hover{
+
+.jobButton .btnApply:hover {
   background-color: blue;
 }
-.scrollableContent{
+
+.scrollableContent {
   max-width: 750px;
   min-width: 300px;
-  margin:auto;
-  padding:10px;
+  margin: auto;
+  padding: 10px;
   border: 1px solid var(--lightBlack);
-  border-top:none;
+  border-top: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   display: flex;
   flex-direction: column;
 }
-.salaryDescription ,.jobType{
+
+.salaryDescription,
+.jobType {
   font-size: 13px;
   color: var(--blackHeadColor);
   display: flex;
-  padding:5px;
+  padding: 5px;
   flex-direction: column;
 }
-.fullDetails{
+
+.fullDetails {
   text-align: left;
 }
-.fullDetails h1{
-  margin:5px;
+
+.fullDetails h1 {
+  margin: 5px;
   font-size: 18px;
   font-weight: bold;
   color: var(--blackHeadColor);
 }
-.Box{
-  border-top:2px solid var(--lightBlack);
+
+.Box {
+  border-top: 2px solid var(--lightBlack);
 }
-.Box ul{
-  width:100%;
+
+.Box ul {
+  width: 100%;
   list-style-type: disc;
   display: flex;
   flex-direction: column;
   text-align: left;
-  padding :0 20px 0 40px;
+  padding: 0 20px 0 40px;
   margin-bottom: 10px;
 }
-.Box ul li{
+
+.Box ul li {
   font-weight: 400;
   font-size: 14px;
-  width:90%;
+  width: 90%;
   color: var(--blackHeadColor);
-  text-align:left;
-  margin:auto;
+  text-align: left;
+  margin: auto;
 }
-.Box .ul li{
+
+.Box .ul li {
   list-style-type: disc;
   padding: 0;
   display: flex;
   justify-content: space-around;
 }
-.Box .ul li span,.Box .ul li b{
+
+.Box .ul li span,
+.Box .ul li b {
   padding: 5px;
 }
-.innerbox ul li{
-  color:#6e6b6a;
+
+.innerbox ul li {
+  color: #6e6b6a;
 }
-.report{
+
+.report {
   padding: 10px;
 }
-.report .btn{
+
+.report .btn {
   background-color: #ccc;
-  padding:8px 15px 8px 15px;
+  padding: 8px 15px 8px 15px;
   border-radius: 5px;
-  color:black;
+  color: black;
   font-weight: 500;
 }
-.mainHead{
+
+.mainHead {
   display: flex;
   justify-content: space-between;
 }
-.sideContent{
+
+.sideContent {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.logoBox{
+
+.logoBox {
   padding: 10px;
-  margin:10px;
+  margin: 10px;
   display: flex;
   max-width: 140px;
   max-height: 140px;
   justify-content: space-between;
 }
-.companyLogoImage{
+
+.companyLogoImage {
   background-position: center;
-  shape-image-threshold: @extend ;
-  border-radius:20px;
+  border-radius: 20px;
 }

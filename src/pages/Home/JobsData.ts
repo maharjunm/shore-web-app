@@ -3,6 +3,7 @@ import  companyLogo  from '../../components/images/defaultCompanyLogo.jpg';
 import  image1  from '../../components/images/images.jpg';
 const JobsData:FormData[]=[
   {
+    _id:'',
     job: {
       title: 'Software Engineer',
       experience: '3+ years',
@@ -49,9 +50,11 @@ const JobsData:FormData[]=[
     contact:{
       email:'example@gmail.com',
       employeeEmail:'emplouyee'
-    }
+    },
+    status:'Pending'
   },
   {
+    _id:'',
     job: {
       title: 'Marketing Manager',
       experience: '3+ years of experience in marketing',
@@ -100,9 +103,11 @@ const JobsData:FormData[]=[
     contact:{
       email:'example@gmail.com',
       employeeEmail:'emplouyee'
-    }
+    },
+    status:'Pending'
   },
   {
+    _id:'',
     job: {
       title: 'Graphic Designer',
       experience: '2+ years of experience in graphic design',
@@ -153,7 +158,9 @@ const JobsData:FormData[]=[
     contact:{
       email:'example@gmail.com',
       employeeEmail:'emplouyee'
-    }
+    },
+    status:'Pending',
+    
   }
 
 ];

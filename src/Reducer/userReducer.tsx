@@ -1,7 +1,21 @@
-export const initialState: any = null;
+export const initialState = {
+  isAdmin: false,
+  user: false
+};
+
 export const reducer = (state: any, action: any) => {
-  if (action.type === 'USER'){
-    return action.payload;
+  switch (action.type) {
+  case 'USER':
+    return {
+      ...state,
+      user: action.payload
+    };
+  case 'ADMIN':
+    return {
+      ...state,
+      isAdmin: action.payload
+    };
+  default:
+    return state;
   }
-  return state;
 };

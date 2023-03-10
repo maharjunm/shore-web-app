@@ -9,3 +9,4 @@ export { default as Signup } from './user/Signup';
 export { default as Login } from './user/Login';
 export { default as Logout } from './user/Logout';
 export { default as Profile } from './user/userProfile';
+export { default as Admin } from './AdminPage/Admin';
