@@ -26,7 +26,7 @@ function Login() {
         email:email,
         password:password
       };
-      const res = await axios.post(`${REACT_BACKEND_ROUTE}v1/user/login`,body);
+      const res = await axios.post(`${REACT_BACKEND_ROUTE}/v1/user/login`,body);
 
       console.log(res.data);
       if(res.status === 404) setError('user not found');
@@ -38,17 +38,23 @@ function Login() {
         }
         else{
           dispatch({ type: 'USER', payload: true});
-       
+
         }
-        window.alert('successfull');
-        History.push('/');
+        History.push('/profile');
       }
     }catch(error){
       setError(error);
     }
 
   };
-
+  if(state.user){
+    History.push('/profile');
+    return ;
+  }
+  if(state.isAdmin){
+    History.push('/dashboard');
+    return ;
+  }
   return (
     <div className="container-auth">
       <form onSubmit={handleSubmit} method="POST">

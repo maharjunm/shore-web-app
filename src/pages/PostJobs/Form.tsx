@@ -150,12 +150,20 @@ const Form = () => {
   };
   const onSubmit=async(event:any)=>{
     event.preventDefault();
-    try {
-      const res = await axios.post(`${REACT_BACKEND_ROUTE}v1/job`,form);
-      console.log(res);
-    } catch (error) {
-      console.error(error);
+    if(!!validate(form)){
+      try {
+        const res = await axios.post(`${REACT_BACKEND_ROUTE}/v1/job`,form);
+        console.log(res);
+      } catch (error) {
+        console.error(error);
+      }
+    }else{
+      setErrorMessage('Mandatory fields are missing ...');
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 2000);
     }
+
   };
 
 
