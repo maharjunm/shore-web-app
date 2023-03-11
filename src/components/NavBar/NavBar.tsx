@@ -10,7 +10,7 @@ const NavBar = () => {
     if(state.user){
       return(
         <>
-          <li ><NavLink to="/postajob">Post a Job</NavLink></li>
+          <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
           <li ><NavLink to="/contactus">Contact Us</NavLink></li>
           <ul>
             <li ><NavLink to="/profile">Profile</NavLink></li>

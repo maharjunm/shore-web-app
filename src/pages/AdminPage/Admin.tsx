@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { REACT_BACKEND_ROUTE } from '../../config';
 import './Admin.scss';
 import FormData from '../../components/DataModels/FormData';
 import JobDetails from '../Home/JobDetails';
+import { UserContext } from '../HomePage/HomePage';
 
 interface Job {
   _id:string;
@@ -45,23 +47,25 @@ interface Job {
   status : 'Approved' | 'Rejected' | 'Pending' ;
 }
 function Admin() {
-  
+
+  const { state, dispatch } = useContext(UserContext);
+  const history = useHistory();
   const [jobs, setJobs] = React.useState<Job[]>([]);
   const [approvedJobs,setApprovedJobs]=React.useState([]);
   const [rejectedJobs,setRejectedJobs]=React.useState([]);
 
   const handleApprove= async (job: Job)=>{
-    await axios.put(REACT_BACKEND_ROUTE+`v1/admin/${job._id}`,{status:'Approved'})
+    await axios.put(REACT_BACKEND_ROUTE+`/v1/admin/${job._id}`,{status:'Approved'})
       .then(res=>{
         job.status= 'Approved';
         setApprovedJobs([...approvedJobs,job]);
 
       }).catch(e=> console.log(e));
-      
+
   };
 
   const handleReject=async (job: Job)=>{
-    await axios.put(REACT_BACKEND_ROUTE+`v1/admin/${job._id}`,{status:'Rejected'})
+    await axios.put(REACT_BACKEND_ROUTE+`/v1/admin/${job._id}`,{status:'Rejected'})
       .then(res=>{
         job.status='Rejected';
         setRejectedJobs([...rejectedJobs,job]);
@@ -71,16 +75,18 @@ function Admin() {
   React.useEffect(() => {
     const fetchjobs = async () => {
       try {
-        const res = await axios.get<Job[]>(`${REACT_BACKEND_ROUTE}v1/admin`);
+        const res = await axios.get<Job[]>(`${REACT_BACKEND_ROUTE}/v1/admin`);
         setJobs(res.data);
       } catch (e) {
         console.log(e);
       }
     };
     fetchjobs();
-    
+
   }, []);
-  console.log(jobs);
+  if(!state.isAdmin){
+    history.push('/login');
+  }
   return (
     <div>
       {jobs.map((element)=>(
@@ -103,4 +109,3 @@ function Admin() {
 }
 
 export default Admin;
-

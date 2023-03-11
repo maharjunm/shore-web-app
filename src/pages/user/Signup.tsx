@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { UserContext } from '../HomePage/HomePage';
 import './auth.scss';
 import { REACT_BACKEND_ROUTE, REACT_BACKEND_URL } from '../../config';
 
 function Signup() {
+
+  const { state, dispatch } = useContext(UserContext);
   const [username, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,7 +23,7 @@ function Signup() {
     event.preventDefault(event);
 
     try{
-      const res = await fetch(`${REACT_BACKEND_ROUTE}v1/user/signup`, {
+      const res = await fetch(`${REACT_BACKEND_ROUTE}/v1/user/signup`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -42,7 +45,14 @@ function Signup() {
       setError(error);
     }
   };
-
+  if(state.user){
+    History.push('/profile');
+    return ;
+  }
+  if(state.isAdmin){
+    History.push('/dashboard');
+    return ;
+  }
   return (
     <div className="container-auth">
       <form onSubmit={handleSubmit} method="POST">

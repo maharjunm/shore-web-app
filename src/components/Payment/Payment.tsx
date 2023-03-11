@@ -42,6 +42,11 @@ const Payment = (props:Props)=>{
           name = {product.type}
           billingAddress
           shippingAddress
+          description={'Hosting time '+product.hostingTime+' days'}
+          image="https://i.ibb.co/pdSzLkz/logo1.png"
+          ComponentClass="div"
+          currency="USD"
+          allowRememberMe 
         />
       </div>
     </div>

@@ -22,7 +22,7 @@ const HomePage = () => {
               <Route path='/signup' ><Signup /></Route>
               <Route path='/logout' ><Logout /></Route>
               <Route path='/profile' ><Profile/></Route>
-              <Route path='/dashboard'><Admin /></Route> 
+              <Route path='/dashboard'><Admin /></Route>
             </Switch>
           </ErrorBoundary>
         </UserContext.Provider>
