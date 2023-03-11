@@ -58,6 +58,10 @@ const defaultForm:FormData = {
     email:'',
     employeeEmail:'',
   },
+  createdby:{
+    name : 'user',
+    date : new Date(),
+  },
   status:'Pending'
 };
 
@@ -74,7 +78,7 @@ const Form = () => {
     secretAccessKey: REACT_SC,
   };
 
-
+  
   const [preview, setPreview] = useState('form show');
   const [currentJobView, setCurrenetJobView]=useState(null);
   const [form,setForm] = useState(defaultForm);
@@ -93,11 +97,13 @@ const Form = () => {
       updateForm('company.logo','xyz.jpg');
     }
   };
+  
   const updateForm = (field: string, value: any) => {
     if(field === 'Logo'){
       handleLogo(value);
       return;
     }
+    
     setForm((prevForm) => {
       const [section, subfield] = field.split('.');
       if (section === 'qualifications' || section === 'duties') {
@@ -137,6 +143,7 @@ const Form = () => {
 
   const previewBtnHandler = (e:any) =>{
     e.preventDefault();
+    window.alert(localStorage.getItem('user-shore-name'));
     let jobView;
     if((jobView=validate(form))){
       setPreview('form hide');
@@ -152,6 +159,9 @@ const Form = () => {
     event.preventDefault();
     if(!!validate(form)){
       try {
+
+        form.createdby.name=localStorage.getItem('user-shore-name');
+        form.createdby.date=new Date();
         const res = await axios.post(`${REACT_BACKEND_ROUTE}/v1/job`,form);
         console.log(res);
       } catch (error) {

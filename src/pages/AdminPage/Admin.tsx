@@ -43,6 +43,10 @@ interface Job {
     email:string;
     employeeEmail:string;
   };
+  createdby:{
+    name : string;
+    date : Date;
+  }
   discipline:string[];
   status : 'Approved' | 'Rejected' | 'Pending' ;
 }

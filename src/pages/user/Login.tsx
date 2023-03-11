@@ -41,6 +41,7 @@ function Login() {
 
         }
         History.push('/profile');
+        localStorage.setItem('user-shore-name',res.data.username);
       }
     }catch(error){
       setError(error);

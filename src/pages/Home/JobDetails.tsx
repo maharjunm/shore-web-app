@@ -120,6 +120,17 @@ const JobDetails= (details:Props) => {
               </ul>
             </div>
           </div>
+          <div className="Box alignLeft">
+            <div className="jobType">
+              <b>This Job is Created By</b>
+              <span><b>{p.createdby.name}</b> on {p.createdby.date.toString()}</span>
+            </div>
+
+            <div className="jobType">
+              <b>Updated By</b> 
+              <span><b>{p.createdby.name}</b> on {p.createdby.date.toString()}</span>
+            </div>
+          </div>
         </div>
       </div>
     </ErrorBoundary>

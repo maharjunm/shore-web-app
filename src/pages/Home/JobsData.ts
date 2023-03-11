@@ -1,3 +1,4 @@
+import { dateFns } from 'helper-toolkit-ts';
 import  FormData  from '../../components/DataModels/FormData';
 import  companyLogo  from '../../components/images/defaultCompanyLogo.jpg';
 import  image1  from '../../components/images/images.jpg';
@@ -37,6 +38,10 @@ const JobsData:FormData[]=[
       'Physics',
       'Biomedicine',
     ],
+    createdby :{
+      name : 'pranav',
+      date : new Date('2023-03-30'),
+    },
     qualifications: [
       { value: 'Strong programming skills in languages such as Java, Python, or C++', id: 'qual-1' },
       { value: 'Experience with database systems such as MySQL or PostgreSQL', id: 'qual-2' },
@@ -100,6 +105,10 @@ const JobsData:FormData[]=[
       { value: 'Analyze market trends and competition', id: '2' },
       { value: 'Collaborate with cross-functional teams', id: '3' }
     ],
+    createdby :{
+      name : 'pranav',
+      date : new Date('2023-03-30'),
+    },
     contact:{
       email:'example@gmail.com',
       employeeEmail:'emplouyee'
@@ -124,6 +133,10 @@ const JobsData:FormData[]=[
       country: 'UK',
       state: null,
       region: 'Europe'
+    },
+    createdby :{
+      name : 'pranav',
+      date : new Date('2023-03-30'),
     },
     dates: {
       postingDate: new Date('2023-02-14'),
