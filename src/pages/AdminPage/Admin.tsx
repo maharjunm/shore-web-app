@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import { REACT_BACKEND_ROUTE } from '../../config';
 import './Admin.scss';
 import FormData from '../../components/DataModels/FormData';
@@ -49,6 +50,7 @@ interface Job {
 function Admin() {
 
   const { state, dispatch } = useContext(UserContext);
+  const [ authCookie, setAuthCookie ,removeAuthCookie ] = useCookies([]);
   const history = useHistory();
   const [jobs, setJobs] = React.useState<Job[]>([]);
   const [approvedJobs,setApprovedJobs]=React.useState([]);
@@ -89,6 +91,7 @@ function Admin() {
   }
   return (
     <div>
+      <div>welcome {authCookie.email}</div>
       {jobs.map((element)=>(
         <div key={element._id} className="onejob">
           <JobDetails key={element._id} jobd={element} jobClick={null} disablePreview={null} isHome={false} />

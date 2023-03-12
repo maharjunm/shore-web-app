@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import './auth.scss';
 import { UserContext } from '../HomePage/HomePage';
 import { REACT_BACKEND_ROUTE } from '../../config';
 import axios from 'axios';
+
 
 function Login() {
   const { state, dispatch } = useContext(UserContext);
@@ -11,6 +13,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
 
   const History = useHistory();
   const handleLogging = () => {
@@ -27,7 +30,8 @@ function Login() {
         password:password
       };
       const res = await axios.post(`${REACT_BACKEND_ROUTE}/v1/user/login`,body);
-
+      
+      
       console.log(res.data);
       if(res.status === 404) setError('user not found');
       else if(res.status === 400) setError('given password is wrong');
@@ -40,6 +44,8 @@ function Login() {
           dispatch({ type: 'USER', payload: true});
 
         }
+        setAuthCookie('email',res.data.user);
+        setAuthCookie('user',res.data.username);
         History.push('/profile');
       }
     }catch(error){
