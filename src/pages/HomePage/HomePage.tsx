@@ -1,4 +1,4 @@
-import React,{useState, createContext , useReducer} from 'react'; 
+import React,{useState, createContext , useReducer} from 'react';
 import { useCookies } from 'react-cookie';
 import { ErrorBoundary,NavBar } from '../../components';
 import {HashRouter as Router,Switch,Route,Link} from 'react-router-dom';

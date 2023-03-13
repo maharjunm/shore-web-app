@@ -46,7 +46,7 @@ const Payment = (props:Props)=>{
           image="https://i.ibb.co/pdSzLkz/logo1.png"
           ComponentClass="div"
           currency="USD"
-          allowRememberMe 
+          allowRememberMe
         />
       </div>
     </div>
