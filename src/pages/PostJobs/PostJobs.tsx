@@ -17,7 +17,6 @@ const PostJobs = () => {
     return ;
   }
   if(!product){
-    window.alert('please a product first ');
     history.push('/profile');
     return ;
   }

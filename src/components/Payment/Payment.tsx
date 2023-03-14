@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import { useCookies } from 'react-cookie';
 import  ProductData  from '../DataModels/ProductData';
 import { useHistory } from 'react-router-dom';
 import { REACT_BACKEND_URL, REACT_STRIPE_PUBLIC_KEY } from '../../config';
@@ -10,6 +11,7 @@ interface Props{
 }
 const Payment = (props:Props)=>{
 
+  const [ authCookie ] = useCookies([]);
   const history = useHistory();
   const { product } = props;
   async function handleToken(token:any){
@@ -40,6 +42,7 @@ const Payment = (props:Props)=>{
           token = {handleToken}
           amount = {product.amount*100}
           name = {product.type}
+          email = {authCookie.email}
           billingAddress
           shippingAddress
           description={'Hosting time '+product.hostingTime+' days'}
