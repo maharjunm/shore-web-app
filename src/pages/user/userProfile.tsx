@@ -46,7 +46,7 @@ const Profile = ()=>{
             />
           }
         </div>
-        {!paymentInfo && <ProductSelectionPage />}
+        {(!paymentInfo || !paymentInfo.status) && <ProductSelectionPage />}
       </div>
     </ErrorBoundary>
   );

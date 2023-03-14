@@ -12,6 +12,7 @@ interface Props{
 const Product = ( props: Props ) => {
 
   const { product, isSelected } = props;
+  const path = product.type==='Regular'?'/postajob':'/postjobs';
 
   return (
     <ErrorBoundary>
@@ -41,8 +42,8 @@ const Product = ( props: Props ) => {
         <div className={isSelected?'btn productSelected':'btn productNotSelected'}>
           <Link to={
             {
-              pathname:'/postjobs',
-              state:product,
+              pathname:path,
+              state:product
             }
           }
           >{isSelected?'Selected':'select'}</Link>
