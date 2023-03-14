@@ -8,19 +8,7 @@ import  PaymentStatus from './Payments/PaymentStatus';
 import { REACT_BACKEND_URL } from '../../config';
 import axios from 'axios';
 import './userProfile.scss';
-const product = {
-  type: 'Regular',
-  amount: 0,
-  hostingTime: 30,
-  offers: [
-    { field: 'logo in search', value: true },
-    { field: 'logo in description', value: true },
-    { field: 'boosted display', value: false },
-    { field: 'highlight in search', value: false },
-    { field: 'job of the week', value: false },
-    { field: 'job of the month', value: false }
-  ]
-};
+
 const Profile = ()=>{
 
   const { state, dispatch } = useContext(UserContext);

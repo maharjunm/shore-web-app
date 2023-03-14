@@ -19,7 +19,6 @@ const Message = (props:Props) =>{
   return (
     <div className={'popupMessage color'+color+' '+popUp+'-popup'} onClick={hidePopUp}>
       {message}
-      <span className="wrong" onClick={hidePopUp}>x</span>
     </div>
   );
 };

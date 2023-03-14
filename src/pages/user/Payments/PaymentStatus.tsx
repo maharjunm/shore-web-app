@@ -13,8 +13,6 @@ interface Props{
 const PaymentStatus = (props:Props)=>{
 
   const { email, product, status, expiryDate } = props;
-  const presentDate = Date();
-
 
   return(
     <ErrorBoundary>
@@ -26,13 +24,12 @@ const PaymentStatus = (props:Props)=>{
           </span>
         </div>
         <div className="expiry-info">
-          <span>
+          <div>
             <b className="color-red">
               {status?'Expires on':'Expired on'}
             </b>
             <span>{expiryDate.toString()}</span>
-
-          </span>
+          </div>
         </div>
       </div>
     </ErrorBoundary>
