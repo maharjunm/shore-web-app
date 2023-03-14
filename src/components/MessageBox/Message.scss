@@ -7,16 +7,18 @@
   transition: 1s ease-out;
 
 }
-.popupMessage .wrong{
-  color:red;
-  font-weight: 500;
-  font-size: 18px;
-}
 .show-popup{
   right:20px;
-  display: flex;
 }
 .hide-popup{
   right:-400px;
-  display: none;
+}
+.colorsuccess{
+  border-left: 7px solid green;
+}
+.colordanger{
+  border-left: 7px solid red;
+}
+.colorokay{
+  border-left: 7px solid blue;
 }
