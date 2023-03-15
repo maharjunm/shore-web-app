@@ -33,6 +33,12 @@ interface Job {
     closingDate: Date;
     removingDate: Date;
   };
+  createdby:{
+    createdby:String;
+    createdat: Date;
+    updatedby: String;
+    updatedat: Date;
+  };
   salary: {
     sal: number;
     hours: number;

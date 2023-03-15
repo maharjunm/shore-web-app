@@ -1,5 +1,6 @@
 import React,{useState, useContext} from 'react';
 import { useHistory } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import { ErrorBoundary } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
 import './Form.scss';
@@ -58,6 +59,12 @@ const defaultForm:FormData = {
     email:'',
     employeeEmail:'',
   },
+  createdby:{
+    createdby: 'user',
+    createdat:  null,
+    updatedby: 'user',
+    updatedat: null,
+  },
   status:'Pending'
 };
 
@@ -74,7 +81,7 @@ const Form = () => {
     secretAccessKey: REACT_SC,
   };
 
-
+  const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
   const [preview, setPreview] = useState('form show');
   const [currentJobView, setCurrenetJobView]=useState(null);
   const [form,setForm] = useState(defaultForm);
@@ -152,6 +159,10 @@ const Form = () => {
     event.preventDefault();
     if(!!validate(form)){
       try {
+        form.createdby.createdby = authCookie.user;
+        form.createdby.createdat = new Date();
+        form.createdby.updatedby = authCookie.user;
+        form.createdby.updatedat = new Date();
         const res = await axios.post(`${REACT_BACKEND_ROUTE}/v1/job`,form);
         console.log(res);
       } catch (error) {

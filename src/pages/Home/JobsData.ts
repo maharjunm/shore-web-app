@@ -37,6 +37,12 @@ const JobsData:FormData[]=[
       'Physics',
       'Biomedicine',
     ],
+    createdby:{
+      createdby:'user',
+      createdat: new Date(),
+      updatedby: 'user',
+      updatedat: new Date(),
+    },
     qualifications: [
       { value: 'Strong programming skills in languages such as Java, Python, or C++', id: 'qual-1' },
       { value: 'Experience with database systems such as MySQL or PostgreSQL', id: 'qual-2' },
@@ -83,6 +89,12 @@ const JobsData:FormData[]=[
       hours: 40,
       companyType: 'Annual'
     },
+    createdby:{
+      createdby:'user',
+      createdat: new Date(),
+      updatedby: 'user',
+      updatedat: new Date(),
+    },
     discipline: [
       'Health Sciences',
       'Engineering','Chemistry',
@@ -118,6 +130,12 @@ const JobsData:FormData[]=[
       name: 'Design Co.',
       companyType: 'Private',
       logo: '',
+    },
+    createdby:{
+      createdby:'user',
+      createdat: new Date(),
+      updatedby: 'user',
+      updatedat: new Date(),
     },
     location: {
       city: 'London',

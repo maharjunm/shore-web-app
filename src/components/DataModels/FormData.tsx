@@ -9,7 +9,7 @@ interface FormData{
   company: {
     name: string;
     companyType: string;
-    logo: string;
+    logo:string;
   };
   location: {
     city: string;
@@ -22,6 +22,12 @@ interface FormData{
     expiryDate: Date;
     closingDate: Date;
     removingDate: Date;
+  };
+  createdby:{
+    createdby:String;
+    createdat: Date;
+    updatedby: String;
+    updatedat: Date;
   };
   salary: {
     sal: number;
