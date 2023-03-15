@@ -1,0 +1,36 @@
+.payment-status{
+  padding: 5px;
+  margin:5px;
+  min-width: 300px;
+  background: white;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 2px 0px 2px 2px #aaa;
+  transition: transform 500ms;
+  cursor: pointer;
+}
+.payment-status .short-info{
+  padding: 10px;
+  display:flex;
+  justify-content: space-around;
+  background: #aeaeae;
+  font-weight: 500;
+}
+.payment-status .short-info .status{
+  width:25px;
+  height: 25px;
+  color:white;
+  border-radius: 50%;
+  text-align: center;
+  margin:auto;
+}
+.payment-status .short-info .success{
+  background: green;
+}
+.payment-status .short-info .failure{
+  background: red;
+}
+
+.expiry-info .color-red{
+  color:red;
+}
