@@ -46,6 +46,7 @@ interface Job {
   };
   discipline:string[];
   status : 'Approved' | 'Rejected' | 'Pending' ;
+  createdBy:string;
 }
 function Admin() {
 
@@ -57,7 +58,7 @@ function Admin() {
   const [rejectedJobs,setRejectedJobs]=React.useState([]);
 
   const handleApprove= async (job: Job)=>{
-    await axios.put(REACT_BACKEND_ROUTE+`/v1/admin/${job._id}`,{status:'Approved'})
+    await axios.put(`${REACT_BACKEND_ROUTE}/v1/admin/${job._id}`,{status:'Approved'})
       .then(res=>{
         job.status= 'Approved';
         setApprovedJobs([...approvedJobs,job]);
@@ -67,7 +68,7 @@ function Admin() {
   };
 
   const handleReject=async (job: Job)=>{
-    await axios.put(REACT_BACKEND_ROUTE+`/v1/admin/${job._id}`,{status:'Rejected'})
+    await axios.put(REACT_BACKEND_ROUTE+`v1/admin/${job._id}`,{status:'Rejected'})
       .then(res=>{
         job.status='Rejected';
         setRejectedJobs([...rejectedJobs,job]);
@@ -77,7 +78,7 @@ function Admin() {
   React.useEffect(() => {
     const fetchjobs = async () => {
       try {
-        const res = await axios.get<Job[]>(`${REACT_BACKEND_ROUTE}/v1/admin`);
+        const res = await axios.get<Job[]>(`${REACT_BACKEND_ROUTE}v1/admin`);
         setJobs(res.data);
       } catch (e) {
         console.log(e);

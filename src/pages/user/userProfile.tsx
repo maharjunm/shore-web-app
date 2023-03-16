@@ -20,7 +20,7 @@ const Profile = ()=>{
       <div className="userProfile">
         <Message message={loginMessage} color="success" />
         <div>welcome {authCookie.email}</div>
-        <div className="selectProduct" >Select Your Produt</div>
+        <div className="selectProduct" >Select Your Product</div>
         <ProductSelectionPage />
       </div>
     </ErrorBoundary>

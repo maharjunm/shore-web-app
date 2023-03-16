@@ -46,6 +46,8 @@ function Login() {
         }
         setAuthCookie('email',res.data.user);
         setAuthCookie('user',res.data.username);
+        
+        console.log(res.data);
         History.push('/profile');
       }
     }catch(error){

@@ -8,6 +8,7 @@ import validate from './validate';
 import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
 import { REACT_ACCESSKEY, REACT_BACKEND_ROUTE, REACT_BACKEND_URL, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
 import { UserContext } from '../../pages/HomePage/HomePage';
+import { useCookies } from 'react-cookie';
 
 import{
   JobTitleSection,
@@ -58,14 +59,15 @@ const defaultForm:FormData = {
     email:'',
     employeeEmail:'',
   },
-  status:'Pending'
+  status:'Pending',
+  createdBy:''
 };
 
 const Form = () => {
 
   const { state, dispatch } = useContext(UserContext);
   const history = useHistory();
-
+  const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
   const s3Config = {
     bucketName:REACT_BUCKETNAME,
     dirName: REACT_DIRNAME,
@@ -150,6 +152,7 @@ const Form = () => {
   };
   const onSubmit=async(event:any)=>{
     event.preventDefault();
+    form.createdBy=authCookie.email;
     if(!!validate(form)){
       try {
         const res = await axios.post(`${REACT_BACKEND_ROUTE}/v1/job`,form);

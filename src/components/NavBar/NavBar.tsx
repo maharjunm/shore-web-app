@@ -14,6 +14,7 @@ const NavBar = () => {
           <li ><NavLink to="/contactus">Contact Us</NavLink></li>
           <ul>
             <li ><NavLink to="/profile">Profile</NavLink></li>
+            <li><NavLink to="/userdashboard">Dashboard</NavLink></li>
             <li ><NavLink to="/logout">Logout</NavLink></li>
           </ul>
         </>
