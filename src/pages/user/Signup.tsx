@@ -15,12 +15,13 @@ function Signup() {
 
   const History = useHistory();
 
-  const handleLogging = () =>{
-    setLogging(true);
+  const handleLogging = (status:boolean) =>{
+    setLogging(status);
   };
 
   const handleSubmit = async (event: any) => {
     event.preventDefault(event);
+    handleLogging(true);
 
     try{
       const res = await fetch(`${REACT_BACKEND_ROUTE}/v1/user/signup`, {
@@ -40,9 +41,11 @@ function Signup() {
       }
       else if(res.status === 400) setError('user already exisit');
       else setError('Something went wrong');
+      handleLogging(false);
     }
     catch(error){
-      setError(error);
+      setError(error.response.data.message);
+      handleLogging(false);
     }
   };
   if(state.user){

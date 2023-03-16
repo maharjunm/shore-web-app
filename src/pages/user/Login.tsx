@@ -16,42 +16,38 @@ function Login() {
   const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
 
   const History = useHistory();
-  const handleLogging = () => {
-    setLogging(true);
+  const handleLogging = (status:boolean) => {
+    setLogging(status);
   };
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    handleLogging();
-
+    handleLogging(true);
     try{
       const body={
         email:email,
         password:password
       };
       const res = await axios.post(`${REACT_BACKEND_ROUTE}/v1/user/login`,body);
-      
-      
       console.log(res.data);
-      if(res.status === 404) setError('user not found');
-      else if(res.status === 400) setError('given password is wrong');
-      else if(res.status === 500) setError('something went wrong');
-      else{
+      if(res.status===200){
         if(res.data.username=== 'ADMIN'){
           dispatch({ type: 'ADMIN', payload: res.data.username === 'ADMIN'});
         }
         else{
           dispatch({ type: 'USER', payload: true});
-
         }
         setAuthCookie('email',res.data.user);
         setAuthCookie('user',res.data.username);
         
         console.log(res.data);
         History.push('/profile');
+      }else{
+        setError(res.data.message);
       }
     }catch(error){
-      setError(error);
+      setError(error.response.data.message);
+      handleLogging(false);
     }
 
   };
