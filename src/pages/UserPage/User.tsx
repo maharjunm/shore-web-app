@@ -17,9 +17,9 @@ const User=()=>{
   };
   React.useEffect(()=>{
     const fetchData=async ()=>{
-      await axios.get(`${REACT_BACKEND_ROUTE}/v1/job/${authCookie.email}`).then(res=>{setJobs(res.data)});
-      };
-      fetchData();
+      await axios.get(`${REACT_BACKEND_ROUTE}/v1/job/${authCookie.email}`).then(res=>{setJobs(res.data);});
+    };
+    fetchData();
   },[]);
   return(
     <div>
@@ -38,6 +38,6 @@ const User=()=>{
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 export default User;

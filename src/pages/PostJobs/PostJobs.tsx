@@ -12,7 +12,7 @@ const PostJobs = () => {
   const location= useLocation();
   const history =  useHistory();
   const product = location.state;
- {/*} if(!state.user){
+  if(!state.user){
     history.push('/login');
     return ;
   }
@@ -20,14 +20,13 @@ const PostJobs = () => {
     window.alert('please a product first ');
     history.push('/profile');
     return ;
-  }*/}
+  }
   return (
     <ErrorBoundary>
       <div className="job_page">
         <div className="content">
-          {/*<Product product={ product } isSelected={true} />
-          <Payment product={ product }/>*/}
-          <Form/>
+          <Product product={ product } isSelected={true} />
+          <Payment product={ product }/>
         </div>
       </div>
     </ErrorBoundary>
