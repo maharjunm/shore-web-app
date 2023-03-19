@@ -1,5 +1,5 @@
 import React,{useState, useContext} from 'react';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import { ErrorBoundary } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
 import './Form.scss';
@@ -8,7 +8,9 @@ import validate from './validate';
 import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
 import { REACT_ACCESSKEY, REACT_BACKEND_ROUTE, REACT_BACKEND_URL, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
 import { UserContext } from '../../pages/HomePage/HomePage';
-
+import { useSelector } from 'react-redux';
+import { selectPaymentStatus } from '../../store/Payments/selector';
+import { RootState } from '../../store/configureStore';
 import{
   JobTitleSection,
   CompanyDetailsSection,
@@ -65,7 +67,12 @@ const Form = () => {
 
   const { state, dispatch } = useContext(UserContext);
   const history = useHistory();
-
+  const location= useLocation();
+  const product = location.state;
+  const  paymentStatus  = useSelector((state:RootState) => {
+    return selectPaymentStatus(state);
+  });
+  const redirect = !paymentStatus &&  !(product && product.type==='Regular');
   const s3Config = {
     bucketName:REACT_BUCKETNAME,
     dirName: REACT_DIRNAME,
@@ -169,6 +176,10 @@ const Form = () => {
 
   if(!state){
     history.push('/login');
+    return ;
+  }
+  if(redirect){
+    history.push('/profile');
     return ;
   }
   return (

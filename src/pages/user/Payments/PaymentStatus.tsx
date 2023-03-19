@@ -3,7 +3,7 @@ import { ErrorBoundary, Message } from '../../../components';
 import ProductData from '../../../components/DataModels/ProductData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark , faCheck } from '@fortawesome/free-solid-svg-icons';
-import './PsymentStatus.scss';
+import './PaymentStatus.scss';
 interface Props{
   email: string,
   product: ProductData,

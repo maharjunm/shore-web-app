@@ -18,7 +18,7 @@ const getPreloadedPaymentStatus = (): PaymentStatus => {
 const getPreloadedState = (): PartialRootState => {
   return {
     Map: getPreloadedMapState(),
-    Payment: getPreloadedPaymentStatus(),
+    payment: getPreloadedPaymentStatus(),
   };
 };
 

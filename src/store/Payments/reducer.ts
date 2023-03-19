@@ -1,8 +1,6 @@
 import {
   createSlice,
-  // createSelector,
   PayloadAction,
-  // createAsyncThunk
 } from '@reduxjs/toolkit';
 
 export type PaymentStatus = {
@@ -13,18 +11,18 @@ export const initialPaymentStatus: PaymentStatus = {
   status: false,
 };
 
-const payment = createSlice({
-  name: 'Payment',
+const paymentSlice = createSlice({
+  name: 'payment',
   initialState: initialPaymentStatus,
   reducers: {
-    statusChanged: (state, action: PayloadAction<boolean>) => {
+    updatePaymentStatus: (state, action: PayloadAction<boolean>) => {
       state.status = action.payload;
     },
   },
 });
 
-const { reducer } = payment;
+const { reducer } = paymentSlice;
 
-export const { statusChanged } = payment.actions;
+export const { updatePaymentStatus } = paymentSlice.actions;
 
 export default reducer;
