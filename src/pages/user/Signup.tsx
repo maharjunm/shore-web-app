@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { UserContext } from '../HomePage/HomePage';
 import './auth.scss';
-import { REACT_BACKEND_ROUTE, REACT_BACKEND_URL } from '../../config';
+import { REACT_BACKEND_URL } from '../../config';
 
 function Signup() {
 
@@ -24,7 +24,7 @@ function Signup() {
     handleLogging(true);
 
     try{
-      const res = await fetch(`${REACT_BACKEND_ROUTE}/v1/user/signup`, {
+      const res = await fetch(`${REACT_BACKEND_URL}/v1/user/signup`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
