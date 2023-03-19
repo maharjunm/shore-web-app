@@ -5,7 +5,7 @@ import { UserContext } from '../HomePage/HomePage';
 import  ProductData  from '../../components/DataModels/ProductData';
 import { useSelector } from 'react-redux';
 import { selectPaymentStatus } from '../../store/Payments/selector';
-import {RootState} from '../../store/configureStore';
+import { RootState } from '../../store/configureStore';
 import Form from './Form';
 interface Props{
   product:ProductData
