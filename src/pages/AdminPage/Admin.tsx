@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-import { REACT_BACKEND_ROUTE } from '../../config';
+import { REACT_BACKEND_URL } from '../../config';
 import './Admin.scss';
 import FormData from '../../components/DataModels/FormData';
 import JobDetails from '../Home/JobDetails';
@@ -58,7 +58,7 @@ function Admin() {
   const [rejectedJobs,setRejectedJobs]=React.useState([]);
 
   const handleApprove= async (job: Job)=>{
-    await axios.put(`${REACT_BACKEND_ROUTE}/v1/admin/${job._id}`,{status:'Approved'})
+    await axios.put(`${REACT_BACKEND_URL}/v1/admin/${job._id}`,{status:'Approved'})
       .then(res=>{
         job.status= 'Approved';
         setApprovedJobs([...approvedJobs,job]);
@@ -68,7 +68,7 @@ function Admin() {
   };
 
   const handleReject=async (job: Job)=>{
-    await axios.put(REACT_BACKEND_ROUTE+`v1/admin/${job._id}`,{status:'Rejected'})
+    await axios.put(`${REACT_BACKEND_URL}v1/admin/${job._id}`,{status:'Rejected'})
       .then(res=>{
         job.status='Rejected';
         setRejectedJobs([...rejectedJobs,job]);
@@ -78,7 +78,7 @@ function Admin() {
   React.useEffect(() => {
     const fetchjobs = async () => {
       try {
-        const res = await axios.get<Job[]>(`${REACT_BACKEND_ROUTE}v1/admin`);
+        const res = await axios.get<Job[]>(`${REACT_BACKEND_URL}v1/admin`);
         setJobs(res.data);
       } catch (e) {
         console.log(e);

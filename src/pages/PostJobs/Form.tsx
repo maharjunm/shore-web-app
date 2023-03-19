@@ -6,7 +6,7 @@ import './Form.scss';
 import JobDetails from '../Home/JobDetails';
 import validate from './validate';
 import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
-import { REACT_ACCESSKEY, REACT_BACKEND_ROUTE, REACT_BACKEND_URL, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
+import { REACT_ACCESSKEY, REACT_BACKEND_URL, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
 import { UserContext } from '../../pages/HomePage/HomePage';
 import { useCookies } from 'react-cookie';
 
@@ -155,7 +155,7 @@ const Form = () => {
     form.createdBy=authCookie.email;
     if(!!validate(form)){
       try {
-        const res = await axios.post(`${REACT_BACKEND_ROUTE}/v1/job`,form);
+        const res = await axios.post(`${REACT_BACKEND_URL}/v1/job`,form);
         console.log(res);
       } catch (error) {
         console.error(error);

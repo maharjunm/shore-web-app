@@ -5,4 +5,3 @@ export const REACT_DIRNAME=process.env.REACT_APP_DIRNAME || '';
 export const REACT_ACCESSKEY=process.env.REACT_APP_ACCESS_KEY || '';
 export const REACT_SC=process.env.REACT_APP_SECRET_KEY || '';
 export const REACT_REGION=process.env.REACT_APP_REGION ||'';
-export const REACT_BACKEND_ROUTE=process.env.REACT_APP_BACKEND_ROUTE || '';
