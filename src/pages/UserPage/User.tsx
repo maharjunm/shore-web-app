@@ -3,7 +3,7 @@ import JobDetails from '../Home/JobDetails';
 import JobFeed from '../Home/JobFeed';
 import FormData from '../../components/DataModels/FormData';
 import axios from 'axios';
-import { REACT_BACKEND_ROUTE } from '../../config';
+import { REACT_BACKEND_URL } from '../../config';
 import { useCookies } from 'react-cookie';
 
 const User=()=>{
@@ -17,7 +17,7 @@ const User=()=>{
   };
   React.useEffect(()=>{
     const fetchData=async ()=>{
-      await axios.get(`${REACT_BACKEND_ROUTE}/v1/job/${authCookie.email}`).then(res=>{setJobs(res.data);});
+      await axios.get(`${REACT_BACKEND_URL}/v1/job/${authCookie.email}`).then(res=>{setJobs(res.data);});
     };
     fetchData();
   },[]);

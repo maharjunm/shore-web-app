@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import './auth.scss';
 import { UserContext } from '../HomePage/HomePage';
-import { REACT_BACKEND_ROUTE } from '../../config';
+import { REACT_BACKEND_URL } from '../../config';
 import axios from 'axios';
 
 
@@ -28,7 +28,7 @@ function Login() {
         email:email,
         password:password
       };
-      const res = await axios.post(`${REACT_BACKEND_ROUTE}/v1/user/login`,body);
+      const res = await axios.post(`${REACT_BACKEND_URL}/v1/user/login`,body);
       console.log(res.data);
       if(res.status===200){
         if(res.data.username=== 'ADMIN'){
