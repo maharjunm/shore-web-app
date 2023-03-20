@@ -3,7 +3,8 @@ import StripeCheckout from 'react-stripe-checkout';
 import { useCookies } from 'react-cookie';
 import  ProductData  from '../DataModels/ProductData';
 import { useHistory } from 'react-router-dom';
-import { REACT_BACKEND_URL, REACT_STRIPE_PUBLIC_KEY } from '../../config';
+import { checkoutPayment } from '../../services/Payments';
+import { REACT_STRIPE_PUBLIC_KEY } from '../../config';
 import axios from 'axios';
 import './Payment.scss';
 interface Props{
@@ -12,18 +13,19 @@ interface Props{
 const Payment = (props:Props)=>{
 
   const [ authCookie ] = useCookies([]);
+  const [ paymentResponse, setPaymentResponse ] = useState({color:'',message:''});
   const history = useHistory();
   const { product } = props;
   async function handleToken(token:any){
-    const response = await axios.post(`${REACT_BACKEND_URL}/v1/checkout`,{token,product});
-    console.log(response.data);
-    window.alert(response.data.status);
+    setPaymentResponse({color:'orange',message:'waiting for payment...'});
+    const response = await checkoutPayment({token,product});
     if(response.data.status==='success'){
-      console.log('Success, Payment is complete');
-      history.push('/postajob');
+      setPaymentResponse({color:'green',message:'Success, Payment is complete'});
+      setTimeout(() => {
+        history.push('/postajob');
+      }, 2000);
     }else{
-      window.alert(response.data.information.msg);
-      console.log('Failure, Payment is complete');
+      setPaymentResponse({color:'red',message:'Failure, Payment is incomplete'});
     }
 
   }
@@ -34,6 +36,7 @@ const Payment = (props:Props)=>{
         <h3>Product Name: {product.type}</h3>
         <h3>Product Price: {product.amount}</h3>
         <h3>Product Hosting Time: {product.hostingTime}</h3>
+        <span className={'responseBox '+paymentResponse.color}>{paymentResponse.message}</span>
       </div>
 
       <div className='stripe'>
