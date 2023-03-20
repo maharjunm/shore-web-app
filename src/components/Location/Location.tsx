@@ -1,5 +1,7 @@
 import React from 'react';
 import './Location.scss';
+import { FontAwesomeIcon as Font } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 interface city {
     id: number;
     name: string;
@@ -38,21 +40,26 @@ const Location = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={location} onChange={handleChange} placeholder="Enter location" className="location" />
-      </form>
-      {location.length > 0 && isOpen && (
-        <div className="searchResult">
-          {location.length > 0 && isOpen && 
-                    cityData.filter((item) => item.name.toLowerCase().includes(location.toLowerCase()))
-                      .map((item) => (
-                        <div key={item.id}>
-                          <option onClick={handleClick} value={item.name} id="options">
-                            {item.name},{item.state}
-                          </option>
-                        </div>
-                      ))}
+        <div className="location">
+          <input type="search" value={location} onChange={handleChange} placeholder="Enter location" />
+          <span className="searchIcons">
+            <b><Font icon={faSearch}></Font></b>
+          </span>
         </div>
-      )}
+        {location.length > 0 && isOpen && (
+          <div className="searchResultRight">
+            {location.length > 0 && isOpen &&
+                      cityData.filter((item) => item.name.toLowerCase().includes(location.toLowerCase()))
+                        .map((item) => (
+                          <div key={item.id}>
+                            <option onClick={handleClick} value={item.name} id="options">
+                              {item.name},{item.state}
+                            </option>
+                          </div>
+                        ))}
+          </div>
+        )}
+      </form>
     </>
   );
 };

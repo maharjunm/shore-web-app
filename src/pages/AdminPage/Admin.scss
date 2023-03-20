@@ -1,11 +1,11 @@
 .status {
-  background-color: #ffb12a;
+  background-color: 	#ffcc00;
   font-weight: 600;
   color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
   flex-direction: row;
-  width:50%;
+  width:220px;
   justify-content: space-around;
   align-items: center;
   padding: 5px;
@@ -20,12 +20,12 @@
 
 .btns {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   padding: 5px;
 }
 
 .accept-btn {
+  margin: 10px;
   width: 100px;
   height: 30px;
   border: none;
@@ -37,7 +37,8 @@
   cursor: pointer;
 }
 
-.reject-btn {
+.reject-btn { 
+  margin: 10px;
   width: 100px;
   height: 30px;
   border: none;
@@ -75,6 +76,36 @@
   margin-bottom: 20px;
   width:100%;
 }
+.down{
+  width:80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+}
 
+.hide{
+  display: none;
+}
+@media only screen and (max-width: 1050px) {
+  .right{
+    display: none;
+  }
+  .down{
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 1050px) {
+  .right{
+      display: block;
+  }
+  .down{
+    width: 80%;
+  }
+  .scrollableContent{
+    max-height: 500px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+}
 
 

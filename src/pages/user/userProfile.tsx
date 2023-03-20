@@ -6,14 +6,22 @@ import  ProductSelectionPage  from '../ProductSelectionPage/ProductSelectionPage
 import { ErrorBoundary, Message } from '../../components';
 import  PaymentStatus from './Payments/PaymentStatus';
 import { REACT_BACKEND_URL } from '../../config';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectPaymentStatus } from '../../store/Payments/selector';
+import { updatePaymentStatus } from '../../store/Payments/reducer';
+import {RootState} from '../../store/configureStore';
 import axios from 'axios';
 import './userProfile.scss';
 
 const Profile = ()=>{
 
-  const { state, dispatch } = useContext(UserContext);
+  const { state } = useContext(UserContext);
   const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
   const history = useHistory();
+  const dispatch = useDispatch();
+  const  paymentStatus  = useSelector((state:RootState) => {
+    return selectPaymentStatus(state);
+  });
   const [ loginMessage, setLoginMessage ] = useState('You have successfully Logged in..');
   const [ paymentInfo, setPaymentInfo ] = useState(null);
   React.useEffect(()=>{
@@ -22,6 +30,7 @@ const Profile = ()=>{
         .then(res =>{
           if(res.data.message==='success'){
             setPaymentInfo(res.data);
+            dispatch(updatePaymentStatus(res.data.status));
           }
         });
     };
