@@ -1,5 +1,7 @@
 import React from 'react';
 import './SearchBar.scss';
+import { FontAwesomeIcon as Font } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 interface Job {
     id: number;
     name: string;
@@ -34,20 +36,26 @@ const Searchbar: React.FC<Props> = ({ data,onJobSelect }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input id="search" type="text" placeholder="search for job" onChange={handleChange} value={searchData}  className="searchInput"/>
-      </form>
-      {searchData.length > 0 && isOpen && (
-        <div className="searchResult">
-          {searchData.length > 0 && isOpen && data.filter((item) => item.name.toLowerCase().includes(searchData.toLowerCase()))
-            .map((item) => (
-              <div key={item.id}>
-                <option onClick={handleClick} value={item.name} id="options" >
-                  {item.name}
-                </option>
-              </div>
-            ))}
+        <div className="searchInput">
+          <input id="search" type="search" placeholder="Search for job" onChange={handleChange} value={searchData} />
+          <span className="searchIcons">
+            <b><Font icon={faSearch}></Font></b>
+          </span>
         </div>
-      )}
+        {searchData.length > 0 && isOpen && (
+          <div className="searchResultLeft">
+            {searchData.length > 0 && isOpen && data.filter((item) => item.name.toLowerCase().includes(searchData.toLowerCase()))
+              .map((item) => (
+                <div key={item.id} className="opt">
+                  <option onClick={handleClick} value={item.name} id="options" >
+                    {item.name}
+                  </option>
+                </div>
+              ))}
+          </div>
+        )}
+      </form>
+
     </>
   );
 };
