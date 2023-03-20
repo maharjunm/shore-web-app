@@ -7,7 +7,7 @@ import JobDetails from '../Home/JobDetails';
 import validate from './validate';
 import { postJob } from '../../services/Jobs';
 import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
-import { REACT_ACCESSKEY, REACT_BACKEND_URL, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
+import { REACT_ACCESSKEY, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
 import { UserContext } from '../../pages/HomePage/HomePage';
 import { useSelector } from 'react-redux';
 import { selectPaymentStatus } from '../../store/Payments/selector';

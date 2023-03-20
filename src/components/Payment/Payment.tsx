@@ -5,7 +5,6 @@ import  ProductData  from '../DataModels/ProductData';
 import { useHistory } from 'react-router-dom';
 import { checkoutPayment } from '../../services/Payments';
 import { REACT_STRIPE_PUBLIC_KEY } from '../../config';
-import axios from 'axios';
 import './Payment.scss';
 interface Props{
   product:ProductData,
