@@ -6,6 +6,14 @@ import { ErrorBoundary } from './components';
 import configureAppStore, { getPreloadedState } from './store/configureStore';
 import AppContextProvider from './contexts/AppContextProvider';
 import { HomePage } from './pages';
+import axios from 'axios';
+
+axios.interceptors.request.use((request) =>{
+  return request;
+});
+axios.interceptors.response.use((response) =>{
+  return response;
+});
 
 (async () => {
   const preloadedState = getPreloadedState();
