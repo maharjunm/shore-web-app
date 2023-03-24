@@ -5,15 +5,40 @@ import {Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark , faCheck } from '@fortawesome/free-solid-svg-icons';
 import './Product.scss';
+import { REACT_STRIPE_PUBLIC_KEY } from '../../config';
+import { loadStripe } from '@stripe/stripe-js';
 interface Props{
   product: ProductData,
   isSelected: boolean,
 }
+let stripePromise:any;
+const getStripe = async () => {
+  if(!stripePromise){
+    stripePromise = loadStripe(REACT_STRIPE_PUBLIC_KEY);
+  }
+  return stripePromise;
+};
 const Product = ( props: Props ) => {
 
   const { product, isSelected } = props;
   const path = product.type==='Regular'?'/postajob':'/postjobs';
+  const productName = product.type;
+  const item = {
+    price: 'price_1Mo1YMSDnxAXJ4Wok2NNYdBL',
+    quantity: 1,
+  };
+  const checkoutOptions = {
+    lineItems: [ item ],
+    mode: 'payment',
+    successUrl:`${window.location.origin}/#/success/${productName}`,
+    cancelUrl: `${window.location.origin}/#/cancel/${productName}`,
+  };
+  const redirectToCheckout = async () => {
+    const stripe = await getStripe();
+    const res = await stripe.redirectToCheckout(checkoutOptions);
+    console.log(res);
 
+  };
   return (
     <ErrorBoundary>
       <div className="col">
@@ -40,13 +65,7 @@ const Product = ( props: Props ) => {
           ))
         }
         <div className={isSelected?'btn productSelected':'btn productNotSelected'}>
-          <Link to={
-            {
-              pathname:path,
-              state:product
-            }
-          }
-          >{isSelected?'Selected':'select'}</Link>
+          <a onClick={redirectToCheckout}> checkout</a>
         </div>
       </div>
     </ErrorBoundary>
