@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { UserContext } from '../HomePage/HomePage';
+import { signup } from '../../services/Authentication';
 import './auth.scss';
 import { REACT_BACKEND_URL } from '../../config';
 
@@ -22,31 +23,19 @@ function Signup() {
   const handleSubmit = async (event: any) => {
     event.preventDefault(event);
     handleLogging(true);
-
-    try{
-      const res = await fetch(`${REACT_BACKEND_URL}/v1/user/signup`, {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: username,
-          email: email,
-          password: password,
-        }),
-      });
-      if(res.status === 201){
-        window.alert('successful SignUp');
-        History.push('/profile');
-      }
-      else if(res.status === 400) setError('user already exisit');
-      else setError('Something went wrong');
-      handleLogging(false);
+    const body={
+      username: username,
+      email: email,
+      password: password,
+    };
+    const res = await signup({ body });
+    if(res.status === 201){
+      window.alert('successful SignUp');
+      History.push('/profile');
+    }else{
+      setError(res.data.message);
     }
-    catch(error){
-      setError(error.response.data.message);
-      handleLogging(false);
-    }
+    handleLogging(false);
   };
   if(state.user){
     History.push('/profile');

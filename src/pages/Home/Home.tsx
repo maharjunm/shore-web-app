@@ -1,5 +1,4 @@
 import React ,{useState} from 'react';
-import axios from 'axios';
 import JobFeed from './JobFeed';
 import JobDetails from './JobDetails';
 import './Home.scss';
@@ -7,6 +6,7 @@ import { ErrorBoundary,Searchbar, Location } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
 import data from '../../components/SearchBar/data';
 import {  REACT_BACKEND_URL } from '../../config';
+import { fetchJobs } from '../../services/Jobs';
 
 
 const Home = () => {
@@ -17,10 +17,10 @@ const Home = () => {
   const [job,setJob] =React.useState([]);
   React.useEffect(()=>{
     const fetchData=async()=>{
-      await axios.get(`${REACT_BACKEND_URL}/v1/job`)
-        .then(res =>{
-          setJobs(res.data);
-        });
+      const res = await fetchJobs();
+      if(res){
+        setJobs(res.data);
+      }
     };
     fetchData();
 

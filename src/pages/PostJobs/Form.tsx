@@ -5,6 +5,7 @@ import  FormData  from '../../components/DataModels/FormData';
 import './Form.scss';
 import JobDetails from '../Home/JobDetails';
 import validate from './validate';
+import { postJob } from '../../services/Jobs';
 import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
 import { REACT_ACCESSKEY, REACT_BACKEND_URL, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
 import { UserContext } from '../../pages/HomePage/HomePage';
@@ -90,6 +91,7 @@ const Form = () => {
   const [form,setForm] = useState(defaultForm);
   const [errorMessage, setErrorMessage]= useState(null);
   const [file,setFile] = useState<File>();
+  const [ formStatus, setFormStatus ] = useState('Submit');
 
   const handleLogo=async(file: File)=>{
     setFile(file);
@@ -160,21 +162,23 @@ const Form = () => {
   };
   const onSubmit=async(event:any)=>{
     event.preventDefault();
-    form.createdBy=authCookie.email;
+    setFormStatus('Submitting...');
     if(!!validate(form)){
-      try {
-        const res = await axios.post(`${REACT_BACKEND_URL}/v1/job`,form);
-        console.log(res);
-      } catch (error) {
-        console.error(error);
+      const res = await postJob({form});
+      if(res){
+        window.alert('successfully posted job');
+        setFormStatus('Submit');
+        history.push('/postajob');
+      }else{
+        setErrorMessage('Something went wrong ...');
       }
     }else{
       setErrorMessage('Mandatory fields are missing ...');
-      setTimeout(() => {
-        setErrorMessage('');
-      }, 2000);
     }
-
+    setFormStatus('Submit');
+    setTimeout(() => {
+      setErrorMessage('');
+    }, 2000);
   };
 
 
@@ -219,7 +223,7 @@ const Form = () => {
           </div>
           <div className="downside">
             <button type="button" onClick={previewBtnHandler} className="btnstyle" >Preview</button>
-            <button type="submit" className="btnstyle" >Submit</button>
+            <button type="submit" className="btnstyle" >{formStatus}</button>
           </div>
         </div>
       </form>
