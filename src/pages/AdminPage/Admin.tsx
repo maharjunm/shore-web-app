@@ -9,7 +9,6 @@ import JobDetails from '../Home/JobDetails';
 import { UserContext } from '../HomePage/HomePage';
 import JobFeed from '../Home/JobFeed';
 import { setJobStatus, fetchJobsByAdmin } from '../../services/Jobs';
-import axios from 'axios';
 
 function Admin() {
 
@@ -22,32 +21,31 @@ function Admin() {
   const [currentJob,setCurrentJob]= useState(null);
   const [view,setView]= useState('hide');
 
-  const handleApprove= async (job: Job)=>{
-    await axios.put(REACT_BACKEND_URL+`/v1/admin/${job._id}`,{status:'Approved'})
-      .then(res=>{
-        job.status= 'Approved';
-        setApprovedJobs([...approvedJobs,job]);
-
-      }).catch(e=> console.log(e));
-
+  const handleJobStatus = async (id:string,status:string) =>{
+    const res = await setJobStatus({id,status});
+    return res;
+  };
+  const handleApprove = (job: Job)=>{
+    const res = handleJobStatus(job._id,'Approved');
+    if(res){
+      job.status = 'Approved';
+      setApprovedJobs([...approvedJobs,job]);
+    }
   };
 
-  const handleReject=async (job: Job)=>{
-    await axios.put(REACT_BACKEND_URL+`/v1/admin/${job._id}`,{status:'Rejected'})
-      .then(res=>{
-        job.status='Rejected';
-        setRejectedJobs([...rejectedJobs,job]);
-      }).catch(e=> console.log(e));
+  const handleReject = (job: Job)=>{
+    const res = handleJobStatus(job._id,'Rejected');
+    if(res){
+      job.status = 'Rejected';
+      setApprovedJobs([...approvedJobs,job]);
+    }
   };
 
   React.useEffect(() => {
     const fetchjobs = async () => {
-      try {
-        const res = await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/admin`);
+      const res = await fetchJobsByAdmin();
+      if(res){
         setJobs(res.data);
-      }
-      catch(e){
-        console.log(e);
       }
     };
     fetchjobs();

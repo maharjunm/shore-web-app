@@ -5,7 +5,6 @@ import './Home.scss';
 import { ErrorBoundary,Searchbar, Location } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
 import data from '../../components/SearchBar/data';
-import {  REACT_BACKEND_URL } from '../../config';
 import { fetchJobs } from '../../services/Jobs';
 
 
@@ -56,11 +55,11 @@ const Home = () => {
         <div className="down">
           <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
             { job.map((element:FormData)=>(
-              <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
+              <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />
             )) }
           </div>
           <div className={view}>
-            {currentJob && <JobDetails key={currentJob._id} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true} />}
+            {currentJob && <JobDetails key={currentJob.title} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true} />}
           </div>
         </div>
       </div>

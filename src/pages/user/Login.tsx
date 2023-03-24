@@ -4,9 +4,6 @@ import { useCookies } from 'react-cookie';
 import { login } from '../../services/Authentication';
 import './auth.scss';
 import { UserContext } from '../HomePage/HomePage';
-import { REACT_BACKEND_URL } from '../../config';
-import axios from 'axios';
-
 
 function Login() {
   const { state, dispatch } = useContext(UserContext);

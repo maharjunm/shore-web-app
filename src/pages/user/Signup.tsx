@@ -3,7 +3,6 @@ import { Link, useHistory } from 'react-router-dom';
 import { UserContext } from '../HomePage/HomePage';
 import { signup } from '../../services/Authentication';
 import './auth.scss';
-import { REACT_BACKEND_URL } from '../../config';
 
 function Signup() {
 
