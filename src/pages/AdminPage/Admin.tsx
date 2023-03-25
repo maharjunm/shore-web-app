@@ -26,20 +26,23 @@ function Admin() {
     const res = await setJobStatus({id,role,status});
     if(res.status==500){
       setError(res.data.message);
+      setTimeout(() => {
+        setError('');
+      }, 4000);
       return null;
     }
     return res;
   };
-  const handleApprove = (job: Job)=>{
-    const res = handleJobStatus(job._id,'Approved',authCookie.user);
+  const handleApprove = async (job: Job)=>{
+    const res = await handleJobStatus(job._id,'Approved',authCookie.user);
     if(res){
       job.status = 'Approved';
       setApprovedJobs([...approvedJobs,job]);
     }
   };
 
-  const handleReject = (job: Job)=>{
-    const res = handleJobStatus(job._id,'Rejected',authCookie.user);
+  const handleReject = async (job: Job)=>{
+    const res = await handleJobStatus(job._id,'Rejected',authCookie.user);
     if(res){
       job.status = 'Rejected';
       setApprovedJobs([...approvedJobs,job]);
@@ -50,12 +53,14 @@ function Admin() {
     const fetchjobs = async () => {
       const role = authCookie.user;
       const res = await fetchJobsByAdmin({role});
-      console.log('res',res);
       if(res.status==500){
-        window.alert(res.data.message);
-      }else{
-        setJobs(res.data);
+        setError(res.data.message);
+        setTimeout(() => {
+          setError('');
+        }, 4000);
+        return ;
       }
+      setJobs(res.data);
     };
     fetchjobs();
 
@@ -80,6 +85,7 @@ function Admin() {
           {currentJob &&
             <div className="onejob">
               <JobDetails key={currentJob._id} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true} />
+              <span className='updateJobError'>{error}</span>
               <h3 className="status">Status of Job:{currentJob.status}</h3>
               <div className="footer">
                 { ((currentJob.status === 'Pending') || (currentJob.status==='Rejected')) &&
