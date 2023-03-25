@@ -5,12 +5,11 @@ import { UserContext } from '../HomePage/HomePage';
 import  ProductSelectionPage  from '../ProductSelectionPage/ProductSelectionPage';
 import { ErrorBoundary, Message } from '../../components';
 import  PaymentStatus from './Payments/PaymentStatus';
-import { REACT_BACKEND_URL } from '../../config';
+import { getPaymentStatus } from '../../services/Payments';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectPaymentStatus } from '../../store/Payments/selector';
 import { updatePaymentStatus } from '../../store/Payments/reducer';
-import {RootState} from '../../store/configureStore';
-import axios from 'axios';
+import { RootState } from '../../store/configureStore';
 import './userProfile.scss';
 
 const Profile = ()=>{
@@ -25,14 +24,13 @@ const Profile = ()=>{
   const [ loginMessage, setLoginMessage ] = useState('You have successfully Logged in..');
   const [ paymentInfo, setPaymentInfo ] = useState(null);
   React.useEffect(()=>{
-    const fetchPaymentInfo=async()=>{
-      await axios.get(`${REACT_BACKEND_URL}/v1/checkout/get`,{params: {email:authCookie.email}})
-        .then(res =>{
-          if(res.data.message==='success'){
-            setPaymentInfo(res.data);
-            dispatch(updatePaymentStatus(res.data.status));
-          }
-        });
+    const fetchPaymentInfo = async ( ) => {
+      const userMailId = authCookie.email;
+      const res = await getPaymentStatus({userMailId});
+      if(res.data.message === 'success'){
+        setPaymentInfo(res.data);
+        dispatch(updatePaymentStatus(res.data.status));
+      }
     };
     fetchPaymentInfo();
   },[]);

@@ -1,23 +1,30 @@
 import React,{useState} from 'react';
 import { ErrorBoundary } from '../../components';
-import axios from 'axios';
+import { sendQuery } from '../../services/ContactUs';
+import { validate } from './validate';
 import './ContactUs.scss';
-import { REACT_BACKEND_URL } from '../../config';
+
 const ContactUs = ( ) => {
   const [formStatus,setFormStatus]= useState('Submit');
   const [formData,setFormData]= useState({email:'',companyName:'',name:'',query:''});
   const onSubmit= async (e:any)=>{
     e.preventDefault();
+    const body = formData;
     setFormStatus('submitting');
-    const response = await await axios.post(REACT_BACKEND_URL+'v1/contact',formData).then(response =>{
-      console.log(response);
-      setFormStatus('Submitted');
-    }).catch(e =>{
-      console.log(e);
-      setFormStatus('Error!');
-    });
-
-    console.log(formData);
+    if(validate(body)){
+      const response = await sendQuery({body});
+      if(response){
+        console.log(response);
+        setFormStatus('Submitted');
+      }else{
+        setFormStatus('Error!');
+      }
+    }else{
+      setFormStatus('Error! mandatoryFieds are missing..');
+    }
+    setTimeout(() => {
+      setFormStatus('Submit');
+    }, 2000);
   };
   const handleChange=(e:any)=>{
     setFormData(prevFormData=>{

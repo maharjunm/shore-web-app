@@ -1,10 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import { login } from '../../services/Authentication';
 import './auth.scss';
 import { UserContext } from '../HomePage/HomePage';
-import { REACT_BACKEND_ROUTE } from '../../config';
-import axios from 'axios';
 
 
 function Login() {
@@ -23,31 +22,26 @@ function Login() {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     handleLogging(true);
-    try{
-      const body={
-        email:email,
-        password:password
-      };
-      const res = await axios.post(`${REACT_BACKEND_ROUTE}/v1/user/login`,body);
-      console.log(res.data);
-      if(res.status===200){
-        if(res.data.username=== 'ADMIN'){
-          dispatch({ type: 'ADMIN', payload: res.data.username === 'ADMIN'});
-        }
-        else{
-          dispatch({ type: 'USER', payload: true});
-        }
-        setAuthCookie('email',res.data.user);
-        setAuthCookie('user',res.data.username);
-        History.push('/profile');
-      }else{
-        setError(res.data.message);
+    const body={
+      email:email,
+      password:password
+    };
+    const res = await login({body});
+    console.log(res);
+    if(res.status===200){
+      if(res.data.username=== 'ADMIN'){
+        dispatch({ type: 'ADMIN', payload: res.data.username === 'ADMIN'});
       }
-    }catch(error){
-      setError(error.response.data.message);
-      handleLogging(false);
+      else{
+        dispatch({ type: 'USER', payload: true});
+      }
+      setAuthCookie('email',res.data.user);
+      setAuthCookie('user',res.data.username);
+      History.push('/profile');
+    }else{
+      setError(res.data.message);
     }
-
+    handleLogging(false);
   };
   if(state.user){
     History.push('/profile');

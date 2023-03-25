@@ -1,53 +1,15 @@
-import axios from 'axios';
 import React, { useContext,useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-import { REACT_BACKEND_ROUTE } from '../../config';
 import './Admin.scss';
 import FormData from '../../components/DataModels/FormData';
+import  { Job }  from '../../components/DataModels/Job';
 import JobDetails from '../Home/JobDetails';
 import { UserContext } from '../HomePage/HomePage';
 import JobFeed from '../Home/JobFeed';
+import { setJobStatus, fetchJobsByAdmin } from '../../services/Jobs';
 
-interface Job {
-  _id:string;
-  job:{
-    title: string;
-    experience: string;
-    type: 'Full-time' | 'Part-time' | 'Contract' | 'Internship';
-    qualification: string;
-  };
-  company: {
-    name: string;
-    companyType: string;
-    logo: string;
-  };
-  location: {
-    city: string;
-    country: string;
-    state:string;
-    region: string;
-  };
-  dates: {
-    postingDate: Date;
-    expiryDate: Date;
-    closingDate: Date;
-    removingDate: Date;
-  };
-  salary: {
-    sal: number;
-    hours: number;
-    companyType: 'Annual' |'Regular'|'Monthly'|'Quarterly';
-  };
-  qualifications: {value:string , id:string}[];
-  duties: {value:string , id:string}[];
-  contact:{
-    email:string;
-    employeeEmail:string;
-  };
-  discipline:string[];
-  status : 'Approved' | 'Rejected' | 'Pending' ;
-}
+
 function Admin() {
 
   const { state, dispatch } = useContext(UserContext);
@@ -59,31 +21,31 @@ function Admin() {
   const [currentJob,setCurrentJob]= useState(null);
   const [view,setView]= useState('hide');
 
-  const handleApprove= async (job: Job)=>{
-    await axios.put(REACT_BACKEND_ROUTE+`/v1/admin/${job._id}`,{status:'Approved'})
-      .then(res=>{
-        job.status= 'Approved';
-        setApprovedJobs([...approvedJobs,job]);
-
-      }).catch(e=> console.log(e));
-
+  const handleJobStatus = async (id:string,status:string) =>{
+    const res = await setJobStatus({id,status});
+    return res;
+  };
+  const handleApprove = (job: Job)=>{
+    const res = handleJobStatus(job._id,'Approved');
+    if(res){
+      job.status = 'Approved';
+      setApprovedJobs([...approvedJobs,job]);
+    }
   };
 
-  const handleReject=async (job: Job)=>{
-    await axios.put(REACT_BACKEND_ROUTE+`/v1/admin/${job._id}`,{status:'Rejected'})
-      .then(res=>{
-        job.status='Rejected';
-        setRejectedJobs([...rejectedJobs,job]);
-      }).catch(e=> console.log(e));
+  const handleReject = (job: Job)=>{
+    const res = handleJobStatus(job._id,'Rejected');
+    if(res){
+      job.status = 'Rejected';
+      setApprovedJobs([...approvedJobs,job]);
+    }
   };
 
   React.useEffect(() => {
     const fetchjobs = async () => {
-      try {
-        const res = await axios.get<Job[]>(`${REACT_BACKEND_ROUTE}/v1/admin`);
+      const res = await fetchJobsByAdmin();
+      if(res){
         setJobs(res.data);
-      } catch (e) {
-        console.log(e);
       }
     };
     fetchjobs();
@@ -119,8 +81,8 @@ function Admin() {
                 }
                 {currentJob.status ==='Approved' &&
               <div className='containerSpecial'>
-                <button 
-                  className="buttonSpecial" 
+                <button
+                  className="buttonSpecial"
                   onClick={()=>handleReject(currentJob)}>
                   {rejectedJobs.includes(currentJob._id) ? 'Rejected' : 'Reject'}
                 </button>
