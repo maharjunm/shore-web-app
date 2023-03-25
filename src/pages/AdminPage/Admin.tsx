@@ -20,13 +20,18 @@ function Admin() {
   const [rejectedJobs,setRejectedJobs]=React.useState([]);
   const [currentJob,setCurrentJob]= useState(null);
   const [view,setView]= useState('hide');
+  const [ error, setError ] = useState('');
 
-  const handleJobStatus = async (id:string,status:string) =>{
-    const res = await setJobStatus({id,status});
+  const handleJobStatus = async (id:string,status:string,role:string) =>{
+    const res = await setJobStatus({id,role,status});
+    if(res.status==500){
+      setError(res.data.message);
+      return null;
+    }
     return res;
   };
   const handleApprove = (job: Job)=>{
-    const res = handleJobStatus(job._id,'Approved');
+    const res = handleJobStatus(job._id,'Approved',authCookie.user);
     if(res){
       job.status = 'Approved';
       setApprovedJobs([...approvedJobs,job]);
@@ -34,7 +39,7 @@ function Admin() {
   };
 
   const handleReject = (job: Job)=>{
-    const res = handleJobStatus(job._id,'Rejected');
+    const res = handleJobStatus(job._id,'Rejected',authCookie.user);
     if(res){
       job.status = 'Rejected';
       setApprovedJobs([...approvedJobs,job]);
@@ -43,8 +48,12 @@ function Admin() {
 
   React.useEffect(() => {
     const fetchjobs = async () => {
-      const res = await fetchJobsByAdmin();
-      if(res){
+      const role = authCookie.user;
+      const res = await fetchJobsByAdmin({role});
+      console.log('res',res);
+      if(res.status==500){
+        window.alert(res.data.message);
+      }else{
         setJobs(res.data);
       }
     };

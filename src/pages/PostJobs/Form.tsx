@@ -1,5 +1,6 @@
 import React,{useState, useContext} from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import { ErrorBoundary } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
 import './Form.scss';
@@ -89,6 +90,8 @@ const Form = () => {
   const [errorMessage, setErrorMessage]= useState(null);
   const [file,setFile] = useState<File>();
   const [ formStatus, setFormStatus ] = useState('Submit');
+  const [ authCookie ] = useCookies([]);
+
 
   const handleLogo=async(file: File)=>{
     setFile(file);
@@ -161,13 +164,15 @@ const Form = () => {
     event.preventDefault();
     setFormStatus('Submitting...');
     if(!!validate(form)){
-      const res = await postJob({form});
-      if(res){
+      const email = authCookie.email;
+      const res = await postJob({form,email});
+      if(res.data.status==='success'){
         window.alert('successfully posted job');
         setFormStatus('Submit');
         history.push('/postajob');
       }else{
-        setErrorMessage('Something went wrong ...');
+        console.log(res);
+        setErrorMessage(res.data.message);
       }
     }else{
       setErrorMessage('Mandatory fields are missing ...');
