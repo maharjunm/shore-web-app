@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorBoundary } from '..';
+import { ErrorBoundary } from '../../components';
 import  ProductData  from '../DataModels/ProductData';
 import {Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -13,7 +13,7 @@ const NavBar = () => {
     setProfilePopUp((updatedProfilePopUp)=>{
       return profilePopUp==='show'?'hide':'show';
     });
-  }
+  };
   const RenderMenu = () =>{
     if(state.user){
       return(
@@ -23,8 +23,8 @@ const NavBar = () => {
           <ul className='profileList'>
             <li onClick={handleProfilePopUp}>Profile</li>
             <li>
-              <div className={"profilePop "+profilePopUp}>
-               <NavLink to="/profile">Account</NavLink>
+              <div className={'profilePop '+profilePopUp}>
+                <NavLink to="/profile">Account</NavLink>
                 <NavLink to="/logout">Logout</NavLink>
               </div>
             </li>
