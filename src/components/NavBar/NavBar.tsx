@@ -1,4 +1,5 @@
 import React, { useState ,useContext } from 'react';
+import { useCookies } from 'react-cookie';
 import './NavBar.scss';
 import Logo from './../images/logo.png';
 import {NavLink} from 'react-router-dom';
@@ -6,15 +7,27 @@ import Flex from './../Flex/Flex';
 import { UserContext } from '../../pages/HomePage/HomePage';
 const NavBar = () => {
   const { state, dispatch } = useContext(UserContext);
+  const [profilePopUp,setProfilePopUp] = useState('hide');
+  const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
+  const handleProfilePopUp=()=>{
+    setProfilePopUp((updatedProfilePopUp)=>{
+      return profilePopUp==='show'?'hide':'show';
+    });
+  };
   const RenderMenu = () =>{
     if(state.user){
       return(
         <>
           <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
           <li ><NavLink to="/contactus">Contact Us</NavLink></li>
-          <ul>
-            <li ><NavLink to="/profile">Profile</NavLink></li>
-            <li ><NavLink to="/logout">Logout</NavLink></li>
+          <ul className='profileList'>
+            <li onClick={handleProfilePopUp}>Profile</li>
+            <li>
+              <div className={'profilePop '+profilePopUp}>
+                <NavLink to="/profile">Account</NavLink>
+                <NavLink to="/logout">Logout</NavLink>
+              </div>
+            </li>
           </ul>
         </>
       );
@@ -62,7 +75,7 @@ const NavBar = () => {
         <div className="container">
           <div>
             <ul>
-              <li ><NavLink exact to="/" >Home</NavLink></li>
+              <li ><NavLink exact to="/" >Jobs</NavLink></li>
               <RenderMenu />
             </ul>
           </div>
@@ -85,7 +98,7 @@ const NavBar = () => {
           <div className={'options '+mobview}>
             <ul onClick={()=> setMobview('invisible')}>
               <ul>
-                <li ><NavLink exact to="/" >Home</NavLink></li>
+                <li ><NavLink exact to="/" >Jobs</NavLink></li>
                 <RenderMenu />
               </ul>
             </ul>

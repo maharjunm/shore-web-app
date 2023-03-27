@@ -4,7 +4,7 @@ const products:ProductData[]=[
   {
     type: 'Regular',
     amount: 0,
-    hostingTime: 30,
+    hostingTime: 10,
     offers: [
       { field: 'logo in search', value: true },
       { field: 'logo in description', value: true },

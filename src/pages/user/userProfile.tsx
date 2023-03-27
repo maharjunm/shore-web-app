@@ -43,7 +43,6 @@ const Profile = ()=>{
     <ErrorBoundary>
       <div className="userProfile">
         <div className="top-flex">
-          <div>welcome {authCookie.email}</div>
           { paymentInfo &&
             <PaymentStatus
               email={authCookie.email}
