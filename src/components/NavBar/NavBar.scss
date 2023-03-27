@@ -118,6 +118,30 @@ li:hover{
   width: 60px;
   margin: 4px;
 }
+.container .profileList{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding:10px;
+}
+.container .profilePop{
+  background-color: #f6f8fa;
+  border-color: #aeaeae;
+  border-radius: 5px;
+  position: absolute;
+  padding:12px;
+  font-size: 17px;
+  display:flex;
+  flex-direction: column;
+  right:110px;
+}
+.container .hide{
+  display:none;
+}
+.container .show{
+  display:flex;
+}
 @media only screen and (max-width: 1050px) {
   .navbar .main{
     display: none;

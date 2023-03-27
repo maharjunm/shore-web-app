@@ -5,6 +5,7 @@ import FormData from '../../components/DataModels/FormData';
 import axios from 'axios';
 import { REACT_BACKEND_URL } from '../../config';
 import { useCookies } from 'react-cookie';
+import { fetchJobs } from '../../services/Jobs'; 
 
 const User=()=>{
   const [jobs,setJobs]=React.useState([]);
@@ -16,10 +17,14 @@ const User=()=>{
     setCurrentJob(job);
   };
   React.useEffect(()=>{
-    const fetchData=async ()=>{
-      await axios.get(`${REACT_BACKEND_URL}/v1/job/${authCookie.email}`).then(res=>{setJobs(res.data);});
+    const fetchData=async()=>{
+      const res = await fetchJobs();
+      if(res){
+        setJobs(res.data);
+      }
     };
     fetchData();
+
   },[]);
   return(
     <div>
