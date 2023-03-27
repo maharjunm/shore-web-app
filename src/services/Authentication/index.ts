@@ -1,5 +1,11 @@
 import { REACT_BACKEND_URL } from '../../config';
 import axios from 'axios';
+const instance = axios.create({
+  withCredentials: true,
+  headers: {
+    'Access-Control-Allow-Origin': 'http://localhost:3000,http://localhost:8080',
+  }
+});
 interface SignUpProps{
   body: {
     username: string;
@@ -11,7 +17,7 @@ interface SignUpProps{
 export const signup = async ( props: SignUpProps ) => {
   const { body } = props;
   try {
-    const response = await axios.post(`${REACT_BACKEND_URL}/v1/user/signup`,body);
+    const response = await instance.post(`${REACT_BACKEND_URL}/v1/user/signup`,body);
     return response;
   } catch ( error ){
     return error.response;
@@ -27,7 +33,15 @@ interface LoginProps{
 export const login = async ( props: LoginProps ) => {
   const { body } = props;
   try {
-    const response = await axios.post(`${REACT_BACKEND_URL}/v1/user/login`,body);
+    const response = await instance.post(`${REACT_BACKEND_URL}/v1/user/login`,body);
+    return response;
+  } catch ( error ){
+    return error.response;
+  }
+};
+export const logout = async ( ) => {
+  try {
+    const response = await instance.post(`${REACT_BACKEND_URL}/v1/user/logout`);
     return response;
   } catch ( error ){
     return error.response;
