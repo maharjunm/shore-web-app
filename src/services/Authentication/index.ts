@@ -2,9 +2,6 @@ import { REACT_BACKEND_URL } from '../../config';
 import axios from 'axios';
 const instance = axios.create({
   withCredentials: true,
-  headers: {
-    'Access-Control-Allow-Origin': 'http://localhost:3000,http://localhost:8080',
-  }
 });
 interface SignUpProps{
   body: {
