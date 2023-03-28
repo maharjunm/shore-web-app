@@ -186,7 +186,7 @@ const Form = () => {
     history.push('/login');
     return ;
   }
-  if(redirect){
+  if(redirect && !state.isAdmin){
     history.push('/profile');
     return ;
   }

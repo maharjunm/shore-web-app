@@ -34,10 +34,13 @@ const NavBar = () => {
     }
     if(state.isAdmin){
       return(
-        <ul>
-          <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-          <li><NavLink to="/logout">Logout</NavLink></li>
-        </ul>
+        <>
+          <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
+          <ul>
+            <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+            <li><NavLink to="/logout">Logout</NavLink></li>
+          </ul>
+        </>
       );
     }
     else{

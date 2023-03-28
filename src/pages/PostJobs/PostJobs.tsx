@@ -18,6 +18,10 @@ const PostJobs = () => {
   const location= useLocation();
   const history =  useHistory();
   const product = location.state;
+  if(state && state.isAdmin){
+    history.push('/postajob');
+    return ;
+  }
   if(!state.user){
     history.push('/login');
     return ;

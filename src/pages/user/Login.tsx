@@ -28,14 +28,14 @@ function Login() {
     const res = await login({body});
     console.log(res);
     if(res.status===200){
-      if(res.data.username=== 'ADMIN'){
-        dispatch({ type: 'ADMIN', payload: res.data.username === 'ADMIN'});
-      }
-      else{
+      if(res.data.isAdmin){
+        dispatch({ type: 'ADMIN', payload: true});
+      }else{
         dispatch({ type: 'USER', payload: true});
       }
-      setAuthCookie('email',res.data.user);
-      setAuthCookie('user',res.data.username);
+      if(res.data.isAdmin){
+        setAuthCookie('isAdmin',true);
+      }
       History.push('/profile');
     }else{
       setError(res.data.message);
