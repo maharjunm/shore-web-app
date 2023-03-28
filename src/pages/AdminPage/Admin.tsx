@@ -60,7 +60,7 @@ function Admin() {
   };
   return (
     <div>
-      <div>welcome {authCookie.email}</div>
+      <div>welcome admin</div>
       <div className="down">
         <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
           { jobs.map((element:FormData)=>(
