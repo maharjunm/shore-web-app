@@ -6,6 +6,7 @@ import axios from 'axios';
 import { REACT_BACKEND_URL } from '../../config';
 import { useCookies } from 'react-cookie';
 import { fetchJobs } from '../../services/Jobs'; 
+import { getJobByUser } from '../../services/Jobs';
 
 const User=()=>{
   const [jobs,setJobs]=React.useState([]);
@@ -18,7 +19,8 @@ const User=()=>{
   };
   React.useEffect(()=>{
     const fetchData=async()=>{
-      const res = await fetchJobs();
+      const userMailId=authCookie.email;
+      const res = await getJobByUser({userMailId});
       if(res){
         setJobs(res.data);
       }
@@ -26,6 +28,7 @@ const User=()=>{
     fetchData();
 
   },[]);
+  
   return(
     <div>
       <div className="contentbox">

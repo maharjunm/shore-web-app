@@ -3,6 +3,9 @@ import FormData from '../../components/DataModels/FormData';
 
 import { REACT_BACKEND_URL } from '../../config';
 import axios from 'axios';
+const instance = axios.create({
+  withCredentials: true,
+});
 
 interface PostJobProps{
   form:FormData;
@@ -45,5 +48,18 @@ export const setJobStatus = async ( props: StatusProps ) => {
     return response;
   } catch ( error ) {
     return null;
+  }
+};
+interface userProps{
+  userMailId:String;
+}
+export const getJobByUser= async(props:userProps)=>{
+  const {userMailId}=props;
+  try {
+    const response=await instance.get<Job[]>(`${REACT_BACKEND_URL}/v1/job/user`,{params:{email:userMailId}});
+    return response;
+
+  }catch(error){
+    return error;
   }
 };
