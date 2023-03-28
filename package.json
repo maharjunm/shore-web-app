@@ -1,8 +1,8 @@
 {
-  "name": "react-redux-boilerplate",
+  "name": "ShoreBirdie",
   "version": "1.0.0",
   "proxy": "http://localhost:3000",
-  "description": "Start React+Redux project with TypeScript in an easier and faster way",
+  "description": "ShoreBirdie is a Job searching Wen Application",
   "main": "index.js",
   "scripts": {
     "test": "jest --passWithNoTests",
@@ -27,17 +27,13 @@
       "jest --bail --findRelatedTests --passWithNoTests"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vannizhang/react-redux-boilerplate.git"
-  },
   "keywords": [],
-  "author": "Jinnan Zhang",
+  "author": "Maharjun",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vannizhang/react-redux-boilerplate/issues"
+    "url": "https://github.com/maharjunm/shore-web-app"
   },
-  "homepage": "https://github.com/vannizhang/react-redux-boilerplate",
+  "homepage": "https://github.com/maharjunm/shore-web-app",
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
