@@ -25,6 +25,7 @@ const NavBar = () => {
             <li>
               <div className={'profilePop '+profilePopUp}>
                 <NavLink to="/profile">Account</NavLink>
+                <NavLink to="/userdashboard">Dashboard</NavLink>
                 <NavLink to="/logout">Logout</NavLink>
               </div>
             </li>

@@ -36,6 +36,7 @@ interface FormData{
   };
   discipline:string[];
   status : 'Approved' | 'Rejected' | 'Pending' ;
+  createdBy:string;
 
 }
 export default FormData;

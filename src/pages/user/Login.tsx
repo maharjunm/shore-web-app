@@ -5,7 +5,6 @@ import { login } from '../../services/Authentication';
 import './auth.scss';
 import { UserContext } from '../HomePage/HomePage';
 
-
 function Login() {
   const { state, dispatch } = useContext(UserContext);
   const [ logging, setLogging ] = useState(false);
