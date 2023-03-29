@@ -25,8 +25,7 @@ const Profile = ()=>{
   const [ paymentInfo, setPaymentInfo ] = useState(null);
   React.useEffect(()=>{
     const fetchPaymentInfo = async ( ) => {
-      const userMailId = authCookie.email;
-      const res = await getPaymentStatus({userMailId});
+      const res = await getPaymentStatus();
       if(res.data.message === 'success'){
         setPaymentInfo(res.data);
         dispatch(updatePaymentStatus(res.data.status));
