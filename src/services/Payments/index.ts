@@ -19,23 +19,18 @@ export const checkoutPayment = async ( props: CheckoutProps ) => {
   }
 };
 
-interface StatusProps{
-  userMailId:string,
-}
-export const getPaymentStatus = async ( props: StatusProps ) => {
-  const { userMailId } = props;
+export const getPaymentStatus = async ( ) => {
   try {
-    updatePaymentStatus({userMailId});
-    const response = await instance.get(`${REACT_BACKEND_URL}/v1/checkout/get`,{params: {email: userMailId}});
+    updatePaymentStatus();
+    const response = await instance.get(`${REACT_BACKEND_URL}/v1/checkout/get`);
     return response;
   } catch ( error ){
     return error;
   }
 };
-export const updatePaymentStatus = async ( props: StatusProps ) => {
-  const { userMailId } = props;
+export const updatePaymentStatus = async ( ) => {
   try {
-    const response = await instance.get(`${REACT_BACKEND_URL}/v1/checkout/update`,{params: {email: userMailId}});
+    const response = await instance.get(`${REACT_BACKEND_URL}/v1/checkout/update`);
     return response;
   } catch ( error ){
     return error;
