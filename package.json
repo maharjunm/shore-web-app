@@ -2,7 +2,7 @@
   "name": "ShoreBirdie",
   "version": "1.0.0",
   "proxy": "http://localhost:3000",
-  "description": "ShoreBirdie is a Job searching Wen Application",
+  "description": "ShoreBirdie is a Job searching Web Application",
   "main": "index.js",
   "scripts": {
     "test": "jest --passWithNoTests",
