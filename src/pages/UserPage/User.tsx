@@ -19,11 +19,11 @@ const User=()=>{
   };
   React.useEffect(()=>{
     const fetchData=async()=>{
-      const userMailId=authCookie.email;
-      const res = await getJobByUser({userMailId});
+      const res = await getJobByUser();
       if(res){
         setJobs(res.data);
       }
+      
     };
     fetchData();
 
