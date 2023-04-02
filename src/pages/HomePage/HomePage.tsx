@@ -1,6 +1,6 @@
 import React,{useState, createContext , useReducer} from 'react';
 import { useCookies } from 'react-cookie';
-import { ErrorBoundary,NavBar } from '../../components';
+import { ErrorBoundary,NavBar, PaymentSuccess, PaymentCancel } from '../../components';
 import {HashRouter as Router,Switch,Route,Link} from 'react-router-dom';
 import {User,Home,PostJobs,Form,ContactUs,ProductSelectionPage,BillingPage,Login,Logout,Signup,Profile,Admin} from '../../pages';
 import { initialState, reducer } from '../../Reducer/userReducer';
@@ -33,6 +33,8 @@ const HomePage = () => {
               <Route path='/profile' ><Profile/></Route>
               <Route path='/dashboard'><Admin /></Route>
               <Route path='/userdashboard'><User/></Route>
+              <Route path='/success' ><PaymentSuccess /></Route>
+              <Route path='/cancel' ><PaymentCancel /></Route>
             </Switch>
           </ErrorBoundary>
         </UserContext.Provider>
