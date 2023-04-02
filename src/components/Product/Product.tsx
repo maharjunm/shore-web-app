@@ -45,13 +45,6 @@ const Product = ( props: Props ) => {
             <input hidden name="product"  value={JSON.stringify(product)}/>
             <button className='submit' type="submit">select</button>
           </form>
-          {/*<Link to={
-            {
-              pathname:path,
-              state:product
-            }
-          }
-        >{isSelected?'Selected':'select'}</Link>*/}
         </div>
       </div>
     </ErrorBoundary>
