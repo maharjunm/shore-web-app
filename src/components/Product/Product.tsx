@@ -4,6 +4,7 @@ import  ProductData  from '../DataModels/ProductData';
 import {Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark , faCheck } from '@fortawesome/free-solid-svg-icons';
+import { REACT_BACKEND_URL } from '../../config';
 import './Product.scss';
 interface Props{
   product: ProductData,
@@ -40,13 +41,10 @@ const Product = ( props: Props ) => {
           ))
         }
         <div className={isSelected?'btn productSelected':'btn productNotSelected'}>
-          <Link to={
-            {
-              pathname:path,
-              state:product
-            }
-          }
-          >{isSelected?'Selected':'select'}</Link>
+          <form action={`${REACT_BACKEND_URL}/v1/checkout/page`} method='post'>
+            <input hidden name="product"  value={JSON.stringify(product)}/>
+            <button className='submit' type="submit">select</button>
+          </form>
         </div>
       </div>
     </ErrorBoundary>
