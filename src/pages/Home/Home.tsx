@@ -71,9 +71,9 @@ const Home = () => {
               next={()=>setSkip(jobs.length)}
               loader={<h4>Loading...</h4>}
             >
-            { job.map((element:FormData)=>(
-              <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />
-            )) }
+              { job.map((element:FormData)=>(
+                <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />
+              )) }
             </InfiniteScroll>
           </div>
           <div className={view}>
