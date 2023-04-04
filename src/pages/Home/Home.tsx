@@ -22,7 +22,7 @@ const Home = () => {
 
   React.useEffect(()=>{
     fetchData(page);
-  },[skip]);
+  },[page]);
   const fetchData=async(page: any)=>{
     const res = await fetchJobs(page);
     if(res.data.length ===0){

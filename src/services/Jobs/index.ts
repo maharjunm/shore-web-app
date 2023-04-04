@@ -20,7 +20,7 @@ export const postJob = async ( props: PostJobProps) => {
     return null;
   }
 };
-export const  fetchJobs = async (page: Number) => {
+export const fetchJobs = async (page: Number) => {
   try {
     const response = await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/job?page=${page}`);
     return response;
