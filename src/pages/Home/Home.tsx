@@ -17,19 +17,18 @@ const Home = () => {
   const [jobs,setJobs]=React.useState([]);
   const [selectedJob,setSelectedJob]=React.useState('');
   const [job,setJob] =React.useState([]);
-  const [skip,setSkip]=React.useState(0);
+  const [page,setPage]=React.useState(0);
   const [checkHasMore,setCheckHasMore]=React.useState(true);
 
   React.useEffect(()=>{
-    fetchData(skip);
+    fetchData(page);
   },[skip]);
-  const fetchData=async(skip: any)=>{
-    const res = await fetchJobs(skip);
+  const fetchData=async(page: any)=>{
+    const res = await fetchJobs(page);
     if(res.data.length ===0){
       setCheckHasMore(false);
       return;
     }
-    console.log(skip);
     if(res){
       const newJobs=res.data;
       setJobs([...jobs,...newJobs]);
@@ -68,7 +67,7 @@ const Home = () => {
             <InfiniteScroll
               dataLength={jobs.length}
               hasMore={checkHasMore}
-              next={()=>setSkip(jobs.length)}
+              next={()=>setPage(jobs.length)}
               loader={<h4>Loading...</h4>}
             >
               { job.map((element:FormData)=>(
