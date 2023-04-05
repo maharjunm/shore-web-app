@@ -19,6 +19,7 @@ function Logout() {
     dispatch({ type: 'ADMIN', payload: false });
     dispatchPayment(updatePaymentStatus(false));
     removeAuthCookie('isAdmin');
+    removeAuthCookie('SESSION');
     history.push('/login');
   };
 
