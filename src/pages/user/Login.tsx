@@ -35,6 +35,7 @@ function Login() {
       }
       if(res.data.isAdmin){
         setAuthCookie('isAdmin',true);
+        setAuthCookie('SESSION',res.data.token);
       }
       History.push('/profile');
     }else{
