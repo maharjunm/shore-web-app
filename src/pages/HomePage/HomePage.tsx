@@ -7,7 +7,7 @@ import { initialState, reducer } from '../../Reducer/userReducer';
 export const UserContext = createContext(null);
 const HomePage = () => {
   const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
-  if(authCookie.jwtoken){
+  if(authCookie.SESSION){
     if(authCookie.isAdmin){
       initialState.isAdmin=true;
     }else{
