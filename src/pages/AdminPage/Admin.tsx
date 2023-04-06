@@ -18,11 +18,17 @@ function Admin() {
   const [jobs, setJobs] = React.useState<Job[]>([]);
   const [approvedJobs,setApprovedJobs]=React.useState([]);
   const [rejectedJobs,setRejectedJobs]=React.useState([]);
+  const [ pendingJobs, setPendingJobs] =React.useState([]);
+  const [ tab, setTab] = useState('Pending');
   const [currentJob,setCurrentJob]= useState(null);
   const [view,setView]= useState('hide');
 
   const handleJobStatus = async (id:string,status:string) =>{
     const res = await setJobStatus({id,status});
+    setPendingJobs(( updatedJobs ) => {
+      const newJobs = jobs.filter((job)=>job._id!=id);
+      return newJobs;
+    });
     return res;
   };
   const handleApprove = (job: Job)=>{
@@ -37,7 +43,7 @@ function Admin() {
     const res = handleJobStatus(job._id,'Rejected');
     if(res){
       job.status = 'Rejected';
-      setApprovedJobs([...approvedJobs,job]);
+      setRejectedJobs([...rejectedJobs,job]);
     }
   };
 
@@ -46,6 +52,7 @@ function Admin() {
       const res = await fetchJobsByAdmin();
       if(res){
         setJobs(res.data);
+        setPendingJobs(res.data);
       }
     };
     fetchjobs();
@@ -58,9 +65,17 @@ function Admin() {
     setView(currentView);
     setCurrentJob(job);
   };
+  const handleTabs = (jobs: Job[], tab: string) =>{
+    setJobs(jobs);
+    setTab(tab);
+    console.log(rejectedJobs);
+  };
   return (
-    <div>
-      <div>welcome admin</div>
+    <div className="adminDashboard">
+      <div className="tabs">
+        <span className={tab==='Pending' && 'active'} onClick={()=> handleTabs(pendingJobs,'Pending')} >pending</span>
+        <span className={tab==='Rejected' && 'active'} onClick={()=> handleTabs(rejectedJobs, 'Rejected')} >rejected</span>
+      </div>
       <div className="down">
         <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
           { jobs.map((element:FormData)=>(

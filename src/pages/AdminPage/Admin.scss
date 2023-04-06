@@ -11,7 +11,22 @@
   padding: 5px;
 }
 
-
+.adminDashboard .tabs{
+  padding:10px;
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+}
+.adminDashboard .tabs span{
+  background-color: white;
+  border: 1px solid #aeaeae;
+  padding: 5px 10px 5px 10px;
+  color:#000;
+  cursor: pointer;
+}
+.adminDashboard .tabs .active{
+  background: rgb(38, 192, 212);
+}
 .footer {
   display: flex;
   flex-direction: column;
@@ -86,6 +101,7 @@
 .hide{
   display: none;
 }
+
 @media only screen and (max-width: 1050px) {
   .right{
     display: none;
