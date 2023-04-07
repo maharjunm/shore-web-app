@@ -28,9 +28,9 @@ export const  fetchJobs = async () => {
   }
 };
 
-export const fetchJobsByAdmin = async () => {
+export const fetchJobsByAdmin = async (page: Number) => {
   try {
-    const response = await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/admin`);
+    const response = await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/admin?page=${page}`);
     return response;
   } catch ( error ){
     return null;
