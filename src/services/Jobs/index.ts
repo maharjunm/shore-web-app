@@ -13,7 +13,7 @@ interface PostJobProps{
 export const postJob = async ( props: PostJobProps) => {
   const { form } = props;
   try {
-    const response = await axios.post(`${REACT_BACKEND_URL}/v1/job`,form);
+    const response = await instance.post(`${REACT_BACKEND_URL}/v1/job`,form);
     return response;
   } catch ( error ) {
     return null;
@@ -44,7 +44,7 @@ interface StatusProps{
 export const setJobStatus = async ( props: StatusProps ) => {
   const { id, status } = props;
   try {
-    const response = await axios.put(`${REACT_BACKEND_URL}/v1/admin/${id}`,{status:status});
+    const response = await instance.put(`${REACT_BACKEND_URL}/v1/admin/${id}`,{status:status});
     return response;
   } catch ( error ) {
     return null;
