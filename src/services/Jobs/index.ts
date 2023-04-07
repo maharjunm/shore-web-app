@@ -10,6 +10,7 @@ const instance = axios.create({
 interface PostJobProps{
   form:FormData;
 }
+
 export const postJob = async ( props: PostJobProps) => {
   const { form } = props;
   try {
@@ -19,9 +20,9 @@ export const postJob = async ( props: PostJobProps) => {
     return null;
   }
 };
-export const  fetchJobs = async () => {
+export const fetchJobs = async (page: Number) => {
   try {
-    const response = await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/job`);
+    const response = await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/job?page=${page}`);
     return response;
   } catch ( error ) {
     return null;

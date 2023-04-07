@@ -40,7 +40,7 @@ const JobDetails= (details:Props) => {
                 <span>{p.job.experience}</span>
               </div>
             </div>
-            <div className="wrong" onClick={clicked}>x</div>
+            <div className="wrong" onClick={clicked}>X</div>
           </div>
         </div>
         <div className="scrollableContent">
