@@ -49,6 +49,7 @@ function Admin() {
       const res = await fetchJobsByAdmin(page);
       if(res.data.length===0){
         setHasMoreJobs(false);
+        return;
       }
       if(res){
         setJobs(res.data);
@@ -103,8 +104,8 @@ function Admin() {
               </div>
             </div>}
         </div>
-        {!hasMoreJobs && <h4>No More Jobs...</h4>}
       </div>
+      {!hasMoreJobs && <h4>No More Jobs...</h4>}
     </div>
   );
 }

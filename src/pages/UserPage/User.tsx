@@ -25,6 +25,7 @@ const User=()=>{
       const res = await getJobByUser();
       if(res.data.length==0){
         setHasMoreJobs(false);
+        return;
       }
       if(res){
         setJobs(res.data);
