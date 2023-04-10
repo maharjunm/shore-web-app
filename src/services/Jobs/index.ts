@@ -17,7 +17,7 @@ export const postJob = async ( props: PostJobProps) => {
     const response = await instance.post(`${REACT_BACKEND_URL}/v1/job`,form);
     return response;
   } catch ( error ) {
-    return null;
+    return error.response;
   }
 };
 export const fetchJobs = async (page: Number) => {

@@ -165,12 +165,12 @@ const Form = () => {
     setFormStatus('Submitting...');
     if(!!validate(form)){
       const res = await postJob({form});
-      if(res){
+      if(res.status==200){
         window.alert('successfully posted job');
         setFormStatus('Submit');
         history.push('/postajob');
       }else{
-        setErrorMessage('Something went wrong ...');
+        setErrorMessage(res.data.message);
       }
     }else{
       setErrorMessage('Mandatory fields are missing ...');
