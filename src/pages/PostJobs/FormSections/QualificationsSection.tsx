@@ -71,7 +71,7 @@ const QualificationsSection =  (props: Props) => {
             onChange={updateQualification}
             onBlur={updateQualification}
             id="qlinput"
-            placeholder="EX:BTech CSE"
+            placeholder="Bachelors/Masters/Phd"
             value={qualification}
           />
           <button type="button"  onClick={addQualification} className="addBtn" >Add+</button>

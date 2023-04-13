@@ -77,19 +77,11 @@ const JobDetails= (details:Props) => {
                   <b>Posting Job on</b>
                   <span>{p.dates.postingDate.toString()}</span>
                 </div>
-                <div className="jobType">
-                  <b>Job Expires on </b>
-                  <span>{p.dates.expiryDate.toString()}</span>
-                </div>
               </div>
               <div className="boxside">
                 <div className="jobType">
                   <b>Closing Job on</b>
                   <span>{p.dates.closingDate.toString()}</span>
-                </div>
-                <div className="jobType">
-                  <b>Removing Job on</b>
-                  <span>{p.dates.removingDate.toString()}</span>
                 </div>
               </div>
             </div>

@@ -3,8 +3,8 @@ import  FormData  from '../../components/DataModels/FormData';
 const validate=(form:FormData)=>{
   const mandatoryFields = [
     'job.title', 'job.qualification', 'job.experience', 'company.name', 'company.companyType', 'company.logo', 'location.city', 'location.state', 'location.country',
-    'location.region', 'dates.postingDate', 'dates.expiryDate', 'dates.closingDate', 'dates.removingDate', 'salary.sal', 'salary.hours', 'salary.companyType',
-    'contact.email','contact.employeeEmail','discipline','qualifications','duties'
+    'location.region', 'dates.postingDate', 'dates.closingDate', 'salary.sal', 'salary.hours', 'salary.companyType',
+    'contact.email','discipline','qualifications','duties'
   ];
   const  isValid = mandatoryFields.reduce((acc,field) => { 
     if (field === 'qualifications' || field === 'duties' || field === 'discipline') {

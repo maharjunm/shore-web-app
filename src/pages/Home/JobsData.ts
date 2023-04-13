@@ -23,9 +23,7 @@ const JobsData:FormData[]=[
     },
     dates: {
       postingDate: new Date('2023-02-14'),
-      expiryDate: new Date('2023-03-14'),
       closingDate: new Date('2023-03-15'),
-      removingDate: new Date('2023-03-30'),
     },
     salary: {
       sal: 80000,
@@ -75,9 +73,8 @@ const JobsData:FormData[]=[
     },
     dates: {
       postingDate: new Date('2023-02-14'),
-      expiryDate: new Date('2023-03-14'),
       closingDate: new Date('2023-03-15'),
-      removingDate: new Date('2023-03-30')
+
     },
     salary: {
       sal: 90000,
@@ -129,9 +126,7 @@ const JobsData:FormData[]=[
     },
     dates: {
       postingDate: new Date('2023-02-14'),
-      expiryDate: new Date('2023-03-14'),
       closingDate: new Date('2023-03-15'),
-      removingDate: new Date('2023-03-30')
     },
     salary: {
       sal: 60000,

@@ -36,4 +36,5 @@ export interface Job {
   };
   discipline:string[];
   status : 'Approved' | 'Rejected' | 'Pending' ;
+  createdBy: string;
 }
