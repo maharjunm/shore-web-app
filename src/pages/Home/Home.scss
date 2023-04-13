@@ -28,6 +28,7 @@
 .hide{
   display: none;
 }
+
 @media only screen and (max-width: 1050px) {
   .right{
     display: none;
@@ -70,4 +71,8 @@
   .inputForm {
     flex-direction: column;
   }
+}
+.endingMessage{
+  text-align: center;
+  color: #ffb12a;
 }
