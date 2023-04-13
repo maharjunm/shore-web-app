@@ -28,7 +28,7 @@ const User=()=>{
         return;
       }
       if(res){
-        setJobs(res.data);
+        setJobs([...jobs,...res.data]);
       }
       
     };

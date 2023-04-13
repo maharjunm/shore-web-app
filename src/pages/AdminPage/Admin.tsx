@@ -52,7 +52,8 @@ function Admin() {
         return;
       }
       if(res){
-        setJobs(res.data);
+        const newJobs=res.data;
+        setJobs([...jobs,...newJobs]);
       }
     };
     fetchjobs(page);
@@ -105,7 +106,7 @@ function Admin() {
             </div>}
         </div>
       </div>
-      {!hasMoreJobs && <h4>No More Jobs...</h4>}
+      {!hasMoreJobs && <h4 className="nomore">No More Jobs...</h4>}
     </div>
   );
 }
