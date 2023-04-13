@@ -160,8 +160,6 @@ const Form = () => {
   };
   const onSubmit=async(event:any)=>{
     event.preventDefault();
-    const date=new Date();
-    form.dates.postingDate=date;
     setFormStatus('Submitting...');
     if(!!validate(form)){
       const res = await postJob({form});
