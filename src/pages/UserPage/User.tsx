@@ -27,7 +27,7 @@ const User=()=>{
         setHasMoreJobs(false);
       }
       if(res){
-        setJobs(res.data);
+        setJobs([...jobs,...res.data]);
       }
       
     };
