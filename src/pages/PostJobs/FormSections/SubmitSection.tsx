@@ -12,7 +12,7 @@ const SubmitSection =  (props: Props) => {
   const [selectState,setSelectState]=React.useState({
     email:false,
     website:false
-  })
+  });
   const handleClick = (event: any) => {
     const { id, checked } = event.target;
     setSelectState((prevState) => ({
@@ -52,7 +52,7 @@ const SubmitSection =  (props: Props) => {
             onChange={(e)=>updateForm('contact.employeeEmail',e.target.value)}
             id="sub"
             placeholder="www.example.com" 
-            />
+          />
         </div>}
       </div>
     </ErrorBoundary>
