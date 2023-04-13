@@ -44,14 +44,14 @@ const User=()=>{
         <div className="down">
           <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
             <InfiniteScroll
-            hasMore={hasMoreJobs}
-            next={()=>setPage(jobs.length)}
-            dataLength={jobs.length}
-            loader={<h4>Loading......</h4>}
+              hasMore={hasMoreJobs}
+              next={()=>setPage(jobs.length)}
+              dataLength={jobs.length}
+              loader={<h4>Loading......</h4>}
             >
-            { jobs.map((element:FormData)=>(
-              <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
-            )) }
+              { jobs.map((element:FormData)=>(
+                <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
+              )) }
             </InfiniteScroll>
           </div>
           <div className={view}>

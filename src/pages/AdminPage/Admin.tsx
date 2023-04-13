@@ -71,14 +71,14 @@ function Admin() {
       <div className="down">
         <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
           <InfiniteScroll
-          next={()=>setPage(jobs.length)}
-          hasMore={hasMoreJobs}
-          dataLength={jobs.length}
-          loader={<h4>Loading.....</h4>}
+            next={()=>setPage(jobs.length)}
+            hasMore={hasMoreJobs}
+            dataLength={jobs.length}
+            loader={<h4>Loading.....</h4>}
           >
-          { jobs.map((element:FormData)=>(
-            <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
-          )) }
+            { jobs.map((element:FormData)=>(
+              <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
+            )) }
           </InfiniteScroll>
         </div>
         <div className={view}>
