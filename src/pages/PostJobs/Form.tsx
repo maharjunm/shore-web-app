@@ -46,9 +46,9 @@ const defaultForm:FormData = {
   },
   dates: {
     postingDate: null,
-    expiryDate: null,
     closingDate: null,
-    removingDate: null,
+    expiryDate: null,
+    removingDate: null
   },
   salary: {
     sal: null,
@@ -132,7 +132,6 @@ const Form = () => {
         },
       };
     });
-    console.log(form);
   };
 
 
