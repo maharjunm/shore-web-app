@@ -1,6 +1,8 @@
 import  FormData  from '../../components/DataModels/FormData';
 import  companyLogo  from '../../components/images/defaultCompanyLogo.jpg';
 import  image1  from '../../components/images/images.jpg';
+import logo from '../../../public/logo.png';
+
 const JobsData:FormData[]=[
   {
     _id:'',

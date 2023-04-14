@@ -63,3 +63,12 @@ export const getJobByUser= async()=>{
     return error;
   }
 };
+export const fetchRecomendedJobs= async()=>{
+  try{
+    const response= await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/job/recomended`);
+    return response;
+  }
+  catch(error){
+    return error;
+  }
+}
