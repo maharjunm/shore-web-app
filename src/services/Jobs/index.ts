@@ -71,4 +71,4 @@ export const fetchRecomendedJobs= async()=>{
   catch(error){
     return error;
   }
-}
+};

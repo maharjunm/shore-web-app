@@ -11,8 +11,8 @@ import { Job } from '../../components/DataModels/Job';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchRecomendedJobs } from '../../services/Jobs';
 import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 
 const Home = () => {
@@ -34,15 +34,15 @@ const Home = () => {
   const previous = () => {
     sliderRef.current.slickPrev();
   };
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 1000,
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        autoPlay: true,
-        autoPlaySpeed: 1000 
-      };
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoPlay: true,
+    autoPlaySpeed: 1000 
+  };
   React.useEffect(()=>{
     fetchData(page);
   },[page]);
@@ -99,28 +99,28 @@ const Home = () => {
         {recomendedJobs.length!==0 &&
         <div className="carousel-container">
         
-        <Slider {...settings} ref={sliderRef}>
-        {recomendedJobs.map((element)=>(
-          <div className="carousel-card">
-          <img src={element.company.logo} alt="Text" />
-          <h1>
-              {element.company.name}
-          </h1>
-      </div>
-        ))}
+          <Slider {...settings} ref={sliderRef}>
+            {recomendedJobs.map((element)=>(
+              <div className="carousel-card" key={element._id}>
+                <img src={element.company.logo} alt="Text" />
+                <h1>
+                  {element.company.name}
+                </h1>
+              </div>
+            ))}
           
         
-      </Slider>
-      <div style={{ textAlign: "center" }}>
-        <button className="prevButton" onClick={previous}>
+          </Slider>
+          <div style={{ textAlign: 'center' }}>
+            <button className="prevButton" onClick={previous}>
           &lt;
-        </button>
-        <button className="nextButton" onClick={next}>
+            </button>
+            <button className="nextButton" onClick={next}>
           &gt;
-        </button>
-      </div>
-      </div>
-}
+            </button>
+          </div>
+        </div>
+        }
         <div className="down">
           <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
             <InfiniteScroll
