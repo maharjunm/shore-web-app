@@ -35,10 +35,10 @@ const Home = () => {
     sliderRef.current.slickPrev();
   };
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 1000,
-    slidesToShow: 5,
+    slidesToShow: recomendedJobs.length>=5 ? 3:1,
     slidesToScroll: 1,
     autoPlay: true,
     autoPlaySpeed: 1000 
@@ -82,6 +82,8 @@ const Home = () => {
       setRecomendedJobs([...recomendedJobs,...newJobs]);
     }
   };
+  console.log("recomendedJobs");
+  console.log(recomendedJobs);
   
   return (
     <ErrorBoundary>
@@ -130,12 +132,12 @@ const Home = () => {
               loader={<h4>Loading...</h4>}
             >
               { job.map((element:FormData)=>(
-                <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />
+                <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
               )) }
             </InfiniteScroll>
           </div>
           <div className={view}>
-            {currentJob && <JobDetails key={currentJob.title} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true} />}
+            {currentJob && <JobDetails key={currentJob._id} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true} />}
           </div>
         </div>
         {!checkHasMore && <h4 className='endingMessage'>We have these jobs only...</h4>}
