@@ -82,8 +82,6 @@ const Home = () => {
       setRecomendedJobs([...recomendedJobs,...newJobs]);
     }
   };
-  console.log("recomendedJobs");
-  console.log(recomendedJobs);
   
   return (
     <ErrorBoundary>
