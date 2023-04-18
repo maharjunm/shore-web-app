@@ -35,7 +35,7 @@ const Home = () => {
     sliderRef.current.slickPrev();
   };
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 1000,
     slidesToShow: 3,
@@ -104,7 +104,7 @@ const Home = () => {
                 <img src={element.company.logo} alt="Text" />
                 <h1>{element.company.name}</h1>
               </div>
-              <div className="badge">New</div> 
+              <div className="badge">Famous</div> 
             </div>
             ))}
           </div>
@@ -119,7 +119,7 @@ const Home = () => {
                 <img src={element.company.logo} alt="Text" />
                 <h1>{element.company.name}</h1>
               </div>
-              <div className="badge">Recomended</div> 
+              <div className="badge">Famous</div> 
             </div>
             ))}
           

@@ -91,12 +91,8 @@
   padding: 20px;
   height: 200px;
   align-items: center;
-  transition: transform 250ms;
-  position: relative
-}
-
-.carousel-card:hover{
-  transform: translateY(-10px);
+  
+  position: relative;
 }
 
 .carousel-card h1{
@@ -143,8 +139,10 @@
   background-color: #ff0000;
   color: #ffffff;
   font-size: 12px;
+  font-weight: bold;
   padding: 4px 8px;
   border-radius: 4px;
+  transform: rotate(45deg);
 }
 
 
