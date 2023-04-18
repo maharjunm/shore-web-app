@@ -100,12 +100,12 @@ const Home = () => {
           <div>
             {recomendedJobs.map((element)=>(
               <div className="carousel-card" key={element._id}>
-              <div className="card-content">
-                <img src={element.company.logo} alt="Text" />
-                <h1>{element.company.name}</h1>
+                <div className="card-content">
+                  <img src={element.company.logo} alt="Text" />
+                  <h1>{element.company.name}</h1>
+                </div>
+                <div className="badge">Famous</div> 
               </div>
-              <div className="badge">Famous</div> 
-            </div>
             ))}
           </div>
         }
@@ -115,12 +115,12 @@ const Home = () => {
           <Slider {...settings} ref={sliderRef}>
             {recomendedJobs.map((element)=>(
               <div className="carousel-card" key={element._id}>
-              <div className="card-content">
-                <img src={element.company.logo} alt="Text" />
-                <h1>{element.company.name}</h1>
+                <div className="card-content">
+                  <img src={element.company.logo} alt="Text" />
+                  <h1>{element.company.name}</h1>
+                </div>
+                <div className="badge">Famous</div> 
               </div>
-              <div className="badge">Famous</div> 
-            </div>
             ))}
           
         
