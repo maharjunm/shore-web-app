@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './JobDetails.scss';
 import { ErrorBoundary } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
-import  JobsData  from './JobsData';
+
 interface Props {
     key:string,
     jobd:FormData | null;
@@ -37,7 +37,9 @@ const JobDetails= (details:Props) => {
                 <Link to='/' >{p.company.name}</Link>
                 <span className='companyLocation'>{p.location.city},{p.location.state}-{p.location.country}</span>
                 <span>&#8377;{p.salary.sal} - {p.salary.companyType}</span>
-                <span>{p.job.experience}</span>
+                <span> 
+                  {'Deadline:'+new Date(p.dates.closingDate)}
+                </span>
               </div>
             </div>
             <div className="wrong" onClick={clicked}>X</div>

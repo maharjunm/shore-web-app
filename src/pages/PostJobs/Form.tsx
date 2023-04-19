@@ -23,6 +23,7 @@ import{
   SalarySection,
   SubmitSection } from './FormSections/';
 import axios from 'axios';
+import { payment } from '../../services/Payments';
 
 
 const defaultForm:FormData = {
@@ -47,6 +48,7 @@ const defaultForm:FormData = {
   dates: {
     postingDate: null,
     closingDate: null,
+    expiryDate: null,
   },
   salary: {
     sal: null,
@@ -71,10 +73,6 @@ const Form = () => {
   const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
   const location= useLocation();
   const product = location.state;
-  const  paymentStatus  = useSelector((state:RootState) => {
-    return selectPaymentStatus(state);
-  });
-  const redirect = !paymentStatus &&  !(product && product.type==='Regular');
   const s3Config = {
     bucketName:REACT_BUCKETNAME,
     dirName: REACT_DIRNAME,
@@ -162,11 +160,10 @@ const Form = () => {
     event.preventDefault();
     setFormStatus('Submitting...');
     if(!!validate(form)){
-      const res = await postJob({form});
+      const res = await payment({form,product});
       if(res.status==200){
-        window.alert('successfully posted job');
         setFormStatus('Submit');
-        history.push('/postajob');
+        window.location.replace(res.data.url);
       }else{
         setErrorMessage(res.data.message);
       }
@@ -178,16 +175,11 @@ const Form = () => {
       setErrorMessage('');
     }, 2000);
   };
-
-
-  if(!state){
-    history.push('/login');
+  if(!product && !state.isAdmin){
+    history.push('/postjobs');
     return ;
   }
-  if(redirect && !state.isAdmin){
-    history.push('/profile');
-    return ;
-  }
+  console.log(product);
   return (
     <ErrorBoundary>
       {currentJobView && <JobDetails key={currentJobView.job.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} isHome={false} />}
@@ -204,7 +196,7 @@ const Form = () => {
           </div>
           <div className="sections">
             <CompanyLocationSection updateForm={updateForm} />
-            <JobDates updateForm={updateForm}  />
+            <JobDates updateForm={updateForm} hostingTime={product.hostingTime}  />
           </div>
           <div className="sections">
             <QualificationsSection updateForm={updateForm} />
