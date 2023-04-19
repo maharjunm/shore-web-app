@@ -10,11 +10,7 @@ interface Props{
 const PostJobs = () => {
   const { state, dispatch } = useContext(UserContext);
   const history =  useHistory();
-  if(state && state.isAdmin){
-    history.push('/postajob');
-    return ;
-  }
-  if(!state.user){
+  if(!state.user && !state.isAdmin){
     history.push('/login');
     return ;
   }

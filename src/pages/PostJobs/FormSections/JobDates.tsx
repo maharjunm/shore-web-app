@@ -1,10 +1,11 @@
-import React,{useState} from 'react';
+import React,{useState, useContext} from 'react';
 import { ErrorBoundary } from '../../../components';
-import  FormData  from '../../../components/DataModels/FormData';
+import { UserContext } from '../../../pages/HomePage/HomePage';
 interface Props{
   updateForm: (field: string, value: any) => void;
-  hostingTime: Date;
+  hostingTime: number;
 }
+let date:any=null;
 
 const JobDates =  (props: Props) => {
 
@@ -12,7 +13,14 @@ const JobDates =  (props: Props) => {
   const updateDates = (date: any) =>{
     updateForm('dates.closingDate',date);
     updateForm('dates.postingDate',new Date().toISOString().split('T')[0]);
-    updateForm('dates.expiryDate',new Date().toISOString().split('T')[0]);
+    updateForm('dates.expiryDate',new Date(expiryDate()).toISOString().split('T')[0]);
+  };
+  const expiryDate = () => {
+    if(!date){
+      date =  new Date();
+      date.setDate(date.getDate()+hostingTime);
+    }
+    return date;
   };
   return(
     <ErrorBoundary>
@@ -35,13 +43,13 @@ const JobDates =  (props: Props) => {
         </div>
         <div className="row">
           <label htmlFor="jobExpiriesOn">
-            Job Expires
+            Job Expires on
             <span className="mandatoryField">*</span>
           </label>
           <input
             className="input"
             readOnly
-            value={new Date().toISOString().split('T')[0]}
+            value={new Date(expiryDate()).toISOString().split('T')[0]}
             type="date"
             required
             name="jobExpiriesOn"

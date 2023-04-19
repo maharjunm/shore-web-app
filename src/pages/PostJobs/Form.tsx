@@ -5,7 +5,6 @@ import  FormData  from '../../components/DataModels/FormData';
 import './Form.scss';
 import JobDetails from '../Home/JobDetails';
 import validate from './validate';
-import { postJob } from '../../services/Jobs';
 import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
 import { REACT_ACCESSKEY, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
 import { UserContext } from '../../pages/HomePage/HomePage';
@@ -22,7 +21,6 @@ import{
   DutiesSection,
   SalarySection,
   SubmitSection } from './FormSections/';
-import axios from 'axios';
 import { payment } from '../../services/Payments';
 
 
@@ -175,11 +173,11 @@ const Form = () => {
       setErrorMessage('');
     }, 2000);
   };
-  if(!product && !state.isAdmin){
+  if(!product){
     history.push('/postjobs');
     return ;
   }
-  console.log(product);
+  console.log(product.product);
   return (
     <ErrorBoundary>
       {currentJobView && <JobDetails key={currentJobView.job.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} isHome={false} />}
@@ -196,7 +194,7 @@ const Form = () => {
           </div>
           <div className="sections">
             <CompanyLocationSection updateForm={updateForm} />
-            <JobDates updateForm={updateForm} hostingTime={product.hostingTime}  />
+            <JobDates updateForm={updateForm} hostingTime={product.product.hostingTime}  />
           </div>
           <div className="sections">
             <QualificationsSection updateForm={updateForm} />
