@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './JobDetails.scss';
 import { ErrorBoundary } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
+import Moment from 'react-moment';
 import  JobsData  from './JobsData';
 interface Props {
     key:string,
@@ -37,7 +38,10 @@ const JobDetails= (details:Props) => {
                 <Link to='/' >{p.company.name}</Link>
                 <span className='companyLocation'>{p.location.city},{p.location.state}-{p.location.country}</span>
                 <span>&#8377;{p.salary.sal} - {p.salary.companyType}</span>
-                <span>{p.job.experience}</span>
+                <div className="closingDate">
+                  <div className="dateBold">Closing Date :</div >
+                  <div><Moment format="DD-MM-YYYY">{p.dates.closingDate}</Moment></div>
+                </div>
               </div>
             </div>
             <div className="wrong" onClick={clicked}>X</div>
@@ -48,10 +52,6 @@ const JobDetails= (details:Props) => {
             <b className='title'>Job Details</b>
             <div className="flexside">
               <div className="boxside">
-                <div className="salaryDescription">
-                  <b>Salary</b>
-                  <span>&#x20B9;{p.salary.sal}-{p.salary.companyType}</span>
-                </div>
                 <div className="jobType">
                   <b>Job Type</b>
                   <span>{p.company.companyType}</span>
@@ -62,10 +62,6 @@ const JobDetails= (details:Props) => {
                   <b>Duration</b>
                   <span>{p.salary.hours}hrs/Day</span>
                 </div>
-                <div className="jobType">
-                  <b>Location</b>
-                  <span>{p.location.city},{p.location.state},{p.location.country}-{p.location.region}</span>
-                </div>
               </div>
             </div>
           </div>
@@ -75,21 +71,29 @@ const JobDetails= (details:Props) => {
               <div className="boxside">
                 <div className="salaryDescription">
                   <b>Posting Job on</b>
-                  <span>{p.dates.postingDate.toString()}</span>
+                  <span>
+                    <Moment format="DD-MM-YYYY">{p.dates.postingDate}</Moment>
+                  </span>
                 </div>
                 <div className="jobType">
                   <b>Job Expires on </b>
-                  <span>{p.dates.expiryDate.toString()}</span>
+                  <span>
+                    <Moment format="DD-MM-YYYY">{p.dates.expiryDate}</Moment>
+                  </span>
                 </div>
               </div>
               <div className="boxside">
                 <div className="jobType">
                   <b>Closing Job on</b>
-                  <span>{p.dates.closingDate.toString()}</span>
+                  <span>
+                    <Moment format="DD-MM-YYYY">{p.dates.closingDate}</Moment>
+                  </span>
                 </div>
                 <div className="jobType">
                   <b>Removing Job on</b>
-                  <span>{p.dates.removingDate.toString()}</span>
+                  <span>
+                    <Moment format="DD-MM-YYYY">{p.dates.removingDate}</Moment>
+                  </span>
                 </div>
               </div>
             </div>
