@@ -45,7 +45,7 @@ const Home = () => {
     setSelectedJob(jobName);
   };
 
-  const jobClick=(job:FormData,currentView:string)=>{
+  const jobClick=(job:Job,currentView:string)=>{
     setView(currentView);
     setCurrentJob(job);
   };
@@ -70,7 +70,7 @@ const Home = () => {
               next={()=>setPage(jobs.length)}
               loader={<h4>Loading...</h4>}
             >
-              { job.map((element:FormData)=>(
+              { job.map((element:Job)=>(
                 <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />
               )) }
             </InfiniteScroll>

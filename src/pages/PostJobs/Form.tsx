@@ -25,7 +25,6 @@ import { payment } from '../../services/Payments';
 
 
 const defaultForm:FormData = {
-  _id:null,
   job: {
     title: '',
     experience: '',
@@ -44,9 +43,7 @@ const defaultForm:FormData = {
     state:'',
   },
   dates: {
-    postingDate: null,
     closingDate: null,
-    expiryDate: null,
   },
   salary: {
     sal: null,
@@ -61,7 +58,6 @@ const defaultForm:FormData = {
     employeeEmail:'',
   },
   status:'Pending',
-  createdBy:''
 };
 
 const Form = () => {
@@ -177,7 +173,6 @@ const Form = () => {
     history.push('/postjobs');
     return ;
   }
-  console.log(product.product);
   return (
     <ErrorBoundary>
       {currentJobView && <JobDetails key={currentJobView.job.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} isHome={false} />}
@@ -194,7 +189,7 @@ const Form = () => {
           </div>
           <div className="sections">
             <CompanyLocationSection updateForm={updateForm} />
-            <JobDates updateForm={updateForm} hostingTime={product.product.hostingTime}  />
+            <JobDates updateForm={updateForm}  />
           </div>
           <div className="sections">
             <QualificationsSection updateForm={updateForm} />

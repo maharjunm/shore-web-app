@@ -4,10 +4,11 @@ import './JobDetails.scss';
 import { ErrorBoundary } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
 import Moment from 'react-moment';
+import { Job } from '../../components/DataModels/Job';
 interface Props {
     key:string,
-    jobd:FormData | null;
-    jobClick:(currentJob:FormData,currentView:string)=>void;
+    jobd:Job | null;
+    jobClick:(currentJob:Job,currentView:string)=>void;
     disablePreview:()=>void;
     isHome:boolean;
 }
