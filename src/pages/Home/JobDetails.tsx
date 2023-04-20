@@ -75,24 +75,12 @@ const JobDetails= (details:Props) => {
                     <Moment format="DD-MM-YYYY">{p.dates.postingDate}</Moment>
                   </span>
                 </div>
-                <div className="jobType">
-                  <b>Job Expires on </b>
-                  <span>
-                    <Moment format="DD-MM-YYYY">{p.dates.expiryDate}</Moment>
-                  </span>
-                </div>
               </div>
               <div className="boxside">
                 <div className="jobType">
                   <b>Closing Job on</b>
                   <span>
                     <Moment format="DD-MM-YYYY">{p.dates.closingDate}</Moment>
-                  </span>
-                </div>
-                <div className="jobType">
-                  <b>Removing Job on</b>
-                  <span>
-                    <Moment format="DD-MM-YYYY">{p.dates.removingDate}</Moment>
                   </span>
                 </div>
               </div>
