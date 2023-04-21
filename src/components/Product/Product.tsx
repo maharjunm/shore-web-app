@@ -40,11 +40,13 @@ const Product = ( props: Props ) => {
             </p>
           ))
         }
-        <div className={isSelected?'btn productSelected':'btn productNotSelected'}>
-          <form action={`${REACT_BACKEND_URL}/v1/checkout/page`} method='post'>
-            <input hidden name="product"  value={JSON.stringify(product)}/>
-            <button className='submit' type="submit">select</button>
-          </form>
+        <div className="btn">
+          <Link className="submit" to={{
+            pathname:'/postajob',
+            state: {product}
+          }}>
+              select
+          </Link>
         </div>
       </div>
     </ErrorBoundary>

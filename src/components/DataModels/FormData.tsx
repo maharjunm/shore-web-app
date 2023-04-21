@@ -20,6 +20,7 @@ interface FormData{
   dates: {
     postingDate: Date;
     closingDate: Date;
+    expiryDate: Date;
   };
   salary: {
     sal: number;

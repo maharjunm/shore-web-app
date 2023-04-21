@@ -4,7 +4,6 @@ import './JobDetails.scss';
 import { ErrorBoundary } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
 import Moment from 'react-moment';
-import  JobsData  from './JobsData';
 interface Props {
     key:string,
     jobd:FormData | null;
@@ -69,7 +68,7 @@ const JobDetails= (details:Props) => {
             <b className='title'>Important Dates</b>
             <div className="flexside">
               <div className="boxside">
-                <div className="salaryDescription">
+                <div className="jobType">
                   <b>Posting Job on</b>
                   <span>
                     <Moment format="DD-MM-YYYY">{p.dates.postingDate}</Moment>
