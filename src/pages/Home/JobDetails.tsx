@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import './JobDetails.scss';
 import { ErrorBoundary } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
-import Moment from 'react-moment';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 interface Props {
     key:string,
     jobd:FormData | null;
@@ -21,6 +22,9 @@ const JobDetails= (details:Props) => {
       details.disablePreview();
     }
   };
+  dayjs.extend(relativeTime);
+  const closing = dayjs(p.dates.closingDate).format('DD/MM/YYYY');
+  const posting = dayjs(p.dates.postingDate).format('DD/MM/YYYY');
   return (
     <ErrorBoundary>
       <div className="jobdetails">
@@ -39,7 +43,7 @@ const JobDetails= (details:Props) => {
                 <span>&#8377;{p.salary.sal} - {p.salary.companyType}</span>
                 <div className="closingDate">
                   <div className="dateBold">Closing Date :</div >
-                  <div><Moment format="DD-MM-YYYY">{p.dates.closingDate}</Moment></div>
+                  <div>{closing}</div>
                 </div>
               </div>
             </div>
@@ -71,7 +75,7 @@ const JobDetails= (details:Props) => {
                 <div className="jobType">
                   <b>Posting Job on</b>
                   <span>
-                    <Moment format="DD-MM-YYYY">{p.dates.postingDate}</Moment>
+                    {posting}
                   </span>
                 </div>
               </div>
@@ -79,7 +83,7 @@ const JobDetails= (details:Props) => {
                 <div className="jobType">
                   <b>Closing Job on</b>
                   <span>
-                    <Moment format="DD-MM-YYYY">{p.dates.closingDate}</Moment>
+                    {closing}
                   </span>
                 </div>
               </div>
