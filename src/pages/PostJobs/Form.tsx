@@ -88,7 +88,7 @@ const Form = () => {
       updateForm('company.logo',res.location);
     }
     catch(e){
-      console.log('error in uploading to s3 bucket',e);
+      window.alert('error in uploading logo connect to internet');
       updateForm('company.logo','xyz.jpg');
     }
   };
@@ -119,7 +119,6 @@ const Form = () => {
         },
       };
     });
-    console.log(form);
   };
 
 
