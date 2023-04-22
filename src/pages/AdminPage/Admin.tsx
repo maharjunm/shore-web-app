@@ -1,9 +1,6 @@
 import React, { useContext,useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
-import { REACT_BACKEND_URL } from '../../config';
 import './Admin.scss';
-import FormData from '../../components/DataModels/FormData';
 import  { Job }  from '../../components/DataModels/Job';
 import JobDetails from '../Home/JobDetails';
 import { UserContext } from '../HomePage/HomePage';
@@ -13,7 +10,6 @@ import { setJobStatus, fetchJobsByAdmin } from '../../services/Jobs';
 function Admin() {
 
   const { state, dispatch } = useContext(UserContext);
-  const [ authCookie, setAuthCookie ,removeAuthCookie ] = useCookies([]);
   const history = useHistory();
   const [jobs, setJobs] = React.useState<Job[]>([]);
   const [approvedJobs,setApprovedJobs]=React.useState([]);

@@ -1,10 +1,8 @@
 import React ,{useState} from 'react';
-import { useRef } from 'react';
 import JobFeed from './JobFeed';
 import JobDetails from './JobDetails';
 import './Home.scss';
-import { ErrorBoundary,Searchbar, Location } from '../../components';
-import  FormData  from '../../components/DataModels/FormData';
+import { ErrorBoundary,Searchbar, Location, Message } from '../../components';
 import data from '../../components/SearchBar/data';
 import { fetchJobs } from '../../services/Jobs';
 import { Job } from '../../components/DataModels/Job';

@@ -21,7 +21,7 @@ const ProductSelectionPage = () => {
         <div className="content">
           { products &&
             products.map(( product:ProductData ) => (
-              <Product key={product.type} product={ product } isSelected={false} />
+              <Product key={product.type} product={ product }  />
             ))
           }
         </div>

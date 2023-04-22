@@ -1,7 +1,6 @@
 import React from 'react';
 import './JobFeed.scss';
 import { ErrorBoundary } from '../../components';
-import  FormData  from '../../components/DataModels/FormData';
 import { Job } from '../../components/DataModels/Job';
 interface Props {
     key:string;
@@ -39,7 +38,7 @@ const JobFeed = (det: Props) => {
         </ul>
         <div className="foot">
           <p>
-              Hiring ongoing: From{' '}
+              Hiring ongoing: From
             <b>
               {p.job.title} in {p.location.city},{p.location.state}
             </b>

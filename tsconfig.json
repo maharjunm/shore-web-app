@@ -11,6 +11,7 @@
         "target": "es5",
         "resolveJsonModule": true,
         "esModuleInterop": true ,
+        "ignoreDeprecations":"5.0",
         "suppressImplicitAnyIndexErrors": true,
         "typeRoots": [  
             "./src/types", 
