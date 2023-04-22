@@ -21,7 +21,6 @@ export interface Job {
     postingDate: Date;
     expiryDate: Date;
     closingDate: Date;
-    removingDate: Date;
   };
   salary: {
     sal: number;

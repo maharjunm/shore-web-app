@@ -5,10 +5,11 @@ import { ErrorBoundary } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { Job } from '../../components/DataModels/Job';
 interface Props {
     key:string,
-    jobd:FormData | null;
-    jobClick:(currentJob:FormData,currentView:string)=>void;
+    jobd:Job | null;
+    jobClick:(currentJob:Job,currentView:string)=>void;
     disablePreview:()=>void;
     isHome:boolean;
 }

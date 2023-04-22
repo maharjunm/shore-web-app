@@ -54,7 +54,7 @@ function Admin() {
   if(!state.isAdmin){
     history.push('/login');
   }
-  const jobClick=(job:FormData,currentView:string)=>{
+  const jobClick=(job:Job,currentView:string)=>{
     setView(currentView);
     setCurrentJob(job);
   };
@@ -63,7 +63,7 @@ function Admin() {
       <div>welcome admin</div>
       <div className="down">
         <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
-          { jobs.map((element:FormData)=>(
+          { jobs.map((element:Job)=>(
             <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
           )) }
         </div>
