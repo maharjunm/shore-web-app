@@ -31,7 +31,7 @@ export interface Job {
   duties: {value:string , id:string}[];
   contact:{
     email:string;
-    employeeEmail:string;
+    employeeWebsite:string;
   };
   discipline:string[];
   status : 'Approved' | 'Rejected' | 'Pending' ;
