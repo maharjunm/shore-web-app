@@ -21,8 +21,8 @@ const User=()=>{
     setCurrentJob(job);
   };
   React.useEffect(()=>{
-    const fetchData=async()=>{
-      const res = await getJobByUser();
+    const fetchData=async(page:Number) => {
+      const res = await getJobByUser(page);
       if(res.data.length==0){
         setHasMoreJobs(false);
       }
@@ -31,7 +31,7 @@ const User=()=>{
       }
       
     };
-    fetchData();
+    fetchData(page);
 
   },[]);
   

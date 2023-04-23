@@ -53,9 +53,9 @@ export const setJobStatus = async ( props: StatusProps ) => {
 interface userProps{
   userMailId:String;
 }
-export const getJobByUser= async()=>{
+export const getJobByUser= async(page: Number)=>{
   try {
-    const response=await instance.get<Job[]>(`${REACT_BACKEND_URL}/v1/job/user`);
+    const response=await instance.get<Job[]>(`${REACT_BACKEND_URL}/v1/job/user?page=${page}`);
     return response;
 
   }catch(error){
