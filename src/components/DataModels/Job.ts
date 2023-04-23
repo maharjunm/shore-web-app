@@ -21,7 +21,6 @@ export interface Job {
     postingDate: Date;
     expiryDate: Date;
     closingDate: Date;
-    removingDate: Date;
   };
   salary: {
     sal: number;
@@ -36,4 +35,5 @@ export interface Job {
   };
   discipline:string[];
   status : 'Approved' | 'Rejected' | 'Pending' ;
+  createdBy: string;
 }

@@ -8,6 +8,7 @@ import { useCookies } from 'react-cookie';
 import { fetchJobs } from '../../services/Jobs'; 
 import { getJobByUser } from '../../services/Jobs';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { Job } from '../../components/DataModels/Job';
 
 const User=()=>{
   const [jobs,setJobs]=React.useState([]);
@@ -48,7 +49,7 @@ const User=()=>{
             dataLength={jobs.length}
             loader={<h4>Loading......</h4>}
             >
-            { jobs.map((element:FormData)=>(
+            { jobs.map((element:Job)=>(
               <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
             )) }
             </InfiniteScroll>

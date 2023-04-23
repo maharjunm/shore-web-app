@@ -5,7 +5,6 @@ import  FormData  from '../../components/DataModels/FormData';
 import './Form.scss';
 import JobDetails from '../Home/JobDetails';
 import validate from './validate';
-import { postJob } from '../../services/Jobs';
 import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
 import { REACT_ACCESSKEY, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
 import { UserContext } from '../../pages/HomePage/HomePage';
@@ -22,11 +21,10 @@ import{
   DutiesSection,
   SalarySection,
   SubmitSection } from './FormSections/';
-import axios from 'axios';
+import { payment } from '../../services/Payments';
 
 
 const defaultForm:FormData = {
-  _id:null,
   job: {
     title: '',
     experience: '',
@@ -45,10 +43,7 @@ const defaultForm:FormData = {
     state:'',
   },
   dates: {
-    postingDate: null,
-    expiryDate: null,
     closingDate: null,
-    removingDate: null,
   },
   salary: {
     sal: null,
@@ -63,7 +58,6 @@ const defaultForm:FormData = {
     employeeEmail:'',
   },
   status:'Pending',
-  createdBy:''
 };
 
 const Form = () => {
@@ -73,10 +67,6 @@ const Form = () => {
   const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
   const location= useLocation();
   const product = location.state;
-  const  paymentStatus  = useSelector((state:RootState) => {
-    return selectPaymentStatus(state);
-  });
-  const redirect = !paymentStatus &&  !(product && product.type==='Regular');
   const s3Config = {
     bucketName:REACT_BUCKETNAME,
     dirName: REACT_DIRNAME,
@@ -164,13 +154,12 @@ const Form = () => {
     event.preventDefault();
     setFormStatus('Submitting...');
     if(!!validate(form)){
-      const res = await postJob({form});
-      if(res){
-        window.alert('successfully posted job');
+      const res = await payment({form,product});
+      if(res.status==200){
         setFormStatus('Submit');
-        history.push('/postajob');
+        window.location.replace(res.data.url);
       }else{
-        setErrorMessage('Something went wrong ...');
+        setErrorMessage(res.data.message);
       }
     }else{
       setErrorMessage('Mandatory fields are missing ...');
@@ -180,14 +169,8 @@ const Form = () => {
       setErrorMessage('');
     }, 2000);
   };
-
-
-  if(!state){
-    history.push('/login');
-    return ;
-  }
-  if(redirect && !state.isAdmin){
-    history.push('/profile');
+  if(!product){
+    history.push('/postjobs');
     return ;
   }
   return (

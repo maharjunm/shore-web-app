@@ -2,10 +2,11 @@ import React from 'react';
 import './JobFeed.scss';
 import { ErrorBoundary } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
+import { Job } from '../../components/DataModels/Job';
 interface Props {
     key:string;
-    jobd:FormData;
-    jobClick:(currentJob:FormData,currentView:string)=>void;
+    jobd:Job;
+    jobClick:(currentJob:Job,currentView:string)=>void;
 }
 const JobFeed = (det: Props) => {
   let p=det.jobd;
