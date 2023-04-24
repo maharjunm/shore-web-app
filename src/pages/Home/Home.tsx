@@ -1,12 +1,15 @@
-import React ,{useState} from 'react';
+import React ,{useState,useRef} from 'react';
 import JobFeed from './JobFeed';
 import JobDetails from './JobDetails';
 import './Home.scss';
 import { ErrorBoundary,Searchbar, Location, Message } from '../../components';
 import data from '../../components/SearchBar/data';
-import { fetchJobs } from '../../services/Jobs';
+import { fetchJobs,fetchSelectedJobs } from '../../services/Jobs';
 import { Job } from '../../components/DataModels/Job';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 
 const Home = () => {
@@ -17,6 +20,24 @@ const Home = () => {
   const [job,setJob] =React.useState([]);
   const [page,setPage]=React.useState(0);
   const [checkHasMore,setCheckHasMore]=React.useState(true);
+  const [recomendedJobs,setRecomendedJobs]=React.useState([]);
+
+  const sliderRef = useRef(null);
+  const next = () => {
+    sliderRef.current.slickNext();
+  };
+  const previous = () => {
+    sliderRef.current.slickPrev();
+  };
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoPlay: true,
+    autoPlaySpeed: 1000 
+  };
 
   React.useEffect(()=>{
     fetchData(page);
@@ -47,6 +68,17 @@ const Home = () => {
     setView(currentView);
     setCurrentJob(job);
   };
+
+  React.useEffect(()=>{
+    fetchRecomendedData();
+  },[]);
+  const fetchRecomendedData=async()=>{
+    const res = await fetchSelectedJobs();
+    if(res){
+      const newJobs=res.data;
+      setRecomendedJobs([...recomendedJobs,...newJobs]);
+    }
+  };
   return (
     <ErrorBoundary>
       <div className="contentbox" >
@@ -59,6 +91,24 @@ const Home = () => {
               <Location />
             </div>
           </div>
+        </div>
+        <div className="middle">
+          {recomendedJobs.length!==0 &&
+          <div className="carousel-container">
+            <Slider {...settings} ref={sliderRef}>
+              {job.map((element:Job)=>(
+                <div className="carousel-card">
+                  <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />
+                </div>
+              ))}
+
+            </Slider>
+            <div style={{ textAlign: 'center' }}>
+              <button className="prevButton" onClick={previous}>&lt;</button>
+              <button className="nextButton" onClick={next}>&gt;</button>
+            </div>
+          </div>
+          }
         </div>
         <div className="down">
           <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
