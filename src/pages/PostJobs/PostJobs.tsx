@@ -1,6 +1,6 @@
 import React ,{ useContext } from 'react';
-import { ErrorBoundary, Product, Payment } from '../../components';
-import { useLocation, useHistory } from 'react-router-dom';
+import { ErrorBoundary, Product } from '../../components';
+import { useHistory } from 'react-router-dom';
 import { UserContext } from '../HomePage/HomePage';
 import  ProductData  from '../../components/DataModels/ProductData';
 import ProductSelectionPage from '../ProductSelectionPage/ProductSelectionPage';

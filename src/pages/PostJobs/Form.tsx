@@ -9,9 +9,6 @@ import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
 import { REACT_ACCESSKEY, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
 import { UserContext } from '../../pages/HomePage/HomePage';
 import { useCookies } from 'react-cookie';
-import { useSelector } from 'react-redux';
-import { selectPaymentStatus } from '../../store/Payments/selector';
-import { RootState } from '../../store/configureStore';
 import{
   JobTitleSection,
   CompanyDetailsSection,
@@ -93,7 +90,7 @@ const Form = () => {
       updateForm('company.logo',res.location);
     }
     catch(e){
-      console.log('error in uploading to s3 bucket',e);
+      window.alert('error in uploading logo connect to internet');
       updateForm('company.logo','xyz.jpg');
     }
   };

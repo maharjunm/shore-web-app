@@ -14,7 +14,6 @@ const ContactUs = ( ) => {
     if(validate(body)){
       const response = await sendQuery({body});
       if(response){
-        console.log(response);
         setFormStatus('Submitted');
       }else{
         setFormStatus('Error!');

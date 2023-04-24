@@ -4,16 +4,13 @@ import  ProductData  from '../DataModels/ProductData';
 import {Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark , faCheck } from '@fortawesome/free-solid-svg-icons';
-import { REACT_BACKEND_URL } from '../../config';
 import './Product.scss';
 interface Props{
   product: ProductData,
-  isSelected: boolean,
 }
 const Product = ( props: Props ) => {
 
-  const { product, isSelected } = props;
-  const path = product.type==='Regular'?'/postajob':'/postjobs';
+  const { product } = props;
 
   return (
     <ErrorBoundary>
