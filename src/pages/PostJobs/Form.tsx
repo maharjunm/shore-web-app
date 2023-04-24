@@ -52,7 +52,7 @@ const defaultForm:FormData = {
   duties:null,
   contact:{
     email:'',
-    employeeEmail:'',
+    employeeWebsite:'',
   },
   status:'Pending',
 };

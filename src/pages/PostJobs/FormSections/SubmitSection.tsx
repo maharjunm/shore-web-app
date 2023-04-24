@@ -48,7 +48,7 @@ const SubmitSection =  (props: Props) => {
           <input
             type="mail"
             name="employersEmail"
-            onChange={(e)=>updateForm('contact.employeeEmail',e.target.value)}
+            onChange={(e)=>updateForm('contact.employeeWebsite',e.target.value)}
             id="sub"
             placeholder="www.example.com" 
           />

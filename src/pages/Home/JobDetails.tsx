@@ -22,6 +22,17 @@ const JobDetails= (details:Props) => {
       details.disablePreview();
     }
   };
+  const {email, employeeWebsite} = p.contact;
+  const redirectToApplication= () => {
+    if(employeeWebsite){
+      window.location.replace(employeeWebsite);
+      return;
+    }
+    if(email){
+      window.open(`mailto:${email}?subject=application&body=description`);
+      return;
+    }
+  };
   dayjs.extend(relativeTime);
   const closing = dayjs(p.dates.closingDate).format('DD/MM/YYYY');
   const posting = dayjs(p.dates.postingDate).format('DD/MM/YYYY');
@@ -115,6 +126,12 @@ const JobDetails= (details:Props) => {
               </ul>
             </div>
           </div>
+          {(email || employeeWebsite) &&
+            <div className="alignLeft">
+              <div className="jobButton">
+                <button className="btnApply" type="button" onClick={redirectToApplication}>Apply</button>
+              </div>
+            </div>}
         </div>
       </div>
     </ErrorBoundary>
