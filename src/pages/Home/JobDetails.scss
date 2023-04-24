@@ -216,3 +216,12 @@
   background-position: center;
   border-radius: 20px;
 }
+
+.jobTitle .closingDate{
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+}
+.jobTitle .closingDate .dateBold{
+  font-weight: bold;
+}

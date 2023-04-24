@@ -8,6 +8,7 @@ import { useCookies } from 'react-cookie';
 import { fetchJobs } from '../../services/Jobs'; 
 import { getJobByUser } from '../../services/Jobs';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { Job } from '../../components/DataModels/Job';
 
 const User=()=>{
   const [jobs,setJobs]=React.useState([]);
@@ -16,13 +17,13 @@ const User=()=>{
   const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
   const [page,setPage]=React.useState(0);
   const [hasMoreJobs,setHasMoreJobs]=React.useState(true);
-  const jobClick=(job:FormData,currentView:string)=>{
+  const jobClick=(job: Job,currentView:string)=>{
     setView(currentView);
     setCurrentJob(job);
   };
   React.useEffect(()=>{
-    const fetchData=async()=>{
-      const res = await getJobByUser();
+    const fetchData=async(page:Number) => {
+      const res = await getJobByUser(page);
       if(res.data.length==0){
         setHasMoreJobs(false);
         return;
@@ -32,7 +33,7 @@ const User=()=>{
       }
       
     };
-    fetchData();
+    fetchData(page);
 
   },[]);
   
@@ -49,9 +50,9 @@ const User=()=>{
               dataLength={jobs.length}
               loader={<h4>Loading......</h4>}
             >
-              { jobs.map((element:FormData)=>(
-                <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
-              )) }
+            { jobs.map((element: Job)=>(
+              <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
+            )) }
             </InfiniteScroll>
           </div>
           <div className={view}>

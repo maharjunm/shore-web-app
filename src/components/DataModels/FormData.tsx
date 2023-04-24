@@ -1,5 +1,4 @@
 interface FormData{
-  _id:string;
     job: {
     title: string;
     experience: string;
@@ -20,7 +19,6 @@ interface FormData{
   dates: {
     postingDate: Date;
     expiryDate: Date;
-    closingDate: Date;
     removingDate: Date;
   };
   salary: {
@@ -36,7 +34,5 @@ interface FormData{
   };
   discipline:string[];
   status : 'Approved' | 'Rejected' | 'Pending' ;
-  createdBy:string;
-
 }
 export default FormData;

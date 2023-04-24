@@ -62,7 +62,7 @@ function Admin() {
   if(!state.isAdmin){
     history.push('/login');
   }
-  const jobClick=(job:FormData,currentView:string)=>{
+  const jobClick=(job:Job,currentView:string)=>{
     setView(currentView);
     setCurrentJob(job);
   };
@@ -77,9 +77,9 @@ function Admin() {
             dataLength={jobs.length}
             loader={<h4>Loading.....</h4>}
           >
-            { jobs.map((element:FormData)=>(
-              <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
-            )) }
+          { jobs.map((element:Job)=>(
+            <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
+          )) }
           </InfiniteScroll>
         </div>
         <div className={view}>

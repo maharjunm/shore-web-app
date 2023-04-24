@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import './JobDetails.scss';
 import { ErrorBoundary } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
-import  JobsData  from './JobsData';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import { Job } from '../../components/DataModels/Job';
 interface Props {
     key:string,
-    jobd:FormData | null;
-    jobClick:(currentJob:FormData,currentView:string)=>void;
+    jobd:Job | null;
+    jobClick:(currentJob:Job,currentView:string)=>void;
     disablePreview:()=>void;
     isHome:boolean;
 }
@@ -21,6 +23,9 @@ const JobDetails= (details:Props) => {
       details.disablePreview();
     }
   };
+  dayjs.extend(relativeTime);
+  const closing = dayjs(p.dates.closingDate).format('DD/MM/YYYY');
+  const posting = dayjs(p.dates.postingDate).format('DD/MM/YYYY');
   return (
     <ErrorBoundary>
       <div className="jobdetails">
@@ -37,7 +42,10 @@ const JobDetails= (details:Props) => {
                 <Link to='/' >{p.company.name}</Link>
                 <span className='companyLocation'>{p.location.city},{p.location.state}-{p.location.country}</span>
                 <span>&#8377;{p.salary.sal} - {p.salary.companyType}</span>
-                <span>{p.job.experience}</span>
+                <div className="closingDate">
+                  <div className="dateBold">Closing Date :</div >
+                  <div>{closing}</div>
+                </div>
               </div>
             </div>
             <div className="wrong" onClick={clicked}>X</div>
@@ -48,10 +56,6 @@ const JobDetails= (details:Props) => {
             <b className='title'>Job Details</b>
             <div className="flexside">
               <div className="boxside">
-                <div className="salaryDescription">
-                  <b>Salary</b>
-                  <span>&#x20B9;{p.salary.sal}-{p.salary.companyType}</span>
-                </div>
                 <div className="jobType">
                   <b>Job Type</b>
                   <span>{p.company.companyType}</span>
@@ -62,10 +66,6 @@ const JobDetails= (details:Props) => {
                   <b>Duration</b>
                   <span>{p.salary.hours}hrs/Day</span>
                 </div>
-                <div className="jobType">
-                  <b>Location</b>
-                  <span>{p.location.city},{p.location.state},{p.location.country}-{p.location.region}</span>
-                </div>
               </div>
             </div>
           </div>
@@ -73,23 +73,19 @@ const JobDetails= (details:Props) => {
             <b className='title'>Important Dates</b>
             <div className="flexside">
               <div className="boxside">
-                <div className="salaryDescription">
-                  <b>Posting Job on</b>
-                  <span>{p.dates.postingDate.toString()}</span>
-                </div>
                 <div className="jobType">
-                  <b>Job Expires on </b>
-                  <span>{p.dates.expiryDate.toString()}</span>
+                  <b>Posting Job on</b>
+                  <span>
+                    {posting}
+                  </span>
                 </div>
               </div>
               <div className="boxside">
                 <div className="jobType">
                   <b>Closing Job on</b>
-                  <span>{p.dates.closingDate.toString()}</span>
-                </div>
-                <div className="jobType">
-                  <b>Removing Job on</b>
-                  <span>{p.dates.removingDate.toString()}</span>
+                  <span>
+                    {closing}
+                  </span>
                 </div>
               </div>
             </div>

@@ -5,7 +5,6 @@ import { UserContext } from '../HomePage/HomePage';
 import  ProductSelectionPage  from '../ProductSelectionPage/ProductSelectionPage';
 import { ErrorBoundary, Message } from '../../components';
 import  PaymentStatus from './Payments/PaymentStatus';
-import { getPaymentStatus } from '../../services/Payments';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectPaymentStatus } from '../../store/Payments/selector';
 import { updatePaymentStatus } from '../../store/Payments/reducer';
@@ -18,22 +17,7 @@ const Profile = ()=>{
   const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
   const history = useHistory();
   const dispatch = useDispatch();
-  const  paymentStatus  = useSelector((state:RootState) => {
-    return selectPaymentStatus(state);
-  });
   const [ loginMessage, setLoginMessage ] = useState('You have successfully Logged in..');
-  const [ paymentInfo, setPaymentInfo ] = useState(null);
-  React.useEffect(()=>{
-    const fetchPaymentInfo = async ( ) => {
-      const res = await getPaymentStatus();
-      if(res.data.message === 'success'){
-        setPaymentInfo(res.data);
-        dispatch(updatePaymentStatus(res.data.status));
-      }
-    };
-    fetchPaymentInfo();
-  },[]);
-
   if(!state.user){
     history.push('/login');
     return ;
@@ -41,17 +25,7 @@ const Profile = ()=>{
   return(
     <ErrorBoundary>
       <div className="userProfile">
-        <div className="top-flex">
-          { paymentInfo &&
-            <PaymentStatus
-              email={authCookie.email}
-              product={paymentInfo.product}
-              status={paymentInfo.status}
-              expiryDate={paymentInfo.expiryDate}
-            />
-          }
-        </div>
-        {(!paymentInfo || !paymentInfo.status) && <ProductSelectionPage />}
+        <ProductSelectionPage />
       </div>
     </ErrorBoundary>
   );
