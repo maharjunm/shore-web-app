@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import { ErrorBoundary } from '../../../components';
-import  FormData  from '../../../components/DataModels/FormData';
 
 interface Props{
   updateForm: (field: string, value: any) => void;

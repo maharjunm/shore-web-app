@@ -1,6 +1,5 @@
-import React,{useState, useContext} from 'react';
+import React from 'react';
 import { ErrorBoundary } from '../../../components';
-import { UserContext } from '../../../pages/HomePage/HomePage';
 interface Props{
   updateForm: (field: string, value: any) => void;
 }

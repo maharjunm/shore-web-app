@@ -11,15 +11,6 @@ interface PostJobProps{
   form:FormData;
 }
 
-export const postJob = async ( props: PostJobProps) => {
-  const { form } = props;
-  try {
-    const response = await instance.post(`${REACT_BACKEND_URL}/v1/job`,form);
-    return response;
-  } catch ( error ) {
-    return error.response;
-  }
-};
 export const fetchJobs = async (page: Number) => {
   try {
     const response = await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/job?page=${page}`);
@@ -51,9 +42,7 @@ export const setJobStatus = async ( props: StatusProps ) => {
     return null;
   }
 };
-interface userProps{
-  userMailId:String;
-}
+
 export const getJobByUser= async()=>{
   try {
     const response=await instance.get<Job[]>(`${REACT_BACKEND_URL}/v1/job/user`);
