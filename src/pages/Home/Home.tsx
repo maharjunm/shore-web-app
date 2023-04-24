@@ -2,7 +2,7 @@ import React ,{useState} from 'react';
 import JobFeed from './JobFeed';
 import JobDetails from './JobDetails';
 import './Home.scss';
-import { ErrorBoundary,Searchbar, Location, Message } from '../../components';
+import { ErrorBoundary,Searchbar, Location, Message, Loading } from '../../components';
 import data from '../../components/SearchBar/data';
 import { fetchJobs } from '../../services/Jobs';
 import { Job } from '../../components/DataModels/Job';
@@ -66,7 +66,7 @@ const Home = () => {
               dataLength={jobs.length}
               hasMore={checkHasMore}
               next={()=>setPage(jobs.length)}
-              loader={<h4>Loading...</h4>}
+              loader={<Loading />}
             >
               { job.map((element:Job)=>(
                 <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />

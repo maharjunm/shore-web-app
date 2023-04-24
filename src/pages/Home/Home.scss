@@ -66,6 +66,9 @@
   padding: 2px;
 
 }
+.infinite-scroll-component {
+  overflow: hidden;
+}
 
 @media(max-width:600px) {
   .inputForm {

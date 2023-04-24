@@ -4,6 +4,8 @@ import Logo from './../images/logo.png';
 import {NavLink} from 'react-router-dom';
 import Flex from './../Flex/Flex';
 import { UserContext } from '../../pages/HomePage/HomePage';
+import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
+import { faAddressCard , faHome, faPhone, faUser,faUserCircle, faEnvelope, faExternalLink,faSpinner  } from '@fortawesome/free-solid-svg-icons';
 const NavBar = () => {
   const { state, dispatch } = useContext(UserContext);
   const [profilePopUp,setProfilePopUp] = useState('hide');
@@ -45,8 +47,8 @@ const NavBar = () => {
     else{
       return(
         <>
-          <li ><NavLink to="/contactus">Contact Us</NavLink></li>
-          <li ><NavLink to="/signup">Signup/Login</NavLink></li>
+          <li ><NavLink to="/contactus">Contact Us <FA icon={faEnvelope} ></FA></NavLink></li>
+          <li ><NavLink to="/signup">Signup/Login <FA icon={faUser} ></FA></NavLink></li>
         </>
       );
     }
@@ -77,7 +79,7 @@ const NavBar = () => {
         <div className="container">
           <div>
             <ul>
-              <li ><NavLink exact to="/" >Jobs</NavLink></li>
+              <li ><NavLink exact to="/" >Jobs <FA icon={faSpinner} ></FA>  </NavLink></li>
               <RenderMenu />
             </ul>
           </div>
