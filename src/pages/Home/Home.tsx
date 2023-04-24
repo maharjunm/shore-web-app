@@ -96,10 +96,10 @@ const Home = () => {
           {recomendedJobs.length!==0 &&
           <div className="carousel-container">
             <Slider {...settings} ref={sliderRef}>
-              {job.map((element:Job)=>(
-                <div className="carousel-card">
-                  <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />
-                </div>
+              {recomendedJobs.map((element:Job)=>(
+                // <div className="carousel-card">
+                <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />
+                // </div>
               ))}
 
             </Slider>
