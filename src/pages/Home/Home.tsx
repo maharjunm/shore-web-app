@@ -1,4 +1,4 @@
-import React ,{useState} from 'react';
+import React ,{useState,useRef} from 'react';
 import JobFeed from './JobFeed';
 import JobDetails from './JobDetails';
 import './Home.scss';
@@ -44,7 +44,7 @@ const Home = () => {
   };
   React.useEffect(()=>{
     const fetchData=async()=>{
-      const res = await fetchJobs();
+      const res = await fetchJobs(page);
       if(res){
         setJobs(res.data);
       }
@@ -63,7 +63,7 @@ const Home = () => {
     setSelectedJob(jobName);
   };
 
-  const jobClick=(job:FormData,currentView:string)=>{
+  const jobClick=(job:Job,currentView:string)=>{
     setView(currentView);
     setCurrentJob(job);
   };
@@ -138,7 +138,7 @@ const Home = () => {
               next={()=>setPage(jobs.length)}
               loader={<h4>Loading...</h4>}
             >
-              { job.map((element:FormData)=>(
+              { job.map((element:Job)=>(
                 <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
               )) }
             </InfiniteScroll>
