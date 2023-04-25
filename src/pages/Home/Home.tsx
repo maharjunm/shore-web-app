@@ -35,10 +35,10 @@ const Home = () => {
     sliderRef.current.slickPrev();
   };
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: recomendedJobs.length>=5 ? 3:1,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoPlay: true,
     autoPlaySpeed: 1000 
@@ -96,16 +96,30 @@ const Home = () => {
             </div>
           </div>
         </div>
-        {recomendedJobs.length!==0 &&
+        {(recomendedJobs.length<=3 && recomendedJobs.length!==0)&&
+          <div>
+            {recomendedJobs.map((element)=>(
+              <div className="carousel-card" key={element._id}>
+                <div className="card-content">
+                  <img src={element.company.logo} alt="Text" />
+                  <h1>{element.company.name}</h1>
+                </div>
+                <div className="badge">Famous</div> 
+              </div>
+            ))}
+          </div>
+        }
+        {recomendedJobs.length>3 &&
         <div className="carousel-container">
         
           <Slider {...settings} ref={sliderRef}>
             {recomendedJobs.map((element)=>(
               <div className="carousel-card" key={element._id}>
-                <img src={element.company.logo} alt="Text" />
-                <h1>
-                  {element.company.name}
-                </h1>
+                <div className="card-content">
+                  <img src={element.company.logo} alt="Text" />
+                  <h1>{element.company.name}</h1>
+                </div>
+                <div className="badge">Famous</div> 
               </div>
             ))}
           
