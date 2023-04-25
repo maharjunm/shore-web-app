@@ -6,6 +6,7 @@ import JobDetails from '../Home/JobDetails';
 import { UserContext } from '../HomePage/HomePage';
 import JobFeed from '../Home/JobFeed';
 import { setJobStatus, fetchJobsByAdmin } from '../../services/Jobs';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 function Admin() {
 
@@ -16,6 +17,8 @@ function Admin() {
   const [rejectedJobs,setRejectedJobs]=React.useState([]);
   const [currentJob,setCurrentJob]= useState(null);
   const [view,setView]= useState('hide');
+  const [hasMoreJobs,setHasMoreJobs]=React.useState(true);
+  const [page,setPage]=React.useState(0);
 
   const handleJobStatus = async (id:string,status:string) =>{
     const res = await setJobStatus({id,status});
@@ -38,15 +41,20 @@ function Admin() {
   };
 
   React.useEffect(() => {
-    const fetchjobs = async () => {
-      const res = await fetchJobsByAdmin();
+    const fetchjobs = async (page:Number) => {
+      const res = await fetchJobsByAdmin(page);
+      if(res.data.length===0){
+        setHasMoreJobs(false);
+        return;
+      }
       if(res){
-        setJobs(res.data);
+        const newJobs=res.data;
+        setJobs([...jobs,...newJobs]);
       }
     };
-    fetchjobs();
+    fetchjobs(page);
 
-  }, []);
+  }, [page]);
   if(!state.isAdmin){
     history.push('/login');
   }
@@ -59,9 +67,16 @@ function Admin() {
       <div>welcome admin</div>
       <div className="down">
         <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
-          { jobs.map((element:Job)=>(
-            <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
-          )) }
+          <InfiniteScroll
+            next={()=>setPage(jobs.length)}
+            hasMore={hasMoreJobs}
+            dataLength={jobs.length}
+            loader={<h4>Loading.....</h4>}
+          >
+            { jobs.map((element:Job)=>(
+              <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
+            )) }
+          </InfiniteScroll>
         </div>
         <div className={view}>
           {currentJob &&
@@ -87,6 +102,7 @@ function Admin() {
             </div>}
         </div>
       </div>
+      {!hasMoreJobs && <h4 className="nomore">No More Jobs...</h4>}
     </div>
   );
 }
