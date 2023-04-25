@@ -40,7 +40,9 @@ const defaultForm:FormData = {
     state:'',
   },
   dates: {
-    closingDate: null,
+    postingDate: null,
+    expiryDate: null,
+    removingDate: null
   },
   salary: {
     sal: null,

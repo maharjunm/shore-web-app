@@ -20,9 +20,9 @@ export const fetchJobs = async (page: Number) => {
   }
 };
 
-export const fetchJobsByAdmin = async () => {
+export const fetchJobsByAdmin = async (page: Number) => {
   try {
-    const response = await instance.get<Job[]>(`${REACT_BACKEND_URL}/v1/admin`);
+    const response = await instance.get<Job[]>(`${REACT_BACKEND_URL}/v1/admin?page=${page}`);
     return response;
   } catch ( error ){
     return null;
@@ -42,10 +42,12 @@ export const setJobStatus = async ( props: StatusProps ) => {
     return null;
   }
 };
-
-export const getJobByUser= async()=>{
+interface userProps{
+  userMailId:String;
+}
+export const getJobByUser= async(page: Number)=>{
   try {
-    const response=await instance.get<Job[]>(`${REACT_BACKEND_URL}/v1/job/user`);
+    const response=await instance.get<Job[]>(`${REACT_BACKEND_URL}/v1/job/user?page=${page}`);
     return response;
 
   }catch(error){
