@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import { ErrorBoundary } from '../../../components';
-import  FormData  from '../../../components/DataModels/FormData';
 import { Multiselect } from 'multiselect-react-dropdown';
 interface Props{
   updateForm:(field:string,value:any)=>void;
@@ -105,9 +104,8 @@ const JobTitleSection = (props:Props) => {
             id="jobType"
             onChange={(e)=>updateForm('job.type',e.target.value)}
           >
-
-            <option value="Contract">Contract</option>
             <option value="Full-time">Full-Time</option>
+            <option value="Contract">Contract</option>
             <option value="Part-time">Part-Time</option>
             <option value="Internship">Internship</option>
           </select>

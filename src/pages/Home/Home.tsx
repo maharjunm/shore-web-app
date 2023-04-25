@@ -1,5 +1,4 @@
 import React ,{useState} from 'react';
-import { useRef } from 'react';
 import JobFeed from './JobFeed';
 import JobDetails from './JobDetails';
 import './Home.scss';
@@ -44,19 +43,15 @@ const Home = () => {
     autoPlaySpeed: 1000 
   };
   React.useEffect(()=>{
-    fetchData(page);
-  },[page]);
-  const fetchData=async(page: any)=>{
-    const res = await fetchJobs(page);
-    if(res.data.length ===0){
-      setCheckHasMore(false);
-      return;
-    }
-    if(res){
-      const newJobs=res.data;
-      setJobs([...jobs,...newJobs]);
-    }
-  };
+    const fetchData=async()=>{
+      const res = await fetchJobs();
+      if(res){
+        setJobs(res.data);
+      }
+    };
+    fetchData();
+
+  },[]);
   React.useEffect(()=>{
     let filteredJobs=jobs;
     if(selectedJob){
@@ -85,7 +80,7 @@ const Home = () => {
   
   return (
     <ErrorBoundary>
-      <div className="contentbox" >
+      <div className="contentbox">
         <div className="top">
           <div className='inputForm'>
             <div className="searchBar">
@@ -152,7 +147,6 @@ const Home = () => {
             {currentJob && <JobDetails key={currentJob._id} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true} />}
           </div>
         </div>
-        {!checkHasMore && <h4 className='endingMessage'>We have these jobs only...</h4>}
       </div>
     </ErrorBoundary>
   );
