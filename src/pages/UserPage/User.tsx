@@ -28,6 +28,7 @@ const User=()=>{
     <div>
       <div className="contentbox">
         <div className="top">
+          History of Jobs you posted
         </div>
         <div className="down">
           <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
@@ -36,7 +37,7 @@ const User=()=>{
             )) }
           </div>
           <div className={view}>
-            {currentJob && <JobDetails key={currentJob._id} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true} />}
+            {currentJob && <JobDetails key={currentJob._id} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true}  />}
           </div>
         </div>
       </div>

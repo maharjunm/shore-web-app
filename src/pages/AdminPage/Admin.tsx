@@ -66,24 +66,27 @@ function Admin() {
         <div className={view}>
           {currentJob &&
             <div className="onejob">
-              <JobDetails key={currentJob._id} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true} />
-              <h3 className="status">Status of Job:{currentJob.status}</h3>
-              <div className="footer">
-                { ((currentJob.status === 'Pending') || (currentJob.status==='Rejected')) &&
-          <div className="btns">
-            <button className="reject-btn" onClick={()=>handleReject(currentJob)}>Reject</button>
-            <button className="accept-btn" onClick={()=>handleApprove(currentJob)}>{approvedJobs.includes(currentJob._id) ? 'Approved' : 'Approve'}</button>
-          </div>
-                }
-                {currentJob.status ==='Approved' &&
-              <div className='containerSpecial'>
-                <button
-                  className="buttonSpecial"
-                  onClick={()=>handleReject(currentJob)}>
-                  {rejectedJobs.includes(currentJob._id) ? 'Rejected' : 'Reject'}
-                </button>
-              </div>}
-              </div>
+              <JobDetails key={currentJob._id} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true}  isAdmin={true}>
+                <div className="controls">
+                  <h3 className="status">Status of Job:{currentJob.status}</h3>
+                  <div className="footer">
+                    { ((currentJob.status === 'Pending') || (currentJob.status==='Rejected')) &&
+                      <div className="btns">
+                        <button className="reject-btn" onClick={()=>handleReject(currentJob)}>Reject</button>
+                        <button className="accept-btn" onClick={()=>handleApprove(currentJob)}>{approvedJobs.includes(currentJob._id) ? 'Approved' : 'Approve'}</button>
+                      </div>
+                    }
+                    {currentJob.status ==='Approved' &&
+                    <div className='containerSpecial'>
+                      <button
+                        className="buttonSpecial"
+                        onClick={()=>handleReject(currentJob)}>
+                        {rejectedJobs.includes(currentJob._id) ? 'Rejected' : 'Reject'}
+                      </button>
+                    </div>}
+                  </div>
+                </div>
+              </JobDetails>
             </div>}
         </div>
       </div>
