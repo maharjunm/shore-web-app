@@ -53,9 +53,6 @@ const ContactUs = ( ) => {
         <div className="box leftContentBox" >
           <div className="heading">
             We are here for you
-            {/* US ,Canada & South America 9:00 AM - 5:30 PM ,EST Phone :202-312-6375 E-mail:service@shorebirdie.org<br/>
-            International 9:00 AM - 5:30 PM GMT Phone :+44(0) 1223 326 528 E-mail:service@shorebirdie.org *
-            */}
           </div>
           <div className="writeup">
             Our team speaks English, German, French, Spanish, Italian, Swedish, Arabic and Chineese and will respond to your query  within 24 hours.
