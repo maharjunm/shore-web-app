@@ -5,11 +5,10 @@ import { getJobByUser } from '../../services/Jobs';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Job } from '../../components/DataModels/Job';
 import { JobFeed } from '../../components';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import HistoryOfJobsPosted from './HistoryOfJobsPosted';
+import './User.scss';
 
 
-const User=()=>{
+const HistoryOfJobsPosted = ()=>{
   const [jobs,setJobs]=React.useState([]);
   const [currentJob,setCurrentJob]= React.useState(null);
   const [view,setView]= React.useState('hide');
@@ -36,20 +35,29 @@ const User=()=>{
   },[]);
   
   return(
-    
-    <div className='userDashboard'>
-      <div className='box leftAlign'>
-        Dashboard
+    <div className="box rightAlign">
+      <div className="top">
+        History of Jobs you posted
       </div>
-      <Router>
-        <Switch>
-          <Route exact path='/' >
-            <HistoryOfJobsPosted />
-          </Route>
-          <Route  path='/userdashboard/home' > <h1>h1</h1> </Route>
-        </Switch>
-      </Router>
-    </div>  
+      <div className="down">
+        <div className={view==='hide'?'show':'hide'}>
+          <InfiniteScroll
+            hasMore={hasMoreJobs}
+            next={()=>setPage(jobs.length)}
+            dataLength={jobs.length}
+            loader={<h4>Loading......</h4>}
+          >
+            { jobs.map((element: Job)=>(
+              <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
+            )) }
+          </InfiniteScroll>
+        </div>
+        <div className={view}>
+          {currentJob && <JobDetails key={currentJob._id} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true}  />}
+        </div>
+      </div>
+      {!hasMoreJobs && <h4>No more jobs....</h4>} 
+    </div>       
   );
 };
-export default User;
+export default HistoryOfJobsPosted;

@@ -5,6 +5,9 @@
     --blue:#0064a9;
     --yellow:#ffb12a;
 }
+.formDiv{
+  background: #f8f8f8;
+}
 .form{
   padding: 10px;
 }
@@ -12,7 +15,9 @@
   margin: auto;
   padding: 10px;
   border-radius: 10px;
+  background: #fff;
   border:1px solid var(--lightBlack);
+  box-shadow: 0 0 4px rgba(72,72,72,.12), 0 2px 2px rgba(72,72,72,.08);
 }
 .sections{
   padding: 10px;
@@ -20,6 +25,14 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-around ;
+}
+.sections .upside{
+  display:flex;
+  justify-content: space-between;
+  width:80%;
+}
+.sections .upside .product{
+  color:green;
 }
 .side{
   text-align: center;
@@ -179,6 +192,9 @@
   }
   .side ul li{
     width:200px;
+  }
+  .searchWrapper{
+    width: 160px;
   }
 }
 @media only screen and (min-width: 750px) {

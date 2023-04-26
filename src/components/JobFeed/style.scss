@@ -1,0 +1,45 @@
+.historyOfJobs{
+  display: flex;
+  background: #fff;
+  margin: 10px;
+  border-radius: 5px;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(72,72,72,.12), 0 2px 2px rgba(72,72,72,.08);
+}
+
+.historyOfJobs .part{
+  margin: 20px;
+}
+.historyOfJobs .part p{
+  color: #747272;
+  font-size:12px
+}
+.historyOfJobs .part span{
+  font-weight: bold;
+}
+.historyOfJobs .icons{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  max-width: 120px;
+}
+.historyOfJobs .part .iconStatus{
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.historyOfJobs  .red{
+  color:red;
+}
+.historyOfJobs .green{
+  color:green;
+}
+.historyOfJobs .orange{
+  color:orange;
+}

@@ -9,6 +9,8 @@ import ReactS3Client from 'karma-dev-react-aws-s3-typescript';
 import { REACT_ACCESSKEY, REACT_BUCKETNAME, REACT_DIRNAME, REACT_REGION, REACT_SC } from '../../config';
 import { UserContext } from '../../pages/HomePage/HomePage';
 import { useCookies } from 'react-cookie';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import{
   JobTitleSection,
   CompanyDetailsSection,
@@ -73,7 +75,8 @@ const Form = () => {
     accessKeyId: REACT_ACCESSKEY,
     secretAccessKey: REACT_SC,
   };
-
+  dayjs.extend(relativeTime);
+  const currentDate = dayjs(new Date()).format('DD-MM-YYYY');
 
   const [preview, setPreview] = useState('form show');
   const [currentJobView, setCurrenetJobView]=useState(null);
@@ -173,41 +176,45 @@ const Form = () => {
   }
   return (
     <ErrorBoundary>
-      {currentJobView && <JobDetails key={currentJobView.job.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} isHome={false} />}
-      <form className={preview} onSubmit={onSubmit}>
-        <div className="superSection">
-          <div className="sections">
-            <div className="upside">
-              <div className="headTitle">Post A Job </div>
+      <div className="formDiv">
+        {currentJobView && <JobDetails key={currentJobView.job.title} jobd={currentJobView} jobClick={null} disablePreview={disablePreview} isHome={false} />}
+        <form className={preview} onSubmit={onSubmit}>
+          <div className="superSection">
+            <div className="sections">
+              <div className="upside">
+                <div className="headTitle product">{product.product.type}</div>
+                <div className="headTitle">Post A Job </div>
+                <div className="headTitle">{currentDate}</div>
+              </div>
+            </div>
+            <div className="sections">
+              <JobTitleSection updateForm={updateForm}  />
+              <CompanyDetailsSection updateForm={updateForm}  />
+            </div>
+            <div className="sections">
+              <CompanyLocationSection updateForm={updateForm} />
+              <JobDates updateForm={updateForm}  />
+            </div>
+            <div className="sections">
+              <QualificationsSection updateForm={updateForm} />
+              <DutiesSection updateForm={updateForm} />
+            </div>
+            <div className="sections">
+              <SalarySection updateForm={updateForm}  />
+              <SubmitSection updateForm={updateForm}  />
             </div>
           </div>
           <div className="sections">
-            <JobTitleSection updateForm={updateForm}  />
-            <CompanyDetailsSection updateForm={updateForm}  />
+            <div className="downside">
+              <p className="errorMessage">{errorMessage}</p>
+            </div>
+            <div className="downside">
+              <button type="button" onClick={previewBtnHandler} className="btnstyle" >Preview</button>
+              <button type="submit" className="btnstyle" >{formStatus}</button>
+            </div>
           </div>
-          <div className="sections">
-            <CompanyLocationSection updateForm={updateForm} />
-            <JobDates updateForm={updateForm}  />
-          </div>
-          <div className="sections">
-            <QualificationsSection updateForm={updateForm} />
-            <DutiesSection updateForm={updateForm} />
-          </div>
-          <div className="sections">
-            <SalarySection updateForm={updateForm}  />
-            <SubmitSection updateForm={updateForm}  />
-          </div>
-        </div>
-        <div className="sections">
-          <div className="downside">
-            <p className="errorMessage">{errorMessage}</p>
-          </div>
-          <div className="downside">
-            <button type="button" onClick={previewBtnHandler} className="btnstyle" >Preview</button>
-            <button type="submit" className="btnstyle" >{formStatus}</button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </ErrorBoundary>
   );
 };

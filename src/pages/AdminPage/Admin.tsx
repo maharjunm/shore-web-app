@@ -63,7 +63,7 @@ function Admin() {
     setCurrentJob(job);
   };
   return (
-    <div>
+    <div className='adminDashboard'>
       <div>welcome admin</div>
       <div className="down">
         <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
