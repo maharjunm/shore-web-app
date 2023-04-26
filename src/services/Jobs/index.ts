@@ -52,3 +52,24 @@ export const getJobByUser= async()=>{
     return error;
   }
 };
+
+export const getRejectedJobs = async () => {
+  try{
+    const rejectedJobs = await instance.get<Job[]>(`${REACT_BACKEND_URL}/v1/admin/reject`);
+    return rejectedJobs;
+  } catch( error ){
+    return error.response;
+  }
+};
+interface RejectProps{
+  id:string;
+}
+export const setStatusReject = async (props:RejectProps) => {
+  const { id } = props;
+  try {
+    const status = await instance.put(`${REACT_BACKEND_URL}/v1/admin/reject${id}`);
+    return status;
+  } catch( error) {
+    return error.response;
+  }
+};

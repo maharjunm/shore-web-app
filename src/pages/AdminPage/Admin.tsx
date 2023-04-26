@@ -5,7 +5,7 @@ import  { Job }  from '../../components/DataModels/Job';
 import JobDetails from '../Home/JobDetails';
 import { UserContext } from '../HomePage/HomePage';
 import JobFeed from '../Home/JobFeed';
-import { setJobStatus, fetchJobsByAdmin } from '../../services/Jobs';
+import { setJobStatus, fetchJobsByAdmin, getRejectedJobs, fetchJobs, setStatusReject } from '../../services/Jobs';
 
 function Admin() {
 
@@ -27,32 +27,37 @@ function Admin() {
     });
     return res;
   };
-  const handleApprove = (job: Job)=>{
+  const handleApprove = async  (job: Job)=>{
     const res = handleJobStatus(job._id,'Approved');
     if(res){
       job.status = 'Approved';
       setApprovedJobs([...approvedJobs,job]);
     }
+    await fetchjobs();
   };
 
-  const handleReject = (job: Job)=>{
-    const res = handleJobStatus(job._id,'Rejected');
+  const handleReject = async (job: Job)=>{
+    const id = job._id;
+    const res = await setStatusReject({id});
     if(res){
       job.status = 'Rejected';
       setRejectedJobs([...rejectedJobs,job]);
     }
+    await fetchjobs();
   };
-
+  const fetchjobs = async () => {
+    const res = await fetchJobsByAdmin();
+    if(res){
+      setJobs(res.data);
+      setPendingJobs(res.data);
+    }
+    const response = await getRejectedJobs();
+    if(response.status===200){
+      setRejectedJobs(response.data);
+    }
+  };
   React.useEffect(() => {
-    const fetchjobs = async () => {
-      const res = await fetchJobsByAdmin();
-      if(res){
-        setJobs(res.data);
-        setPendingJobs(res.data);
-      }
-    };
     fetchjobs();
-
   }, []);
   if(!state.isAdmin){
     history.push('/login');
