@@ -1,5 +1,4 @@
 import React, { useState ,useContext } from 'react';
-import { useCookies } from 'react-cookie';
 import './NavBar.scss';
 import Logo from './../images/logo.png';
 import {NavLink} from 'react-router-dom';
@@ -8,7 +7,6 @@ import { UserContext } from '../../pages/HomePage/HomePage';
 const NavBar = () => {
   const { state, dispatch } = useContext(UserContext);
   const [profilePopUp,setProfilePopUp] = useState('hide');
-  const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
   const handleProfilePopUp=()=>{
     setProfilePopUp((updatedProfilePopUp)=>{
       return profilePopUp==='show'?'hide':'show';

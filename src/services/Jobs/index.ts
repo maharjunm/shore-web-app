@@ -10,18 +10,10 @@ const instance = axios.create({
 interface PostJobProps{
   form:FormData;
 }
-export const postJob = async ( props: PostJobProps) => {
-  const { form } = props;
+
+export const fetchJobs = async (page: Number) => {
   try {
-    const response = await axios.post(`${REACT_BACKEND_URL}/v1/job`,form);
-    return response;
-  } catch ( error ) {
-    return null;
-  }
-};
-export const  fetchJobs = async () => {
-  try {
-    const response = await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/job`);
+    const response = await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/job?page=${page}`);
     return response;
   } catch ( error ) {
     return null;
@@ -30,7 +22,7 @@ export const  fetchJobs = async () => {
 
 export const fetchJobsByAdmin = async () => {
   try {
-    const response = await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/admin`);
+    const response = await instance.get<Job[]>(`${REACT_BACKEND_URL}/v1/admin`);
     return response;
   } catch ( error ){
     return null;
@@ -44,15 +36,13 @@ interface StatusProps{
 export const setJobStatus = async ( props: StatusProps ) => {
   const { id, status } = props;
   try {
-    const response = await axios.put(`${REACT_BACKEND_URL}/v1/admin/${id}`,{status:status});
+    const response = await instance.put(`${REACT_BACKEND_URL}/v1/admin/${id}`,{status:status});
     return response;
   } catch ( error ) {
     return null;
   }
 };
-interface userProps{
-  userMailId:String;
-}
+
 export const getJobByUser= async()=>{
   try {
     const response=await instance.get<Job[]>(`${REACT_BACKEND_URL}/v1/job/user`);

@@ -1,19 +1,14 @@
 import React from 'react';
 import JobDetails from '../Home/JobDetails';
 import JobFeed from '../Home/JobFeed';
-import FormData from '../../components/DataModels/FormData';
-import axios from 'axios';
-import { REACT_BACKEND_URL } from '../../config';
-import { useCookies } from 'react-cookie';
-import { fetchJobs } from '../../services/Jobs'; 
 import { getJobByUser } from '../../services/Jobs';
+import { Job } from '../../components/DataModels/Job';
 
 const User=()=>{
   const [jobs,setJobs]=React.useState([]);
   const [currentJob,setCurrentJob]= React.useState(null);
   const [view,setView]= React.useState('hide');
-  const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
-  const jobClick=(job:FormData,currentView:string)=>{
+  const jobClick=(job:Job,currentView:string)=>{
     setView(currentView);
     setCurrentJob(job);
   };
@@ -36,7 +31,7 @@ const User=()=>{
         </div>
         <div className="down">
           <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
-            { jobs.map((element:FormData)=>(
+            { jobs.map((element:Job)=>(
               <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
             )) }
           </div>

@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import { ErrorBoundary } from '../../../components';
-import  FormData  from '../../../components/DataModels/FormData';
 
 interface Props{
   updateForm: (field: string, value: any) => void;
@@ -71,7 +70,7 @@ const QualificationsSection =  (props: Props) => {
             onChange={updateQualification}
             onBlur={updateQualification}
             id="qlinput"
-            placeholder="EX:BTech CSE"
+            placeholder="Bachelors/Masters/Phd"
             value={qualification}
           />
           <button type="button"  onClick={addQualification} className="addBtn" >Add+</button>

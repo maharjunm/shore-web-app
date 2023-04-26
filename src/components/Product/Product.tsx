@@ -7,12 +7,10 @@ import { faXmark , faCheck } from '@fortawesome/free-solid-svg-icons';
 import './Product.scss';
 interface Props{
   product: ProductData,
-  isSelected: boolean,
 }
 const Product = ( props: Props ) => {
 
-  const { product, isSelected } = props;
-  const path = product.type==='Regular'?'/postajob':'/postjobs';
+  const { product } = props;
 
   return (
     <ErrorBoundary>
@@ -39,14 +37,13 @@ const Product = ( props: Props ) => {
             </p>
           ))
         }
-        <div className={isSelected?'btn productSelected':'btn productNotSelected'}>
-          <Link to={
-            {
-              pathname:path,
-              state:product
-            }
-          }
-          >{isSelected?'Selected':'select'}</Link>
+        <div className="btn">
+          <Link className="submit" to={{
+            pathname:'/postajob',
+            state: {product}
+          }}>
+              select
+          </Link>
         </div>
       </div>
     </ErrorBoundary>
