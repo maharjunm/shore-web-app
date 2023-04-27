@@ -5,7 +5,7 @@ import  { Job }  from '../../components/DataModels/Job';
 import JobDetails from '../Home/JobDetails';
 import { UserContext } from '../HomePage/HomePage';
 import JobFeed from '../Home/JobFeed';
-import { setJobStatus, fetchJobsByAdmin, getRejectedJobs, fetchJobs, setStatusReject } from '../../services/Jobs';
+import { setJobStatus, fetchJobsByAdmin, getRejectedJobs, fetchJobs, setStatusReject,setStatusApprove } from '../../services/Jobs';
 
 function Admin() {
 
@@ -19,30 +19,15 @@ function Admin() {
   const [currentJob,setCurrentJob]= useState(null);
   const [view,setView]= useState('hide');
 
-  const handleJobStatus = async (id:string,status:string) =>{
-    const res = await setJobStatus({id,status});
-    setPendingJobs(( updatedJobs ) => {
-      const newJobs = jobs.filter((job)=>job._id!=id);
-      return newJobs;
-    });
-    return res;
-  };
   const handleApprove = async  (job: Job)=>{
-    const res = handleJobStatus(job._id,'Approved');
-    if(res){
-      job.status = 'Approved';
-      setApprovedJobs([...approvedJobs,job]);
-    }
+    const id = job._id;
+    const res = await setStatusApprove({id});
     await fetchjobs();
   };
 
   const handleReject = async (job: Job)=>{
     const id = job._id;
     const res = await setStatusReject({id});
-    if(res){
-      job.status = 'Rejected';
-      setRejectedJobs([...rejectedJobs,job]);
-    }
     await fetchjobs();
   };
   const fetchjobs = async () => {
