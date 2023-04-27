@@ -20,7 +20,7 @@ const Home = () => {
   const [job,setJob] =React.useState([]);
   const [page,setPage]=React.useState(0);
   const [checkHasMore,setCheckHasMore]=React.useState(true);
-  const [recomendedJobs,setRecomendedJobs]=React.useState([]);
+  const [slidingJobs,setSlidingJobs]=React.useState([]);
 
   const sliderRef = useRef(null);
   const next = () => {
@@ -76,7 +76,7 @@ const Home = () => {
     const res = await fetchSelectedJobs();
     if(res){
       const newJobs=res.data;
-      setRecomendedJobs([...recomendedJobs,...newJobs]);
+      setSlidingJobs([...slidingJobs,...newJobs]);
     }
   };
   return (
@@ -93,10 +93,10 @@ const Home = () => {
           </div>
         </div>
         <div className="middle">
-          {recomendedJobs.length!==0 &&
+          {slidingJobs.length!==0 &&
           <div className="carousel-container">
             <Slider {...settings} ref={sliderRef}>
-              {recomendedJobs.map((element:Job)=>(
+              {slidingJobs.map((element:Job)=>(
                 <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />
               ))}
 
