@@ -54,7 +54,8 @@ const JobsData:Job[]=[
       employeeWebsite:'emplouyee'
     },
     status:'Pending',
-    createdBy:'testing@gmail.com'
+    createdBy:'testing@gmail.com',
+    productType: 'Regular'
   },
   {
     _id:'',
@@ -107,7 +108,8 @@ const JobsData:Job[]=[
       employeeWebsite:'emplouyee'
     },
     status:'Pending',
-    createdBy:'testing@gmail.com'
+    createdBy:'testing@gmail.com',
+    productType: 'Regular'
   },
   {
     _id:'',
@@ -162,7 +164,8 @@ const JobsData:Job[]=[
       employeeWebsite:'emplouyee'
     },
     status:'Pending',
-    createdBy:'testing@gmail.com'
+    createdBy:'testing@gmail.com',
+    productType: 'Regular'
     
   }
 

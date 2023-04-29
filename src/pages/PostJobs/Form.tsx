@@ -57,6 +57,7 @@ const defaultForm:FormData = {
     employeeWebsite:'',
   },
   status:'Pending',
+  productType: ''
 };
 
 const Form = () => {
