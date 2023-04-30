@@ -17,7 +17,9 @@ interface FormData{
     region: string;
   };
   dates: {
-    closingDate: Date;
+    postingDate: Date;
+    expiryDate: Date;
+    removingDate: Date;
   };
   salary: {
     sal: number;

@@ -72,12 +72,12 @@ const Home = () => {
                 <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />
               )) }
             </InfiniteScroll>
+            {!checkHasMore && <h4 className='endingMessage'>We have these jobs only...</h4>}
           </div>
           <div className={view}>
             {currentJob && <JobDetails key={currentJob.title} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true} />}
           </div>
         </div>
-        {!checkHasMore && <h4 className='endingMessage'>We have these jobs only...</h4>}
       </div>
     </ErrorBoundary>
   );
