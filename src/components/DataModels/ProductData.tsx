@@ -1,4 +1,5 @@
 interface ProductData{
+  productId: string,
   type:string,
   amount:number,
   hostingTime:number,

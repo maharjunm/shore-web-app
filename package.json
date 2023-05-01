@@ -98,6 +98,7 @@
     "@types/react-dom": "^18.0.5",
     "axios": "^0.21.4",
     "classnames": "^2.2.6",
+    "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "dotenv-webpack": "^8.0.1",
     "esri-loader": "^3.5.0",

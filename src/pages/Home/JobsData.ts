@@ -2,8 +2,9 @@ import  FormData  from '../../components/DataModels/FormData';
 import  companyLogo  from '../../components/images/defaultCompanyLogo.jpg';
 import  image1  from '../../components/images/images.jpg';
 import logo from '../../../public/logo.png';
+import { Job } from '../../components/DataModels/Job';
 
-const JobsData:FormData[]=[
+const JobsData:Job[]=[
   {
     _id:'',
     job: {
@@ -26,8 +27,7 @@ const JobsData:FormData[]=[
     dates: {
       postingDate: new Date('2023-02-14'),
       expiryDate: new Date('2023-03-14'),
-      closingDate: new Date('2023-03-15'),
-      removingDate: new Date('2023-03-30'),
+      closingDate: new Date('2023-03-30'),
     },
     salary: {
       sal: 80000,
@@ -51,10 +51,11 @@ const JobsData:FormData[]=[
     ],
     contact:{
       email:'example@gmail.com',
-      employeeEmail:'emplouyee'
+      employeeWebsite:'emplouyee'
     },
     status:'Pending',
-    createdBy:'testing@gmail.com'
+    createdBy:'testing@gmail.com',
+    productType: 'Regular'
   },
   {
     _id:'',
@@ -78,8 +79,7 @@ const JobsData:FormData[]=[
     dates: {
       postingDate: new Date('2023-02-14'),
       expiryDate: new Date('2023-03-14'),
-      closingDate: new Date('2023-03-15'),
-      removingDate: new Date('2023-03-30')
+      closingDate: new Date('2023-03-30')
     },
     salary: {
       sal: 90000,
@@ -105,10 +105,11 @@ const JobsData:FormData[]=[
     ],
     contact:{
       email:'example@gmail.com',
-      employeeEmail:'emplouyee'
+      employeeWebsite:'emplouyee'
     },
     status:'Pending',
-    createdBy:'testing@gmail.com'
+    createdBy:'testing@gmail.com',
+    productType: 'Regular'
   },
   {
     _id:'',
@@ -132,8 +133,7 @@ const JobsData:FormData[]=[
     dates: {
       postingDate: new Date('2023-02-14'),
       expiryDate: new Date('2023-03-14'),
-      closingDate: new Date('2023-03-15'),
-      removingDate: new Date('2023-03-30')
+      closingDate: new Date('2023-03-30')
     },
     salary: {
       sal: 60000,
@@ -161,10 +161,11 @@ const JobsData:FormData[]=[
     ],
     contact:{
       email:'example@gmail.com',
-      employeeEmail:'emplouyee'
+      employeeWebsite:'emplouyee'
     },
     status:'Pending',
-    createdBy:'testing@gmail.com'
+    createdBy:'testing@gmail.com',
+    productType: 'Regular'
     
   }
 

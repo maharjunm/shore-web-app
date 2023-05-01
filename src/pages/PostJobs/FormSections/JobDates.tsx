@@ -1,7 +1,5 @@
-import React,{useState} from 'react';
+import React from 'react';
 import { ErrorBoundary } from '../../../components';
-import  FormData  from '../../../components/DataModels/FormData';
-
 interface Props{
   updateForm: (field: string, value: any) => void;
 }
@@ -9,45 +7,14 @@ interface Props{
 const JobDates =  (props: Props) => {
 
   const { updateForm } = props;
-
+  
   return(
     <ErrorBoundary>
       <div className="side">
         <div className="headTitle">Dates</div>
         <div className="row">
-          <label htmlFor="postingDate">
-            Posting Date
-            <span className="mandatoryField">*</span>
-          </label>
-          <input
-            className="input"
-            min={new Date().toISOString().split('T')[0]}
-            max={new Date('9999-12-30').toISOString().split('T')[0]}
-            type="date" required
-            name="postingDate"
-            onChange={(e)=>updateForm('dates.postingDate',e.target.value)}
-            id="postingDate"
-          />
-        </div>
-        <div className="row">
-          <label htmlFor="expiryDate">
-            Expiry Date
-            <span className="mandatoryField">*</span>
-          </label>
-          <input
-            className="input"
-            min={new Date().toISOString().split('T')[0]}
-            max={new Date('9999-12-30').toISOString().split('T')[0]}
-            type="date"
-            required
-            name="expiryDate"
-            onChange={(e)=>updateForm('dates.expiryDate',e.target.value)}
-            id="expiryDate"
-          />
-        </div>
-        <div className="row">
           <label htmlFor="appClosingDate">
-            Closing Job
+            Application Deadline
             <span className="mandatoryField">*</span>
           </label>
           <input
@@ -59,22 +26,6 @@ const JobDates =  (props: Props) => {
             name="appClosingDate"
             onChange={(e)=>updateForm('dates.closingDate',e.target.value)}
             id="appClosingDate"
-          />
-        </div>
-        <div className="row">
-          <label htmlFor="removingJobDate">
-            Removing Job
-            <span className="mandatoryField">*</span>
-          </label>
-          <input
-            className="input"
-            min={new Date().toISOString().split('T')[0]}
-            max={new Date('9999-12-30').toISOString().split('T')[0]}
-            type="date"
-            required
-            name="removingJobDate"
-            onChange={(e)=>updateForm('dates.removingDate',e.target.value)}
-            id="removingJobDate"
           />
         </div>
       </div>
