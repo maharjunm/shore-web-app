@@ -5,16 +5,20 @@ import { ErrorBoundary } from '../../components';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { Job } from '../../components/DataModels/Job';
+import { useEffect, useState } from 'react';
 interface Props {
     key:string,
     jobd:Job | null;
     jobClick:(currentJob:Job,currentView:string)=>void;
     disablePreview:()=>void;
     isHome:boolean;
+    children?:any;
+    isAdmin?:boolean;
 }
 const JobDetails= (details:Props) => {
   let p=details.jobd;
   const imagePath = p.company.logo;
+  const { isAdmin }= details;
   const clicked=()=>{
     if(details.isHome){
       details.jobClick(null,'hide');
@@ -38,7 +42,7 @@ const JobDetails= (details:Props) => {
   const posting = dayjs(p.dates.postingDate).format('DD/MM/YYYY');
   return (
     <ErrorBoundary>
-      <div className="jobdetails">
+      <div className="jobdetails" >
         <div className="sticky">
           <div className="mainHead">
             <div className="sideContent">
@@ -126,7 +130,13 @@ const JobDetails= (details:Props) => {
               </ul>
             </div>
           </div>
-          {(email || employeeWebsite) &&
+          { isAdmin && <div className="Box alignLeft">
+            <b className="jobTitle">
+              <h1>Admin Options</h1>
+            </b>
+            {details.children}
+          </div>}
+          {(email || employeeWebsite) && !isAdmin &&
             <div className="alignLeft">
               <div className="jobButton">
                 <button className="btnApply" type="button" onClick={redirectToApplication}>Apply</button>
