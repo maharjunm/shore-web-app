@@ -21,6 +21,7 @@ const Home = () => {
   const [page,setPage]=React.useState(0);
   const [checkHasMore,setCheckHasMore]=React.useState(true);
   const [slidingJobs,setSlidingJobs]=React.useState([]);
+  const [slidingPage,setSlidingPage ] = useState(0);
 
   const sliderRef = useRef(null);
   const next = () => {
@@ -29,11 +30,12 @@ const Home = () => {
   const previous = () => {
     sliderRef.current.slickPrev();
   };
+  const slides = Math.round(window.screen.width/400);
   const settings = {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 3,
+    slidesToShow: slides,
     slidesToScroll: 1,
     autoPlay: true,
     autoPlaySpeed: 1000 
@@ -70,10 +72,10 @@ const Home = () => {
   };
 
   React.useEffect(()=>{
-    fetchRecomendedData();
-  },[]);
-  const fetchRecomendedData=async()=>{
-    const res = await fetchSelectedJobs();
+    fetchRecomendedData(slidingPage);
+  },[slidingPage]);
+  const fetchRecomendedData=async(slidingPage:number)=>{
+    const res = await fetchSelectedJobs(slidingPage);
     if(res){
       const newJobs=res.data;
       setSlidingJobs([...slidingJobs,...newJobs]);

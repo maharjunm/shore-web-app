@@ -53,9 +53,9 @@ export const getJobByUser= async()=>{
   }
 };
 
-export const fetchSelectedJobs = async () => {
+export const fetchSelectedJobs = async (page:Number) => {
   try {
-    const response = await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/job/getjobs`);
+    const response = await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/job?page=${page}`);
     return response;
   } catch ( error ) {
     return null;
