@@ -39,9 +39,9 @@ export const getJobByUser= async(page: Number)=>{
   }
 };
 
-export const getRejectedJobs = async () => {
+export const getRejectedJobs = async (page:Number) => {
   try{
-    const rejectedJobs = await instance.get<Job[]>(`${REACT_BACKEND_URL}/v1/admin/reject`);
+    const rejectedJobs = await instance.get<Job[]>(`${REACT_BACKEND_URL}/v1/admin/reject?page=${page}`);
     return rejectedJobs;
   } catch( error ){
     return error.response;
@@ -53,7 +53,7 @@ interface Props{
 export const setStatusReject = async (props:Props) => {
   const { id } = props;
   try {
-    const status = await instance.post(`${REACT_BACKEND_URL}/v1/admin/reject/${id}`);
+    const status = await instance.put(`${REACT_BACKEND_URL}/v1/admin/reject/${id}`);
     return status;
   } catch( error) {
     return error.response;
