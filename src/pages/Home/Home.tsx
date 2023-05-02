@@ -25,42 +25,74 @@ const Home = () => {
   const [page,setPage]=React.useState(0);
   const [checkHasMore,setCheckHasMore]=React.useState(true);
   const [recomendedJobs,setRecomendedJobs]=React.useState([]);
+  const [slidingJobs,setSlidingJobs]=React.useState([]);
+  const [slidingPage,setSlidingPage ] = useState(0);
 
-  const sliderRef = useRef(null);
-    
-  const next = () => {
-    sliderRef.current.slickNext();
+  const jobSliderRef = useRef(null);
+  const nextJob = () => {
+    jobSliderRef.current.slickNext();
   };
-
-  const previous = () => {
-    sliderRef.current.slickPrev();
+  const previousJob = () => {
+    jobSliderRef.current.slickPrev();
   };
-  const settings = {
+  const jobSlides = Math.round(window.screen.width/400);
+  const jobSlideSettings = {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 6,
+    slidesToShow: jobSlides,
     slidesToScroll: 1,
     autoPlay: true,
     autoPlaySpeed: 1000 
   };
-  React.useEffect(()=>{
-    const fetchData=async()=>{
-      const res = await fetchJobs(page);
-      if(res){
-        setJobs(res.data);
-      }
-    };
-    fetchData();
 
-  },[]);
+  const logoSliderRef = useRef(null);
+    
+  const nextLogo = () => {
+    logoSliderRef.current.slickNext();
+  };
+
+  const previousLogo = () => {
+    logoSliderRef.current.slickPrev();
+  };
+  const logoSlides = Math.round(window.screen.width/200);
+  const logoSlideSettings = {
+    dots: false,
+    infinite: false,
+    speed: 1000,
+    slidesToShow: logoSlides,
+    slidesToScroll: 1,
+    autoPlay: true,
+    autoPlaySpeed: 1000 
+  };
+  const fetchData=async(page:number)=>{
+    const res = await fetchJobs(page);
+    if(res.data.length==0){
+      setCheckHasMore(false);
+      return ;
+    }
+    if(res){
+      setJobs([...jobs,...res.data]);
+    }
+  };
+  const fetchRecomendedData=async(slidingPage:number)=>{
+    const res = await fetchRecomendedJobs(slidingPage);
+    if(res){
+      const newJobs=res.data;
+      setRecomendedJobs([...recomendedJobs,...newJobs]);
+    }
+  };
+  React.useEffect(()=>{
+    fetchData(page);
+    fetchRecomendedData(slidingPage);
+  },[slidingPage,page]);
   React.useEffect(()=>{
     let filteredJobs=jobs;
-    if(selectedJob){
+    if(filteredJobs){
       filteredJobs=jobs.filter(item => item.job.title.toLowerCase().includes(selectedJob.toLowerCase()));
     }
     setJob(filteredJobs);
-  },[selectedJob,jobs]);
+  },[recomendedJobs,jobs]);
   const handleJobSelect=(jobName:string)=>{
     setSelectedJob(jobName);
   };
@@ -68,16 +100,6 @@ const Home = () => {
   const jobClick=(job:Job,currentView:string)=>{
     setView(currentView);
     setCurrentJob(job);
-  };
-  React.useEffect(()=>{
-    fetchRecomendedData();
-  },[]);
-  const fetchRecomendedData=async()=>{
-    const res = await fetchRecomendedJobs();
-    if(res){
-      const newJobs=res.data;
-      setRecomendedJobs([...recomendedJobs,...newJobs]);
-    }
   };
   
   return (
@@ -93,40 +115,65 @@ const Home = () => {
             </div>
           </div>
         </div>
-        {(recomendedJobs.length<5 && recomendedJobs.length!==0)&&
-          <div className='carousel-container-5'>
-            {recomendedJobs.map((element)=>(
-              <div className="carousel-card" key={element._id}>
-                <div className="card-content">
-                  <img src={element.company.logo} alt="Text" />
-                  <h1>{element.company.name}</h1>
-                </div>
-                {/* <div className="badge">Famous</div>  */}
-              </div>
-            ))}
+        <div className="middle">
+          {recomendedJobs.length!==0 &&
+          <div className="carousel-container">
+            <Slider {...jobSlideSettings} ref={jobSliderRef}>
+              {recomendedJobs.map((element:Job)=>(
+                <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />
+              ))}
+
+            </Slider>
+            <div className='slideJobBtns'>
+              <button className="jobPrevButton" onClick={previousJob}>
+                <FA icon={faArrowLeft} />
+              </button>
+              <button className="jobNextButton" onClick={nextJob}>
+                <FA icon={faArrowRight} />
+              </button>
+            </div>
           </div>
-        }
-        {recomendedJobs.length>=5 &&
+          }
+        </div>
+        {recomendedJobs.length<=6 &&
         <div className="carousel-container">
-        
-          <Slider {...settings} ref={sliderRef}>
+          <Slider {...logoSlideSettings} ref={logoSliderRef}>
             {recomendedJobs.map((element)=>(
               <div className="carousel-card" key={element._id}>
                 <div className="card-content">
                   <img src={element.company.logo} alt="Text" />
                   <h1>{element.company.name}</h1>
                 </div>
-                {/* <div className="badge">Famous</div>  */}
               </div>
             ))}
-          
-        
           </Slider>
           <div className='slideBtns'>
-            <button className="prevButton" onClick={previous}>
+            <button className="prevButton" onClick={previousLogo}>
               <FA icon={faArrowLeft} />
             </button>
-            <button className="nextButton" onClick={next}>
+            <button className="nextButton" onClick={nextLogo}>
+              <FA icon={faArrowRight} />
+            </button>
+          </div>
+        </div>
+        }
+        {recomendedJobs.length>6 &&
+        <div className="carousel-container">
+          <Slider {...logoSlideSettings} ref={logoSliderRef}>
+            {recomendedJobs.map((element)=>(
+              <div className="carousel-card" key={element._id}>
+                <div className="card-content">
+                  <img src={element.company.logo} alt="Text" />
+                  <h1>{element.company.name}</h1>
+                </div>
+              </div>
+            ))}
+          </Slider>
+          <div className='slideBtns'>
+            <button className="prevButton" onClick={previousLogo}>
+              <FA icon={faArrowLeft} />
+            </button>
+            <button className="nextButton" onClick={nextLogo}>
               <FA icon={faArrowRight} />
             </button>
           </div>
