@@ -109,6 +109,7 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size:15px;
   min-width: 150px;
+  overflow-x: auto;
   text-align: center;
   border-radius: 5px;
 }
@@ -125,12 +126,11 @@
   display:flex;
   justify-content: space-between;
   position: relative;
-  top:-55px;
+  top:-140px;
 }
 
 .prevButton,
 .nextButton {
-  background-color: #eee;
   border: none;
   color: #0064a9;
   font-size: 25px;

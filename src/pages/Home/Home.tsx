@@ -58,7 +58,7 @@ const Home = () => {
   const logoSlides = Math.round(window.screen.width/200);
   const logoSlideSettings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 1000,
     slidesToShow: logoSlides,
     slidesToScroll: 1,
@@ -135,29 +135,7 @@ const Home = () => {
           </div>
           }
         </div>
-        {recomendedJobs.length<=6 &&
-        <div className="carousel-container">
-          <Slider {...logoSlideSettings} ref={logoSliderRef}>
-            {recomendedJobs.map((element)=>(
-              <div className="carousel-card" key={element._id}>
-                <div className="card-content">
-                  <img src={element.company.logo} alt="Text" />
-                  <h1>{element.company.name}</h1>
-                </div>
-              </div>
-            ))}
-          </Slider>
-          <div className='slideBtns'>
-            <button className="prevButton" onClick={previousLogo}>
-              <FA icon={faArrowLeft} />
-            </button>
-            <button className="nextButton" onClick={nextLogo}>
-              <FA icon={faArrowRight} />
-            </button>
-          </div>
-        </div>
-        }
-        {recomendedJobs.length>6 &&
+        {recomendedJobs.length!=0 &&
         <div className="carousel-container">
           <Slider {...logoSlideSettings} ref={logoSliderRef}>
             {recomendedJobs.map((element)=>(
