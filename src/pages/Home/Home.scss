@@ -76,11 +76,10 @@
   text-align: center;
   color: #ffb12a;
 }
-
 .carousel-container {
   max-width: 100%;
-  margin: 0 auto;
   position: relative;
+  margin:10px;
   padding: 20px;
 }
 
@@ -90,34 +89,54 @@
   background-color: #fff;
   border-radius: 10px;
   padding: 20px;
-  height: fit-content;
   align-items: center;
-  transition: transform 250ms;
+  position: relative;
 }
-
-.carousel-card:hover{
-  transform: translateY(-5px);
+.carousel-card  .card-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
+.carousel-container-5{
+  display: flex;
+  margin: auto;
+}
 .carousel-card h1{
-  font-weight: 500;
+  padding: 5px 8px 5px 8px;
+  font-weight: 600;
+  color:#3d3b3b;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size:x-large;
+  font-size:15px;
+  min-width: 150px;
+  overflow-x: auto;
+  text-align: center;
+  border-radius: 5px;
 }
 .carousel-card img {
-  height: 80px;
+  height: 120px;
+  border-radius: 50%;
   margin-bottom: 20px;
+}
+.slideJobBtns{
+  text-align:center;
+}
+.slideBtns{
+  text-align:center;
+  display:flex;
+  justify-content: space-between;
+  position: relative;
+  top:-140px;
 }
 
 .prevButton,
 .nextButton {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: transparent;
   border: none;
   color: #0064a9;
   font-size: 25px;
+  width:40px;
+  height:40px;
+  border-radius: 50%;
   font-weight: 500;
   cursor: pointer;
   z-index: 1;
@@ -129,10 +148,27 @@
   opacity: 0.8;
 }
 
-.prevButton {
+.jobNextButton, .jobPrevButton {
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: #0064a9;
+  font-size: 25px;
+  font-weight: 500;
+  cursor: pointer;
+  z-index: 1;
+  transition: opacity .2s ease-in-out;
+}
+.jobNextButton{
+  right: 0;
+}
+.jobPrevButton{
   left: 0;
 }
 
-.nextButton {
-  right: 0;
-}
+
+
+
+

@@ -34,5 +34,6 @@ interface FormData{
   };
   discipline:string[];
   status : 'Approved' | 'Rejected' | 'Pending' ;
+  productType: string ;
 }
 export default FormData;
