@@ -64,6 +64,11 @@ module.exports =  (env, options)=> {
                         name: '[name].[contenthash].[ext]',
                     }
                 },
+                {
+                    test: /\.css$/,
+                    include: /node_modules/,
+                    use: ['style-loader', 'css-loader']
+                }
             ]
         },
         plugins: [
