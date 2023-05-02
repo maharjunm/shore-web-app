@@ -9,6 +9,8 @@ import { fetchJobs } from '../../services/Jobs';
 import { Job } from '../../components/DataModels/Job';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchRecomendedJobs } from '../../services/Jobs';
+import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
+import { faArrowLeft,faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -37,7 +39,7 @@ const Home = () => {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 3,
+    slidesToShow: 6,
     slidesToScroll: 1,
     autoPlay: true,
     autoPlaySpeed: 1000 
@@ -91,20 +93,20 @@ const Home = () => {
             </div>
           </div>
         </div>
-        {(recomendedJobs.length<=3 && recomendedJobs.length!==0)&&
-          <div>
+        {(recomendedJobs.length<5 && recomendedJobs.length!==0)&&
+          <div className='carousel-container-5'>
             {recomendedJobs.map((element)=>(
               <div className="carousel-card" key={element._id}>
                 <div className="card-content">
                   <img src={element.company.logo} alt="Text" />
                   <h1>{element.company.name}</h1>
                 </div>
-                <div className="badge">Famous</div> 
+                {/* <div className="badge">Famous</div>  */}
               </div>
             ))}
           </div>
         }
-        {recomendedJobs.length>3 &&
+        {recomendedJobs.length>=5 &&
         <div className="carousel-container">
         
           <Slider {...settings} ref={sliderRef}>
@@ -114,18 +116,18 @@ const Home = () => {
                   <img src={element.company.logo} alt="Text" />
                   <h1>{element.company.name}</h1>
                 </div>
-                <div className="badge">Famous</div> 
+                {/* <div className="badge">Famous</div>  */}
               </div>
             ))}
           
         
           </Slider>
-          <div style={{ textAlign: 'center' }}>
+          <div className='slideBtns'>
             <button className="prevButton" onClick={previous}>
-          &lt;
+              <FA icon={faArrowLeft} />
             </button>
             <button className="nextButton" onClick={next}>
-          &gt;
+              <FA icon={faArrowRight} />
             </button>
           </div>
         </div>
