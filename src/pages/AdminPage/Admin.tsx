@@ -25,9 +25,6 @@ function Admin() {
     setTab('Pending');
     setTabCookie('status','Pending');
   }, []);
-  const scrollTop = () => {
-    window.scrollTo({top:0,behavior:'smooth'});
-  };
   const jobClick=(job:Job)=>{
     setCurrentJob(job);
   };

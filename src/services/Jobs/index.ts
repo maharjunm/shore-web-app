@@ -68,3 +68,12 @@ export const setStatusApprove = async (props:Props) => {
     return error.response;
   }
 };
+export const fetchRecomendedJobs= async(page:Number)=>{
+  try{
+    const response= await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/job?page=${page}`);
+    return response;
+  }
+  catch(error){
+    return error;
+  }
+};
