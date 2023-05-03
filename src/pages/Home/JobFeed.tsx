@@ -2,6 +2,10 @@ import React from 'react';
 import './JobFeed.scss';
 import { ErrorBoundary } from '../../components';
 import { Job } from '../../components/DataModels/Job';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
+import { faBusinessTime, faMapMarker, faClock } from '@fortawesome/free-solid-svg-icons';
 interface Props {
     key:string;
     jobd:Job;
@@ -12,23 +16,28 @@ const JobFeed = (det: Props) => {
   const setJob=()=>{
     det.jobClick(p,'show');
   };
+  dayjs.extend(relativeTime);
+  const postingDate = dayjs(p.dates.postingDate).format('DD/MM/YYYY');
   return (
     <ErrorBoundary>
       <div className="jobFeed" onClick={setJob} >
         <div className="title">
           <h4 >{p.job.title}</h4>
           <span className="company"> {p.company.name}</span>
-          <span className="company"> {p.location.city},{p.location.state}</span>
+          <span > {p.location.city},{p.location.state}</span>
         </div>
         <div className="shift">
           <span>&#8377; {p.salary.sal}-{p.job.type}</span>
           <span>{p.job.experience}</span>
           <span> {p.company.companyType}</span>
         </div>
-        <ul>
-          {p.qualifications.map((qualification:{value:string,id:string})=>
-            <li key={qualification.id}>{qualification.value}</li>
-          )}
+        <ul className='color-green'>
+          <li> 
+            <FA icon={faClock} />
+          </li>
+          <li>
+            Posted On : { postingDate }
+          </li>
         </ul>
         <h2>Discipline:</h2>
         <ul>
