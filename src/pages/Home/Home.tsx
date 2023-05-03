@@ -71,8 +71,11 @@ const Home = () => {
       setCheckHasMore(false);
       return ;
     }
+    
     if(res){
       setJobs([...jobs,...res.data]);
+      setCurrentJob(res.data[0]);
+      setView('show');
     }
   };
   const fetchRecomendedData=async(slidingPage:number)=>{

@@ -11,6 +11,8 @@
 }
 
 .jobdetails {
+  position: sticky;
+  top:10px;
   margin: auto;
   text-align: center;
   color: var(--blackHeadColor);
