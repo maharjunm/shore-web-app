@@ -135,7 +135,19 @@ const Home = () => {
           </div>
           }
         </div>
-        {recomendedJobs.length!=0 &&
+        {recomendedJobs.length<=logoSlides &&
+        <div className="carousel-container-default">
+          {recomendedJobs.map((element)=>(
+            <div className="carousel-card" key={element._id}>
+              <div className="card-content">
+                <img src={element.company.logo} alt="Text" />
+                <h1>{element.company.name}</h1>
+              </div>
+            </div>
+          ))}
+        </div>
+        }
+        {recomendedJobs.length>logoSlides &&
         <div className="carousel-container">
           <Slider {...logoSlideSettings} ref={logoSliderRef}>
             {recomendedJobs.map((element)=>(

@@ -56,7 +56,7 @@ export const getJobByUser= async(page: Number)=>{
 };
 export const fetchRecomendedJobs= async(page:Number)=>{
   try{
-    const response= await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/job?page=${page}`);
+    const response= await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/job/recomended?page=${page}`);
     return response;
   }
   catch(error){
