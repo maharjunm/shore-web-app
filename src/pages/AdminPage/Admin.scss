@@ -1,3 +1,7 @@
+:root{
+  --blue:#0064a9;
+  --yellow:#ffb12a;
+}
 .status {
   background-color: 	#ffcc00;
   font-weight: 600;
@@ -12,7 +16,24 @@
   margin:auto;
 }
 
-
+.adminDashboard .tabs{
+  padding:10px;
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+  margin: auto;
+  max-width: 300px;
+}
+.adminDashboard .tabs button{
+  padding: 5px 10px 5px 10px;
+  color:#000;
+  cursor: pointer;
+  border: 1px solid black;
+}
+.adminDashboard .tabs .active{
+  background-color: var(--blue);
+  color:#fff;
+}
 .footer {
   display: flex;
   justify-content: center;
@@ -25,7 +46,8 @@
 
 .accept-btn {
   margin: 10px;
-  width: 100px;
+  width:100px;
+  padding:5px 10px 5px 10px;
   height: 30px;
   border: none;
   background-color: green;
@@ -39,6 +61,7 @@
 .reject-btn { 
   margin: 10px;
   width: 100px;
+  padding:5px 10px 5px 10px;
   height: 30px;
   border: none;
   background-color: red;
@@ -91,6 +114,7 @@
 .hide{
   display: none;
 }
+
 @media only screen and (max-width: 1050px) {
   .right{
     display: none;
