@@ -14,7 +14,14 @@ import { faArrowLeft,faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
+const shuffle = (array:Job[]) => {
+  for( var i=array.length-1;i>0;i--){
+    var j = Math.floor(Math.random()*(i+1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+};
 
 const Home = () => {
   const [currentJob,setCurrentJob]= useState(null);
@@ -71,20 +78,26 @@ const Home = () => {
       setCheckHasMore(false);
       return ;
     }
+    
     if(res){
-      setJobs([...jobs,...res.data]);
+      const newJobs = res.data;
+      shuffle(newJobs);
+      setJobs([...jobs,...newJobs]);
+      setCurrentJob(newJobs[0]);
+      setView('show');
     }
   };
   const fetchRecomendedData=async(slidingPage:number)=>{
     const res = await fetchRecomendedJobs(slidingPage);
     if(res){
       const newJobs=res.data;
+      shuffle(newJobs);
       setRecomendedJobs([...recomendedJobs,...newJobs]);
     }
   };
   React.useEffect(()=>{
-    fetchData(page);
     fetchRecomendedData(slidingPage);
+    fetchData(page);
   },[slidingPage,page]);
   React.useEffect(()=>{
     let filteredJobs=jobs;
@@ -135,7 +148,19 @@ const Home = () => {
           </div>
           }
         </div>
-        {recomendedJobs.length!=0 &&
+        {recomendedJobs.length<=logoSlides &&
+        <div className="carousel-container-default">
+          {recomendedJobs.map((element)=>(
+            <div className="carousel-card" key={element._id}>
+              <div className="card-content">
+                <img src={element.company.logo} alt="Text" />
+                <h1>{element.company.name}</h1>
+              </div>
+            </div>
+          ))}
+        </div>
+        }
+        {recomendedJobs.length>logoSlides &&
         <div className="carousel-container">
           <Slider {...logoSlideSettings} ref={logoSliderRef}>
             {recomendedJobs.map((element)=>(

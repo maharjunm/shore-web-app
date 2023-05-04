@@ -22,6 +22,7 @@ const PendingJobs = (props:Props)=> {
       return ;
     }
     if(res){
+      openJob(res.data[0]);
       setJobs([...jobs,...res.data]);
     }
   };

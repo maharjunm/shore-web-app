@@ -40,9 +40,7 @@ const defaultForm:FormData = {
     state:'',
   },
   dates: {
-    postingDate: null,
-    expiryDate: null,
-    removingDate: null
+    closingDate:null,
   },
   salary: {
     sal: null,
@@ -57,7 +55,6 @@ const defaultForm:FormData = {
     employeeWebsite:'',
   },
   status:'Pending',
-  productType: ''
 };
 
 const Form = () => {

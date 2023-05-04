@@ -17,9 +17,7 @@ interface FormData{
     region: string;
   };
   dates: {
-    postingDate: Date;
-    expiryDate: Date;
-    removingDate: Date;
+    closingDate:string;
   };
   salary: {
     sal: number;
@@ -34,6 +32,5 @@ interface FormData{
   };
   discipline:string[];
   status : 'Approved' | 'Rejected' | 'Pending' ;
-  productType: string ;
 }
 export default FormData;
