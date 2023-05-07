@@ -1,0 +1,60 @@
+.viewBox{
+  margin-top: 5px;
+  padding: 10px;
+}
+.viewBox .jobsCount{
+  width: 80%;
+  margin: auto;
+}
+.viewBox .jobsCount h1{
+  font-size: 20px;
+  font-family:'Times New Roman', Times, serif;
+  font-weight: 500;
+  padding: 20px;
+}
+.viewBox .search{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 10px;
+  width: 80%;
+  margin: auto;
+}
+.viewBox .search .searchFields{
+  background-color: #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  width: 35%;
+}
+.viewBox .search .searchFields .inputBox{
+  display: flex;
+  flex-direction: column;
+}
+.viewBox .search .searchFields .inputBox label{
+  font-weight: 500;
+  margin-left: 5px;
+  color: rgb(20, 21, 20);
+}
+.viewBox .search .searchFields .inputBox input{
+  border: none;
+  height: 35px;
+  outline: none;
+  padding: 5px;
+}
+.viewBox .search .searchContent{
+  background-color: blue;
+  padding: 5px;
+  width: 60%;
+}
+@media(max-width:600px) {
+  .viewBox .search,.viewBox .jobsCount {
+    width: 100%;
+  }
+}
+
+.flex{
+  display: flex;
+}
+.space-around{
+  justify-content: space-around;
+}

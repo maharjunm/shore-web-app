@@ -37,10 +37,7 @@ const Searchbar: React.FC<Props> = ({ data,onJobSelect }) => {
     <>
       <form onSubmit={handleSubmit}>
         <div className="searchInput">
-          <input id="search" type="search" placeholder="Search for job" onChange={handleChange} value={searchData} />
-          <span className="searchIcons">
-            <b><Font icon={faSearch}></Font></b>
-          </span>
+          <input id="search" type="search" placeholder="Enter Job Title" onChange={handleChange} value={searchData} />
         </div>
         {searchData.length > 0 && isOpen && (
           <div className="searchResultLeft">

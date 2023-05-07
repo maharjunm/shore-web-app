@@ -24,7 +24,7 @@ const JobFeed = (det: Props) => {
         <div className="title">
           <h4 >{p.job.title}</h4>
           <span className="company"> {p.company.name}</span>
-          <span > {p.location.city},{p.location.state}</span>
+          <span> {p.location.city},{p.location.state}</span>
         </div>
         <div className="shift">
           <span>&#8377; {p.salary.sal}-{p.job.type}</span>

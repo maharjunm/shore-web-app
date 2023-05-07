@@ -8,3 +8,4 @@ export { default as Product } from './Product/Product';
 export { default as PaymentSuccess } from './Product/PaymentSuccess';
 export { default as PaymentCancel } from './Product/PaymentCancel';
 export { default as Message } from './MessageBox/Message';
+export { default as Highlights } from './Highlights/Highlights';

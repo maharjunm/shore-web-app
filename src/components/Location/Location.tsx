@@ -1,7 +1,5 @@
 import React from 'react';
 import './Location.scss';
-import { FontAwesomeIcon as Font } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 interface city {
     id: number;
     name: string;
@@ -41,10 +39,7 @@ const Location = () => {
     <>
       <form onSubmit={handleSubmit}>
         <div className="location">
-          <input type="search" value={location} onChange={handleChange} placeholder="Enter location" />
-          <span className="searchIcons">
-            <b><Font icon={faSearch}></Font></b>
-          </span>
+          <input type="search" value={location} onChange={handleChange} placeholder="Enter Location" />
         </div>
         {location.length > 0 && isOpen && (
           <div className="searchResultRight">
