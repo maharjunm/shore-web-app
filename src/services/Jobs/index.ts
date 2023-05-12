@@ -3,6 +3,7 @@ import FormData from '../../components/DataModels/FormData';
 
 import { REACT_BACKEND_URL } from '../../config';
 import axios from 'axios';
+import { SearchData } from '../../components/DataModels/SearchData';
 const instance = axios.create({
   withCredentials: true,
 });
@@ -75,5 +76,13 @@ export const fetchRecomendedJobs= async(page:Number)=>{
   }
   catch(error){
     return error;
+  }
+};
+export const getSearchJobs = async (search:SearchData,page:Number) =>{
+  try {
+    const response = await axios.get<Job[]>(`${REACT_BACKEND_URL}/v1/job?page=${page}`);
+    return response;
+  } catch ( error ) {
+    return null;
   }
 };

@@ -17,18 +17,17 @@
 }
 .searchResultLeft{
     position: absolute;
-    opacity: 0.8;
     padding:10px;
     min-width: 40%;
     margin: auto;
     z-index:1;
-    background-color: #efefef;
-
+    background-color: #fff;
+    border: 1px solid rgb(77, 74, 74);
 }
 #option{
     padding:15px;
     border-radius: 2px;
 }
 .searchResultLeft option:hover{
-  background-color: #afafaf;
+  background-color: #0064ae;
 }

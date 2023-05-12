@@ -25,6 +25,9 @@
   border-radius: 4px;
   padding: 20px;
   width: 35%;
+  height: max-content;
+  position: sticky;
+  top:10px;
 }
 .viewBox .search .searchFields .inputBox{
   display: flex;
@@ -41,9 +44,31 @@
   outline: none;
   padding: 5px;
 }
-.viewBox .search .searchContent{
-  background-color: blue;
+.inputBox .dropDown{
+  border: none;
+  height: 35px;
+  outline: none;
   padding: 5px;
+}
+.viewBox .search .searchFields .inputBox input[type='submit']{
+  border: none;
+  height: 35px;
+  outline: none;
+  padding: 5px;
+  background-color: #0064a9;
+  color:#fff;
+  font-size: 18px;
+  align-items: center;
+  text-align: center;
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top:5px;
+}
+.viewBox .search .searchFields .inputBox input[type='submit']:hover{
+  background-color: #02436e;
+}
+.viewBox .search .searchContent{
   width: 60%;
 }
 @media(max-width:600px) {
@@ -57,4 +82,16 @@
 }
 .space-around{
   justify-content: space-around;
+}
+
+.text-small{
+  font-size:12px;
+}
+.rotatedown{
+  transition: .3s ease-in-out;
+  transform:  rotate(90deg);
+}
+.rotateup{
+  transition: .3s ease-in-out;
+  transform:  rotate(0deg);
 }
