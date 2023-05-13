@@ -6,15 +6,23 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
 import { faBusinessTime, faMapMarker, faClock } from '@fortawesome/free-solid-svg-icons';
+import { useHistory } from 'react-router-dom';
 interface Props {
     key:string;
     jobd:Job;
     jobClick:(currentJob:Job,currentView:string)=>void;
+    viewBtn?:boolean;
 }
 const JobFeed = (det: Props) => {
   let p=det.jobd;
+  const { viewBtn } = det;
+  const history = useHistory();
   const setJob=()=>{
     det.jobClick(p,'show');
+  };
+  const viewJob = () => {
+    history.push(`/job/${p._id}`);
+    return ;
   };
   dayjs.extend(relativeTime);
   const postingDate = dayjs(p.dates.postingDate).format('DD/MM/YYYY');
@@ -46,12 +54,16 @@ const JobFeed = (det: Props) => {
           ))}
         </ul>
         <div className="foot">
-          <p>
-              Hiring ongoing: From
-            <b>
-              {p.job.title} in {p.location.city},{p.location.state}
-            </b>
-          </p>
+          <div>
+            <p>Hiring ongoing: From
+              <b>
+                {p.job.title} in {p.location.city},{p.location.state}
+              </b>
+            </p>
+          </div>
+          <div>
+            { viewBtn && <button className='viewBtn' onClick={viewJob} >View Details</button> }
+          </div>
         </div>
       </div>
     </ErrorBoundary>

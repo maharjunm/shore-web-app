@@ -108,7 +108,7 @@ const SearchPage = () => {
           >
             { 
               jobs.map((element:Job)=>(
-                <JobFeed key={element._id} jobd={element} jobClick={null} />
+                <JobFeed key={element._id} jobd={element} jobClick={null}  viewBtn={true} />
               )) 
             }
           </InfiniteScroll>

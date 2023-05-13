@@ -1,0 +1,24 @@
+.searchedJob{
+  margin-top:2px;
+}
+.searchedJob .topElements{
+  display: flex;
+  justify-content: space-between;
+}
+.searchedJob .topElements .backArrow{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #64aef6;
+  color: #fff;
+}
+.searchedJob .topElements .errorBox{
+  color: red;
+  font-weight: 500;
+}
+.searchedJob .job{
+  padding:10px;
+  border-radius: 6px;
+  width: max-content;
+  margin: auto;
+}

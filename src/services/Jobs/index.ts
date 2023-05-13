@@ -86,3 +86,11 @@ export const getSearchJobs = async (search:SearchData,page:Number) =>{
     return null;
   }
 };
+export const getJobById = async (jobId:string) =>{
+  try {
+    const response = await axios.get<Job>(`${REACT_BACKEND_URL}/v1/job/get/${jobId}`);
+    return response;
+  } catch ( error ) {
+    return null;
+  }
+};
