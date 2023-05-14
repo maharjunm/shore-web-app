@@ -37,7 +37,7 @@ const HomePage = () => {
               <Route path='/success' ><PaymentSuccess /></Route>
               <Route path='/cancel' ><PaymentCancel /></Route>
               <Route path='/search' ><SearchPage /></Route>
-              <Route path='/job' ><FullJobView /></Route>
+              <Route path='/job/:jobId' ><FullJobView /></Route>
             </Switch>
           </ErrorBoundary>
         </UserContext.Provider>

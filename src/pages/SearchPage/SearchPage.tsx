@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import './SearchPage.scss';
 import { Highlights } from '../../components';
 import { SearchData } from '../../components/DataModels/SearchData';
-import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Job } from '../../components/DataModels/Job';
 import { fetchJobs, getSearchJobs } from '../../services/Jobs';
 import JobFeed from '../Home/JobFeed';
 import { DropDown } from './SeachUtils/DropDown';
-
+import { selectSearch } from '../../store/SearchContent/selector';
+import { updateSearch } from '../../store/SearchContent/reducer';
+import { RootState } from '../../store/configureStore';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 const  defaultSearch:SearchData= {
   jobTitle:'',
   location:'',
@@ -22,6 +24,13 @@ const  defaultSearch:SearchData= {
 const SearchPage = () => {
   
   const [ search , setSearch ] = useState(defaultSearch);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const searchStatus = useSelector((state:RootState)=>{
+    console.log(state);
+    return selectSearch(state);
+  });
+  console.log(searchStatus);
   const [jobs,setJobs]=React.useState([]);
   const [checkHasMore,setCheckHasMore] = useState(true);
   const [ page, setPage ] = useState(0);
@@ -42,16 +51,20 @@ const SearchPage = () => {
   React.useEffect(()=>{
     fetchData(page);
   },[page]);
-  const updateSearch = ( field:string,value:string|number|Set<string>) => {
+  const updateSearchContents = ( field:string,value:string|number|Set<string>) => {
     setSearch((prevSearch)=>{
       return {
         ...prevSearch,
         [field]: value,
       };
     });
+    dispatch(updateSearch(search));
   };
-  const onSubmit = ( )=>{
+  const onSubmit = (e:any )=>{
+    e.preventDefault();
+    dispatch(updateSearch(search));
     const searchJobs = getSearchJobs(search,page);
+    return ;
   };
   return (
     <div className="viewBox">
@@ -67,7 +80,7 @@ const SearchPage = () => {
               <input 
                 type="text"  
                 placeholder='eg:Research Scientist' 
-                onChange={(e)=>updateSearch('jobTitle',e.target.value)}
+                onChange={(e)=>updateSearchContents('jobTitle',e.target.value)}
                 value={search.jobTitle}
               />
             </div>
@@ -76,13 +89,13 @@ const SearchPage = () => {
               <input 
                 type="text" 
                 placeholder='eg:Bangloor'
-                onChange={(e)=>updateSearch('location',e.target.value)}
+                onChange={(e)=>updateSearchContents('location',e.target.value)}
                 value={search.location}
               />
             </div>
             <div className='inputBox'>
               <label> Salary </label>
-              <input type="range" onChange={(e)=>updateSearch('salary',e.target.value)} />
+              <input type="range" onChange={(e)=>updateSearchContents('salary',e.target.value)} />
               <label className='flex space-around text-small'>
                 <span>1K</span>
                 <span>2K</span>
@@ -91,9 +104,9 @@ const SearchPage = () => {
                 <span>20K</span>
               </label>
             </div>
-            <DropDown values={discipline} name={'discipline'} updateSearch={updateSearch} />
-            <DropDown values={sectors} name={'sector'} updateSearch={updateSearch} />
-            <DropDown values={countries} name={'country'} updateSearch={updateSearch} />
+            <DropDown values={discipline} name={'discipline'} updateSearchContents={updateSearchContents} />
+            <DropDown values={sectors} name={'sector'} updateSearchContents={updateSearchContents} />
+            <DropDown values={countries} name={'country'} updateSearchContents={updateSearchContents} />
             <div className='inputBox'>
               <input type="submit"  value='Search' />
             </div>

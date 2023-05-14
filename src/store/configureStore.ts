@@ -1,6 +1,5 @@
 import {
   configureStore,
-  getDefaultMiddleware,
   DeepPartial,
 } from '@reduxjs/toolkit';
 
@@ -15,7 +14,6 @@ export type PartialRootState = DeepPartial<RootState>;
 const configureAppStore = (preloadedState: PartialRootState = {}) => {
   const store = configureStore({
     reducer: rootReducer,
-    middleware: [...getDefaultMiddleware<RootState>()],
     preloadedState,
   });
 

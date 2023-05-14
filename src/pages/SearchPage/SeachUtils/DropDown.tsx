@@ -5,12 +5,12 @@ import './DropDown.scss';
 interface Props{
   values:string[],
   name: string,
-  updateSearch: (field:string,value:string|number|Set<string>)=> void,
+  updateSearchContents: (field:string,value:string|number|Set<string>)=> void,
 
 }
 export const DropDown = (props:Props) => {
 
-  const { values, name, updateSearch } = props;
+  const { values, name, updateSearchContents } = props;
 
   const [ rotation, setRotation ] = useState('rotateup');
   const [ dropDownValues, setDropDownValues] = useState(new Set<string>());
@@ -35,7 +35,7 @@ export const DropDown = (props:Props) => {
     if(checked) newDropDownValues.add(id);
     if(!checked) newDropDownValues.delete(id);
     setDropDownValues((updatedDropDownValues)=>{
-      updateSearch(name,newDropDownValues);
+      updateSearchContents(name,newDropDownValues);
       console.log(newDropDownValues);
       return newDropDownValues;
     });

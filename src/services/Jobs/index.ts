@@ -91,6 +91,6 @@ export const getJobById = async (jobId:string) =>{
     const response = await axios.get<Job>(`${REACT_BACKEND_URL}/v1/job/get/${jobId}`);
     return response;
   } catch ( error ) {
-    return null;
+    return error.response;
   }
 };
