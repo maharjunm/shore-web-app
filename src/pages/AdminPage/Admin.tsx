@@ -8,6 +8,7 @@ import { UserContext } from '../HomePage/HomePage';
 import { setStatusReject,setStatusApprove } from '../../services/Jobs';
 import PendingJobs from './PendingJobs';
 import RejectedJobs from './RejectedJobs';
+import Products from './Products';
 
 function Admin() {
 
@@ -50,6 +51,7 @@ function Admin() {
   }
   return (
     <div className="adminDashboard">
+      <Products />
       <div className="tabs">
         <button
           className={tab==='Pending' && 'active'} 

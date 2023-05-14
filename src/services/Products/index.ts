@@ -1,6 +1,9 @@
 import { REACT_BACKEND_URL } from '../../config';
 import  ProductData  from '../../components/DataModels/ProductData';
 import axios from 'axios';
+const instance = axios.create({
+  withCredentials: true,
+});
 
 export const getProducts = async () => {
   try{
@@ -8,5 +11,13 @@ export const getProducts = async () => {
     return res;
   }catch( error ) {
     error;
+  }
+};
+export const updateProduct = async (product:ProductData) => {
+  try{
+    const res = await instance.post(`${REACT_BACKEND_URL}/v1/products/update`,{product});
+    return res;
+  }catch(error){
+    return error.response;
   }
 };
