@@ -4,5 +4,5 @@ import { SearchStatus } from './reducer';
 
 export const selectSearch:(state:RootState)=>SearchStatus = createSelector(
   (state: RootState) => state.search,
-  (search)=>search,
+  (state)=>state,
 );

@@ -5,14 +5,9 @@ import {
 import { SearchData } from '../../components/DataModels/SearchData';
 
 export type SearchStatus = {
-  jobTitle?: string,
-  location?: string,
-  salary?: number,
-  discipline?: any,
-  country?: any,
-  sector?: any,
+  status?: SearchData,
 }
-export const initialSearch: SearchStatus = {
+const initialStatus:SearchData = {
   jobTitle: '',
   location: '',
   salary: 0,
@@ -20,15 +15,17 @@ export const initialSearch: SearchStatus = {
   country: null,
   sector: null,
 };
-
+const retriviewStatus = localStorage.getItem('search')?JSON.parse(localStorage.getItem('search')):initialStatus;
+export const initialSearch: SearchStatus = {
+  status:retriviewStatus,
+};
 const searchSlice = createSlice({
   name: 'search',
   initialState: initialSearch,
   reducers: {
-    updateSearch: (state, action: PayloadAction<SearchData>) => {
-      console.log('payload', action.payload);
-      state = action.payload;
-      console.log('state',state);
+    updateSearch: (state, action: PayloadAction<SearchStatus>) => {
+      state.status = action.payload.status; 
+      localStorage.setItem('search',JSON.stringify(action.payload.status));
     },
   },
 });

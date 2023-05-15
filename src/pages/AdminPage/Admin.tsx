@@ -9,7 +9,7 @@ import { setStatusReject,setStatusApprove } from '../../services/Jobs';
 import PendingJobs from './PendingJobs';
 import RejectedJobs from './RejectedJobs';
 
-function Admin() {
+const Admin = () => {
 
   const { state, dispatch } = useContext(UserContext);
   const [ tabCookie,setTabCookie,removeTabCookie ] = useCookies();
@@ -102,6 +102,6 @@ function Admin() {
     </div>
 
   );
-}
+};
 
 export default Admin;

@@ -8,15 +8,21 @@ interface Job {
 }
 interface Props{
   data: Job[];
+  update: (value:string)=>void,
   onJobSelect :(jobName: String)=> void;
 }
-const Searchbar: React.FC<Props> = ({ data,onJobSelect }) => {
+const Searchbar: React.FC<Props> = (props:Props) => {
+
+  const { data,onJobSelect, update } = props;
   const [searchData, setSearchData] = React.useState('');
   const [searchResult, setSearchResults] = React.useState([]);
   const [selectData, setSelectData] = React.useState('');
   const [isOpen, setIsOpen] = React.useState(true);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchData(event.target.value);
+    setSearchData((updatedSearchData)=>{
+      update(event.target.value);
+      return event.target.value;
+    });
     setIsOpen(true);
   };
   const handleSubmit = (event: React.FormEvent) => {
@@ -27,10 +33,13 @@ const Searchbar: React.FC<Props> = ({ data,onJobSelect }) => {
     );
     setSearchResults(filteredData);
   };
-  const handleClick = (event: React.MouseEvent<HTMLOptionElement>) => {
-    setSearchData(event.currentTarget.value);
+  const handleClick = (value:string) => {
+    setSearchData((updatedSearchData)=>{
+      update(value);
+      return value;
+    });
     setIsOpen(false);
-    onJobSelect(event.currentTarget.value);
+    onJobSelect(value);
   };
 
   return (
@@ -44,7 +53,7 @@ const Searchbar: React.FC<Props> = ({ data,onJobSelect }) => {
             {searchData.length > 0 && isOpen && data.filter((item) => item.name.toLowerCase().includes(searchData.toLowerCase()))
               .map((item) => (
                 <div key={item.id} className="opt">
-                  <option onClick={handleClick} value={item.name} id="options" >
+                  <option onClick={()=>handleClick(item.name)} value={item.name} id="options" >
                     {item.name}
                   </option>
                 </div>

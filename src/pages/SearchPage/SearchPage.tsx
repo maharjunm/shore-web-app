@@ -11,30 +11,44 @@ import { selectSearch } from '../../store/SearchContent/selector';
 import { updateSearch } from '../../store/SearchContent/reducer';
 import { RootState } from '../../store/configureStore';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 const  defaultSearch:SearchData= {
   jobTitle:'',
   location:'',
   salary:0,
-  discipline:new Set<string>(),
-  country:new Set<string>(),
-  sector:new Set<string>(),
+  discipline:[],
+  country:[],
+  sector:[],
 };
 
 const SearchPage = () => {
   
-  const [ search , setSearch ] = useState(defaultSearch);
   const dispatch = useDispatch();
   const history = useHistory();
-  const searchStatus = useSelector((state:RootState)=>{
-    console.log(state);
+  const location = useLocation();
+  const searchStatus= useSelector((state:RootState)=>{
     return selectSearch(state);
   });
-  console.log(searchStatus);
+  const [ search , setSearch ] = useState(()=>{
+    console.log('ss',searchStatus.status);
+    if(location.state){
+      const { jobTitle, locationValue } = location.state;
+      if(jobTitle || locationValue){
+        defaultSearch.jobTitle= jobTitle,
+        defaultSearch.location = locationValue;
+        return defaultSearch;
+      }
+    }
+    return searchStatus.status;
+  });
+  const [discipline, setDicipline] = useState(()=>searchStatus.status.discipline);
+  const [sector, setSector] = useState(()=>searchStatus.status.sector);
+  const [country, setCountry] = useState(()=>searchStatus.status.country);
+
   const [jobs,setJobs]=React.useState([]);
   const [checkHasMore,setCheckHasMore] = useState(true);
   const [ page, setPage ] = useState(0);
-  const discipline = ['Life Sciences', 'Physics', 'Biomedicine','Health Sciences','Engineering','Chemistry','Computer Science','Applied Science','Nanotechnology','Earth Sciences','Environmental','Sciences','Veterinary','Fisheries','Agriculture','Forestry'];
+  const disciplines = ['Life Sciences', 'Physics', 'Biomedicine','Health Sciences','Engineering','Chemistry','Computer Science','Applied Science','Nanotechnology','Earth Sciences','Environmental','Sciences','Veterinary','Fisheries','Agriculture','Forestry'];
   const sectors = ['Academia','Industry','Government','Healthcare/Hospital','Non-Profit','Media/Communications'];
   const countries = ['North America','Europe','Asia','South America','Asia Pacific','Australia','Middle East','Oceania','Working from home'];
   const fetchData=async(page:number)=>{
@@ -51,20 +65,39 @@ const SearchPage = () => {
   React.useEffect(()=>{
     fetchData(page);
   },[page]);
-  const updateSearchContents = ( field:string,value:string|number|Set<string>) => {
+  const updateArray = (field:string,value:string[])=>{
+    if(field==='discipline'){
+      setDicipline(value);
+      return ;
+    }
+    if(field==='sector'){
+      setSector(value);
+      return ;
+    }
+    setCountry(value);
+  };
+  const updateSearchContents = ( field:string,value:string|number|string[]) => {
+    console.log(search.discipline);
     setSearch((prevSearch)=>{
+      const updatedSearch = {
+        ...search,
+        [field]:value,
+      };
+      dispatch(updateSearch({status:updatedSearch}));
       return {
         ...prevSearch,
         [field]: value,
       };
     });
-    dispatch(updateSearch(search));
   };
   const onSubmit = (e:any )=>{
     e.preventDefault();
-    dispatch(updateSearch(search));
     const searchJobs = getSearchJobs(search,page);
     return ;
+  };
+  const resetForm = ()=>{
+    localStorage.removeItem('search');
+    setSearch(defaultSearch);
   };
   return (
     <div className="viewBox">
@@ -95,7 +128,7 @@ const SearchPage = () => {
             </div>
             <div className='inputBox'>
               <label> Salary </label>
-              <input type="range" onChange={(e)=>updateSearchContents('salary',e.target.value)} />
+              <input type="range" onChange={(e)=>updateSearchContents('salary',e.target.value)} value={search.salary} />
               <label className='flex space-around text-small'>
                 <span>1K</span>
                 <span>2K</span>
@@ -104,10 +137,11 @@ const SearchPage = () => {
                 <span>20K</span>
               </label>
             </div>
-            <DropDown values={discipline} name={'discipline'} updateSearchContents={updateSearchContents} />
-            <DropDown values={sectors} name={'sector'} updateSearchContents={updateSearchContents} />
-            <DropDown values={countries} name={'country'} updateSearchContents={updateSearchContents} />
-            <div className='inputBox'>
+            <DropDown values={disciplines} name={'discipline'} updateSearchContents={updateSearchContents} selected={discipline} updateArray={updateArray} />
+            <DropDown values={sectors} name={'sector'} updateSearchContents={updateSearchContents} selected={sector} updateArray={updateArray} />
+            <DropDown values={countries} name={'country'} updateSearchContents={updateSearchContents}selected={country} updateArray={updateArray} />
+            <div className='btnFlex'>
+              <input type="submit"  value='Clear' onClick={resetForm} />
               <input type="submit"  value='Search' />
             </div>
           </form>

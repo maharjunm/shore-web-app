@@ -34,8 +34,16 @@ const Home = () => {
   const [page,setPage]=React.useState(0);
   const [checkHasMore,setCheckHasMore]=React.useState(true);
   const [recomendedJobs,setRecomendedJobs]=React.useState([]);
-  const [slidingJobs,setSlidingJobs]=React.useState([]);
   const [slidingPage,setSlidingPage ] = useState(0);
+  const [ location, setLocation ] = useState('');
+  const [ jobTitle, setJobTitle ] = useState('');
+
+  const updateLocation = (value:string)=>{
+    setLocation(value);
+  };
+  const updateJobTitle = (value:string)=>{
+    setJobTitle(value);
+  };
 
   const jobSliderRef = useRef(null);
   const nextJob = () => {
@@ -116,7 +124,10 @@ const Home = () => {
     setCurrentJob(job);
   };
   const gotoSearch = () => {
-    history.push('/search');
+    history.push({
+      pathname:'/search',
+      state: {jobTitle: jobTitle,locationValue: location}
+    });
     return ;
   };
   
@@ -126,10 +137,10 @@ const Home = () => {
         <div className="top">
           <div className='inputForm'>
             <div className="searchBar">
-              <Searchbar data={data} onJobSelect={handleJobSelect}/>
+              <Searchbar data={data} onJobSelect={handleJobSelect} update={updateJobTitle}/>
             </div>
             <div className='locationBar'>
-              <Location />
+              <Location  update={updateLocation}  />
             </div>
             <div className='searchIcon' onClick={gotoSearch}>
               <span>Search </span>

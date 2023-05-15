@@ -5,15 +5,18 @@ import './DropDown.scss';
 interface Props{
   values:string[],
   name: string,
-  updateSearchContents: (field:string,value:string|number|Set<string>)=> void,
+  selected: string[],
+  updateArray: (field:string,value:string[])=>void,
+  updateSearchContents: (field:string,value:string|number|string[])=> void,
 
 }
 export const DropDown = (props:Props) => {
 
-  const { values, name, updateSearchContents } = props;
+  const { values, name, selected, updateArray, updateSearchContents } = props;
+  console.log(name,selected);
 
   const [ rotation, setRotation ] = useState('rotateup');
-  const [ dropDownValues, setDropDownValues] = useState(new Set<string>());
+  const [ dropDownValues, setDropDownValues] = useState(selected);
 
 
   const capitalizeFirstLetter = (str:string) =>{
@@ -31,12 +34,12 @@ export const DropDown = (props:Props) => {
   };
   const updateDropDown = (e:any)=>{
     const { id, checked } = e.target;
-    const newDropDownValues = new Set<string>(dropDownValues);
-    if(checked) newDropDownValues.add(id);
-    if(!checked) newDropDownValues.delete(id);
+    const newDropDownValues = dropDownValues.filter((dropDownValue)=> dropDownValue!=id);
+    console.log('up',newDropDownValues);
+    if(checked) newDropDownValues.push(id);
     setDropDownValues((updatedDropDownValues)=>{
+      updateArray(name,newDropDownValues);
       updateSearchContents(name,newDropDownValues);
-      console.log(newDropDownValues);
       return newDropDownValues;
     });
   };
@@ -51,7 +54,7 @@ export const DropDown = (props:Props) => {
         {
           values.map((value:string)=>(
             <div className="pair" key={value}>
-              <input type="checkbox" name={value} id={value} onChange={updateDropDown} />
+              <input type="checkbox" name={value} id={value} onChange={updateDropDown} checked={selected && selected.some((element)=> element===value)}  />
               <label htmlFor={value}>{value}</label>
             </div>
           ))

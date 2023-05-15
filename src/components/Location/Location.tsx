@@ -5,8 +5,13 @@ interface city {
     name: string;
     state: string;
 }
+interface Props{
+  update: (value:string)=>void,
+}
 
-const Location = () => {
+const Location = (props:Props) => {
+
+  const { update } = props;
   const [location, setLocation] = React.useState('');
   const [cityData, setCityData] = React.useState([]);
   const [searchResult, setSearchResult] = React.useState([]);
@@ -27,11 +32,17 @@ const Location = () => {
     }
   }, [location]);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLocation(event.target.value);
+    setLocation((updatedLocation)=>{
+      update(event.target.value);
+      return event.target.value;
+    });
     setIsOpen(true);
   };
-  const handleClick = (event: React.MouseEvent<HTMLOptionElement>) => {
-    setLocation(event.currentTarget.value);
+  const handleClick = (value:string) => {
+    setLocation((updatedLocation)=>{
+      update(value);
+      return value;
+    });
     setIsOpen(false);
   };
 
@@ -47,7 +58,7 @@ const Location = () => {
                       cityData.filter((item) => item.name.toLowerCase().includes(location.toLowerCase()))
                         .map((item) => (
                           <div key={item.id}>
-                            <option onClick={handleClick} value={item.name} id="options">
+                            <option onClick={()=>handleClick(item.name)} value={item.name} id="options">
                               {item.name},{item.state}
                             </option>
                           </div>
