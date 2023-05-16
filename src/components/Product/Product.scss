@@ -57,12 +57,13 @@
     font-size: 17px;
     float: right;
 }
-.col .btn a{
+.col .btn .submit{
     text-decoration: none;
     font-weight: 400;
     font-size: 15px;
     padding: 8px 50px;
     border-radius: 5px;
+    background-color: rgb(0, 94, 255);
     color: #fff;
 }
 .col .btn{
@@ -90,6 +91,9 @@
 }
 .col .no svg{
     color: red;
+}
+.col .btn a:hover{
+    transform: scale(1.1);
 }
 .flexRow{
     display: flex;
