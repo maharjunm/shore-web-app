@@ -6,18 +6,22 @@ import { ToggleSwitch } from '../MessageBox/ToggleSwitch';
 import { updateProduct } from '../../services/Products';
 interface Props{
   product: ProductData,
+  loading: boolean,
+  updateLoading: (flag:boolean)=> void,
 }
 
 const EditableProduct = (props:Props) => {
 
-  const { product } = props;
+  const { product, loading, updateLoading } = props;
   const [productForm , setProductForm ] = useState(product);
   const [ rotateCard, setRotateCard ] =  useState(false);
   const [ error , setError ] = useState('');
-  const [ status , setStatus ] = useState('');
+  const [ status , setStatus ] = useState('save');
 
   const submit   = async () =>{
+    if(loading) return ;
     setRotateCard(true);
+    updateLoading(true);
     const res = await updateProduct(productForm);
     
     setTimeout(() => {
@@ -25,11 +29,13 @@ const EditableProduct = (props:Props) => {
       if(res.status!=200) {
         setError('Failed');
       }else{
+        
         setStatus('success');
       }
+      updateLoading(false);
     }, 2000);
     setTimeout(() => {
-      setStatus('');
+      setStatus('save');
       setError('');
     }, 4000);
   };
@@ -59,7 +65,7 @@ const EditableProduct = (props:Props) => {
   
   return (
     <ErrorBoundary>
-      <div className={rotateCard? 'col rotateCard':'col'}>
+      <div className={ rotateCard? 'col rotateCard':loading?'col setOpacity':'col'}>
         <div className="heading">{productForm.type}</div>
         <div className="flexRow">
           <div className='flexColumn'>
@@ -82,8 +88,8 @@ const EditableProduct = (props:Props) => {
           ))
         }
         <div className="btn">
-          <button className={error?'failed':status?'success':'submit'} onClick={submit}>
-            {error?error:status?'Saved':'Save'}
+          <button className={error?'failed':status} onClick={submit}>
+            {error?error:status}
           </button>
         </div>
       </div>

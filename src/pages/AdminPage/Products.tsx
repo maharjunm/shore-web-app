@@ -7,6 +7,10 @@ import './Products.scss';
 const Products = () => {
 
   const [ products, setProducts] = useState([]);
+  const [ loading, setLoading ] = useState(false);
+  const updateLoading = (flag:boolean) => {
+    setLoading(flag);
+  };
   const fetchProducts = async () => {
     const res = await getProducts();
     if(res.status===200){
@@ -22,7 +26,7 @@ const Products = () => {
       <div className="content">
         { products &&
             products.map(( product:ProductData ) => (
-              <EditableProduct key={product.type} product={ product }  />
+              <EditableProduct key={product.type} product={ product } loading={loading} updateLoading={updateLoading}  />
             ))
         }
       </div>

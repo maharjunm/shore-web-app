@@ -12,6 +12,9 @@
     transition: .5s;
     margin-top: 20px;
 }
+.setOpacity{
+    opacity: 0.5;
+}
 .col .price{
     align-items: center;
     justify-content: space-around;
@@ -73,7 +76,7 @@
 .col .productNotSelected a{
   background-color: rgb(80,37,209);
 }
-.col .btn .submit{
+.col .btn .save{
     text-decoration: none;
     font-weight: 400;
     font-size: 15px;
@@ -87,9 +90,6 @@
 }
 .col .no svg{
     color: red;
-}
-.col .btn .submit:hover{
-    transform: scale(1.1);
 }
 .flexRow{
     display: flex;
