@@ -1,4 +1,4 @@
-.content .col{
+ .col{
     border: 1px solid #000;
     padding: 10px;
     min-width: 32%;
@@ -12,7 +12,7 @@
     transition: .5s;
     margin-top: 20px;
 }
-.content .col .price{
+.col .price{
     align-items: center;
     justify-content: space-around;
     margin-left: auto;
@@ -20,7 +20,7 @@
     max-width: 80%;
     border-bottom: 2px solid lightgray;
 }
-.content .col h3{
+.col h3{
     margin: 10px 0px;
     padding: 5px 0px;
     border: 0px solid #000;
@@ -31,11 +31,11 @@
     border-radius: 0px;
     color: rgb(254,172,41);
 }
-.content .col h3 small{
+.col h3 small{
     font-size: 15px;
     font-weight: 400;
 }
-.content .col .heading{
+.col .heading{
     text-align: center;
     padding: 0px 20px;
     color: rgb(31, 4, 110);
@@ -45,16 +45,16 @@
     margin-right: auto;
     border-radius: 0px;
 }
-.content .col p{
+.col p{
     padding: 10px 30px;
     text-align: left;
 }
-.content .col p span{
+.col p span{
     font-weight: 700;
     font-size: 17px;
     float: right;
 }
-.content .col .btn a{
+.col .btn a{
     text-decoration: none;
     font-weight: 400;
     font-size: 15px;
@@ -62,18 +62,18 @@
     border-radius: 5px;
     color: #fff;
 }
-.content .col .btn{
+.col .btn{
     padding-top: 10px;
     transition: 0.5s;
     cursor: pointer;
 }
-.content .col .productSelected a{
+.col .productSelected a{
   background-color: green;
 }
-.content .col .productNotSelected a{
+.col .productNotSelected a{
   background-color: rgb(80,37,209);
 }
-.content .col .btn .submit{
+.col .btn .submit{
     text-decoration: none;
     font-weight: 400;
     font-size: 15px;
@@ -88,7 +88,7 @@
 .col .no svg{
     color: red;
 }
-.content .col .btn .submit:hover{
+.col .btn .submit:hover{
     transform: scale(1.1);
 }
 .flexRow{

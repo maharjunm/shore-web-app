@@ -1,22 +1,23 @@
 .toggle{
-  width: 60px;
+  width: 45px;
   border-radius: 20px;
-  height: 28px;
+  height: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 3px;
 }
 
 .toggle .circle{
-  width: 25px;
-  height: 25px;
+  width: 17px;
+  height: 17px;
+  left: -12px;
   border-radius: 50%;
   background-color: #fff;
   position: relative;
 }
 .toggle .Move{
-  left: 28px;
-  transition: 2s ease-in-out;
+  left: 12px;
 }
 .outerTab .active{
   background-color:rgb(0, 94, 255);

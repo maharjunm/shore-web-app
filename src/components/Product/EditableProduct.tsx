@@ -19,12 +19,14 @@ const EditableProduct = (props:Props) => {
   const submit   = async () =>{
     setRotateCard(true);
     const res = await updateProduct(productForm);
-    if(res.status!=200) {
-      setError('Failed');
-    }
+    
     setTimeout(() => {
       setRotateCard(false);
-      setStatus('success');
+      if(res.status!=200) {
+        setError('Failed');
+      }else{
+        setStatus('success');
+      }
     }, 2000);
     setTimeout(() => {
       setStatus('');
