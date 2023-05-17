@@ -5,6 +5,7 @@ export { default as Searchbar } from './SearchBar/SearchBar';
 export { default as data } from './SearchBar/data';
 export { default as Location } from './Location/Location';
 export { default as Product } from './Product/Product';
+export { default as EditableProduct } from './Product/EditableProduct';
 export { default as PaymentSuccess } from './Product/PaymentSuccess';
 export { default as PaymentCancel } from './Product/PaymentCancel';
 export { default as Message } from './MessageBox/Message';
