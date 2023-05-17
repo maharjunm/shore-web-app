@@ -8,6 +8,7 @@ import { UserContext } from '../HomePage/HomePage';
 import { setStatusReject,setStatusApprove } from '../../services/Jobs';
 import PendingJobs from './PendingJobs';
 import RejectedJobs from './RejectedJobs';
+import Products from './Products';
 
 const Admin = () => {
 
@@ -50,28 +51,40 @@ const Admin = () => {
   }
   return (
     <div className="adminDashboard">
-      <div className="tabs">
-        <button
-          className={tab==='Pending' && 'active'} 
-          onClick={()=>setTab(()=>{
-            jobClick(null);
-            setTabCookie('status','Pending');
-            return 'Pending';
-          })}>
-          Pending
-        </button>
-        <button 
-          className={tab==='Rejected' && 'active'} 
-          onClick={()=>setTab(()=>{
-            jobClick(null);
-            setTabCookie('status','Rejected');
-            return 'Rejected';
-          })}>
-          Rejected
-        </button>
+      <div className='listItems'>
+        <h1>Admin Options</h1>
+        <ul>
+          <li 
+            className={tab==='Pending' && 'active'}
+            onClick={()=>setTab(()=>{
+              jobClick(null);
+              setTabCookie('status','Pending');
+              return 'Pending';
+            })}
+          >Pending</li>
+          <li 
+            className={tab==='Rejected' && 'active'}
+            onClick={()=>setTab(()=>{
+              jobClick(null);
+              setTabCookie('status','Rejected');
+              return 'Rejected';
+            })}
+          >Rejected</li>
+          <li 
+            className={tab==='Products' && 'active'}
+            onClick={()=>setTab(()=>{
+              jobClick(null);
+              setTabCookie('status','Products');
+              return 'Products';
+            })}
+          >Products</li>
+        </ul>
       </div>
+      
       <div className="down">
-        {tab==='Pending'?<PendingJobs openJob={jobClick}/>:<RejectedJobs openJob={jobClick}/>}
+        {tab==='Pending' && <PendingJobs openJob={jobClick}/>}
+        {tab==='Rejected' && <RejectedJobs openJob={jobClick}/>}
+        {tab==='Products' && <Products />}
         {currentJob &&
         <div className='show'>
           <div className="onejob">

@@ -15,6 +15,39 @@
   padding: 5px;
   margin:auto;
 }
+.adminDashboard {
+  display: flex;
+  justify-content: space-between;
+}
+.adminDashboard .listItems{
+  position: sticky;
+  top:20px;
+  height: max-content;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.adminDashboard .listItems h1{
+  margin-top: 100px;
+  font-weight: bold;
+}
+.adminDashboard .listItems ul{
+  width: 100%;
+  text-align: center;
+}
+.adminDashboard .listItems ul li{
+  width: 100%;
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+  color: #100e0e;
+}
+.adminDashboard .listItems ul .active{
+  background-color: #cbd5d5;
+  color: #0064a9;
+  
+}
 
 .adminDashboard .tabs{
   padding:10px;
@@ -105,8 +138,8 @@
   margin: auto;
 }
 .down{
-  width:80%;
   margin: auto;
+  padding: 10px;
   display: flex;
   justify-content: space-around;
 }
