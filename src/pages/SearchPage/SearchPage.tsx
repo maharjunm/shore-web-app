@@ -108,7 +108,7 @@ const SearchPage = () => {
       <div className="search">
         <div className="searchFields">
           <form onSubmit={onSubmit} >
-            <div className='inputBox'>
+            <div className='inputContent'>
               <label> Job Title </label>
               <input 
                 type="text"  
@@ -117,7 +117,7 @@ const SearchPage = () => {
                 value={search.jobTitle}
               />
             </div>
-            <div className='inputBox'>
+            <div className='inputContent'>
               <label> Location </label>
               <input 
                 type="text" 
@@ -126,7 +126,7 @@ const SearchPage = () => {
                 value={search.location}
               />
             </div>
-            <div className='inputBox'>
+            <div className='inputContent'>
               <label> Salary </label>
               <input type="range" onChange={(e)=>updateSearchContents('salary',e.target.value)} value={search.salary} />
               <label className='flex space-around text-small'>

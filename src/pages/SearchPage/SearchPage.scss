@@ -29,22 +29,22 @@
   position: sticky;
   top:10px;
 }
-.viewBox .search .searchFields .inputBox{
+.viewBox .search .searchFields .inputContent{
   display: flex;
   flex-direction: column;
 }
-.viewBox .search .searchFields .inputBox label{
+.viewBox .search .searchFields .inputContent label{
   font-weight: 500;
   margin-left: 5px;
   color: rgb(20, 21, 20);
 }
-.viewBox .search .searchFields .inputBox input{
+.viewBox .search .searchFields .inputContent input{
   border: none;
   height: 35px;
   outline: none;
   padding: 5px;
 }
-.inputBox .dropDown{
+.inputContent .dropDown{
   border: none;
   height: 35px;
   outline: none;
