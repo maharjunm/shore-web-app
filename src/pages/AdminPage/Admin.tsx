@@ -10,7 +10,7 @@ import PendingJobs from './PendingJobs';
 import RejectedJobs from './RejectedJobs';
 import Products from './Products';
 
-function Admin() {
+const Admin = () => {
 
   const { state, dispatch } = useContext(UserContext);
   const [ tabCookie,setTabCookie,removeTabCookie ] = useCookies();
@@ -115,6 +115,6 @@ function Admin() {
     </div>
 
   );
-}
+};
 
 export default Admin;

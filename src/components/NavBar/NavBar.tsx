@@ -35,7 +35,7 @@ const NavBar = () => {
       return(
         <>
           <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
-          <ul className="margin">
+          <ul >
             <li><NavLink to="/dashboard">Dashboard</NavLink></li>
             <li><NavLink to="/logout">Logout</NavLink></li>
           </ul>
@@ -46,7 +46,7 @@ const NavBar = () => {
       return(
         <>
           <li ><NavLink to="/contactus">Contact Us</NavLink></li>
-          <ul className="margin">
+          <ul>
             <li><NavLink to="/signup">Signup</NavLink></li>
             <li><NavLink to="/login">Login</NavLink></li>
           </ul>

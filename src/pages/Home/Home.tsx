@@ -2,7 +2,7 @@ import React ,{useState,useRef} from 'react';
 import JobFeed from './JobFeed';
 import JobDetails from './JobDetails';
 import './Home.scss';
-import { ErrorBoundary,Searchbar, Location } from '../../components';
+import { ErrorBoundary,Searchbar, Location, Highlights } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
 import data from '../../components/SearchBar/data';
 import { fetchJobs } from '../../services/Jobs';
@@ -10,10 +10,11 @@ import { Job } from '../../components/DataModels/Job';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchRecomendedJobs } from '../../services/Jobs';
 import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
-import { faArrowLeft,faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft,faArrowRight, faSearch } from '@fortawesome/free-solid-svg-icons';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { useHistory } from 'react-router-dom';
 const shuffle = (array:Job[]) => {
   for( var i=array.length-1;i>0;i--){
     var j = Math.floor(Math.random()*(i+1));
@@ -26,14 +27,23 @@ const shuffle = (array:Job[]) => {
 const Home = () => {
   const [currentJob,setCurrentJob]= useState(null);
   const [view,setView]= useState('hide');
+  const history = useHistory();
   const [jobs,setJobs]=React.useState([]);
   const [selectedJob,setSelectedJob]=React.useState('');
   const [job,setJob] =React.useState([]);
   const [page,setPage]=React.useState(0);
   const [checkHasMore,setCheckHasMore]=React.useState(true);
   const [recomendedJobs,setRecomendedJobs]=React.useState([]);
-  const [slidingJobs,setSlidingJobs]=React.useState([]);
   const [slidingPage,setSlidingPage ] = useState(0);
+  const [ location, setLocation ] = useState('');
+  const [ jobTitle, setJobTitle ] = useState('');
+
+  const updateLocation = (value:string)=>{
+    setLocation(value);
+  };
+  const updateJobTitle = (value:string)=>{
+    setJobTitle(value);
+  };
 
   const jobSliderRef = useRef(null);
   const nextJob = () => {
@@ -78,7 +88,6 @@ const Home = () => {
       setCheckHasMore(false);
       return ;
     }
-    
     if(res){
       const newJobs = res.data;
       shuffle(newJobs);
@@ -92,7 +101,7 @@ const Home = () => {
     if(res){
       const newJobs=res.data;
       shuffle(newJobs);
-      setRecomendedJobs([...recomendedJobs,...newJobs]);
+      setRecomendedJobs(newJobs);
     }
   };
   React.useEffect(()=>{
@@ -114,6 +123,13 @@ const Home = () => {
     setView(currentView);
     setCurrentJob(job);
   };
+  const gotoSearch = () => {
+    history.push({
+      pathname:'/search',
+      state: {jobTitle: jobTitle,locationValue: location}
+    });
+    return ;
+  };
   
   return (
     <ErrorBoundary>
@@ -121,12 +137,17 @@ const Home = () => {
         <div className="top">
           <div className='inputForm'>
             <div className="searchBar">
-              <Searchbar data={data} onJobSelect={handleJobSelect}/>
+              <Searchbar data={data} onJobSelect={handleJobSelect} update={updateJobTitle}/>
             </div>
             <div className='locationBar'>
-              <Location />
+              <Location  update={updateLocation}  />
+            </div>
+            <div className='searchIcon' onClick={gotoSearch}>
+              <span>Search </span>
+              <FA icon={faSearch}></FA>
             </div>
           </div>
+          <Highlights />
         </div>
         <div className="middle">
           {recomendedJobs.length!==0 &&

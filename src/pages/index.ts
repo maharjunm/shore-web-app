@@ -11,3 +11,4 @@ export { default as Logout } from './user/Logout';
 export { default as Profile } from './user/userProfile';
 export { default as Admin } from './AdminPage/Admin';
 export { default as User } from './UserPage/User';
+export { default as SearchPage } from './SearchPage/SearchPage';
