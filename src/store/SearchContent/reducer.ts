@@ -10,10 +10,10 @@ export type SearchStatus = {
 const initialStatus:SearchData = {
   jobTitle: '',
   location: '',
-  salary: 0,
-  discipline: null,
-  country: null,
-  sector: null,
+  salary: 100,
+  discipline: [],
+  country: [],
+  sector: [],
 };
 const retriviewStatus = localStorage.getItem('search')?JSON.parse(localStorage.getItem('search')):initialStatus;
 export const initialSearch: SearchStatus = {

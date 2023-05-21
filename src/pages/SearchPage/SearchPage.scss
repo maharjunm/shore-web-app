@@ -44,6 +44,9 @@
   outline: none;
   padding: 5px;
 }
+.viewBox .search .searchFields .inputContent input[type="range"]{
+  transform: rotate(180deg);
+}
 .inputContent .dropDown{
   border: none;
   height: 35px;

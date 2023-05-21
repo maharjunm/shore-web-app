@@ -15,7 +15,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 const  defaultSearch:SearchData= {
   jobTitle:'',
   location:'',
-  salary:0,
+  salary:100,
   discipline:[],
   country:[],
   sector:[],
@@ -62,6 +62,10 @@ const SearchPage = () => {
       setJobs([...jobs,...newJobs]);
     }
   };
+  const calculateSalary = (sal:any)=>{
+    const salary = 100-sal;
+    return (salary*400);
+  };
   React.useEffect(()=>{
     fetchData(page);
   },[page]);
@@ -77,6 +81,9 @@ const SearchPage = () => {
     setCountry(value);
   };
   const updateSearchContents = ( field:string,value:string|number|string[]) => {
+    if(typeof(value)==='string'){
+      value= value.trim();
+    }
     console.log(search.discipline);
     setSearch((prevSearch)=>{
       const updatedSearch = {
@@ -90,9 +97,16 @@ const SearchPage = () => {
       };
     });
   };
-  const onSubmit = (e:any )=>{
+  const onSubmit = async (e:any )=>{
     e.preventDefault();
-    const searchJobs = getSearchJobs(search,page);
+    const searchJobs = await getSearchJobs(search,page);
+    console.log(searchJobs);
+    if(!searchJobs || searchJobs.data.length===0){
+      setCheckHasMore(false);
+      setJobs([]);
+      return ;
+    }
+    setJobs(searchJobs.data);
     return ;
   };
   const resetForm = ()=>{
@@ -127,14 +141,18 @@ const SearchPage = () => {
               />
             </div>
             <div className='inputContent'>
-              <label> Salary </label>
-              <input type="range" onChange={(e)=>updateSearchContents('salary',e.target.value)} value={search.salary} />
+              <label> Atleast Salary </label>
+              <input type="range" onChange={(e)=>{
+                const sal = calculateSalary(e.target.value);
+                updateSearchContents('salary',sal);
+                
+              }} value={100-search.salary/400} />
               <label className='flex space-around text-small'>
-                <span>1K</span>
                 <span>2K</span>
                 <span>5K</span>
                 <span>10K</span>
                 <span>20K</span>
+                <span>40K</span>
               </label>
             </div>
             <DropDown values={disciplines} name={'discipline'} updateSearchContents={updateSearchContents} selected={discipline} updateArray={updateArray} />
@@ -159,7 +177,7 @@ const SearchPage = () => {
               )) 
             }
           </InfiniteScroll>
-          {!checkHasMore && <h4 className='endingMessage'>We have these jobs only...</h4>}
+          {!checkHasMore && <h4 className='endingMessage'>No Jobs Found</h4>}
         </div>
       </div>
     </div>
