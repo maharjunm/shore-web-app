@@ -139,6 +139,8 @@ body{
 }
 .carousel-card img {
   height: 120px;
+  width: 120px;
+  object-fit: fill;
   border-radius: 50%;
   margin-bottom: 20px;
 }

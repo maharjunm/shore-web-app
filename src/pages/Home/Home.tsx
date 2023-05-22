@@ -203,24 +203,6 @@ const Home = () => {
           </div>
         </div>
         }
-        <div className="down">
-          <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
-            <InfiniteScroll
-              dataLength={jobs.length}
-              hasMore={checkHasMore}
-              next={()=>setPage(jobs.length)}
-              loader={<h4>Loading...</h4>}
-            >
-              { job.map((element:Job)=>(
-                <JobFeed key={element._id} jobd={element} jobClick={jobClick} />
-              )) }
-            </InfiniteScroll>
-            {!checkHasMore && <h4 className='endingMessage'>We have these jobs only...</h4>}
-          </div>
-          <div className={view}>
-            {currentJob && <JobDetails key={currentJob._id} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true} />}
-          </div>
-        </div>
       </div>
     </ErrorBoundary>
   );
