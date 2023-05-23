@@ -123,10 +123,10 @@ const Home = () => {
     setView(currentView);
     setCurrentJob(job);
   };
-  const gotoSearch = () => {
+  const gotoSearch = (title: string,location:string) => {
     history.push({
       pathname:'/search',
-      state: {jobTitle: jobTitle,locationValue: location}
+      state: {jobTitle: title,locationValue: location}
     });
     return ;
   };
@@ -142,7 +142,7 @@ const Home = () => {
             <div className='locationBar'>
               <Location  update={updateLocation}  />
             </div>
-            <div className='searchIcon' onClick={gotoSearch}>
+            <div className='searchIcon' onClick={()=>gotoSearch(jobTitle, location)}>
               <span>Search </span>
               <FA icon={faSearch}></FA>
             </div>
@@ -154,7 +154,7 @@ const Home = () => {
           <div className="carousel-container">
             <Slider {...jobSlideSettings} ref={jobSliderRef}>
               {recomendedJobs.map((element:Job)=>(
-                <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} />
+                <JobFeed key={element.job.title} jobd={element} jobClick={jobClick} isHome={true}  />
               ))}
 
             </Slider>
@@ -186,7 +186,7 @@ const Home = () => {
           <Slider {...logoSlideSettings} ref={logoSliderRef}>
             {recomendedJobs.map((element)=>(
               <div className="carousel-card" key={element._id}>
-                <div className="card-content">
+                <div className="card-content" >
                   <img src={element.company.logo} alt="Text" />
                   <h1>{element.company.name}</h1>
                 </div>

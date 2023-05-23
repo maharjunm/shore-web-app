@@ -3,6 +3,7 @@ export interface SearchData{
   location?: string,
   salary?: number,
   discipline?: string[],
-  country?: string[],
+  region?: string[],
   sector?: string[],
+  title?: string[],
 };

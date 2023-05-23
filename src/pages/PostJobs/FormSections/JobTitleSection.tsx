@@ -89,7 +89,7 @@ const JobTitleSection = (props:Props) => {
             onRemove={(e)=>updateDiscipline('discipline',e)}
             isObject={false}
             options={option}
-            selectedValues={['Sciences']}
+            selectedValues={[]}
           />
         </div>
         <div className="row">

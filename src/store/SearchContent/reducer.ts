@@ -12,8 +12,9 @@ const initialStatus:SearchData = {
   location: '',
   salary: 100,
   discipline: [],
-  country: [],
+  region: [],
   sector: [],
+  title: [],
 };
 const retriviewStatus = localStorage.getItem('search')?JSON.parse(localStorage.getItem('search')):initialStatus;
 export const initialSearch: SearchStatus = {

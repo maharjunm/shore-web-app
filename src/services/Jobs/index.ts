@@ -95,3 +95,12 @@ export const getJobById = async (jobId:string) =>{
     return error.response;
   }
 };
+
+export const getHighlights = async () => {
+  try{
+    const response = await axios.get(`${REACT_BACKEND_URL}/v1/job/highlights`);
+    return response.data;
+  }catch (error){
+    return [];
+  }
+};

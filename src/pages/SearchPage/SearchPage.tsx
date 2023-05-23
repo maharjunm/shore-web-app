@@ -17,8 +17,9 @@ const  defaultSearch:SearchData= {
   location:'',
   salary:100,
   discipline:[],
-  country:[],
+  region:[],
   sector:[],
+  title:[],
 };
 
 const SearchPage = () => {
@@ -43,23 +44,28 @@ const SearchPage = () => {
   });
   const [discipline, setDicipline] = useState(()=>searchStatus.status.discipline);
   const [sector, setSector] = useState(()=>searchStatus.status.sector);
-  const [country, setCountry] = useState(()=>searchStatus.status.country);
+  const [region, setRegion] = useState(()=>searchStatus.status.region);
+  const [title, setTitle] = useState(()=>searchStatus.status.title);
 
   const [jobs,setJobs]=React.useState([]);
   const [checkHasMore,setCheckHasMore] = useState(true);
   const [ page, setPage ] = useState(0);
   const disciplines = ['Life Sciences', 'Physics', 'Biomedicine','Health Sciences','Engineering','Chemistry','Computer Science','Applied Science','Nanotechnology','Earth Sciences','Environmental','Sciences','Veterinary','Fisheries','Agriculture','Forestry'];
   const sectors = ['Academia','Industry','Government','Healthcare/Hospital','Non-Profit','Media/Communications'];
-  const countries = ['North America','Europe','Asia','South America','Asia Pacific','Australia','Middle East','Oceania','Working from home'];
+  const regions = ['North America','Europe','Asia','South America','Asia Pacific','Australia','Middle East','Oceania','Working from home'];
+  const titles = ['Academic Dean/Dept. Head','Faculty','Group Leader/Principal Invesigator','Lab Manager',
+    'Lecturer/Senior Lecturer','Manager','Medical Doctor','PhD Fellowship','PhD Studentship',
+    'Postdoc Fellowship','President/CEO/Director/VP','Project Manager','Research Scientist','Senior Scientist',
+    'Staff Scientist','Student Fellowship','Technician'];
   const fetchData=async(page:number)=>{
-    const res = await fetchJobs(page);
+    const res = await getSearchJobs(search,page);
     if(res.data.length==0){
       setCheckHasMore(false);
       return ;
     }
     if(res){
       const newJobs = res.data;
-      setJobs([...jobs,...newJobs]);
+      setJobs(newJobs);
     }
   };
   const calculateSalary = (sal:any)=>{
@@ -78,7 +84,11 @@ const SearchPage = () => {
       setSector(value);
       return ;
     }
-    setCountry(value);
+    if(field==='title'){
+      setTitle(value);
+      return ;
+    }
+    setRegion(value);
   };
   const updateSearchContents = ( field:string,value:string|number|string[]) => {
     if(typeof(value)==='string'){
@@ -97,7 +107,7 @@ const SearchPage = () => {
       };
     });
   };
-  const onSubmit = async (e:any )=>{
+  const onSubmit = async (e: any)=>{
     e.preventDefault();
     const searchJobs = await getSearchJobs(search,page);
     console.log(searchJobs);
@@ -106,7 +116,8 @@ const SearchPage = () => {
       setJobs([]);
       return ;
     }
-    setJobs(searchJobs.data);
+    const newJobs = searchJobs.data;
+    setJobs(newJobs);
     return ;
   };
   const resetForm = ()=>{
@@ -115,9 +126,9 @@ const SearchPage = () => {
   };
   return (
     <div className="viewBox">
-      <Highlights />
+      <Highlights updateSearch={updateSearchContents} />
       <div className="jobsCount">
-        <h1>Found 59 Jobs that matches your search</h1>
+        <h1>Found {jobs.length } Jobs that matches your search</h1>
       </div>
       <div className="search">
         <div className="searchFields">
@@ -156,8 +167,10 @@ const SearchPage = () => {
               </label>
             </div>
             <DropDown values={disciplines} name={'discipline'} updateSearchContents={updateSearchContents} selected={discipline} updateArray={updateArray} />
+            <DropDown values={titles} name={'title'} updateSearchContents={updateSearchContents} selected={title} updateArray={updateArray} />
             <DropDown values={sectors} name={'sector'} updateSearchContents={updateSearchContents} selected={sector} updateArray={updateArray} />
-            <DropDown values={countries} name={'country'} updateSearchContents={updateSearchContents}selected={country} updateArray={updateArray} />
+            <DropDown values={regions} name={'region'} updateSearchContents={updateSearchContents}selected={region} updateArray={updateArray} />
+            
             <div className='btnFlex'>
               <input type="submit"  value='Clear' onClick={resetForm} />
               <input type="submit"  value='Search' />

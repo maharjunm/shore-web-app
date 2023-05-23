@@ -14,10 +14,11 @@ interface Props {
     viewBtn?:boolean;
     isUser?: boolean;
     isAdmin?: boolean;
+    isHome?: boolean;
 }
 const JobFeed = (det: Props) => {
   let p=det.jobd;
-  const { viewBtn, isUser, isAdmin } = det;
+  const { viewBtn, isUser, isAdmin, isHome } = det;
   const history = useHistory();
   const setJob=()=>{
     det.jobClick(p,'show');
@@ -33,7 +34,7 @@ const JobFeed = (det: Props) => {
   const postingDate = dayjs(p.dates.postingDate).format('DD/MM/YYYY');
   return (
     <ErrorBoundary>
-      <div className="jobFeed" >
+      <div className="jobFeed"  onClick={isHome?viewJob:null}>
         <div className="flex">
           <div className="title">
             <h4 >{p.job.title}</h4>
