@@ -12,6 +12,8 @@ import { updateSearch } from '../../store/SearchContent/reducer';
 import { RootState } from '../../store/configureStore';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
+import { getDisciplines, getRegions, getSectors, getTitles } from '../../services/Utils';
+
 const  defaultSearch:SearchData= {
   jobTitle:'',
   location:'',
@@ -42,10 +44,33 @@ const SearchPage = () => {
     }
     return searchStatus.status;
   });
-  const [discipline, setDicipline] = useState(()=>searchStatus.status.discipline);
-  const [sector, setSector] = useState(()=>searchStatus.status.sector);
-  const [region, setRegion] = useState(()=>searchStatus.status.region);
-  const [title, setTitle] = useState(()=>searchStatus.status.title);
+  const [selectedDiscipline, setSelectedDiscipline] = useState(()=>searchStatus.status.discipline);
+  const [selectedSector, setSelectedSector] = useState(()=>searchStatus.status.sector);
+  const [selectedRegion, setSelectedRegion] = useState(()=>searchStatus.status.region);
+  const [selectedTitle, setSelectedTitle] = useState(()=>searchStatus.status.title);
+
+  const [allDiscipline, setAllDiscipline] = useState([]);
+  const [allSector, setAllSector] = useState([]);
+  const [allRegion, setAllRegion] = useState([]);
+  const [allTitle, setAllTitle] = useState([]);
+
+  const fetchDicipline = async ()=>{
+    const res = await getDisciplines();
+    setAllDiscipline(res);
+  };
+  const fetchSectors = async ()=>{
+    const res = await getSectors();
+    setAllSector(res);
+  };
+  const fetchRegions = async ()=>{
+    const res = await getRegions();
+    setAllRegion(res);
+  };
+  const fetchTitles = async ()=>{
+    const res = await getTitles();
+    setAllTitle(res);
+  };
+
 
   const [jobs,setJobs]=React.useState([]);
   const [checkHasMore,setCheckHasMore] = useState(true);
@@ -73,22 +98,33 @@ const SearchPage = () => {
     return (salary*400);
   };
   React.useEffect(()=>{
+    fetchDicipline();
+    fetchSectors();
+    fetchRegions();
+    fetchTitles();
+  },[]);
+  React.useEffect(()=>{
     fetchData(page);
+
   },[page]);
   const updateArray = (field:string,value:string[])=>{
     if(field==='discipline'){
-      setDicipline(value);
+      setSelectedDiscipline(value);
       return ;
     }
     if(field==='sector'){
-      setSector(value);
+      setSelectedSector(value);
       return ;
     }
     if(field==='title'){
-      setTitle(value);
+      setSelectedTitle(value);
       return ;
     }
-    setRegion(value);
+    if(field==='region'){
+      setSelectedRegion(value);
+      return;
+    }
+    
   };
   const updateSearchContents = ( field:string,value:string|number|string[]) => {
     if(typeof(value)==='string'){
@@ -166,10 +202,10 @@ const SearchPage = () => {
                 <span>40K</span>
               </label>
             </div>
-            <DropDown values={disciplines} name={'discipline'} updateSearchContents={updateSearchContents} selected={discipline} updateArray={updateArray} />
-            <DropDown values={titles} name={'title'} updateSearchContents={updateSearchContents} selected={title} updateArray={updateArray} />
-            <DropDown values={sectors} name={'sector'} updateSearchContents={updateSearchContents} selected={sector} updateArray={updateArray} />
-            <DropDown values={regions} name={'region'} updateSearchContents={updateSearchContents}selected={region} updateArray={updateArray} />
+            <DropDown values={allDiscipline} name={'discipline'} updateSearchContents={updateSearchContents} selected={selectedDiscipline} updateArray={updateArray} />
+            <DropDown values={allTitle} name={'title'} updateSearchContents={updateSearchContents} selected={selectedTitle} updateArray={updateArray} />
+            <DropDown values={allSector} name={'sector'} updateSearchContents={updateSearchContents} selected={selectedSector} updateArray={updateArray} />
+            <DropDown values={allRegion} name={'region'} updateSearchContents={updateSearchContents}selected={selectedRegion} updateArray={updateArray} />
             
             <div className='btnFlex'>
               <input type="submit"  value='Clear' onClick={resetForm} />
