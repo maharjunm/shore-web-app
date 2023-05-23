@@ -75,13 +75,7 @@ const SearchPage = () => {
   const [jobs,setJobs]=React.useState([]);
   const [checkHasMore,setCheckHasMore] = useState(true);
   const [ page, setPage ] = useState(0);
-  const disciplines = ['Life Sciences', 'Physics', 'Biomedicine','Health Sciences','Engineering','Chemistry','Computer Science','Applied Science','Nanotechnology','Earth Sciences','Environmental','Sciences','Veterinary','Fisheries','Agriculture','Forestry'];
-  const sectors = ['Academia','Industry','Government','Healthcare/Hospital','Non-Profit','Media/Communications'];
-  const regions = ['North America','Europe','Asia','South America','Asia Pacific','Australia','Middle East','Oceania','Working from home'];
-  const titles = ['Academic Dean/Dept. Head','Faculty','Group Leader/Principal Invesigator','Lab Manager',
-    'Lecturer/Senior Lecturer','Manager','Medical Doctor','PhD Fellowship','PhD Studentship',
-    'Postdoc Fellowship','President/CEO/Director/VP','Project Manager','Research Scientist','Senior Scientist',
-    'Staff Scientist','Student Fellowship','Technician'];
+
   const fetchData=async(page:number)=>{
     const res = await getSearchJobs(search,page);
     if(res.data.length==0){
@@ -173,7 +167,7 @@ const SearchPage = () => {
               <label> Job Title </label>
               <input 
                 type="text"  
-                placeholder='eg:Research Scientist' 
+                placeholder='example:Research Scientist' 
                 onChange={(e)=>updateSearchContents('jobTitle',e.target.value)}
                 value={search.jobTitle}
               />
@@ -182,7 +176,7 @@ const SearchPage = () => {
               <label> Location </label>
               <input 
                 type="text" 
-                placeholder='eg:Bangloor'
+                placeholder='example:Merced'
                 onChange={(e)=>updateSearchContents('location',e.target.value)}
                 value={search.location}
               />
