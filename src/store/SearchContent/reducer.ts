@@ -10,6 +10,7 @@ export type SearchStatus = {
 const initialStatus:SearchData = {
   jobTitle: '',
   location: '',
+  company:'',
   salary: 100,
   discipline: [],
   region: [],

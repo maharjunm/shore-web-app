@@ -130,6 +130,13 @@ const Home = () => {
     });
     return ;
   };
+  const gotoSearchByCompany = (value:string) =>{
+    history.push({
+      pathname:'/search',
+      state: {company:value}
+    });
+    return ;
+  };
   
   return (
     <ErrorBoundary>
@@ -173,7 +180,9 @@ const Home = () => {
         <div className="carousel-container-default">
           {recomendedJobs.map((element)=>(
             <div className="carousel-card" key={element._id}>
-              <div className="card-content">
+              <div 
+                className="card-content" 
+                onClick={()=>gotoSearchByCompany(element.company.name)}>
                 <img src={element.company.logo} alt="Text" />
                 <h1>{element.company.name}</h1>
               </div>
@@ -186,7 +195,9 @@ const Home = () => {
           <Slider {...logoSlideSettings} ref={logoSliderRef}>
             {recomendedJobs.map((element)=>(
               <div className="carousel-card" key={element._id}>
-                <div className="card-content" >
+                <div 
+                  className="card-content" 
+                  onClick={()=>gotoSearchByCompany(element.company.name)}>
                   <img src={element.company.logo} alt="Text" />
                   <h1>{element.company.name}</h1>
                 </div>
