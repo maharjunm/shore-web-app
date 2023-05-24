@@ -50,9 +50,9 @@ const Footer = () => {
           <label className="color font-heading">Usefull Links</label>
           <ul>
             <li><Link to='/postjobs'><FA icon={faExternalLink} />Post a Job</Link></li>
-            <li><Link to='/postjobs'><FA icon={faExternalLink} />Jobs</Link></li>
-            <li><Link to='/postjobs'><FA icon={faExternalLink} />Queries</Link></li>
-            <li><Link to='/postjobs'><FA icon={faExternalLink} />Login</Link></li>
+            <li><Link to='/home'><FA icon={faExternalLink} />Jobs</Link></li>
+            <li><Link to='/contactus'><FA icon={faExternalLink} />Queries</Link></li>
+            <li><Link to='/login'><FA icon={faExternalLink} />Login</Link></li>
           </ul>
         </div>
         <div className="contact-details">
