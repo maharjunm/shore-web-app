@@ -63,6 +63,18 @@
   background-color:#eee;
   text-align: center;
 }
+.side .minrow{
+  display: flex;
+  justify-content: space-between;
+}
+
+.side .minrow .minInput-30{
+  width: 70px;
+  margin-right:10px;
+}
+.side .minrow .minInput-70{
+  width: 220px;
+}
 .orgLogo{
   background-color: red;
 }
@@ -160,6 +172,16 @@
   }
   .side .row{
     width: 280px;
+  }
+  .side .minrow .minInput-30{
+    width: 40px;
+    margin-right:10px;
+  }
+  .side .minrow .minInput-70{
+    width: 110px;
+  }
+  .row .textArea{
+    max-width: 300px;
   }
   .side .row input,.side .row label,.input{
     font-size: 12px;

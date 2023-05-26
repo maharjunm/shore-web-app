@@ -63,16 +63,12 @@ const QualificationsSection =  (props: Props) => {
             ))
           }
         </ul>
-        <div className="row">
-          <input
-            type="text"
-            name="extraqualification"
-            onChange={updateQualification}
-            onBlur={updateQualification}
-            id="qlinput"
-            placeholder="Bachelors/Masters/Phd"
+        <div className="row flexrow">
+          <textarea className='textArea' rows={5} cols={60} name="extraDuty"  onChange={updateQualification}
+            onBlur={updateQualification} id="rrinput"
             value={qualification}
-          />
+            placeholder="Qualifications " >
+          </textarea>
           <button type="button"  onClick={addQualification} className="addBtn" >Add+</button>
         </div>
         <div className="ErrorBox">
