@@ -55,7 +55,7 @@ const JobDetails= (details:Props) => {
                 </div>
                 <Link to='/' >{p.company.name}</Link>
                 <span className='companyLocation'>{p.location.city},{p.location.state}-{p.location.country}</span>
-                <span>&#8377;{p.salary.sal} - {p.salary.companyType}</span>
+                <span>{p.salary.sal}{p.salary.currency} - {p.salary.companyType}</span>
                 <div className="closingDate">
                   <div className="dateBold">Closing Date :</div >
                   <div>{closing}</div>

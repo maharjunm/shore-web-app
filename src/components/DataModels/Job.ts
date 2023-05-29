@@ -23,6 +23,7 @@ export interface Job {
     closingDate: Date;
   };
   salary: {
+    currency: string;
     sal: number;
     hours: number;
     companyType: 'Annual' |'Regular'|'Monthly'|'Quarterly';

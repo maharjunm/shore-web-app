@@ -97,3 +97,9 @@
 .color-green, .color-green li svg{
     color:green;
 }
+
+@media only screen and (max-width: 1050px) {
+    .jobFeed{
+        min-height: max-content;
+    }
+}

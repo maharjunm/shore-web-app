@@ -20,6 +20,7 @@ interface FormData{
     closingDate:string;
   };
   salary: {
+    currency: string;
     sal: number;
     hours: number;
     companyType: 'Annual' |'Regular'|'Monthly'|'Quarterly';
