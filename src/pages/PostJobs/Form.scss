@@ -158,6 +158,13 @@
   text-align: right;
   font-weight: 500;
 }
+.multiselect .multi{
+  width: 300px;
+}
+.multiselect .multi .searchBox{
+  width: 270px;
+  margin: auto;
+}
 @media only screen and (max-width: 750px) {
   .sections{
     padding: 5px;
@@ -166,6 +173,13 @@
     padding: 5px;
     border-right: none;
     max-width: 500px;
+  }
+  .multiselect .multi{
+    width: 160px;
+  }
+  .multiselect .multi .searchBox{
+    width: 140px;
+    margin: 0;
   }
   .input,.side .row input{
     width:160px;

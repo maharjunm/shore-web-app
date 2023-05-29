@@ -20,10 +20,6 @@ const QualificationsSection =  (props: Props) => {
   const removeQualification = (id: string)=>{
     setQualifications((updatedQulifications)=>{
       const newQualifications=qualifications.filter((qualification)=>qualification.id!=id);
-      if(newQualifications.length===0){
-        updateForm('qualifications',null);
-        return newQualifications;
-      }
       updateForm('qualifications',newQualifications);
       return newQualifications;
     });

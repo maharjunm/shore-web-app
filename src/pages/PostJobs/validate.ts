@@ -8,7 +8,7 @@ const validate=(form:FormData)=>{
   ];
   const  isValid = mandatoryFields.reduce((acc,field) => { 
     if (field === 'qualifications' || field === 'duties' || field === 'discipline') {
-      return acc && !(!form[field]);
+      return acc && !(form[field].length===0);
     }
     const subFields = field.split('.');
     return acc && !(!form[subFields[0]][subFields[1]]); 

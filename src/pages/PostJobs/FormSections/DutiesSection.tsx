@@ -20,10 +20,6 @@ const DutiesSection =  (props: Props) => {
   const removeDuty = (id:string)=>{
     setDuties((updatedDuties)=>{
       const newDuties=duties.filter((duty)=>duty.id!=id);
-      if(newDuties.length===0){
-        updateForm('duties',null);
-        return newDuties;
-      }
       updateForm('duties',newDuties);
       return newDuties;
     });

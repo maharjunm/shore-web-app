@@ -48,9 +48,9 @@ const defaultForm:FormData = {
     hours: null,
     companyType: 'Annual',
   },
-  qualifications:null,
-  discipline:null,
-  duties:null,
+  qualifications:[],
+  discipline:[],
+  duties:[],
   contact:{
     email:'',
     employeeWebsite:'',

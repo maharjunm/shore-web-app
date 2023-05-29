@@ -38,4 +38,5 @@ export interface Job {
   status : 'Approved' | 'Rejected' | 'Pending' ;
   createdBy: string;
   productType: string;
+  paymentStatus: boolean;
 }
