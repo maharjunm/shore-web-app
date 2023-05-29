@@ -15,6 +15,10 @@ const Highlights = (props: Props) => {
   const { updateSearch } = props;
   const [ highlights, setHighlights] = useState([]);
   const [ error, setError ] = useState('');
+  const [ loading, setLoading] = useState(true);
+  const stopLoading = () => {
+    setLoading(false);
+  };
   const sliderRef = useRef(null);
   const history = useHistory();
 
@@ -31,10 +35,13 @@ const Highlights = (props: Props) => {
 
   const fetchHighlights = async ()=>{
     const res = await getHighlights();
-    if(!res){
+    console.log('re',res);
+    if(!res || res.length===0){
+      stopLoading();
       setError('something went wrong');
       return ;
     }
+    stopLoading();
     setHighlights(res);
   };
   React.useEffect(()=>{
@@ -73,7 +80,10 @@ const Highlights = (props: Props) => {
           ))}
         </Slider>
       }
+      {loading && <div className='center'>Loading ....</div>}
+      {error && <div className='errorBox center'>{error}....</div>}
     </div> 
+
   );
 };
 

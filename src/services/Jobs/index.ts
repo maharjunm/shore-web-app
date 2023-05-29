@@ -75,7 +75,7 @@ export const fetchRecomendedJobs= async(page:Number)=>{
     return response;
   }
   catch(error){
-    return error;
+    return error.response;
   }
 };
 export const getSearchJobs = async (search:SearchData,page:Number) =>{
