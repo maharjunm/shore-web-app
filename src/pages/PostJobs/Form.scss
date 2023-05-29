@@ -63,6 +63,18 @@
   background-color:#eee;
   text-align: center;
 }
+.side .minrow{
+  display: flex;
+  justify-content: space-between;
+}
+
+.side .minrow .minInput-30{
+  width: 70px;
+  margin-right:10px;
+}
+.side .minrow .minInput-70{
+  width: 220px;
+}
 .orgLogo{
   background-color: red;
 }
@@ -146,6 +158,13 @@
   text-align: right;
   font-weight: 500;
 }
+.multiselect .multi{
+  width: 300px;
+}
+.multiselect .multi .searchBox{
+  width: 270px;
+  margin: auto;
+}
 @media only screen and (max-width: 750px) {
   .sections{
     padding: 5px;
@@ -155,11 +174,28 @@
     border-right: none;
     max-width: 500px;
   }
+  .multiselect .multi{
+    width: 160px;
+  }
+  .multiselect .multi .searchBox{
+    width: 140px;
+    margin: 0;
+  }
   .input,.side .row input{
     width:160px;
   }
   .side .row{
     width: 280px;
+  }
+  .side .minrow .minInput-30{
+    width: 40px;
+    margin-right:10px;
+  }
+  .side .minrow .minInput-70{
+    width: 110px;
+  }
+  .row .textArea{
+    max-width: 300px;
   }
   .side .row input,.side .row label,.input{
     font-size: 12px;

@@ -20,10 +20,6 @@ const DutiesSection =  (props: Props) => {
   const removeDuty = (id:string)=>{
     setDuties((updatedDuties)=>{
       const newDuties=duties.filter((duty)=>duty.id!=id);
-      if(newDuties.length===0){
-        updateForm('duties',null);
-        return newDuties;
-      }
       updateForm('duties',newDuties);
       return newDuties;
     });
@@ -65,7 +61,7 @@ const DutiesSection =  (props: Props) => {
           }
         </ul>
         <div className="row flexrow">
-          <textarea rows={5} cols={60} name="extraDuty"  onChange={updateDuty} id="rrinput"
+          <textarea className='textArea' rows={5} cols={60} name="extraDuty"  onChange={updateDuty} id="rrinput"
             placeholder="About the position job duties the application package.How to apply" >
           </textarea>
           <button type="button"  onClick={addDuty} className="addBtn" >Add+</button>

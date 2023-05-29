@@ -7,18 +7,18 @@ interface Props{
 }
 const JobTitleSection = (props:Props) => {
   const { updateForm } = props;
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState(['']);
   const [titles, setTitles] = useState([]);
   const updateDiscipline=(field: string,value: any)=>{
     if(value.length==0){
-      updateForm(field,null);
+      updateForm(field,[]);
       return;
     }
     updateForm(field,value);
   };
   const fetchDiscipline = async ()=>{
     const res = await getDisciplines();
-    setOptions(res);
+    setOptions([...options,...res]);
   };
   const fetchTitles = async ()=>{
     const res = await getTitles();
@@ -81,12 +81,12 @@ const JobTitleSection = (props:Props) => {
             id="experience"
           />
         </div>
-        <div className="row">
+        <div className="row multiselect">
           <label htmlFor="title">
           Discipline
             <span className="mandatoryField">*</span>
           </label>
-          <Multiselect className='multi'
+          <Multiselect className='multi input'
             onSelect={(e)=>updateDiscipline('discipline',e)}
             onRemove={(e)=>updateDiscipline('discipline',e)}
             isObject={false}
