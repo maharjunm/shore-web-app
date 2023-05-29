@@ -1,6 +1,6 @@
 import React,{ useState } from 'react';
 import './Footer.scss';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
 import { faPhone,faEnvelope,faMapMarker, faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
@@ -35,10 +35,10 @@ const Footer = () => {
         <div className="company-text">
           <div className='flex'>
             <h4 className="font-heading">
-              <NavLink exact to="/">
+              <Link exact to="/">
                 <span className="color">Shore</span>
                 <span className="color">Birdie</span>
-              </NavLink>
+              </Link>
             </h4>
           </div>
           <p> shorebirdie.com is a jobs profile company which serves the vacancies of any job throughout the world
@@ -56,7 +56,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="contact-details">
-          <div className="box color font-heading" >
+          <div className="box font-heading" >
             Contact Details
           </div>
           <div className='box'>
