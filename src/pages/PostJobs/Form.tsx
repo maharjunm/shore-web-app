@@ -43,13 +43,14 @@ const defaultForm:FormData = {
     closingDate:null,
   },
   salary: {
+    currency: '',
     sal: null,
     hours: null,
     companyType: 'Annual',
   },
-  qualifications:null,
-  discipline:null,
-  duties:null,
+  qualifications:[],
+  discipline:[],
+  duties:[],
   contact:{
     email:'',
     employeeWebsite:'',

@@ -1,5 +1,7 @@
 import React from 'react';
 import { ErrorBoundary } from '../../../components';
+import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
+import { faDollarSign, faRupeeSign, faPoundSign } from '@fortawesome/free-solid-svg-icons';
 
 interface Props{
   updateForm:(field:string,value:any)=>void;
@@ -18,20 +20,25 @@ const SalarySection =  (props: Props) => {
             Salary
             <span className="mandatoryField">*</span>
           </label>
-          <input
-            type="number"
-            name="salary"
-            onChange={(e)=>updateForm('salary.sal',e.target.value)}
-            required
-            id="salary"
-          />
-          <input
-            type="number"
-            name="salary"
-            onChange={(e)=>updateForm('salary.sal',e.target.value)}
-            required
-            id="salary"
-          />
+          <div className="minrow">
+            <input
+              type="text"
+              className='minInput-30'
+              name="currency"
+              onChange={(e)=>updateForm('salary.currency',e.target.value)}
+              placeholder='USD'
+              required
+              id="salary"
+            />
+            <input
+              type="number"
+              className='minInput-70'
+              name="salary"
+              onChange={(e)=>updateForm('salary.sal',e.target.value)}
+              required
+              id="salary"
+            />
+          </div>
         </div>
         <div className="row">
           <label htmlFor="hours">
