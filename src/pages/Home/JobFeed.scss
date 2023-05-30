@@ -4,7 +4,7 @@
     padding:20px;
     background-color: #fefefe;
     border-radius: 6px;
-
+    height: 330px;
     cursor: pointer;
     box-shadow: 0 0 5px rgba(72,72,72,.12), 0px 2px 2px rgba(72,72,72,.5);
 
@@ -131,6 +131,6 @@
 
 @media only screen and (max-width: 1050px) {
     .jobFeed{
-        min-height: max-content;
+        min-height: 345px;
     }
 }

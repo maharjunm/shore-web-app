@@ -20,9 +20,11 @@ function Logout() {
   };
 
   return (
-    <div className="logoutContainer">
-      <p>Are you sure you want to log out?</p>
-      <button onClick={handleLogout} className="logoutButton">Logout</button>
+    <div className="logout-auth">
+      <div className="logoutContainer">
+        <p>Are you sure you want to log out?</p>
+        <button onClick={handleLogout} className="logoutButton">Logout</button>
+      </div>
     </div>
   );
 }

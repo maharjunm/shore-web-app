@@ -1,5 +1,6 @@
 .container-auth{
   margin-top: calc(100vh/6);
+  height: 80vh;
 }
 .container-auth form{
   max-width: 360px;
@@ -73,6 +74,9 @@
 }
 .container-auth p .Link{
   color: blue;
+}
+.logout-auth{
+  height:80vh;
 }
 .logoutContainer{
   max-width: 360px;

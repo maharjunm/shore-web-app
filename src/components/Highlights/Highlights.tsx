@@ -35,7 +35,6 @@ const Highlights = (props: Props) => {
 
   const fetchHighlights = async ()=>{
     const res = await getHighlights();
-    console.log('re',res);
     if(!res || res.length===0){
       stopLoading();
       setError('something went wrong');
