@@ -37,6 +37,12 @@ const Home = () => {
   const [slidingPage,setSlidingPage ] = useState(0);
   const [ location, setLocation ] = useState('');
   const [ jobTitle, setJobTitle ] = useState('');
+  const [ loading, setLoading ] = useState(true);
+  const [ error ,setError ] = useState('');
+
+  const stopLoading = () => {
+    setLoading(false);
+  };
 
   const updateLocation = (value:string)=>{
     setLocation(value);
@@ -101,8 +107,12 @@ const Home = () => {
     if(res){
       const newJobs=res.data;
       shuffle(newJobs);
+      stopLoading();
       setRecomendedJobs(newJobs);
+      return ;
     }
+    setError('Error..');
+    stopLoading();
   };
   React.useEffect(()=>{
     fetchRecomendedData(slidingPage);
@@ -157,6 +167,8 @@ const Home = () => {
           <Highlights />
         </div>
         <div className="middle">
+          {loading && <div className='center'>Loading ....</div>}
+          {error && <div className='errorBox center'>{error}...</div>}
           {recomendedJobs.length!==0 &&
           <div className="carousel-container">
             <Slider {...jobSlideSettings} ref={jobSliderRef}>

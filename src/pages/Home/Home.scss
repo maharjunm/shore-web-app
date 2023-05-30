@@ -90,6 +90,12 @@ body{
   .inputForm {
     flex-direction: column;
   }
+  .searchIcon{
+    padding: 8px 18px 8px 18px;
+    min-width:150px;
+    display:flex;
+    justify-content: space-around;
+  }
 }
 .endingMessage{
   text-align: center;
@@ -193,6 +199,12 @@ body{
 }
 .jobPrevButton{
   left: 0;
+}
+.center{
+  text-align: center;
+}
+.errorBox{
+  color: red;
 }
 
 
