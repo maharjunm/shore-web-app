@@ -30,6 +30,8 @@ module.exports =  (env, options)=> {
         },
         devServer: {
             historyApiFallback: true,
+            contentBase: './',
+            hot: true,
         },
         module: {
             rules: [
