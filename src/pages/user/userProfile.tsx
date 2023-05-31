@@ -1,5 +1,5 @@
 import React , { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../HomePage/HomePage';
 import  ProductSelectionPage  from '../ProductSelectionPage/ProductSelectionPage';
 import { ErrorBoundary, Message } from '../../components';
@@ -8,9 +8,9 @@ import './userProfile.scss';
 const Profile = ()=>{
 
   const { state } = useContext(UserContext);
-  const history = useHistory();
+  const navigate = useNavigate();
   if(!state.user){
-    history.push('/login');
+    navigate('/login');
     return ;
   }
   return(

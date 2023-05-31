@@ -1,5 +1,5 @@
 import React, { useContext,useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import './Admin.scss';
 import  { Job }  from '../../components/DataModels/Job';
@@ -14,7 +14,7 @@ const Admin = () => {
 
   const { state, dispatch } = useContext(UserContext);
   const [ tabCookie,setTabCookie,removeTabCookie ] = useCookies();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [ tab, setTab] = useState('');
   const [currentJob,setCurrentJob]= useState(null);
   const [ jobStatus,setJobStatus] = useState('');
@@ -47,7 +47,8 @@ const Admin = () => {
     }
   };
   if(!state.isAdmin){
-    history.push('/login');
+    navigate('/login');
+    return;
   }
   return (
     <div className="adminDashboard">

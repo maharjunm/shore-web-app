@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { getHighlights } from '../../services/Jobs';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface Props{
   updateSearch?: (field:string,value:string|string[]|number)=>void
@@ -20,14 +20,14 @@ const Highlights = (props: Props) => {
     setLoading(false);
   };
   const sliderRef = useRef(null);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const onClick = (title:string)=>{
     if(updateSearch){
       updateSearch('jobTitle',title);
       return;
     }
-    history.replace({
+    navigate.replace({
       pathname:'/search',
       state: {jobTitle: title}
     });

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useCookies } from 'react-cookie';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../HomePage/HomePage';
 import { logout } from '../../services/Authentication';
 import './auth.scss';
@@ -8,7 +8,7 @@ import './auth.scss';
 function Logout() {
   const { dispatch } = useContext(UserContext);
   const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLogout = async  () => {
     await logout();
@@ -16,7 +16,7 @@ function Logout() {
     dispatch({ type: 'ADMIN', payload: false });
     removeAuthCookie('isAdmin');
     removeAuthCookie('SESSION');
-    history.push('/login');
+    navigate('/login');
   };
 
   return (

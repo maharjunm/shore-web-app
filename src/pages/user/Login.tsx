@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { login } from '../../services/Authentication';
 import './auth.scss';
@@ -13,7 +13,7 @@ function Login() {
   const [error, setError] = useState('');
   const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
 
-  const History = useHistory();
+  const navigate = useNavigate();
   const handleLogging = (status:boolean) => {
     setLogging(status);
   };
@@ -37,18 +37,18 @@ function Login() {
         setAuthCookie('isAdmin',true);
       }
       setAuthCookie('SESSION',res.data.token);
-      History.push('/profile');
+      navigate('/profile');
     }else{
       setError(res.data.message);
     }
     handleLogging(false);
   };
   if(state.user){
-    History.push('/profile');
+    navigate('/profile');
     return ;
   }
   if(state.isAdmin){
-    History.push('/dashboard');
+    navigate('/dashboard');
     return ;
   }
   return (

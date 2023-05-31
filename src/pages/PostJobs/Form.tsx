@@ -1,5 +1,5 @@
 import React,{useState, useContext} from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ErrorBoundary } from '../../components';
 import  FormData  from '../../components/DataModels/FormData';
 import './Form.scss';
@@ -61,7 +61,7 @@ const defaultForm:FormData = {
 const Form = () => {
 
   const { state, dispatch } = useContext(UserContext);
-  const history = useHistory();
+  const navigate = useNavigate();
   const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
   const location= useLocation();
   const product = location.state;
@@ -167,7 +167,7 @@ const Form = () => {
     }, 2000);
   };
   if(!product){
-    history.push('/postjobs');
+    navigate('/postjobs');
     return ;
   }
   return (

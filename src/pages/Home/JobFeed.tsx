@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
 import { faBusinessTime, faMapMarker, faClock } from '@fortawesome/free-solid-svg-icons';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 interface Props {
     key:string;
     jobd:Job;
@@ -19,12 +19,12 @@ interface Props {
 const JobFeed = (det: Props) => {
   let p=det.jobd;
   const { viewBtn, isUser, isAdmin, isHome } = det;
-  const history = useHistory();
+  const navigate = useNavigate();
   const setJob=()=>{
     det.jobClick(p,'show');
   };
   const viewJob = () => {
-    history.push(`/job/${p._id}`);
+    navigate(`/job/${p._id}`);
     return ;
   };
   const makePayment = ()=>{

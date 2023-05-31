@@ -28,6 +28,9 @@ module.exports =  (env, options)=> {
         resolve: {
             extensions: ['.js', '.jsx', '.json', '.ts', '.tsx']
         },
+        devServer: {
+            historyApiFallback: true,
+        },
         module: {
             rules: [
                 {

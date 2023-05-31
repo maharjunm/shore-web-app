@@ -11,7 +11,7 @@ import { selectSearch } from '../../store/SearchContent/selector';
 import { updateSearch } from '../../store/SearchContent/reducer';
 import { RootState } from '../../store/configureStore';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Disciplines } from './SeachUtils/Disciplines';
 import { Titles } from './SeachUtils/Titles';
 import { Sectors } from './SeachUtils/Sectors';
@@ -31,7 +31,7 @@ const  defaultSearch:SearchData= {
 const SearchPage = () => {
   
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
   const searchStatus= useSelector((state:RootState)=>{
     return selectSearch(state);

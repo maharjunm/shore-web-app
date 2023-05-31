@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import JobDetails from '../../Home/JobDetails';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getJobById } from '../../../services/Jobs';
 import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +9,7 @@ import './FullJobView.scss';
 export const FullJobView = () => {
 
   const { jobId } = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [ error, setError ] = useState('');
   const [ job, setJob ] = useState(null);
   const [ loading, setLoading] = useState(true);
@@ -28,7 +28,7 @@ export const FullJobView = () => {
     setJob(res.data);
   };
   const goBack = ()=>{
-    history.goBack();
+    navigate(-1);
     return ;
   };
   React.useEffect(()=>{

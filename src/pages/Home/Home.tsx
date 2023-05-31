@@ -14,7 +14,7 @@ import { faArrowLeft,faArrowRight, faSearch } from '@fortawesome/free-solid-svg-
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const shuffle = (array:Job[]) => {
   for( var i=array.length-1;i>0;i--){
     var j = Math.floor(Math.random()*(i+1));
@@ -27,7 +27,7 @@ const shuffle = (array:Job[]) => {
 const Home = () => {
   const [currentJob,setCurrentJob]= useState(null);
   const [view,setView]= useState('hide');
-  const history = useHistory();
+  const navigate = useNavigate();
   const [jobs,setJobs]=React.useState([]);
   const [selectedJob,setSelectedJob]=React.useState('');
   const [job,setJob] =React.useState([]);
@@ -134,14 +134,14 @@ const Home = () => {
     setCurrentJob(job);
   };
   const gotoSearch = (title: string,location:string) => {
-    history.push({
+    navigate({
       pathname:'/search',
       state: {jobTitle: title,locationValue: location}
     });
     return ;
   };
   const gotoSearchByCompany = (value:string) =>{
-    history.push({
+    navigate({
       pathname:'/search',
       state: {company:value}
     });

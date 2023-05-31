@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../HomePage/HomePage';
 import { signup } from '../../services/Authentication';
 import './auth.scss';
@@ -13,7 +13,7 @@ function Signup() {
   const [error, setError] = useState('');
   const [ logging, setLogging ] = useState(false);
 
-  const History = useHistory();
+  const navigate = useNavigate();
 
   const handleLogging = (status:boolean) =>{
     setLogging(status);
@@ -30,18 +30,18 @@ function Signup() {
     const res = await signup({ body });
     if(res.status === 201){
       window.alert('successful SignUp');
-      History.push('/profile');
+      navigate('/profile');
     }else{
       setError(res.data.message);
     }
     handleLogging(false);
   };
   if(state.user){
-    History.push('/profile');
+    navigate('/profile');
     return ;
   }
   if(state.isAdmin){
-    History.push('/dashboard');
+    navigate('/dashboard');
     return ;
   }
   return (

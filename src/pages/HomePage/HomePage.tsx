@@ -1,7 +1,7 @@
 import React,{useState, createContext , useReducer} from 'react';
 import { useCookies } from 'react-cookie';
 import { ErrorBoundary,NavBar, PaymentSuccess, PaymentCancel, Footer } from '../../components';
-import {HashRouter as Router,Switch,Route,Link} from 'react-router-dom';
+import {BrowserRouter as Router,Routes,Route,Link} from 'react-router-dom';
 import {User,Home,PostJobs,Form,ContactUs,ProductSelectionPage,BillingPage,Login,Logout,Signup,Profile,Admin,SearchPage} from '../../pages';
 import { FullJobView } from '../SearchPage/SeachUtils/FullJobView';
 import { initialState, reducer } from '../../Reducer/userReducer';
@@ -22,23 +22,23 @@ const HomePage = () => {
         <UserContext.Provider value={{ state, dispatch }}>
           <ErrorBoundary>
             <NavBar/>
-            <Switch>
-              <Route exact path='/' ><Home/></Route>
-              <Route  path='/home' ><Home/></Route>
-              <Route  path='/postjobs'><PostJobs /></Route>
-              <Route  path='/contactus'><ContactUs/></Route>
-              <Route path='/postajob' ><Form /></Route>
-              <Route path='/login' ><Login /></Route>
-              <Route path='/signup' ><Signup /></Route>
-              <Route path='/logout' ><Logout /></Route>
-              <Route path='/profile' ><Profile/></Route>
-              <Route path='/dashboard'><Admin /></Route>
-              <Route path='/userdashboard'><User/></Route>
-              <Route path='/success' ><PaymentSuccess /></Route>
-              <Route path='/cancel' ><PaymentCancel /></Route>
-              <Route path='/search' ><SearchPage /></Route>
-              <Route path='/job/:jobId' ><FullJobView /></Route>
-            </Switch>
+            <Routes>
+              <Route exact path='/' element={<Home/>} />
+              <Route  path='/home'  element={<Home/>} />
+              <Route  path='/postjobs' element={<PostJobs />} />
+              <Route  path='/contactus' element={<ContactUs/>} />
+              <Route path='/postajob' element={<Form />} />
+              <Route path='/login'  element={<Login />} />
+              <Route path='/signup'  element={<Signup />} />
+              <Route path='/logout'  element={<Logout />} />
+              <Route path='/profile'  element={<Profile/>} />
+              <Route path='/dashboard'  element={<Admin />} />
+              <Route path='/userdashboard'  element={<User/>} />
+              <Route path='/success'  element={<PaymentSuccess />} />
+              <Route path='/cancel'  element={<PaymentCancel />} />
+              <Route path='/search'  element={<SearchPage />} />
+              <Route path='/job/:jobId'  element={<FullJobView />} />
+            </Routes>
             <Footer />
           </ErrorBoundary>
         </UserContext.Provider>
