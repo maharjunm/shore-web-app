@@ -4,6 +4,7 @@ import JobFeed from '../Home/JobFeed';
 import { getJobByUser } from '../../services/Jobs';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Job } from '../../components/DataModels/Job';
+import './User.scss';
 
 const User=()=>{
   const [jobs,setJobs]=React.useState([]);
@@ -33,29 +34,37 @@ const User=()=>{
   
   return(
     <div>
-      <div className="contentbox">
-        <div className="top">
-          History of Jobs you posted
+      <div className="userDashboard">
+        <div className='listItems'>
+          <h1>User Options</h1>
+          <ul>
+            <li className='active'>History</li>
+          </ul>
         </div>
         <div className="down">
-          <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
-            <InfiniteScroll
-              hasMore={hasMoreJobs}
-              next={()=>setPage(jobs.length)}
-              dataLength={jobs.length}
-              loader={<h4>Loading......</h4>}
-            >
-              { jobs.map((element: Job)=>(
-                <JobFeed key={element._id} jobd={element} jobClick={jobClick} isUser={true} viewBtn={true} />
-              )) }
-            </InfiniteScroll>
+          <div className="top">
+            History of Jobs you posted
           </div>
-          <div className={view}>
-            {currentJob && <JobDetails key={currentJob._id} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true}  />}
+          <div className="down">
+            <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
+              <InfiniteScroll
+                hasMore={hasMoreJobs}
+                next={()=>setPage(jobs.length)}
+                dataLength={jobs.length}
+                loader={<h4>Loading......</h4>}
+              >
+                { jobs.map((element: Job)=>(
+                  <JobFeed key={element._id} jobd={element} jobClick={jobClick} isUser={true} viewBtn={true} />
+                )) }
+              </InfiniteScroll>
+            </div>
+            <div className={view}>
+              {currentJob && <JobDetails key={currentJob._id} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true}  />}
+            </div>
           </div>
+          {!hasMoreJobs && <h4>No more jobs....</h4>}
         </div>
       </div>
-      {!hasMoreJobs && <h4>No more jobs....</h4>}
     </div>
   );
 };
