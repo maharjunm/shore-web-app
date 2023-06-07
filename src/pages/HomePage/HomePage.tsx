@@ -18,7 +18,7 @@ const HomePage = () => {
   }
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <Router >
+    <Router basename='/' >
       <div>
         <UserContext.Provider value={{ state, dispatch }}>
           <ErrorBoundary>
