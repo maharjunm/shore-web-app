@@ -91,7 +91,7 @@ const JobFeed = (det: Props) => {
           </div>
           <div>
             { viewBtn && <button className='viewBtn' onClick={isAdmin?setJob:viewJob} >View Details</button> }
-            { isUser && !p.paymentStatus && <button className='viewBtn' onClick={makePayment} >Make Payment</button> }
+            { isUser && !p.paymentStatus && p.productType!='Regular'  && <button className='viewBtn' onClick={makePayment} >Make Payment</button> }
           </div>
         </div>
       </div>

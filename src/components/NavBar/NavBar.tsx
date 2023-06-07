@@ -7,9 +7,9 @@ import { UserContext } from '../../pages/HomePage/HomePage';
 const NavBar = () => {
   const { state, dispatch } = useContext(UserContext);
   const [profilePopUp,setProfilePopUp] = useState('hide');
-  const handleProfilePopUp=()=>{
+  const handleProfilePopUp=(status:boolean)=>{
     setProfilePopUp((updatedProfilePopUp)=>{
-      return profilePopUp==='show'?'hide':'show';
+      return status?'show':'hide';
     });
   };
   const RenderMenu = () =>{
@@ -19,9 +19,16 @@ const NavBar = () => {
           <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
           <li ><NavLink to="/contactus">Contact Us</NavLink></li>
           <ul className='profileList'>
-            <li onClick={handleProfilePopUp}>Profile</li>
+            <li 
+              onMouseEnter={()=>handleProfilePopUp(true)}
+              onMouseLeave={()=> handleProfilePopUp(false)}
+            >Profile</li>
             <li>
-              <div className={'profilePop '+profilePopUp}>
+              <div 
+                className={'profilePop '+profilePopUp}
+                onMouseEnter={()=>handleProfilePopUp(true)}
+                onMouseLeave={()=> handleProfilePopUp(false)} 
+              >
                 <NavLink to="/profile">Account</NavLink>
                 <NavLink to="/userdashboard">Dashboard</NavLink>
                 <NavLink to="/logout">Logout</NavLink>
@@ -35,9 +42,19 @@ const NavBar = () => {
       return(
         <>
           <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
-          <ul >
-            <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-            <li><NavLink to="/logout">Logout</NavLink></li>
+          <ul className='profileList'>
+            <li
+              onMouseEnter={()=>handleProfilePopUp(true)}
+              onMouseLeave={()=> handleProfilePopUp(false)}
+            >Admin</li>
+            <div 
+              className={'profilePop '+profilePopUp}
+              onMouseEnter={()=>handleProfilePopUp(true)}
+              onMouseLeave={()=> handleProfilePopUp(false)} 
+            >
+              <NavLink to="/dashboard">Dashboard</NavLink>
+              <NavLink to="/logout">Logout</NavLink>
+            </div>
           </ul>
         </>
       );
