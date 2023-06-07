@@ -36,8 +36,8 @@ const Footer = () => {
           <div className='flex'>
             <h4 className="font-heading">
               <Link exact to="/">
-                <span className="color">Shore</span>
-                <span className="color">Birdie</span>
+                <span className="colorBlue">Shore</span>
+                <span className="colorYellow">Birdie</span>
               </Link>
             </h4>
           </div>
