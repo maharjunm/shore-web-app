@@ -38,8 +38,8 @@ const JobFeed = (det: Props) => {
         <div className="flex">
           <div className="title">
             <h4 >{p.job.title}</h4>
-            <span className="company"> {p.company.name}</span>
-            <span> {p.location.city},{p.location.state}</span>
+            <span className="company textOverflow"> {p.company.name}</span>
+            <span className="address textOverflow"> {p.location.city},{p.location.state}</span>
           </div>
           <div className="title">
             {isUser && 
@@ -60,10 +60,12 @@ const JobFeed = (det: Props) => {
             }
           </div>
         </div>
-        <div className="shift">
-          <span> {p.salary.sal}{p.salary.currency}-{p.job.type}</span>
-          <span>{p.job.experience}</span>
-          <span> {p.company.companyType}</span>
+        <div >
+          <ul className="shift" >
+            <li>{p.salary.sal}{p.salary.currency}-{p.job.type}</li>
+            <li>{p.job.experience}</li>
+            <li> {p.company.companyType}</li>
+          </ul>
         </div>
         <ul className='color-green'>
           <li> 

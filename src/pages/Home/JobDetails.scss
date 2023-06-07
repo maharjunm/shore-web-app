@@ -9,14 +9,19 @@
 .bordertop {
   border-top: 2px solid var(--lightBlack);
 }
-
+.jobfullview{
+  position: sticky;
+  top:10px;
+  text-align: left;
+  color: var(--blackHeadColor);
+}
 .jobdetails {
   position: sticky;
   top:10px;
   margin: auto;
   text-align: center;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 8px;
   color: var(--blackHeadColor);
   box-shadow: 0 0 5px rgba(72,72,72,.12), 0px 2px 2px rgba(72,72,72,.5);
 
@@ -112,7 +117,19 @@
   background-color: blue;
 }
 
-.scrollableContent {
+.jobfullview .scrollableContent {
+  margin: auto;
+  max-width: 750px;
+  min-width: 300px;
+  padding: 10px;
+  border-top: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  overflow: none;
+  flex-direction: column;
+}
+.jobdetails .scrollableContent {
   max-width: 750px;
   min-width: 300px;
   margin: auto;
@@ -223,7 +240,7 @@
 .jobTitle .closingDate{
   display: flex;
   font-size: 14px;
-  justify-content: space-between;
+  gap: 0.5;
 }
 .jobTitle .closingDate .dateBold{
   font-weight: bold;

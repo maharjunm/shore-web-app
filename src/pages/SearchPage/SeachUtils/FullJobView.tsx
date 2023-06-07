@@ -37,11 +37,11 @@ export const FullJobView = () => {
   return (
     <div className='searchedJob'>
       <div className="topElements">
-        <div className='backArrow' onClick={goBack}><FA icon={faArrowLeftLong} />Back </div>
+        <div className='secondaryBtn' onClick={goBack}><FA icon={faArrowLeftLong} />Back </div>
         <div className='errorBox'></div>
       </div>
       <div className='job'>
-        { job && <JobDetails key={job._id} jobd={job} jobClick={null} disablePreview={null} isHome={false} />}
+        { job && <JobDetails key={job._id} jobd={job} jobClick={null} disablePreview={null} isHome={true}  isFullView={true} />}
         <div className='errorBox'>{error}</div>
         {loading && <div>Loading...</div>}
       </div>

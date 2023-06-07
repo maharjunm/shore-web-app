@@ -14,11 +14,12 @@ interface Props {
     isHome:boolean;
     children?:any;
     isAdmin?:boolean;
+    isFullView?:boolean;
 }
 const JobDetails= (details:Props) => {
   let p=details.jobd;
   const imagePath = p.company.logo;
-  const { isAdmin }= details;
+  const { isAdmin, isHome, isFullView }= details;
   const clicked=()=>{
     if(details.isHome){
       details.jobClick(null,'hide');
@@ -42,7 +43,7 @@ const JobDetails= (details:Props) => {
   const posting = dayjs(p.dates.postingDate).format('DD/MM/YYYY');
   return (
     <ErrorBoundary>
-      <div className="jobdetails" >
+      <div className={isFullView?'jobfullview':'jobdetails'} >
         <div className="sticky">
           <div className="mainHead">
             <div className="sideContent">
@@ -62,7 +63,7 @@ const JobDetails= (details:Props) => {
                 </div>
               </div>
             </div>
-            <div className="wrong" onClick={clicked}>X</div>
+            {!isHome && <div className="wrong" onClick={clicked}>X</div>}
           </div>
         </div>
         <div className="scrollableContent">

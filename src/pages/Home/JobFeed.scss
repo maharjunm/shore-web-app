@@ -4,7 +4,7 @@
     padding:20px;
     background-color: #fefefe;
     border-radius: 6px;
-    height: 330px;
+    height: 340px;
     cursor: pointer;
     box-shadow: 0 0 5px rgba(72,72,72,.12), 0px 2px 2px rgba(72,72,72,.5);
 
@@ -52,21 +52,10 @@
     font-size: 15px;
     color:blue;
     cursor: pointer;
+    width: 200px;
 }
-.shift{
-    padding: 5px;
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-}
-.shift span{
-    background-color: rgb(216, 216, 218);
-    padding:5px;
-    border-radius: 3px;
-    line-height: 12px;
-    font-size: 14px;
-    color:rgb(41, 39, 39);
-    font-weight: 500;
+.title .address{
+    width: 200px;
 }
 .downshift{
     text-align: left;
@@ -89,10 +78,10 @@
     list-style-type:none;
     display: flex;
     flex-wrap: wrap;
+    gap: 0.5em;;
 }
 .jobFeed ul li{
     display: inline;
-    padding-right: 20px;
     float: left;
     line-break: strict;
     font-size: 14px;
@@ -103,6 +92,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.shift li{
+    background-color: rgb(216, 216, 218);
+    padding:5px;
+    border-radius: 3px;
+    line-height: 12px;
+    font-size: 14px;
+    color:rgb(41, 39, 39);
+    font-weight: 500;
 }
 .foot{
     font-size: 13px;
@@ -122,7 +120,8 @@
     font-size: 12px;
     border-radius: 4px;
 }
-.foot b{
+.foot .hiring{
+    width: 230px;
     color:rgb(38, 37, 37);
 }
 .color-green, .color-green li svg{
@@ -131,6 +130,6 @@
 
 @media only screen and (max-width: 1050px) {
     .jobFeed{
-        min-height: 345px;
+        min-height: 350px;
     }
 }
