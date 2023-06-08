@@ -12,7 +12,7 @@
   flex-direction:column;
   justify-content: center;
   padding: 10px;
-  color: #020d50 ;
+  color: #eee ;
   height: 100%;
   font-weight: 400;
 }
@@ -58,6 +58,9 @@
 .footer .foot-middle .company-text .flex{
   display: flex;
   justify-content: center;
+}
+.footer .foot-middle .company-text .flex img{
+  max-width: 70px;
 }
 .font-heading .colorBlue{
   color:#067dcd;
@@ -108,7 +111,6 @@
 .footer .foot-bottom{
   text-align: center;
   padding: 20px;
-  color: #020202;
   font-weight: 500;
 }
 

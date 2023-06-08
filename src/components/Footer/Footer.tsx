@@ -1,4 +1,5 @@
 import React,{ useState } from 'react';
+import Logo from './../images/logo.png';
 import './Footer.scss';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
@@ -34,6 +35,7 @@ const Footer = () => {
       <div className="foot-middle">
         <div className="company-text">
           <div className='flex'>
+            <img src={Logo} alt="" />
             <h4 className="font-heading">
               <Link exact to="/">
                 <span className="colorBlue">Shore</span>
