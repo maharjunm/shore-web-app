@@ -160,8 +160,8 @@ const Home = () => {
               <Location  update={updateLocation}  />
             </div>
             <div className='searchIcon' onClick={()=>gotoSearch(jobTitle, location)}>
-              <span>Search </span>
               <FA icon={faSearch}></FA>
+              <span>Search </span>
             </div>
           </div>
           <Highlights />

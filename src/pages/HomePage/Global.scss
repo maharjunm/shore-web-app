@@ -1,0 +1,19 @@
+.textOverflow{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.textOverflow:hover{
+  overflow: visible;
+}
+.secondaryBtn{
+  border: 1px solid #64aef6;
+  color: #64aef6;
+  border-radius: 4px;
+  align-items: center;
+  display: flex;
+  padding: 5px 10px 5px 10px;
+  margin: 20px;
+  justify-content: center;
+  cursor: pointer;
+}

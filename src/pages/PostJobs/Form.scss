@@ -78,8 +78,15 @@
 .orgLogo{
   background-color: red;
 }
+.downside{
+  display:flex;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+}
 .btnstyle{
   width:150px;
+  height: max-content;
   background-color: var(--blue);
   color:white;
   margin:10px;
@@ -87,6 +94,11 @@
   border-radius: 3px;
   font-size: 18px;
   font-weight:600;
+}
+.downside button{
+  font-size: 18px;
+  font-weight:500;
+  width: 150px;
 }
 .addBtn{
   width:60px;

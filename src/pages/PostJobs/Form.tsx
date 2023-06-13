@@ -202,7 +202,7 @@ const Form = () => {
             <p className="errorMessage">{errorMessage}</p>
           </div>
           <div className="downside">
-            <button type="button" onClick={previewBtnHandler} className="btnstyle" >Preview</button>
+            <button type="button" onClick={previewBtnHandler} className="secondaryBtn" >Preview</button>
             <button type="submit" className="btnstyle" >{formStatus}</button>
           </div>
         </div>

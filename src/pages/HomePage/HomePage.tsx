@@ -1,10 +1,11 @@
 import React,{useState, createContext , useReducer} from 'react';
 import { useCookies } from 'react-cookie';
 import { ErrorBoundary,NavBar, PaymentSuccess, PaymentCancel, Footer } from '../../components';
-import {HashRouter as Router,Switch,Route,Link} from 'react-router-dom';
+import { HashRouter as Router,Switch,Route,Link} from 'react-router-dom';
 import {User,Home,PostJobs,Form,ContactUs,ProductSelectionPage,BillingPage,Login,Logout,Signup,Profile,Admin,SearchPage} from '../../pages';
 import { FullJobView } from '../SearchPage/SeachUtils/FullJobView';
 import { initialState, reducer } from '../../Reducer/userReducer';
+import './Global.scss';
 export const UserContext = createContext(null);
 const HomePage = () => {
   const [ authCookie, setAuthCookie, removeAuthCookie] = useCookies([]);
@@ -17,7 +18,7 @@ const HomePage = () => {
   }
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <Router>
+    <Router basename='/' >
       <div>
         <UserContext.Provider value={{ state, dispatch }}>
           <ErrorBoundary>

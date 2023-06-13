@@ -83,8 +83,8 @@ const ContactUs = ( ) => {
               <input type="text" name="companyName" required value={formData.companyName} onChange={handleChange}  placeholder="Company Name"/>
               <textarea name="query" onChange={handleChange} required placeholder="Message" id="" cols={30} rows={5}></textarea>
               <div className='flexSide'>
-                <button type="submit" className={btnStatus?'sendingBtn':'sendBtn'}>{btnStatus?'Sending':'Send Message'} </button>
                 <span className={'submitStatus '+formStatus.color} >{formStatus.status}</span>
+                <button type="submit" className={btnStatus?'sendingBtn':'sendBtn'}>{btnStatus?'Sending':'Send Message'} </button>
               </div>
             </form>
           </div>
