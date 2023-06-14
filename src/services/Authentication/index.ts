@@ -48,18 +48,18 @@ interface PasswordBody{
   oldPassword:string,
   newPassword:string
 }
-export const resetPassword = async (passwordBody:PasswordBody) => {
+export const changePassword = async (passwordBody:PasswordBody) => {
   try{
-    const response = await instance.post(`${REACT_BACKEND_URL}/v1/user/resetpassword`,passwordBody);
+    const response = await instance.post(`${REACT_BACKEND_URL}/v1/user/changepassword`,passwordBody);
     return {
       status:true,
       message:response.data.message
-    }
+    };
   }catch(error){
     return {
       status:false,
       message:error.response.data.message
 
-    }
+    };
   }
-}
+};

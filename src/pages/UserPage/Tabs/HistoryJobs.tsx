@@ -33,30 +33,30 @@ const HistoryJobs = () =>{
   },[]);
 
   return  (
-      <div className="historyJobs">
-          <div className="top">
+    <div className="historyJobs">
+      <div className="top">
             History of Jobs you posted
-          </div>
-          <div className="down">
-            <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
-              <InfiniteScroll
-                hasMore={hasMoreJobs}
-                next={()=>setPage(jobs.length)}
-                dataLength={jobs.length}
-                loader={<h4>Loading......</h4>}
-              >
-                { jobs.map((element: Job)=>(
-                  <JobFeed key={element._id} jobd={element} jobClick={jobClick} isUser={true} viewBtn={true} />
-                )) }
-              </InfiniteScroll>
-            </div>
-            <div className={view}>
-              {currentJob && <JobDetails key={currentJob._id} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true}  />}
-            </div>
-          </div>
-          {!hasMoreJobs && <h4>No more jobs....</h4>}
+      </div>
+      <div className="down">
+        <div className={view==='hide'?'show':window.screen.width>900?'show':'hide'}>
+          <InfiniteScroll
+            hasMore={hasMoreJobs}
+            next={()=>setPage(jobs.length)}
+            dataLength={jobs.length}
+            loader={<h4>Loading......</h4>}
+          >
+            { jobs.map((element: Job)=>(
+              <JobFeed key={element._id} jobd={element} jobClick={jobClick} isUser={true} viewBtn={true} />
+            )) }
+          </InfiniteScroll>
+        </div>
+        <div className={view}>
+          {currentJob && <JobDetails key={currentJob._id} jobd={currentJob} jobClick={jobClick} disablePreview={null} isHome={true}  />}
+        </div>
+      </div>
+      {!hasMoreJobs && <h4>No more jobs....</h4>}
     </div>
-  )
+  );
 };
 
 export default HistoryJobs;

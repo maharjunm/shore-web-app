@@ -1,2 +1,2 @@
 export { default as HistoryJobs } from './HistoryJobs';
-export { default as ResetPassword } from './ResetPassword';
+export { default as ChangePassword } from './ChangePassword';
