@@ -4,6 +4,8 @@ import Logo from './../images/logo.png';
 import {NavLink} from 'react-router-dom';
 import Flex from './../Flex/Flex';
 import { UserContext } from '../../pages/HomePage/HomePage';
+import { FontAwesomeIcon as FA } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 const NavBar = () => {
   const { state, dispatch } = useContext(UserContext);
   const [profilePopUp,setProfilePopUp] = useState('hide');
@@ -20,9 +22,10 @@ const NavBar = () => {
           <li ><NavLink to="/contactus">Contact Us</NavLink></li>
           <ul className='profileList'>
             <li 
+              className="profile"
               onMouseEnter={()=>handleProfilePopUp(true)}
               onMouseLeave={()=> handleProfilePopUp(false)}
-            >Profile</li>
+            >Profile <FA icon={faAngleDown}/></li>
             <li>
               <div 
                 className={'profilePop '+profilePopUp}
@@ -44,9 +47,10 @@ const NavBar = () => {
           <li ><NavLink to="/postjobs">Post a Job</NavLink></li>
           <ul className='profileList'>
             <li
+              className="profile"
               onMouseEnter={()=>handleProfilePopUp(true)}
               onMouseLeave={()=> handleProfilePopUp(false)}
-            >Admin</li>
+            >Admin<FA icon={faAngleDown}/></li>
             <div 
               className={'profilePop '+profilePopUp}
               onMouseEnter={()=>handleProfilePopUp(true)}

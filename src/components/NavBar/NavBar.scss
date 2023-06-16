@@ -130,6 +130,15 @@
   text-align: center;
   padding:10px;
 }
+.container .profileList .profile{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.container .profileList .profile svg{
+  margin-top: 4px;
+}
 .container .profilePop{
   background-color: #f6f8fa;
   border-color: #aeaeae;
