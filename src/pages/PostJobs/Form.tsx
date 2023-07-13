@@ -177,7 +177,7 @@ const Form = () => {
         <div className="superSection">
           <div className="sections">
             <div className="upside">
-              <div className="headTitle">Post A Job </div>
+              <div className="headTitle mainHead">Post a Job </div>
             </div>
           </div>
           <div className="sections">
