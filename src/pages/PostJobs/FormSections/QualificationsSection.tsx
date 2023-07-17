@@ -47,7 +47,7 @@ const QualificationsSection =  (props: Props) => {
     <ErrorBoundary>
       <div className="side">
         <div className="headTitle">
-          Extra Qualifications and Skills
+          Minimum Job Requirements
           <span className="mandatoryField">*</span>
         </div>
         <ul>
@@ -63,7 +63,7 @@ const QualificationsSection =  (props: Props) => {
           <textarea className='textArea' rows={5} cols={60} name="extraDuty"  onChange={updateQualification}
             onBlur={updateQualification} id="rrinput"
             value={qualification}
-            placeholder="Qualifications " >
+            placeholder="Mandatory Qualifications: Drgree, Word Eligibility" >
           </textarea>
           <button type="button"  onClick={addQualification} className="addBtn" >Add+</button>
         </div>

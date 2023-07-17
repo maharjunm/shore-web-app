@@ -24,7 +24,7 @@ const SubmitSection =  (props: Props) => {
   return(
     <ErrorBoundary>
       <div className="side">
-        <div className="headTitle">How to Submit Apply via</div>
+        <div className="headTitle">How to Submit ?</div>
         <div className="font-small">
           <label htmlFor="email">By Email</label>
           <input type="checkbox" name="sub" id="email" checked={selectState.email} onClick={handleClick}/>

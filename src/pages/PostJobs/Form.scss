@@ -16,6 +16,7 @@
   box-shadow: 0 0 5px rgba(72,72,72,.12), 0px 2px 2px rgba(72,72,72,.5);
 
 }
+
 .sections{
   padding: 10px;
   display: flex;
@@ -27,6 +28,14 @@
   text-align: center;
   padding: 10px;
 }
+.upside .mainHead{
+  font-size: 30px;
+  color: transparent;
+  background-image: linear-gradient(to left ,var(--yellow),var(--blue));
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
 .headTitle{
   font-weight: bold;
   font-size: 16px;
@@ -169,6 +178,20 @@
   font-size: 12px;
   text-align: right;
   font-weight: 500;
+}
+.multiselect .multi .searchBox{
+  border: none;
+}
+
+.search-wrapper{
+  border: none !important;
+  padding: 0 !important;
+}
+.search-wrapper .searchBox{
+  padding: 0;
+}
+.multiselect-container{
+  padding:0;
 }
 .multiselect .multi{
   width: 300px;

@@ -137,7 +137,12 @@ const JobDetails= (details:Props) => {
             </b>
             {details.children}
           </div>}
-          {(email || employeeWebsite) && !isAdmin &&
+          {email && !isAdmin &&
+            <div className="alignLeft">
+              <span>Email: </span><span onClick={redirectToApplication} className="link">{email}</span>
+            </div>}
+
+          {employeeWebsite && !isAdmin &&
             <div className="alignLeft">
               <div className="jobButton">
                 <button className="btnApply" type="button" onClick={redirectToApplication}>Apply</button>

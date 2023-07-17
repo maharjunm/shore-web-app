@@ -48,7 +48,7 @@ const DutiesSection =  (props: Props) => {
     <ErrorBoundary>
       <div className="side">
         <div className="headTitle">
-          Job Duties
+          Full Job Description
           <span className="mandatoryField">*</span>
         </div>
         <ul>
@@ -62,7 +62,7 @@ const DutiesSection =  (props: Props) => {
         </ul>
         <div className="row flexrow">
           <textarea className='textArea' rows={5} cols={60} name="extraDuty"  onChange={updateDuty} id="rrinput"
-            placeholder="About the position job duties the application package.How to apply" >
+            placeholder="University/Company details, About Location, About Position, Minimum Qualification, Idea Qualification, Job Responsibilities, How to submit Job application, Compensation and benifits." >
           </textarea>
           <button type="button"  onClick={addDuty} className="addBtn" >Add+</button>
         </div>
